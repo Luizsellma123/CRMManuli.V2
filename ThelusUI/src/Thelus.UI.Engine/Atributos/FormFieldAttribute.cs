@@ -81,6 +81,11 @@ namespace Thelus.UI.Engine.Atributos
         /// </summary>
         public bool ShowInGrid { get; set; } = false;
 
+        /// <summary>
+        /// Se verdadeiro, exibe este campo na tabela da listagem principal (GenericList).
+        /// </summary>
+        public bool ShowInList { get; set; } = true;
+
         #endregion
 
         #region 3. Formatação, Máscaras e Regras

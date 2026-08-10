@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Microsoft.JSInterop;
 using Thelus.UI.Engine.Modelos;
 
 namespace Thelus.UI.Engine.Servicos
@@ -12,6 +13,7 @@ namespace Thelus.UI.Engine.Servicos
         private readonly HttpClient _http;
         private readonly LayoutStateService _layoutState;
         private readonly IMenuService _menuService;
+        private readonly IJSRuntime _js; // Injetado para ler os Cookies no Blazor
 
         // Evento para notificar componentes (ex: MainLayout) sobre mudanças de login/logout
         public event Action OnChange;
@@ -19,12 +21,61 @@ namespace Thelus.UI.Engine.Servicos
         public bool UsuarioEstaLogado { get; private set; } = false;
         public string NomeUsuario { get; private set; } = string.Empty;
         public string Token { get; private set; } = string.Empty;
+        public int IdUsuario { get; private set; }
 
-        public AuthService(HttpClient http, LayoutStateService layoutState, IMenuService menuService)
+        public AuthService(HttpClient http, LayoutStateService layoutState, IMenuService menuService, IJSRuntime js)
         {
             _http = http;
             _layoutState = layoutState;
             _menuService = menuService;
+            _js = js;
+        }
+
+        /// <summary>
+        /// Reidrata a sessão do Razor lendo os cookies gerados pelo Web Forms
+        /// </summary>
+        public async Task InicializarSessaoAsync()
+        {
+            try
+            {
+                // Lê os cookies do navegador via JSInterop
+                var cookieString = await _js.InvokeAsync<string>("eval", "document.cookie");
+
+                if (!string.IsNullOrEmpty(cookieString))
+                {
+                    var cookies = cookieString.Split(';');
+                    foreach (var c in cookies)
+                    {
+                        var kvp = c.Trim().Split('=');
+                        if (kvp.Length == 2)
+                        {
+                            var chave = kvp[0].Trim();
+                            var valor = Uri.UnescapeDataString(kvp[1].Trim());
+
+                            if (chave.Equals("usuario", StringComparison.OrdinalIgnoreCase))
+                            {
+                                NomeUsuario = valor;
+                                _layoutState.UserName = valor;
+                            }
+
+                            if (chave.Equals("IDUsuario", StringComparison.OrdinalIgnoreCase) && int.TryParse(valor, out int id))
+                            {
+                                IdUsuario = id;
+                            }
+                        }
+                    }
+                }
+
+                // Se encontrou o cookie do usuário criado pelo Web Forms, ativa a sessão
+                UsuarioEstaLogado = !string.IsNullOrEmpty(NomeUsuario);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao reidratar sessão via cookies: {ex.Message}");
+                UsuarioEstaLogado = false;
+            }
+
+            NotificarMudancaEstado();
         }
 
         public async Task<bool> LoginAsync(string usuario, string senha, int empresaId = 1)
@@ -38,7 +89,6 @@ namespace Thelus.UI.Engine.Servicos
                     EmpresaId = empresaId
                 };
 
-                // Faz a chamada POST na API Backend na rota api/auth/login
                 var response = await _http.PostAsJsonAsync("api/auth/login", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -51,10 +101,8 @@ namespace Thelus.UI.Engine.Servicos
                         NomeUsuario = string.IsNullOrWhiteSpace(resultado.NomeUsuario) ? usuario : resultado.NomeUsuario;
                         Token = resultado.Token;
 
-                        // IDs devolvidos pela API a partir da consulta ao banco de dados
                         var idsDoBanco = resultado.IdsMenuPermitidos ?? new List<int>();
 
-                        // Atualiza a UI e recalcula o menu dinâmico
                         _layoutState.UserName = NomeUsuario;
                         _layoutState.SetMenu(_menuService.ObterMenuFiltrado(idsDoBanco));
 
@@ -78,7 +126,6 @@ namespace Thelus.UI.Engine.Servicos
             Token = string.Empty;
             _layoutState.SetMenu(new List<MenuItem>());
 
-            // Dispara o evento avisando a UI que o usuário saiu
             NotificarMudancaEstado();
         }
 

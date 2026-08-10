@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="light" data-menu-color="brand" data-topbar-color="light">
-
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Thelus UI Engine</title>
+    <title>CRM | Manupackaging</title>
     <base href="/" />
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <!-- Favicon do CRM -->
+    <link rel="shortcut icon" href="img/logomanuli2.png">
 
-    <!-- Dashtrap CSS Styles -->
-    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- Fonte Open Sans -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-    <!-- Template Config JS (deve ser carregado no head) -->
-    <script src="assets/js/config.js"></script>
+    <!-- CSS do CRM Legado (Nifty Admin / Bootstrap) -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/crm-manulifitasa.min.css?aux=2" rel="stylesheet" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css?aux=2" rel="stylesheet" />
+    <link href="css/Custom.css?aux=2" rel="stylesheet" />
+    <link href="css/AlertBootstrap.css" rel="stylesheet" />
 
-    <!-- Estilos padrão do Blazor -->
+    <!-- Estilos de Isolamento do Blazor -->
     <link href="css/app.css" rel="stylesheet" />
     <link href="Thelus.UI.Testes.styles.css" rel="stylesheet" />
 </head>
-
 <body>
     <div id="app">
-        <!-- Loader elegante enquanto o Blazor baixa as DLLs -->
-        <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <div class="text-center">
-                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-                    <span class="visually-hidden">Carregando...</span>
-                </div>
-                <h5 class="mt-3 text-muted fw-bold">Iniciando Thelus Engine...</h5>
+        <!-- Loader simples de inicialização -->
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f9f9f9;">
+            <div style="text-align: center; font-family: 'Open Sans', sans-serif;">
+                <h3 style="color: #2b425b; font-weight: 600;">Iniciando CRM Manuli...</h3>
+                <p style="color: #758696;">Aguarde o carregamento do módulo.</p>
             </div>
         </div>
     </div>
@@ -41,14 +40,12 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    <!-- 1. Scripts de Terceiros e jQuery (DEVEM VIR PRIMEIRO) -->
-    <script src="assets/js/vendor.min.js"></script>
+    <!-- 1. Scripts Base do CRM Legado (jQuery e Bootstrap JS) -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/crm-manulifitasa.min.js"></script>
 
     <!-- 2. Framework Blazor WebAssembly -->
     <script src="_framework/blazor.webassembly.js"></script>
-
-    <!-- 3. Scripts do Template Theme (Carregados após as dependências) -->
-    <script src="assets/js/app.js"></script>
 </body>
-
 </html>

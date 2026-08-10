@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Thelus.UI.Model")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6205a70163ac73db05edc277e9ee189127ec504")]
 [assembly: System.Reflection.AssemblyProductAttribute("Thelus.UI.Model")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Thelus.UI.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

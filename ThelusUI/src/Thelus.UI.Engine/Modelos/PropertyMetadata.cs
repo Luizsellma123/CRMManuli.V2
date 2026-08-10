@@ -21,6 +21,9 @@ namespace Thelus.UI.Engine.Modelos
         /// </summary>
         public string LookupKey { get; set; }
 
+        // ADICIONE ESTA PROPRIEDADE PARA A LISTAGEM PRINCIPAL
+        public bool ShowInList { get; set; } = true;
+
         public string Icon { get; set; }
         public string HelpText { get; set; }
         public string Placeholder { get; set; }

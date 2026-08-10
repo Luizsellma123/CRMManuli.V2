@@ -20,6 +20,9 @@ namespace Thelus.UI.Model.Entidades
 
     // AÇÕES DA SEÇÃO: Auditoria
     [DetailAction("Retornar", ActionType.Back, Section = "Auditoria", CssClass = "btn-danger", Order = 1)]
+
+    // CONFIGURA O LAYOUT PARA TELA CHEIA (12 COLUNAS)
+    [ListLayout(ListLayoutMode.FullWidth)]
     public class UsuarioTeste
     {
         #region Seção: Identificação

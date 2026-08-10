@@ -1,0 +1,165 @@
+.d-flex, .loader-demo-box, .distribution-chart-legend .distribution-chart, .distribution-chart-legend .distribution-chart .item, .list-wrapper ul li, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user, .email-wrapper .mail-list-container .mail-list .details, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .lightGallery .image-tile .demo-gallery-poster, .swal2-modal, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link {
+  display: flex !important;
+}
+
+.flex-column, .distribution-chart-legend .distribution-chart .item, .nav-tabs.nav-tabs-vertical, .nav-tabs.nav-tabs-vertical-custom, .nav-pills.nav-pills-vertical, .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user {
+  flex-direction: column !important;
+}
+
+.justify-content-around, .distribution-chart-legend .distribution-chart {
+  justify-content: space-around !important;
+}
+
+.align-items-center, .loader-demo-box, .distribution-chart-legend .distribution-chart .item, .list-wrapper ul li, .email-wrapper .message-body .attachments-sections ul li .thumb, .email-wrapper .message-body .attachments-sections ul li .details .buttons, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile, .horizontal-menu .top-navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link {
+  align-items: center !important;
+}
+
+.demo-chart {
+  height: 300px;
+}
+
+@media (max-width: 767px) {
+  .demo-chart {
+    height: 200px;
+  }
+}
+
+.distribution-chart-legend .distribution-chart .item .legend-label {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+}
+
+.sparkline-demo-chart canvas {
+  max-width: 100%;
+}
+
+/* Chartist */
+.ct-series-a .ct-line {
+  stroke: #a29afc;
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-a .ct-point {
+  stroke: #6355f9;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.ct-series-b .ct-line {
+  stroke: #80d691;
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-b .ct-point {
+  stroke: #4ac462;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.ct-series-c .ct-line {
+  stroke: #f7cb9b;
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-c .ct-point {
+  stroke: #f2a859;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.ct-series-a .ct-bar {
+  stroke: #a29afc;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+.ct-series-b .ct-bar {
+  stroke: #80d691;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+.ct-series-c .ct-bar {
+  stroke: #f7cb9b;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+.ct-series-d .ct-bar {
+  stroke: #fcb2b2;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+.ct-series-a .ct-slice-pie {
+  fill: #a29afc;
+  stroke-width: 4px;
+}
+
+.ct-series-b .ct-slice-pie {
+  fill: #80d691;
+  stroke-width: 4px;
+}
+
+.ct-series-c .ct-slice-pie {
+  fill: #fcb2b2;
+  stroke-width: 4px;
+}
+
+.ct-series-d .ct-slice-pie {
+  fill: #f7cb9b;
+  stroke-width: 4px;
+}
+
+.ct-series-a .ct-slice-donut-solid {
+  fill: #a29afc;
+}
+
+.ct-series-b .ct-slice-donut-solid {
+  fill: #80d691;
+}
+
+.ct-series-c .ct-slice-donut-solid {
+  fill: #fcb2b2;
+}
+
+.ct-series-a .ct-slice-donut-solid {
+  fill: #f7cb9b;
+}
+
+#ct-chart-dash-barChart .ct-series-a .ct-bar {
+  stroke: #fb9999;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+#ct-chart-dash-barChart .ct-series-b .ct-bar {
+  stroke: #8b81fb;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+#ct-chart-dash-barChart .ct-series-c .ct-bar {
+  stroke: #a29afc;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+
+#ct-chart-dash-barChart .ct-series-d .ct-bar {
+  stroke: #b9b3fc;
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}

@@ -2326,11 +2326,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Core\\Thelus.UI.Core.csproj",
+      "projectUniqueName": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Core\\Thelus.UI.Core.csproj",
       "projectName": "Thelus.UI.Core",
-      "projectPath": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Core\\Thelus.UI.Core.csproj",
+      "projectPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Core\\Thelus.UI.Core.csproj",
       "packagesPath": "C:\\Users\\luiz.carlos\\.nuget\\packages\\",
-      "outputPath": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Core\\obj\\",
+      "outputPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2352,8 +2352,8 @@
           "framework": "net5.0",
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj": {
-              "projectPath": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj"
+            "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj": {
+              "projectPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj"
             }
           }
         }

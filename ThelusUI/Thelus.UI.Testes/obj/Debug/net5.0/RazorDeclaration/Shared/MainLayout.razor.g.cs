@@ -6,7 +6,7 @@
 
 namespace 
 #nullable restore
-#line 1 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 1 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
            Thelus.UI.Engine.Layouts
 
 #line default
@@ -20,73 +20,73 @@ namespace
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 1 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line 2 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 2 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line 3 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms
 
 #nullable disable
     ;
 #nullable restore
-#line 4 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing
 
 #nullable disable
     ;
 #nullable restore
-#line 5 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web
 
 #nullable disable
     ;
 #nullable restore
-#line 6 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization
 
 #nullable disable
     ;
 #nullable restore
-#line 7 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http
 
 #nullable disable
     ;
 #nullable restore
-#line 8 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Microsoft.JSInterop
 
 #nullable disable
     ;
 #nullable restore
-#line 9 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Testes
 
 #nullable disable
     ;
 #nullable restore
-#line 10 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Testes.Shared
 
 #nullable disable
     ;
 #nullable restore
-#line 11 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+#line 11 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Engine.Layouts
 
 #nullable disable
     ;
 #nullable restore
-#line 8 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
  using Thelus.UI.Engine.Modelos
 
 #nullable disable
@@ -96,7 +96,7 @@ using Thelus.UI.Engine.Layouts
     #nullable restore
     public partial class MainLayout : 
 #nullable restore
-#line 2 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 2 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
           LayoutComponentBase
 
 #line default
@@ -104,7 +104,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
     , 
 #nullable restore
-#line 9 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
             IDisposable
 
 #line default
@@ -119,15 +119,17 @@ using Thelus.UI.Engine.Layouts
         }
         #pragma warning restore 1998
 #nullable restore
-#line 173 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 139 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
        
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        // Se inscreve para escutar alterações de estado do layout e do serviço de autenticação
+        // Se inscreve para escutar alterações de estado do layout e autenticação
         LayoutState.OnStateChanged += StateHasChanged;
         LayoutState.OnChange += StateHasChanged;
         Auth.OnChange += OnAuthChanged;
 
+        // Tenta reidratar a sessão lendo os cookies criados pelo Web Forms
+        await Auth.InicializarSessaoAsync();
         VerificarAutenticacao();
     }
 
@@ -141,6 +143,8 @@ using Thelus.UI.Engine.Layouts
     {
         if (!Auth.UsuarioEstaLogado && !IsPaginaLogin())
         {
+            // Redireciona para o login do Web Forms forçando recarregamento
+            //Navigation.NavigateTo("/login.aspx", forceLoad: true);
             Navigation.NavigateTo("/login");
         }
     }
@@ -148,13 +152,35 @@ using Thelus.UI.Engine.Layouts
     private bool IsPaginaLogin()
     {
         var uri = Navigation.ToAbsoluteUri(Navigation.Uri).AbsolutePath;
-        return uri.Equals("/login", StringComparison.OrdinalIgnoreCase);
+        return uri.Equals("/login", StringComparison.OrdinalIgnoreCase) ||
+               uri.Equals("/login.aspx", StringComparison.OrdinalIgnoreCase);
     }
 
     private void FazerLogout()
     {
         Auth.Logout();
-        Navigation.NavigateTo("/login");
+        Navigation.NavigateTo("/login.aspx", forceLoad: true);
+    }
+
+    private string ResolverUrl(string url)
+    {
+        if (string.IsNullOrEmpty(url)) return "#";
+
+        // Se for link externo completo (HTTP/HTTPS)
+        if (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            return url;
+        }
+
+        // Se for tela legada (.aspx), adiciona a barra inicial para cair no site raiz
+        if (url.EndsWith(".aspx", StringComparison.OrdinalIgnoreCase) || url.Contains(".aspx?"))
+        {
+            return $"/{url.TrimStart('/')}";
+        }
+
+        // Rota Razor interna
+        return url;
     }
 
     private async Task ToggleTheme()
@@ -175,7 +201,7 @@ using Thelus.UI.Engine.Layouts
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 7 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
         NavigationManager
 
 #line default
@@ -183,7 +209,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 7 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
                           Navigation
 
 #line default
@@ -193,7 +219,7 @@ using Thelus.UI.Engine.Layouts
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 6 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
         Thelus.UI.Engine.Servicos.AuthService
 
 #line default
@@ -201,7 +227,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 6 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
                                               Auth
 
 #line default
@@ -211,7 +237,7 @@ using Thelus.UI.Engine.Layouts
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 5 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
         Thelus.UI.Engine.Servicos.IMenuProvider
 
 #line default
@@ -219,7 +245,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 5 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
                                                 MenuProvider
 
 #line default
@@ -229,7 +255,7 @@ using Thelus.UI.Engine.Layouts
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 4 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
         Thelus.UI.Engine.Servicos.LayoutStateService
 
 #line default
@@ -237,7 +263,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 4 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
                                                      LayoutState
 
 #line default
@@ -247,7 +273,7 @@ using Thelus.UI.Engine.Layouts
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 3 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
         IJSRuntime
 
 #line default
@@ -255,7 +281,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 3 "D:\Dados\Projetos\Thelus\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
                    JS
 
 #line default

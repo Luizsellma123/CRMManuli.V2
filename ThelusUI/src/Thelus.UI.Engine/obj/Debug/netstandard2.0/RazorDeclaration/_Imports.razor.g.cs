@@ -13,7 +13,7 @@ namespace Thelus.UI.Engine
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line (1,2)-(1,43) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\_Imports.razor"
+#line (1,2)-(1,43) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web
 
 #nullable disable

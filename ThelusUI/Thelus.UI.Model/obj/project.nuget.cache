@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PY00Y3+H5S0=",
+  "dgSpecHash": "k1Lx0CG3EJA=",
   "success": true,
-  "projectFilePath": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj",
+  "projectFilePath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.32\\microsoft.aspnetcore.authorization.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.32\\microsoft.aspnetcore.components.3.1.32.nupkg.sha512",

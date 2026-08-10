@@ -73,40 +73,55 @@ namespace Thelus.UI.Testes
     }
 
     // Provedor de Menu expandido com os módulos de Cadastros e Controle de Acesso
+    // Provedor de Menu adaptado para a estrutura plana de 1 nível do CRM
     public class MeuProjetoMenuProvider : IMenuProvider
     {
         public List<MenuItem> ObterMenuItens()
         {
             return new()
+        {
+            // Divisor de Categoria
+            new MenuItem { Title = "CADASTROS", IsTitle = true },
+
+            // Links Diretos (Sem SubItems)
+            new MenuItem
             {
-                new MenuItem { Title = "MENU PRINCIPAL", IsTitle = true },
+                IdMenu = 26,
+                Title = "Clientes",
+                Url = "/gerenciar/clientes",
+                Icon = "fa fa-child fa-lg",
+                EntityName = "Clientes"
+            },
+            new MenuItem
+            {
+                IdMenu = 22,
+                Title = "Empresas",
+                Url = "/gerenciar/empresas",
+                Icon = "fa fa-building fa-lg",
+                EntityName = "Empresas"
+            },
 
-                // MÓDULO: CADASTROS
-                new MenuItem
-                {
-                    IdMenu = 17,
-                    Title = "Cadastros",
-                    Icon = "bx bx-folder",
-                    SubItems = new()
-                    {
-                        new MenuItem { IdMenu = 26, Title = "Clientes", Url = "/gerenciar/clientes", EntityName = "Clientes" },
-                        new MenuItem { IdMenu = 22, Title = "Empresas", Url = "/gerenciar/empresas", EntityName = "Empresas" }
-                    }
-                },
+            // Divisor de Categoria
+            new MenuItem { Title = "CONTROLE DE ACESSO", IsTitle = true },
 
-                // MÓDULO: CONTROLE DE ACESSO
-                new MenuItem
-                {
-                    IdMenu = 15,
-                    Title = "Controle de Acesso",
-                    Icon = "bx bx-shield-quarter",
-                    SubItems = new()
-                    {
-                        new MenuItem { IdMenu = 27, Title = "Usuários", Url = "/gerenciar/usuarios", EntityName = "Usuarios" },
-                        new MenuItem { IdMenu = 25, Title = "Perfis de Acesso", Url = "/gerenciar/perfis", EntityName = "Perfis" }
-                    }
-                }
-            };
+            // Link Direto para Usuários
+            new MenuItem
+            {
+                IdMenu = 27,
+                Title = "Usuários",
+                Url = "/gerenciar/usuarios",
+                Icon = "fa fa-users fa-lg",
+                EntityName = "Usuarios"
+            },
+            new MenuItem
+            {
+                IdMenu = 25,
+                Title = "Perfis de Acesso",
+                Url = "/gerenciar/perfis",
+                Icon = "fa fa-shield fa-lg",
+                EntityName = "Perfis"
+            }
+        };
         }
     }
 }

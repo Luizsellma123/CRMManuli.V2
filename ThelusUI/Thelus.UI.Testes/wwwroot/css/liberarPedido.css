@@ -1,0 +1,30 @@
+﻿.Botao_Selecionar
+{
+    background: url('../imagens/select.png') no-repeat left;
+    width: 25px;
+    height: 25px;
+    border: 0;
+}
+
+.Botao_Editar
+{
+    background:url(../imagens/documentedit.png) no-repeat left;
+    width: 25px;
+    height: 25px;
+    border: 0;
+}
+
+.Botao_Cancelar
+{
+    background:url(../imagens/cross.png) no-repeat left;
+    width: 25px;
+    height: 25px;
+    border: 0;
+}
+
+.cssEsconde
+
+{
+    display: none;
+}
+  

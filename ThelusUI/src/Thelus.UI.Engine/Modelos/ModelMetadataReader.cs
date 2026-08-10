@@ -84,8 +84,9 @@ namespace Thelus.UI.Engine.Modelos
                     Visible = attr.Visible,
                     ShowInFilter = attr.ShowInFilter,
 
-                    // REGISTRO CRUCIAL: Passa a flag ShowInGrid para a PropertyMetadata
-                    ShowInGrid = attr.ShowInGrid,
+                    // REGISTROS DE VISIBILIDADE:
+                    ShowInList = attr.ShowInList, // Flag para a tabela principal (GenericList)
+                    ShowInGrid = attr.ShowInGrid, // Flag para sub-grids de detalhe (GenericDetail)
 
                     Rows = attr.Rows,
                     Mask = attr.Mask,
@@ -143,13 +144,11 @@ namespace Thelus.UI.Engine.Modelos
                 {
                     var targetUrl = attr.TargetUrl;
 
-                    // CORREÇÃO: Garante a rota /novo para o botão de criação caso a URL venha nula
                     if (attr.ActionType == ActionType.Create && string.IsNullOrEmpty(targetUrl))
                     {
                         targetUrl = $"/gerenciar/{entityName}/novo";
                     }
 
-                    // CORREÇÃO: Aplica CssClass padrão se não informada no atributo
                     var cssClass = attr.CssClass;
                     if (string.IsNullOrEmpty(cssClass))
                     {
@@ -162,7 +161,6 @@ namespace Thelus.UI.Engine.Modelos
                         };
                     }
 
-                    // CORREÇÃO: Aplica Ícone padrão se não informado no atributo
                     var icon = attr.Icon;
                     if (string.IsNullOrEmpty(icon))
                     {

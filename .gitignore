@@ -1,0 +1,60 @@
+## Build and Output Folders (.NET / Blazor)
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Oo]ut/
+publish/
+*.pubxml.user
+
+## Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*.dtbcache
+*.pvdk
+
+## Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## JetBrains Rider / ReSharper
+.idea/
+*.sln.iml
+_ReSharper*/
+
+## NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## Configurações Locais e Chaves / Segredos
+appsettings.Local.json
+appsettings.Development.json
+appsettings.Secrets.json
+secrets.json
+*.env
+
+## Logs e Arquivos Temporários
+*.log
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+
+## Sistema Operacional
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+.DS_Store
+.DS_Store?
+._*

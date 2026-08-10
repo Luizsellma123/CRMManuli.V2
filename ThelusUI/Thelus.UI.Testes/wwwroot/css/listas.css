@@ -1,0 +1,256 @@
+﻿.lstCabecario
+{
+    border-bottom:1px double #9a9b9d;
+    /*padding:1px;*/
+    position:relative;
+    padding-bottom: 6px;
+}
+
+#lst_dad{
+position:relative;
+}
+
+#botomnav
+{
+position:relative;
+height: 32px;
+}
+
+.btnProx
+{
+position:absolute;
+bottom:0;
+left: 50px;   
+}
+    
+.btnAnt
+{
+position:absolute;
+bottom:0;
+left: 5px;
+height: 32px;
+}
+
+.imgedit
+{
+width: 25px;
+text-align:right;
+vertical-align:bottom;
+padding-left: 10px;
+}
+
+imgeditent
+{
+text-align:center;
+vertical-align:bottom;
+}
+
+/**********************************************
+Listas Entidade
+***********************************************/
+
+.tabLstCab
+{
+
+background:#007AAD; 
+color:#fff; 
+
+border: 1px solid #007AAD;
+font-family:Calibri;
+font-size:12px;
+text-align:center;
+
+
+}
+
+.tabLstCabDois
+{
+font:1.2em Verdana, Arial, Helvetica;
+background:#FEC700; 
+color:black; 
+border: 1px solid #FEC700;
+text-align:center;
+}
+
+
+
+
+
+.lstTabela
+{
+border-collapse: collapse;
+font:0.78em Verdana, Arial, Helvetica;
+width: auto;
+margin-left: 0px;
+}
+
+.lstTabela tr td 
+{
+/*width: 100px;*/
+border: solid 1px #6c9ed0;
+padding-left: 5px;
+color:#3F72AF;
+FONT-FAMILY:Arial, Helvetica, sans-serif;
+}
+
+.lstTabela tr td.extend
+{
+width: 500px;
+}
+
+.lstTabela tr td.extendproduto
+{
+width: 700px;
+}
+
+.lstTabela tr td.grande
+{
+width: 107px;    
+}
+
+.lstTabela tr td.small
+{
+    width: 50px;
+}
+
+.lstTabela tr td.tdcenter
+{
+    text-align: center;
+}
+
+.lstTabela tr td.tdcentersmall
+{
+    text-align: center;
+    width:10px;
+}
+
+.lstTabela tr td.edicao
+{
+width: 5px;
+}
+
+.lstTabela tr td.codigo
+{
+width: 20px;
+}
+
+.lstTabela tr.tabLstCab td
+{
+color:white;
+background: #8ebed9;
+font-weight:bold;
+}
+
+/**********************************************
+Fim Listas
+***********************************************/
+.detCabeccario
+{
+    border-bottom-style:double;
+    border-bottom-color:#8ebed9;
+    border-top-style:double;
+    border-top-color:#8ebed9;
+    margin-bottom: 5px;
+    padding: 2px 0px;
+    }
+ 
+ .detCabeccarioBottom
+{
+    border-bottom-style:double;
+    border-bottom-color:#8ebed9;
+    margin-bottom: 5px;
+    padding: 2px 0px;
+    }
+
+.detCorpo
+{
+    border-bottom-style:double;
+    border-bottom-color:#8ebed9;
+    margin-bottom: 5px;
+    padding: 2px 0px;
+    }
+    
+ .dadComple
+ {
+     float:left;
+     margin-right: 15px;
+    width: 549px;
+}
+     
+  #dadComplementares
+  {
+      margin-top: 15px;
+      }
+  
+  #dadComplementaresPedido
+  {
+      float:left;
+      text-align:left;         
+      }
+
+
+
+.CampoOverflow{
+
+height: 100px; overflow: auto;
+    width: 540px;
+}
+
+
+
+
+ .dadCompleDup
+ {
+     float:left;
+     margin-right: 15px;
+    width: 849px;
+}
+
+
+.CampoOverflow{
+
+height: 300px; overflow: auto;
+    width: 849px;
+}
+
+
+
+
+.tabCadCli 
+{
+      margin-left : 15px;
+}
+ 
+.itemCadCli
+{
+      background: #316271;
+      color: white;
+      text-transform: capitalize;
+      padding-left:5px;
+      padding-right:5px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+}
+
+.selectedTabCadCli
+{
+      font-style: italic;
+      font-weight: bold;
+      background: black;
+}
+
+.tabCadCli a:hover
+{
+      text-decoration: underline; 
+}
+
+.conteudoCadCli
+{
+      border-top : 1px solid black;
+      border-bottom : 1px solid black;
+      border-left : 1px solid black;
+      border-right : 1px solid black;
+      margin-bottom:10px;
+}
+
+

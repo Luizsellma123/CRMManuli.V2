@@ -12,55 +12,55 @@ namespace Thelus.UI.Engine.Componentes
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
-#line (1,2)-(1,43) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\_Imports.razor"
+#line (1,2)-(1,43) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web
 
 #nullable disable
     ;
 #nullable restore
-#line (1,2)-(1,26) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (10,2)-(10,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Collections
 
 #nullable disable
     ;
 #nullable restore
-#line (2,2)-(2,25) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (11,2)-(11,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Reflection
 
 #nullable disable
     ;
 #nullable restore
-#line (3,2)-(3,19) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (12,2)-(12,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Linq
 
 #nullable disable
     ;
 #nullable restore
-#line (4,2)-(4,23) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (13,2)-(13,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line (5,2)-(5,28) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (14,2)-(14,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line (6,2)-(6,33) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (15,2)-(15,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Servicos
 
 #nullable disable
     ;
 #nullable restore
-#line (7,2)-(7,32) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (16,2)-(16,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Modelos
 
 #nullable disable
     ;
 #nullable restore
-#line (8,2)-(8,34) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (17,2)-(17,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Atributos
 
 #nullable disable
@@ -77,7 +77,7 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (389,8)-(745,1) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (468,8)-(860,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 
     [Parameter] public string EntityName { get; set; }
     [Parameter] public int Id { get; set; }
@@ -99,6 +99,20 @@ using Thelus.UI.Engine.Atributos
     private int subGridCurrentPage = 1;
     private int subGridPageSize = 5;
 
+    private string GetPanelTitle()
+    {
+        if (string.IsNullOrEmpty(EntityName))
+            return secaoAtiva;
+
+        var entityFormatted = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
+        var acao = Id > 0 ? "Editar" : "Cadastro de";
+
+        if (string.IsNullOrEmpty(secaoAtiva))
+            return $"{acao} {entityFormatted}";
+
+        return $"{acao} {entityFormatted} - {secaoAtiva}";
+    }
+
     protected override async Task OnParametersSetAsync()
     {
         var entityType = EntityRegistry.GetEntityType(EntityName);
@@ -109,14 +123,12 @@ using Thelus.UI.Engine.Atributos
 
             var listProperties = ModelMetadataReader.GetProperties(modelInstance);
 
-           // Carrega as opções dinâmicas para campos do tipo Select usando a LookupKey do metadado
             foreach (var prop in listProperties.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
             {
                 try
                 {
-                    // Usa o valor da LookupKey (ex: "status") configurado na propriedade da Model
                     var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
-                    
+
                     if (lookupData != null)
                     {
                         prop.Options = new Dictionary<string, string>();
@@ -139,7 +151,6 @@ using Thelus.UI.Engine.Atributos
                 }
                 catch
                 {
-                    // Se falhar a carga remota, mantém as opções vazias ou estáticas
                 }
             }
 
@@ -170,7 +181,7 @@ using Thelus.UI.Engine.Atributos
         if (prop.PropertyInfo.CanWrite)
         {
             var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-            
+
             object safeValue = null;
             if (value != null && !string.IsNullOrEmpty(value.ToString()))
             {
@@ -238,8 +249,8 @@ using Thelus.UI.Engine.Atributos
 
         if (!acoesDoModelo.Any())
         {
-            acoes.Add(new ActionMetadata { Label = "Retornar", Icon = "mdi mdi-keyboard-return", CssClass = "btn-danger", ActionType = ActionType.Back, TargetUrl = $"/gerenciar/{EntityName}", Order = 1 });
-            acoes.Add(new ActionMetadata { Label = "Salvar", Icon = "mdi mdi-content-save", CssClass = "btn-success", ActionType = ActionType.Save, Order = 2 });
+            acoes.Add(new ActionMetadata { Label = "Gravar", Icon = "fa fa-save", CssClass = "btn-success", ActionType = ActionType.Save, Order = 1 });
+            acoes.Add(new ActionMetadata { Label = "Retornar", Icon = "fa fa-arrow-circle-left", CssClass = "btn-danger", ActionType = ActionType.Back, TargetUrl = $"/gerenciar/{EntityName}", Order = 2 });
         }
 
         return acoes;
@@ -344,21 +355,19 @@ using Thelus.UI.Engine.Atributos
         }
     }
 
-   private async Task Salvar()
+    private async Task Salvar()
     {
         if (modelInstance == null || salvando) return;
 
-        // 1. VALIDAÇÃO AUTOMÁTICA (Nova camada)
         var (isValid, errorMessage) = ModelValidator.Validar(modelInstance);
         if (!isValid)
         {
             sucessoFeedback = false;
-            mensagemFeedback = errorMessage; // Exibe o erro "O campo X é obrigatório"
-            StateHasChanged(); // Garante que a mensagem apareça na tela
-            return; // Interrompe o processo aqui mesmo
+            mensagemFeedback = errorMessage;
+            StateHasChanged();
+            return;
         }
 
-        // 2. Fluxo normal de salvamento
         salvando = true;
         mensagemFeedback = null;
 
@@ -398,12 +407,11 @@ using Thelus.UI.Engine.Atributos
         var valorDigitado = e.Value?.ToString() ?? string.Empty;
         string valorFormatado = valorDigitado;
 
-        // Se houver máscara definida no atributo [FormField(Mask = "...")]
         if (!string.IsNullOrEmpty(prop.Mask))
         {
             var apenasNumeros = new string(valorDigitado.Where(char.IsDigit).ToArray());
 
-            if (prop.Mask == "000.000.000-00") // CPF
+            if (prop.Mask == "000.000.000-00")
             {
                 if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
 
@@ -416,7 +424,7 @@ using Thelus.UI.Engine.Atributos
                 else
                     valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6, 3)}-{apenasNumeros.Substring(9)}";
             }
-            else if (prop.Mask == "(00) 0000-0000" || prop.Mask == "(00) 00000-0000") // Telefones
+            else if (prop.Mask == "(00) 0000-0000" || prop.Mask == "(00) 00000-0000")
             {
                 if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
 
@@ -431,8 +439,36 @@ using Thelus.UI.Engine.Atributos
             }
         }
 
-        // Atualiza a propriedade no model e força o valor formatado de volta no input
         SetPropValue(prop, valorFormatado);
+    }
+
+    private string GetIconeParaSecao(string nomeSecao)
+    {
+        var nomeLower = nomeSecao.ToLowerInvariant();
+        if (nomeLower.Contains("principal") || nomeLower.Contains("geral")) return "fa fa-home";
+        if (nomeLower.Contains("identifica") || nomeLower.Contains("usuario") || nomeLower.Contains("dados")) return "fa fa-user";
+        if (nomeLower.Contains("seguran") || nomeLower.Contains("acesso") || nomeLower.Contains("perfil")) return "fa fa-lock";
+        if (nomeLower.Contains("auditor") || nomeLower.Contains("log")) return "fa fa-history";
+        if (nomeLower.Contains("responsav")) return "fa fa-pencil-square";
+        if (nomeLower.Contains("anexo")) return "fa fa-list";
+        if (nomeLower.Contains("histor")) return "fa fa-binoculars";
+        if (nomeLower.Contains("projet")) return "fa fa-trello";
+        if (nomeLower.Contains("hora") || nomeLower.Contains("apontament")) return "fa fa-clock-o";
+
+        return "fa fa-folder-open";
+    }
+
+    private string MapearIconeFontAwesome(string iconeOriginal)
+    {
+        if (string.IsNullOrEmpty(iconeOriginal)) return "fa fa-cog";
+        if (iconeOriginal.StartsWith("fa ")) return iconeOriginal;
+
+        if (iconeOriginal.Contains("content-save")) return "fa fa-save";
+        if (iconeOriginal.Contains("keyboard-return")) return "fa fa-arrow-circle-left";
+        if (iconeOriginal.Contains("trash")) return "fa fa-trash";
+        if (iconeOriginal.Contains("database")) return "fa fa-database";
+
+        return "fa fa-check-square-o";
     }
 
 #line default
@@ -441,7 +477,7 @@ using Thelus.UI.Engine.Atributos
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (12,9)-(12,19) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (21,9)-(21,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 HttpClient
 
 #line default
@@ -449,7 +485,7 @@ HttpClient
 #nullable disable
          
 #nullable restore
-#line (12,20)-(12,24) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (21,20)-(21,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Http
 
 #line default
@@ -459,7 +495,7 @@ Http
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (11,9)-(11,53) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (20,9)-(20,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Thelus.UI.Engine.Servicos.LayoutStateService
 
 #line default
@@ -467,7 +503,7 @@ Thelus.UI.Engine.Servicos.LayoutStateService
 #nullable disable
          
 #nullable restore
-#line (11,54)-(11,65) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (20,54)-(20,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LayoutState
 
 #line default
@@ -477,7 +513,7 @@ LayoutState
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (10,9)-(10,26) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (19,9)-(19,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 NavigationManager
 
 #line default
@@ -485,7 +521,7 @@ NavigationManager
 #nullable disable
          
 #nullable restore
-#line (10,27)-(10,37) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (19,27)-(19,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Navigation
 
 #line default
@@ -495,7 +531,7 @@ Navigation
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (9,9)-(9,27) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (18,9)-(18,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LookupCacheService
 
 #line default
@@ -503,7 +539,7 @@ LookupCacheService
 #nullable disable
          
 #nullable restore
-#line (9,28)-(9,39) "D:\Dados\Projetos\Thelus\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (18,28)-(18,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LookupCache
 
 #line default
