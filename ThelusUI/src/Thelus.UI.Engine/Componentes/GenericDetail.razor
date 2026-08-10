@@ -1,0 +1,745 @@
+﻿@using System.Collections
+@using System.Reflection
+@using System.Linq
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Thelus.UI.Engine.Servicos
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@inject LookupCacheService LookupCache
+@inject NavigationManager Navigation
+@inject Thelus.UI.Engine.Servicos.LayoutStateService LayoutState
+@inject HttpClient Http
+
+<!-- 1. TÍTULO DA PÁGINA COM ESPAÇAMENTO E ALINHAMENTO CORRETOS -->
+<div class="row py-3 mb-2">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center px-1">
+            <h4 class="page-title text-capitalize m-0 fw-bold">
+                @(Id > 0 ? $"Editar {EntityName} (ID: {Id})" : $"Novo Cadastro - {EntityName}")
+            </h4>
+        </div>
+    </div>
+</div>
+
+<!-- Layout Unificado: 9 colunas para o formulário/Grid e 3 colunas para o menu lateral de abas -->
+<div class="row">
+    <!-- Formulário Dinâmico da Seção Ativa (9 Colunas) -->
+    <div class="col-lg-9">
+
+        <!-- BANNER DE FEEDBACK VISUAL PARA O USUÁRIO (SUCESSO / ERRO) -->
+        @if (!string.IsNullOrEmpty(mensagemFeedback))
+        {
+            <div class="alert @(sucessoFeedback ? "alert-success" : "alert-danger") alert-dismissible fade show mb-3 shadow-sm" role="alert">
+                <strong>@(sucessoFeedback ? "Sucesso!" : "Atenção!")</strong> @mensagemFeedback
+                <button type="button" class="btn-close" @onclick="() => mensagemFeedback = null" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (modelInstance != null && propriedadesPorSecao.Any() && !string.IsNullOrEmpty(secaoAtiva) && propriedadesPorSecao.ContainsKey(secaoAtiva))
+        {
+            var propriedadesDaSecao = propriedadesPorSecao[secaoAtiva];
+            var propGrid = propriedadesDaSecao.FirstOrDefault(p => p.FieldType == FieldType.Grid);
+
+            @* 1. PROCURA SE ALGUM CAMPO DA SEÇÃO POSSUI CONFIGURAÇÃO DE CABEÇALHO DE CONTEXTO *@
+            var propComCabecalho = propriedadesDaSecao.FirstOrDefault(p => p.ContextHeaderProps != null && p.ContextHeaderProps.Any());
+
+            @* 2. RENDERIZA O CABEÇALHO SE ELE EXISTIR NA SEÇÃO *@
+            if (propComCabecalho != null)
+            {
+                <div class="card mb-3 border shadow-sm">
+                    <div class="card-body py-2">
+                        <div class="row">
+                            @foreach (var nomePropPai in propComCabecalho.ContextHeaderProps)
+                            {
+                                var propPai = modelInstance.GetType().GetProperty(nomePropPai);
+                                if (propPai != null)
+                                {
+                                    <div class="col-md-6 mb-1">
+                                        <small class="text-muted d-block fw-bold">@nomePropPai:</small>
+                                        <input type="text" class="form-control form-control-sm" value="@FormatValue(propPai.GetValue(modelInstance))" disabled />
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @* CASO 1: SEÇÃO DO TIPO GRID (Ex: Contatos, Itens do Pedido) *@
+            if (propGrid != null)
+            {
+                var colunasFilho = ModelMetadataReader.GetChildProperties(propGrid.ChildType);
+                var acoesGrid = ModelMetadataReader.GetGridActions(propGrid.PropertyInfo);
+
+                @* FORMULÁRIO DE DIGITAÇÃO DO NOVO ITEM DA SUBGRID *@
+                <div class="card mb-3 shadow-sm border">
+                    <div class="card-body">
+                        <h5 class="header-title mb-3">Novo Item - @secaoAtiva</h5>
+                        <div class="row">
+                            @foreach (var col in colunasFilho)
+                            {
+                                <div class="col-md-@col.ColSpan mb-3">
+                                    <label class="form-label">
+                                        @col.Label @if (col.IsRequired)
+                                        {<span class="text-danger">*</span>}
+                                    </label>
+
+                                    @if (col.FieldType == FieldType.Select)
+                                    {
+                                        <select class="form-select" @onchange="(e) => SetNovoSubItemValue(col.PropertyName, e.Value)">
+                                            <option value="">Selecione...</option>
+                                            @if (col.Options != null && col.Options.Any())
+                                            {
+                                                @foreach (var opt in col.Options)
+                                                {
+                                                    <option value="@opt.Key">@opt.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" placeholder="@col.Placeholder"
+                                               value="@GetNovoSubItemValue(col.PropertyName)"
+                                               @onchange="(e) => SetNovoSubItemValue(col.PropertyName, e.Value)" />
+                                    }
+                                </div>
+                            }
+                        </div>
+
+                        <!-- AÇÕES DO FORMULÁRIO DO NOVO ITEM DA GRID -->
+                        <div class="d-flex justify-content-end gap-2">
+                            @foreach (var acao in acoesGrid)
+                            {
+                                if (acao.ActionType == ActionType.Create)
+                                {
+                                    <button type="button" class="btn @acao.CssClass" @onclick="() => AdicionarNaGrid(propGrid)">
+                                        @if (!string.IsNullOrEmpty(acao.Icon))
+                                        {<i class="@acao.Icon me-1"></i>} @acao.Label
+                                    </button>
+                                }
+                                else if (acao.ActionType == ActionType.Clear)
+                                {
+                                    <button type="button" class="btn @acao.CssClass" @onclick="LimparFormularioGrid">
+                                        @if (!string.IsNullOrEmpty(acao.Icon))
+                                        {<i class="@acao.Icon me-1"></i>} @acao.Label
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn @acao.CssClass" @onclick="() => ExecutarAcao(acao)">
+                                        @if (!string.IsNullOrEmpty(acao.Icon))
+                                        {<i class="@acao.Icon me-1"></i>} @acao.Label
+                                    </button>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                @* TABELA COM OS ITENS ADICIONADOS (COM PAGINAÇÃO) *@
+                <div class="card mb-3 shadow-sm border">
+                    <div class="card-body p-0">
+                        @{
+                            var listaSubGrid = propGrid.GetValue(modelInstance) as IList;
+                            var totalSubGridItems = listaSubGrid?.Count ?? 0;
+                            var totalSubGridPages = (int)Math.Ceiling((double)totalSubGridItems / subGridPageSize);
+                            var subGridPaginado = listaSubGrid?.Cast<object>().Skip((subGridCurrentPage - 1) * subGridPageSize).Take(subGridPageSize);
+                            var subGridStartRecord = totalSubGridItems == 0 ? 0 : ((subGridCurrentPage - 1) * subGridPageSize) + 1;
+                            var subGridEndRecord = Math.Min(subGridCurrentPage * subGridPageSize, totalSubGridItems);
+
+                            var firstVisibleSubPage = Math.Max(1, subGridCurrentPage - 2);
+                            var lastVisibleSubPage = Math.Min(totalSubGridPages, firstVisibleSubPage + 4);
+                        }
+
+                        @if (totalSubGridItems > 0)
+                        {
+                            <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                                <div class="d-flex align-items-center gap-2 text-muted small">
+                                    <span>Exibir</span>
+                                    <select class="form-select form-select-sm" style="width: 75px;" @onchange="OnSubGridPageSizeChanged">
+                                        <option value="5" selected="@(subGridPageSize == 5)">5</option>
+                                        <option value="10" selected="@(subGridPageSize == 10)">10</option>
+                                        <option value="25" selected="@(subGridPageSize == 25)">25</option>
+                                    </select>
+                                    <span>registros por página</span>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="text-muted border-bottom">
+                                    <tr>
+                                        <th style="width: 100px;" class="text-center py-3 fw-semibold">Ações</th>
+                                        @foreach (var col in colunasFilho)
+                                        {
+                                            <th class="py-3 fw-semibold">@col.Label</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (subGridPaginado != null && subGridPaginado.Any())
+                                    {
+                                        @foreach (var item in subGridPaginado)
+                                        {
+                                            <tr>
+                                                <td class="text-center py-2">
+                                                    <button class="btn btn-outline-danger btn-sm px-2 py-1" @onclick="() => RemoverDaGrid(listaSubGrid, item)" title="Excluir">
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </button>
+                                                </td>
+                                                @foreach (var col in colunasFilho)
+                                                {
+                                                    var val = col.GetValue(item);
+                                                    <td class="py-2">@FormatValue(val)</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="@(colunasFilho.Count + 1)" class="text-center text-muted py-4">
+                                                <i class="mdi mdi-database-remove font-size-20 d-block mb-1"></i>
+                                                Nenhum registro adicionado.
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        @if (totalSubGridItems > 0)
+                        {
+                            <div class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top gap-2">
+                                <div class="text-muted small">
+                                    Exibindo <strong>@subGridStartRecord</strong> a <strong>@subGridEndRecord</strong> de <strong>@totalSubGridItems</strong> registros
+                                </div>
+
+                                @if (totalSubGridPages > 1)
+                                {
+                                    <nav>
+                                        <ul class="pagination pagination-sm mb-0">
+                                            <li class="page-item @(subGridCurrentPage == 1 ? "disabled" : "")">
+                                                <button class="page-link" @onclick="() => GoToSubGridPage(subGridCurrentPage - 1, totalSubGridPages)">Anterior</button>
+                                            </li>
+
+                                            @for (int p = firstVisibleSubPage; p <= lastVisibleSubPage; p++)
+                                            {
+                                                var pageNum = p;
+                                                <li class="page-item @(subGridCurrentPage == pageNum ? "active" : "")">
+                                                    <button class="page-link" @onclick="() => GoToSubGridPage(pageNum, totalSubGridPages)">@pageNum</button>
+                                                </li>
+                                            }
+
+                                            <li class="page-item @(subGridCurrentPage == totalSubGridPages ? "disabled" : "")">
+                                                <button class="page-link" @onclick="() => GoToSubGridPage(subGridCurrentPage + 1, totalSubGridPages)">Próximo</button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @* CASO 2: SEÇÃO NORMAL DE INPUTS *@
+            else
+            {
+                <div class="card mb-3 shadow-sm border">
+                    <div class="card-body">
+                        <h5 class="header-title mb-3">@secaoAtiva</h5>
+
+                        <div class="row">
+                            @foreach (var prop in propriedadesDaSecao.OrderBy(p => p.Order))
+                            {
+                                <div class="col-md-@prop.ColSpan mb-3">
+                                    <label class="form-label">
+                                        @prop.Label @if (prop.IsRequired)
+                                        {<span class="text-danger">*</span>}
+                                    </label>
+
+                                    @if (prop.ReadOnly)
+                                    {
+                                        <input type="text" class="form-control" value="@FormatValue(prop.GetValue(modelInstance))" disabled />
+                                    }
+                                    else if (prop.FieldType == FieldType.Select)
+                                    {
+                                        <select class="form-select" @onchange="(e) => SetPropValue(prop, e.Value)">
+                                            <option value="">Selecione...</option>
+                                            @if (prop.Options != null && prop.Options.Any())
+                                            {
+                                                @foreach (var opt in prop.Options)
+                                                {
+                                                    <option value="@opt.Key" selected="@(prop.GetValue(modelInstance)?.ToString() == opt.Key)">@opt.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else if (prop.FieldType == FieldType.Date)
+                                    {
+                                        <input type="date" class="form-control" 
+                                               value="@FormatDateForInput(prop.GetValue(modelInstance))" 
+                                               @onchange="(e) => SetPropValue(prop, e.Value)" />
+                                    }
+                                    else if (prop.FieldType == FieldType.Password)
+                                    {
+                                        <input type="password" class="form-control" placeholder="@prop.Placeholder" 
+                                               value="@prop.GetValue(modelInstance)" 
+                                               @onchange="(e) => SetPropValue(prop, e.Value)" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" placeholder="@prop.Placeholder" 
+                                               value="@prop.GetValue(modelInstance)" 
+                                               @oninput="(e) => AplicarMascaraEspecial(prop, e)" />
+                                    }
+
+                                    @if (!string.IsNullOrEmpty(prop.HelpText))
+                                    {
+                                        <div class="form-text">@prop.HelpText</div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- BARRA DE AÇÕES DA SEÇÃO ATIVA -->
+            var acoesDaSecao = GetAcoesDaSecaoAtiva();
+            if (acoesDaSecao.Any())
+            {
+                <div class="d-flex justify-content-end gap-2 mb-3">
+                    @foreach (var acao in acoesDaSecao)
+                    {
+                        if (acao.ActionType == ActionType.Save)
+                        {
+                            <button type="button" class="btn @acao.CssClass" @onclick="Salvar" disabled="@salvando">
+                                @if (salvando)
+                                {
+                                    <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                                    <span>Salvando...</span>
+                                }
+                                else
+                                {
+                                    if (!string.IsNullOrEmpty(acao.Icon))
+                                    {<i class="@acao.Icon me-1"></i>} @acao.Label
+                                }
+                            </button>
+                        }
+                        else if (!string.IsNullOrEmpty(acao.TargetUrl) && acao.ActionType != ActionType.Save)
+                        {
+                            <a href="@acao.TargetUrl" class="btn @acao.CssClass @(salvando ? "disabled" : "")">
+                                @if (!string.IsNullOrEmpty(acao.Icon))
+                                {<i class="@acao.Icon me-1"></i>} @acao.Label
+                            </a>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn @acao.CssClass" @onclick="() => ExecutarAcao(acao)" disabled="@salvando">
+                                @if (!string.IsNullOrEmpty(acao.Icon))
+                                {<i class="@acao.Icon me-1"></i>} @acao.Label
+                            </button>
+                        }
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <div class="card shadow-sm border">
+                <div class="card-body">
+                    <div class="alert alert-warning mb-0">
+                        Nenhuma configuração de modelo encontrada para a entidade <strong>@EntityName</strong>.
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Menu Lateral Direito / Abas de Seções (3 Colunas) -->
+    <div class="col-lg-3">
+        <div class="card shadow-sm border">
+            <div class="card-body p-2">
+                <div class="nav nav-pills flex-column gap-1">
+                    @if (propriedadesPorSecao.Any())
+                    {
+                        @foreach (var secao in propriedadesPorSecao.Keys)
+                        {
+                            <a href="javascript:void(0);"
+                               class="nav-link @(secaoAtiva == secao ? "active" : "text-body")"
+                               @onclick="() => MudarSecao(secao)">
+                                @secao
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);" class="nav-link active">Principal</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string EntityName { get; set; }
+    [Parameter] public int Id { get; set; }
+    [Parameter] public object Item { get; set; }
+
+    private object modelInstance;
+    private Dictionary<string, List<PropertyMetadata>> propriedadesPorSecao = new();
+    private List<ActionMetadata> acoesDoModelo = new();
+    private string secaoAtiva = "";
+
+    private object novoSubItem;
+
+    // Estado de Feedback e Salvamento
+    private string? mensagemFeedback;
+    private bool sucessoFeedback;
+    private bool salvando;
+
+    // Estado da Paginação do Sub-Grid (Detalhes)
+    private int subGridCurrentPage = 1;
+    private int subGridPageSize = 5;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var entityType = EntityRegistry.GetEntityType(EntityName);
+
+        if (entityType != null)
+        {
+            modelInstance = Item ?? Activator.CreateInstance(entityType);
+
+            var listProperties = ModelMetadataReader.GetProperties(modelInstance);
+
+           // Carrega as opções dinâmicas para campos do tipo Select usando a LookupKey do metadado
+            foreach (var prop in listProperties.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
+            {
+                try
+                {
+                    // Usa o valor da LookupKey (ex: "status") configurado na propriedade da Model
+                    var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
+                    
+                    if (lookupData != null)
+                    {
+                        prop.Options = new Dictionary<string, string>();
+                        foreach (var row in lookupData)
+                        {
+                            var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
+                            var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
+
+                            if (keyCol != null && descCol != null)
+                            {
+                                string idVal = row[keyCol]?.ToString();
+                                string descVal = row[descCol]?.ToString();
+                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
+                                {
+                                    prop.Options[idVal] = descVal;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    // Se falhar a carga remota, mantém as opções vazias ou estáticas
+                }
+            }
+
+            propriedadesPorSecao = listProperties
+                .GroupBy(p => p.Section ?? "Geral")
+                .ToDictionary(g => g.Key, g => g.ToList());
+
+            acoesDoModelo = ModelMetadataReader.GetDetailActions(entityType, EntityName);
+
+            if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
+            {
+                secaoAtiva = propriedadesPorSecao.Keys.First();
+                InicializarSubItemSeForGrid();
+            }
+        }
+        else
+        {
+            propriedadesPorSecao = new();
+            acoesDoModelo = new();
+            secaoAtiva = "";
+        }
+    }
+
+    private void SetPropValue(PropertyMetadata prop, object value)
+    {
+        if (modelInstance == null || prop?.PropertyInfo == null) return;
+
+        if (prop.PropertyInfo.CanWrite)
+        {
+            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            
+            object safeValue = null;
+            if (value != null && !string.IsNullOrEmpty(value.ToString()))
+            {
+                if (targetType == typeof(DateTime))
+                {
+                    if (DateTime.TryParse(value.ToString(), out DateTime dt))
+                    {
+                        safeValue = dt;
+                    }
+                }
+                else
+                {
+                    safeValue = Convert.ChangeType(value, targetType);
+                }
+            }
+
+            prop.SetValue(modelInstance, safeValue);
+        }
+    }
+
+    private string FormatDateForInput(object val)
+    {
+        if (val is DateTime dt)
+        {
+            return dt.ToString("yyyy-MM-dd");
+        }
+        return string.Empty;
+    }
+
+    private void GoToSubGridPage(int page, int totalPages)
+    {
+        if (page >= 1 && page <= totalPages)
+        {
+            subGridCurrentPage = page;
+        }
+    }
+
+    private void OnSubGridPageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            subGridPageSize = newSize;
+            subGridCurrentPage = 1;
+        }
+    }
+
+    private string FormatValue(object val)
+    {
+        if (val == null) return "-";
+        if (val is DateTime dt)
+        {
+            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
+        }
+        return val.ToString();
+    }
+
+    private List<ActionMetadata> GetAcoesDaSecaoAtiva()
+    {
+        if (string.IsNullOrEmpty(secaoAtiva)) return new List<ActionMetadata>();
+
+        var acoes = acoesDoModelo
+            .Where(a => string.IsNullOrEmpty(a.Section) || a.Section.Equals(secaoAtiva, StringComparison.OrdinalIgnoreCase))
+            .OrderBy(a => a.Order)
+            .ToList();
+
+        if (!acoesDoModelo.Any())
+        {
+            acoes.Add(new ActionMetadata { Label = "Retornar", Icon = "mdi mdi-keyboard-return", CssClass = "btn-danger", ActionType = ActionType.Back, TargetUrl = $"/gerenciar/{EntityName}", Order = 1 });
+            acoes.Add(new ActionMetadata { Label = "Salvar", Icon = "mdi mdi-content-save", CssClass = "btn-success", ActionType = ActionType.Save, Order = 2 });
+        }
+
+        return acoes;
+    }
+
+    private async Task ExecutarAcao(ActionMetadata acao)
+    {
+        if (acao.ActionType == ActionType.Save)
+        {
+            await Salvar();
+        }
+        else if (acao.ActionType == ActionType.Back)
+        {
+            Navigation.NavigateTo($"/gerenciar/{EntityName}");
+        }
+        else if (!string.IsNullOrEmpty(acao.TargetUrl))
+        {
+            Navigation.NavigateTo(acao.TargetUrl);
+        }
+    }
+
+    private void MudarSecao(string nomeSecao)
+    {
+        secaoAtiva = nomeSecao;
+        subGridCurrentPage = 1;
+        InicializarSubItemSeForGrid();
+    }
+
+    private void InicializarSubItemSeForGrid()
+    {
+        if (propriedadesPorSecao.ContainsKey(secaoAtiva))
+        {
+            var propGrid = propriedadesPorSecao[secaoAtiva].FirstOrDefault(p => p.FieldType == FieldType.Grid);
+            if (propGrid?.ChildType != null)
+            {
+                novoSubItem = Activator.CreateInstance(propGrid.ChildType);
+            }
+        }
+    }
+
+    private object GetNovoSubItemValue(string propName)
+    {
+        if (novoSubItem == null) return null;
+        return novoSubItem.GetType().GetProperty(propName)?.GetValue(novoSubItem);
+    }
+
+    private void SetNovoSubItemValue(string propName, object value)
+    {
+        if (novoSubItem == null) return;
+        var prop = novoSubItem.GetType().GetProperty(propName);
+        if (prop != null && prop.CanWrite)
+        {
+            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            var safeValue = (value == null || string.IsNullOrEmpty(value.ToString()))
+                ? null
+                : Convert.ChangeType(value, targetType);
+
+            prop.SetValue(novoSubItem, safeValue);
+        }
+    }
+
+    private void AdicionarNaGrid(PropertyMetadata propGrid)
+    {
+        if (novoSubItem == null || propGrid.ChildType == null) return;
+
+        var lista = propGrid.GetValue(modelInstance) as IList;
+        if (lista != null)
+        {
+            lista.Add(novoSubItem);
+            novoSubItem = Activator.CreateInstance(propGrid.ChildType);
+            subGridCurrentPage = 1;
+            StateHasChanged();
+        }
+    }
+
+    private void LimparFormularioGrid()
+    {
+        if (propriedadesPorSecao.ContainsKey(secaoAtiva))
+        {
+            var propGrid = propriedadesPorSecao[secaoAtiva].FirstOrDefault(p => p.FieldType == FieldType.Grid);
+            if (propGrid?.ChildType != null)
+            {
+                novoSubItem = Activator.CreateInstance(propGrid.ChildType);
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void RemoverDaGrid(IList lista, object item)
+    {
+        if (lista != null && lista.Contains(item))
+        {
+            lista.Remove(item);
+
+            var totalPages = (int)Math.Ceiling((double)lista.Count / subGridPageSize);
+            if (subGridCurrentPage > totalPages && totalPages > 0)
+            {
+                subGridCurrentPage = totalPages;
+            }
+
+            StateHasChanged();
+        }
+    }
+
+   private async Task Salvar()
+    {
+        if (modelInstance == null || salvando) return;
+
+        // 1. VALIDAÇÃO AUTOMÁTICA (Nova camada)
+        var (isValid, errorMessage) = ModelValidator.Validar(modelInstance);
+        if (!isValid)
+        {
+            sucessoFeedback = false;
+            mensagemFeedback = errorMessage; // Exibe o erro "O campo X é obrigatório"
+            StateHasChanged(); // Garante que a mensagem apareça na tela
+            return; // Interrompe o processo aqui mesmo
+        }
+
+        // 2. Fluxo normal de salvamento
+        salvando = true;
+        mensagemFeedback = null;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync($"api/generic/{EntityName}", modelInstance);
+            var resultado = await response.Content.ReadFromJsonAsync<ResultadoOperacao>();
+
+            if (response.IsSuccessStatusCode && resultado != null && resultado.Sucesso)
+            {
+                sucessoFeedback = true;
+                mensagemFeedback = resultado.Mensagem;
+                StateHasChanged();
+
+                await Task.Delay(1200);
+                Navigation.NavigateTo($"/gerenciar/{EntityName}");
+            }
+            else
+            {
+                sucessoFeedback = false;
+                mensagemFeedback = resultado?.Mensagem ?? "Falha ao gravar os dados no banco de dados.";
+            }
+        }
+        catch (Exception ex)
+        {
+            sucessoFeedback = false;
+            mensagemFeedback = $"Erro de comunicação com o servidor: {ex.Message}";
+        }
+        finally
+        {
+            salvando = false;
+        }
+    }
+
+    private void AplicarMascaraEspecial(PropertyMetadata prop, ChangeEventArgs e)
+    {
+        var valorDigitado = e.Value?.ToString() ?? string.Empty;
+        string valorFormatado = valorDigitado;
+
+        // Se houver máscara definida no atributo [FormField(Mask = "...")]
+        if (!string.IsNullOrEmpty(prop.Mask))
+        {
+            var apenasNumeros = new string(valorDigitado.Where(char.IsDigit).ToArray());
+
+            if (prop.Mask == "000.000.000-00") // CPF
+            {
+                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
+
+                if (apenasNumeros.Length <= 3)
+                    valorFormatado = apenasNumeros;
+                else if (apenasNumeros.Length <= 6)
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3)}";
+                else if (apenasNumeros.Length <= 9)
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6)}";
+                else
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6, 3)}-{apenasNumeros.Substring(9)}";
+            }
+            else if (prop.Mask == "(00) 0000-0000" || prop.Mask == "(00) 00000-0000") // Telefones
+            {
+                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
+
+                if (apenasNumeros.Length <= 2)
+                    valorFormatado = apenasNumeros.Length > 0 ? $"({apenasNumeros}" : "";
+                else if (apenasNumeros.Length <= 6)
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2)}";
+                else if (apenasNumeros.Length <= 10)
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 4)}-{apenasNumeros.Substring(6)}";
+                else
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 5)}-{apenasNumeros.Substring(7)}";
+            }
+        }
+
+        // Atualiza a propriedade no model e força o valor formatado de volta no input
+        SetPropValue(prop, valorFormatado);
+    }
+}

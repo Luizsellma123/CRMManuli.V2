@@ -1,0 +1,37 @@
+﻿@page "/gerenciar/{Entidade}"
+@using Thelus.Core.Servicos
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Servicos
+@inject EntityServiceResolver ServiceResolver
+@inject LookupCacheService LookupCache
+
+<div class="container-fluid mt-3">
+    <div class="row mb-3 align-items-center">
+        <div class="col">
+            <h4 class="text-primary fw-bold text-uppercase m-0">
+                <i class="oi oi-list-rich me-2"></i> @Entidade
+            </h4>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Entidade))
+            {
+                <!-- Renderiza a Grid Genérica que cuida internamente do carregamento de dados e Lookups -->
+                <GenericEntityGrid EntityName="@Entidade" />
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Nenhuma entidade foi informada na URL.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Entidade { get; set; }
+}

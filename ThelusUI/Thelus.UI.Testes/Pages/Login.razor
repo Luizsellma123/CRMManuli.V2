@@ -1,0 +1,69 @@
+﻿@page "/login"
+@using Thelus.UI.Engine.Servicos
+@inject AuthService Auth
+@inject NavigationManager Navigation
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h3 class="card-title text-center text-primary mb-4">Thelus Engine</h3>
+            
+            @if (!string.IsNullOrEmpty(mensagemErro))
+            {
+                <div class="alert alert-danger" role="alert">
+                    @mensagemErro
+                </div>
+            }
+
+            <EditForm Model="@this" OnValidSubmit="@ExecutarLogin">
+                <div class="mb-3">
+                    <label class="form-label">Usuário</label>
+                    <input type="text" class="form-control" @bind="usuario" placeholder="Digite seu usuário" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Senha</label>
+                    <input type="password" class="form-control" @bind="senha" placeholder="Digite sua senha" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mt-3" disabled="@processando">
+                    @if (processando)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        <span>Autenticando...</span>
+                    }
+                    else
+                    {
+                        <span>Entrar</span>
+                    }
+                </button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string usuario = "Administrador";
+    private string senha = "";
+    private string mensagemErro = "";
+    private bool processando = false;
+
+    private async Task ExecutarLogin()
+    {
+        processando = true;
+        mensagemErro = "";
+
+        var sucesso = await Auth.LoginAsync(usuario, senha);
+
+        if (sucesso)
+        {
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            mensagemErro = "Usuário ou senha inválidos. (Senha de teste: 123456)";
+        }
+
+        processando = false;
+    }
+}

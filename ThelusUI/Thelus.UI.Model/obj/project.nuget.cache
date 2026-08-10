@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "PY00Y3+H5S0=",
+  "success": true,
+  "projectFilePath": "D:\\Dados\\Projetos\\Thelus\\ThelusUI\\Thelus.UI.Model\\Thelus.UI.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.32\\microsoft.aspnetcore.authorization.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.32\\microsoft.aspnetcore.components.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.1.32\\microsoft.aspnetcore.components.analyzers.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\3.1.32\\microsoft.aspnetcore.components.forms.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.web\\3.1.32\\microsoft.aspnetcore.components.web.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.metadata\\3.1.32\\microsoft.aspnetcore.metadata.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.32\\microsoft.extensions.dependencyinjection.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.32\\microsoft.extensions.dependencyinjection.abstractions.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.32\\microsoft.extensions.logging.abstractions.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.extensions.options\\3.1.32\\microsoft.extensions.options.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.32\\microsoft.extensions.primitives.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.jsinterop\\3.1.32\\microsoft.jsinterop.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

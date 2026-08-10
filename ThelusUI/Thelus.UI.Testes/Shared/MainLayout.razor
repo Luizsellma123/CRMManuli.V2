@@ -1,0 +1,221 @@
+﻿@namespace Thelus.UI.Engine.Layouts
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+@inject Thelus.UI.Engine.Servicos.LayoutStateService LayoutState
+@inject Thelus.UI.Engine.Servicos.IMenuProvider MenuProvider
+@inject Thelus.UI.Engine.Servicos.AuthService Auth
+@inject NavigationManager Navigation
+@using Thelus.UI.Engine.Modelos
+@implements IDisposable
+
+@if (IsPaginaLogin())
+{
+    <!-- Renderiza apenas o conteúdo da tela de login sem o template da aplicação (SideBar e TopBar) -->
+    <div class="container-fluid p-0">
+        @Body
+    </div>
+}
+else if (Auth.UsuarioEstaLogado)
+{
+    <!-- Begin page -->
+    <div class="layout-wrapper">
+
+        <!-- ========== Left Sidebar ========== -->
+        <div class="main-menu">
+            <!-- Brand Logo Dinâmica -->
+            <div class="logo-box">
+                <a href="" class="logo-light">
+                    <img src="@LayoutState.LogoLightUrl" alt="logo" class="logo-lg" height="28">
+                    <img src="@LayoutState.LogoSmUrl" alt="small logo" class="logo-sm" height="28">
+                </a>
+                <a href="" class="logo-dark">
+                    <img src="@LayoutState.LogoDarkUrl" alt="dark logo" class="logo-lg" height="28">
+                    <img src="@LayoutState.LogoSmUrl" alt="small logo" class="logo-sm" height="28">
+                </a>
+            </div>
+
+            <!--- Menu Dinâmico Lendo do LayoutState -->
+            <div data-simplebar>
+                <ul class="app-menu">
+                    @if (LayoutState.MenuItens != null && LayoutState.MenuItens.Any())
+                    {
+                        @foreach (var menu in LayoutState.MenuItens)
+                        {
+                            @if (menu.IsTitle)
+                            {
+                                <li class="menu-title">@menu.Title</li>
+                            }
+                            else if (menu.SubItems != null && menu.SubItems.Any())
+                            {
+                                <!-- Item com Sub-menu (Expansível) -->
+                                <li class="menu-item">
+                                    <a data-bs-toggle="collapse" href="#menu_@(Math.Abs(menu.Title.GetHashCode()))" aria-expanded="false" class="menu-link waves-effect waves-light">
+                                        @if (!string.IsNullOrEmpty(menu.Icon))
+                                        {
+                                            <span class="menu-icon"><i class="@menu.Icon"></i></span>
+                                        }
+                                        <span class="menu-text"> @menu.Title </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <div class="collapse" id="menu_@(Math.Abs(menu.Title.GetHashCode()))">
+                                        <ul class="sub-menu">
+                                            @foreach (var sub in menu.SubItems)
+                                            {
+                                                <li class="menu-item">
+                                                    <a href="@sub.Url" class="menu-link">
+                                                        <span class="menu-text">@sub.Title</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <!-- Item Simples (Sem Sub-menu) -->
+                                <li class="menu-item">
+                                    <a href="@menu.Url" class="menu-link waves-effect waves-light">
+                                        @if (!string.IsNullOrEmpty(menu.Icon))
+                                        {
+                                            <span class="menu-icon"><i class="@menu.Icon"></i></span>
+                                        }
+                                        <span class="menu-text"> @menu.Title </span>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- Page Content -->
+        <div class="page-content">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <div class="topbar">
+                    <div class="topbar-menu d-flex align-items-center gap-lg-2 gap-1">
+                        <div class="logo-box">
+                            <a href="" class="logo-light">
+                                <img src="@LayoutState.LogoLightUrl" alt="logo" class="logo-lg" height="22">
+                                <img src="@LayoutState.LogoSmUrl" alt="small logo" class="logo-sm" height="22">
+                            </a>
+                        </div>
+
+                        <button class="button-toggle-menu">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </div>
+
+                    <ul class="topbar-menu d-flex align-items-center gap-4">
+                        <li class="d-none d-md-inline-block">
+                            <a class="nav-link" href="" data-bs-toggle="fullscreen">
+                                <i class="mdi mdi-fullscreen font-size-24"></i>
+                            </a>
+                        </li>
+
+                        <!-- Botão de Tema -->
+                        <li class="nav-link" id="theme-mode" style="cursor: pointer;" title="Alternar Tema Claro/Escuro" @onclick="ToggleTheme">
+                            <i class="bx @(LayoutState.IsDarkMode ? "bx-sun" : "bx-moon") font-size-24"></i>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button">
+                                <img src="@LayoutState.UserAvatarUrl" alt="user-image" class="rounded-circle">
+                                <span class="ms-1 d-none d-md-inline-block">
+                                    @Auth.NomeUsuario <i class="mdi mdi-chevron-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end profile-dropdown">
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Bem-vindo!</h6>
+                                </div>
+                                <a href="javascript:void(0);" @onclick="FazerLogout" class="dropdown-item notify-item">
+                                    <i class="fe-log-out"></i>
+                                    <span>Sair</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Topbar End -->
+
+            <div class="px-3">
+                <div class="container-fluid">
+                    @Body
+                </div>
+            </div>
+
+            <!-- Footer Start -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>© @LayoutState.CompanyName</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end">
+                                <p class="mb-0">Powered by Thelus.UI.Engine</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        // Se inscreve para escutar alterações de estado do layout e do serviço de autenticação
+        LayoutState.OnStateChanged += StateHasChanged;
+        LayoutState.OnChange += StateHasChanged;
+        Auth.OnChange += OnAuthChanged;
+
+        VerificarAutenticacao();
+    }
+
+    private void OnAuthChanged()
+    {
+        VerificarAutenticacao();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void VerificarAutenticacao()
+    {
+        if (!Auth.UsuarioEstaLogado && !IsPaginaLogin())
+        {
+            Navigation.NavigateTo("/login");
+        }
+    }
+
+    private bool IsPaginaLogin()
+    {
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri).AbsolutePath;
+        return uri.Equals("/login", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void FazerLogout()
+    {
+        Auth.Logout();
+        Navigation.NavigateTo("/login");
+    }
+
+    private async Task ToggleTheme()
+    {
+        await LayoutState.ToggleThemeAsync(JS);
+    }
+
+    public void Dispose()
+    {
+        LayoutState.OnStateChanged -= StateHasChanged;
+        LayoutState.OnChange -= StateHasChanged;
+        Auth.OnChange -= OnAuthChanged;
+    }
+}

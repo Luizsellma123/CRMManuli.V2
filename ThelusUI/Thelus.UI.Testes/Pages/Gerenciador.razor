@@ -1,0 +1,193 @@
+﻿@page "/gerenciar/{EntityName}"
+@page "/gerenciar/{EntityName}/{Action}"
+@page "/gerenciar/{EntityName}/{Action}/{Id}"
+
+@using Thelus.UI.Engine.Componentes
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Servicos
+@using Thelus.Core.Servicos
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Text.Json
+
+@inject EntityServiceResolver ServiceResolver
+
+<div class="container-fluid mt-2">
+    @if (carregando)
+    {
+        <div class="d-flex align-items-center gap-2 p-4">
+            <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+            <span>Carregando dados...</span>
+        </div>
+    }
+    else if (IsFormulario)
+    {
+        <!-- Passa a entidade limpa (null se for novo) para o GenericDetail -->
+        <GenericDetail EntityName="@EntityName" Id="@FormTargetId" Item="@itemDetalhe" />
+    }
+    else
+    {
+        <!-- Repassa a lista de dados carregados para a propriedade Items do GenericList -->
+        <GenericList EntityName="@EntityName" Items="@dadosTabela" />
+    }
+</div>
+
+@code {
+    [Parameter] public string EntityName { get; set; }
+    [Parameter] public string Action { get; set; }
+    [Parameter] public string Id { get; set; }
+
+    private List<object> dadosTabela = new();
+    private object itemDetalhe;
+    private bool carregando = false;
+
+    /// <summary>
+    /// Identifica se a rota atual é explicitamente para criação de um novo registro (/novo).
+    /// </summary>
+    private bool IsNovo => !string.IsNullOrEmpty(Action) && Action.Equals("novo", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Converte o parâmetro Id para int. Se for a ação /novo, força sempre 0.
+    /// </summary>
+    private int FormTargetId => IsNovo ? 0 : (int.TryParse(Id, out int parsedId) ? parsedId : 0);
+
+    /// <summary>
+    /// Define se a rota atual deve exibir o formulário de detalhe/edição ou a listagem.
+    /// </summary>
+    private bool IsFormulario => 
+        !string.IsNullOrEmpty(Action) && 
+        (IsNovo || 
+         Action.Equals("detalhe", StringComparison.OrdinalIgnoreCase) || 
+         Action.Equals("editar", StringComparison.OrdinalIgnoreCase));
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (string.IsNullOrEmpty(EntityName)) return;
+
+        if (IsFormulario)
+        {
+            // Se for criação (/novo) ou ID zerado, limpa a referência para renderizar o formulário em branco
+            if (IsNovo || FormTargetId == 0)
+            {
+                itemDetalhe = null;
+            }
+            else
+            {
+                await CarregarItemDetalhe();
+            }
+        }
+        else
+        {
+            await CarregarDados();
+        }
+    }
+
+    private async Task CarregarItemDetalhe()
+    {
+        carregando = true;
+        itemDetalhe = null;
+
+        try
+        {
+            var entityType = EntityRegistry.GetEntityType(EntityName);
+            var resultadoBruto = await ServiceResolver.ObterPorIdAsync(EntityName, FormTargetId);
+
+            if (resultadoBruto != null && entityType != null)
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                if (resultadoBruto is JsonElement jsonElem)
+                {
+                    if (jsonElem.ValueKind != JsonValueKind.Null && jsonElem.ValueKind != JsonValueKind.Undefined)
+                    {
+                        itemDetalhe = JsonSerializer.Deserialize(jsonElem.GetRawText(), entityType, options);
+                    }
+                }
+                else if (entityType.IsInstanceOfType(resultadoBruto))
+                {
+                    itemDetalhe = resultadoBruto;
+                }
+                else
+                {
+                    var json = JsonSerializer.Serialize(resultadoBruto);
+                    itemDetalhe = JsonSerializer.Deserialize(json, entityType, options);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"ERRO CRÍTICO EM CarregarItemDetalhe: {ex.Message} | Inner: {ex.InnerException?.Message}");
+            itemDetalhe = null;
+        }
+        finally
+        {
+            carregando = false;
+        }
+    }
+
+    private async Task CarregarDados()
+    {
+        carregando = true;
+        dadosTabela = new List<object>();
+
+        try
+        {
+            var entityType = EntityRegistry.GetEntityType(EntityName);
+            var resultadoBruto = await ServiceResolver.ObterListagemAsync(EntityName);
+
+            if (resultadoBruto != null && resultadoBruto.Any())
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                foreach (var item in resultadoBruto)
+                {
+                    if (item is null) continue;
+
+                    if (item is JsonElement jsonElem)
+                    {
+                        if (jsonElem.ValueKind == JsonValueKind.Null || jsonElem.ValueKind == JsonValueKind.Undefined)
+                            continue;
+
+                        if (entityType != null)
+                        {
+                            var inst = JsonSerializer.Deserialize(jsonElem.GetRawText(), entityType, options);
+                            if (inst != null)
+                            {
+                                dadosTabela.Add(inst);
+                            }
+                        }
+                    }
+                    else if (entityType != null && entityType.IsInstanceOfType(item))
+                    {
+                        dadosTabela.Add(item);
+                    }
+                    else if (entityType != null)
+                    {
+                        var json = JsonSerializer.Serialize(item);
+                        var inst = JsonSerializer.Deserialize(json, entityType, options);
+                        if (inst != null)
+                        {
+                            dadosTabela.Add(inst);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"ERRO CRÍTICO EM CarregarDados: {ex.Message} | Inner: {ex.InnerException?.Message}");
+            dadosTabela = new List<object>();
+        }
+        finally
+        {
+            carregando = false;
+        }
+    }
+}

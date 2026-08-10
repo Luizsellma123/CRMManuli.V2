@@ -1,0 +1,17 @@
+<Router AppAssembly="@typeof(Program).Assembly"
+        AdditionalAssemblies="new[] { typeof(Thelus.UI.Engine.Servicos.LayoutStateService).Assembly }"
+        PreferExactMatches="@true">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)">
+            <div class="container mt-5 text-center">
+                <div class="alert alert-warning shadow-sm p-4" role="alert">
+                    <h4 class="alert-heading fw-bold">⚠️ Página não encontrada!</h4>
+                    <p class="text-muted">O endereço que você tentou acessar não existe ou a rota está incorreta.</p>
+                </div>
+            </div>
+        </LayoutView>
+    </NotFound>
+</Router>

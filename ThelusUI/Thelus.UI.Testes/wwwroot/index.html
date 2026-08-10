@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light" data-menu-color="brand" data-topbar-color="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Thelus UI Engine</title>
+    <base href="/" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Dashtrap CSS Styles -->
+    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Template Config JS (deve ser carregado no head) -->
+    <script src="assets/js/config.js"></script>
+
+    <!-- Estilos padrão do Blazor -->
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="Thelus.UI.Testes.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <!-- Loader elegante enquanto o Blazor baixa as DLLs -->
+        <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+                <h5 class="mt-3 text-muted fw-bold">Iniciando Thelus Engine...</h5>
+            </div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        Ocorreu um erro não tratado.
+        <a href="" class="reload">Recarregar</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- 1. Scripts de Terceiros e jQuery (DEVEM VIR PRIMEIRO) -->
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- 2. Framework Blazor WebAssembly -->
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- 3. Scripts do Template Theme (Carregados após as dependências) -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

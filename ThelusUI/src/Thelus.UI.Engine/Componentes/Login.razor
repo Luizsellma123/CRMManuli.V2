@@ -1,0 +1,155 @@
+﻿@page "/login"
+@layout Thelus.UI.Engine.Layouts.AuthLayout
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.JSInterop
+@using Thelus.UI.Engine.Servicos
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@inject LayoutStateService LayoutState
+@inject AuthService Auth
+@implements IDisposable
+
+<!-- Barra de Ações Superior (Suporte, Fullscreen e Dark Mode) -->
+<div class="position-absolute top-0 end-0 p-3 d-flex align-items-center gap-3">
+    <a href="https://wa.me/5500000000000" target="_blank" class="btn btn-link text-success p-0 d-flex align-items-center gap-1 text-decoration-none fw-semibold fs-14">
+        <i class="mdi mdi-whatsapp font-size-20"></i> Suporte
+    </a>
+    
+    <button class="btn btn-link text-secondary p-0 border-0" data-bs-toggle="fullscreen" title="Tela Cheia">
+        <i class="mdi mdi-fullscreen font-size-22"></i>
+    </button>
+
+    <!-- Botão de Alternar Tema (Dark/Light) -->
+    <button class="btn btn-link text-dark p-0 border-0" @onclick="ToggleTheme" title="Alternar Tema">
+        <i class="bx @(LayoutState.IsDarkMode ? "bx-sun text-warning" : "bx-moon text-secondary") font-size-22"></i>
+    </button>
+</div>
+
+<!-- Card Central de Login -->
+<div class="card border border-secondary shadow-sm rounded-3">
+    <div class="card-body p-4 p-sm-5">
+        
+        <!-- Logo Dinâmica -->
+        <div class="text-center auth-logo mb-4">
+            <a href="/" class="@(LayoutState.IsDarkMode ? "logo-light" : "logo-dark")">
+                <span class="d-flex justify-content-center">
+                    <img id="PageContent_LogoDark" 
+                         src="@(LayoutState.IsDarkMode ? LayoutState.LogoDarkUrl : LayoutState.LogoLightUrl)" 
+                         alt="@LayoutState.CompanyName" 
+                         style="max-height: 45px; width: auto;" 
+                         class="img-fluid" />
+                </span>
+            </a>
+        </div>
+
+        @if (!string.IsNullOrEmpty(mensagemErro))
+        {
+            <div class="alert alert-danger py-2 small mb-3">
+                <i class="mdi mdi-alert-circle me-1"></i> @mensagemErro
+            </div>
+        }
+
+        <EditForm Model="@loginModel" OnValidSubmit="RealizarLogin">
+            
+            <!-- Campo Empresa (Multi-Empresa) -->
+            <div class="mb-3 text-start">
+                <label class="form-label text-secondary fs-13 mb-1">Empresa:</label>
+                <select class="form-select bg-light border-0 shadow-none text-dark fw-medium" @bind="loginModel.EmpresaId">
+                    <option value="1">MULTI MERCANTES LTDA</option>
+                    <option value="2">THELUS TECNOLOGIA LTDA</option>
+                </select>
+            </div>
+
+            <!-- Código de Usuário ou Email -->
+            <div class="mb-3 text-start">
+                <label class="form-label text-secondary fs-13 mb-1">Código de usuário ou Email:</label>
+                <input type="text" class="form-control bg-primary-subtle border-0 text-dark fw-medium" 
+                       placeholder="Digite seu usuário..." @bind="loginModel.UsuarioOuEmail" required />
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-3 text-start">
+                <label class="form-label text-secondary fs-13 mb-1">Senha:</label>
+                <input type="password" class="form-control bg-primary-subtle border-0 text-dark fw-medium" 
+                       placeholder="••••••••" @bind="loginModel.Senha" required />
+            </div>
+
+            <!-- Botão Entrar -->
+            <div class="d-grid text-center mt-4">
+                <button class="btn btn-primary fw-bold py-2 shadow-sm" type="submit" disabled="@processando">
+                    @if (processando)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        <span>Autenticando...</span>
+                    }
+                    else
+                    {
+                        <span>Entrar</span>
+                    }
+                </button>
+            </div>
+        </EditForm>
+
+    </div>
+</div>
+
+<!-- Botão Esqueci a senha (abaixo da caixa) -->
+<div class="row mt-3">
+    <div class="col-12 text-center">
+        <a href="/recuperar-senha" class="btn btn-danger btn-sm px-4 fw-medium shadow-sm">
+            Esqueci a senha
+        </a>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private string mensagemErro;
+    private bool processando = false;
+
+    protected override void OnInitialized()
+    {
+        LayoutState.OnStateChanged += StateHasChanged;
+        LayoutState.OnChange += StateHasChanged;
+    }
+
+    private async Task ToggleTheme()
+    {
+        await LayoutState.ToggleThemeAsync(JS);
+    }
+
+    private async Task RealizarLogin()
+    {
+    processando = true;
+    mensagemErro = string.Empty;
+
+    // Envia o Usuário/Email, a Senha E a Empresa selecionada no <select>
+    var sucesso = await Auth.LoginAsync(loginModel.UsuarioOuEmail, loginModel.Senha, loginModel.EmpresaId);
+
+    if (sucesso)
+    {
+        // Redireciona para a raiz. O MainLayout detectará que o usuário está logado
+        // e renderizará o layout com a Sidebar e os menus carregados
+        Navigation.NavigateTo("/");
+    }
+    else
+    {
+        mensagemErro = "Empresa, usuário ou senha inválidos.";
+    }
+
+    processando = false;
+}
+
+    public void Dispose()
+    {
+        LayoutState.OnStateChanged -= StateHasChanged;
+        LayoutState.OnChange -= StateHasChanged;
+    }
+
+    public class LoginModel
+    {
+        public int EmpresaId { get; set; } = 1;
+        public string UsuarioOuEmail { get; set; } = "luiz.carlos";
+        public string Senha { get; set; } = "123456";
+    }
+}

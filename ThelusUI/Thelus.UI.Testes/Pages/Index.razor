@@ -1,0 +1,113 @@
+﻿@page "/"
+@using Thelus.UI.Engine.Componentes
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Testes.Modelos
+@using System.Collections.Generic
+
+<div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestão de Clientes (Thelus.UI Engine)</h2>
+        @if (!exibindoFormulario)
+        {
+            <button class="btn btn-primary" @onclick="NovoCliente">
+                + Novo Cliente
+            </button>
+        }
+    </div>
+
+    @if (mensagem != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show mb-4" role="alert">
+            @mensagem
+            <button type="button" class="btn-close" @onclick="() => mensagem = null"></button>
+        </div>
+    }
+
+    @if (exibindoFormulario)
+    {
+        <div class="card shadow-sm p-4 mb-4">
+            <h4 class="mb-3">@(clienteAtual.Id == 0 ? "Novo Cliente" : $"Editando Cliente #{clienteAtual.Id}")</h4>
+
+            <!-- Adicionado o parâmetro Lookups aqui -->
+            <Form Model="@clienteAtual" Lookups="@meusLookups" OnSave="SalvarCliente" OnCancel="CancelarFormulario" />
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm p-4">
+            <Grid TItem="ClienteTeste"
+                  Items="@listaClientes"
+                  Title="Lista de Clientes Cadastrados"
+                  OnEdit="EditarCliente"
+                  OnDelete="ExcluirCliente" />
+        </div>
+    }
+</div>
+
+@code {
+    private List<ClienteTeste> listaClientes = new List<ClienteTeste>
+{
+        new ClienteTeste { Id = 1, RazaoSocial = "Empresa Alfa LTDA", Email = "alfa@empresa.com", Tipo = TipoPessoa.Juridica, Ativo = true },
+        new ClienteTeste { Id = 2, RazaoSocial = "João da Silva", Email = "joao@email.com", Tipo = TipoPessoa.Fisica, Ativo = false },
+        new ClienteTeste { Id = 3, RazaoSocial = "Tech Solutions SA", Email = "contato@tech.com", Tipo = TipoPessoa.Juridica, Ativo = true }
+    };
+
+    // Dicionário contendo as listas dinâmicas para os selects baseados em LookupKey
+    private Dictionary<string, IEnumerable<SelectItem>> meusLookups = new Dictionary<string, IEnumerable<SelectItem>>
+{
+        {
+            "Estados", new List<SelectItem>
+        {
+                new SelectItem("PR", "Paraná"),
+                new SelectItem("SP", "São Paulo"),
+                new SelectItem("SC", "Santa Catarina"),
+                new SelectItem("RS", "Rio Grande do Sul")
+            }
+        }
+    };
+
+    private ClienteTeste clienteAtual;
+    private bool exibindoFormulario = false;
+    private string mensagem;
+
+    private void NovoCliente()
+    {
+        clienteAtual = new ClienteTeste { Id = 0 };
+        exibindoFormulario = true;
+    }
+
+    private void EditarCliente(ClienteTeste cliente)
+    {
+        clienteAtual = cliente;
+        exibindoFormulario = true;
+    }
+
+    private void SalvarCliente(object model)
+    {
+        var c = (ClienteTeste)model;
+
+        if (c.Id == 0)
+        {
+            c.Id = listaClientes.Any() ? listaClientes.Max(x => x.Id) + 1 : 1;
+            listaClientes.Add(c);
+            mensagem = $"Cliente '{c.RazaoSocial}' cadastrado com sucesso!";
+        }
+        else
+        {
+            mensagem = $"Cliente #{c.Id} atualizado com sucesso!";
+        }
+
+        exibindoFormulario = false;
+    }
+
+    private void ExcluirCliente(ClienteTeste cliente)
+    {
+        listaClientes.Remove(cliente);
+        mensagem = $"Cliente '{cliente.RazaoSocial}' foi removido da lista.";
+    }
+
+    private void CancelarFormulario()
+    {
+        exibindoFormulario = false;
+    }
+}

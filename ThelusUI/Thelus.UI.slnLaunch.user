@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "Thelus.UI.Testes\\Thelus.UI.Testes.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Thelus.UI.API\\Thelus.UI.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

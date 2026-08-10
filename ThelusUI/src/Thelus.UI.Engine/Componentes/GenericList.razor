@@ -1,0 +1,373 @@
+﻿@using System.Collections
+@using System.Reflection
+@using System.Linq
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Thelus.UI.Engine.Servicos
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@inject LookupCacheService LookupCache
+@inject NavigationManager Navigation
+@inject Thelus.UI.Engine.Servicos.LayoutStateService LayoutState
+@inject HttpClient Http
+
+<!-- 1. TÍTULO DA PÁGINA COM ESPAÇAMENTO E ALINHAMENTO CORRETOS -->
+<div class="row py-3 mb-2">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center px-1">
+            <h4 class="page-title text-capitalize m-0 fw-bold">Listagem de @EntityName</h4>
+        </div>
+    </div>
+</div>
+
+<!-- 2. PAINEL DE FILTROS E AÇÕES DINÂMICAS -->
+<div class="card mb-3 shadow-sm border">
+    <div class="card-body">
+        @if (camposFiltro.Any())
+        {
+            <h5 class="header-title mb-3"><i class="mdi mdi-filter-variant"></i> Filtros de Pesquisa</h5>
+            <div class="row">
+                @foreach (var filtro in camposFiltro)
+                {
+                    <div class="col-md-@filtro.ColSpan mb-2">
+                        <label class="form-label fw-bold">@filtro.Label</label>
+                        @if (filtro.FieldType == FieldType.Select)
+                        {
+                            <select class="form-select" @bind="filtro.FilterValue">
+                                <option value="">Todos...</option>
+                                @if (filtro.Options != null && filtro.Options.Any())
+                                {
+                                    @foreach (var opt in filtro.Options)
+                                    {
+                                        <option value="@opt.Key">@opt.Value</option>
+                                    }
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" placeholder="Pesquisar por @filtro.Label..." @bind="filtro.FilterValue" />
+                        }
+                    </div>
+                }
+            </div>
+        }
+
+        <!-- BARRA DE AÇÕES GERADA DINAMICAMENTE -->
+        @if (acoesDaTela.Any())
+        {
+            <div class="d-flex justify-content-end gap-2 @(camposFiltro.Any() ? "mt-3" : "")">
+                @foreach (var acao in acoesDaTela)
+                {
+                    @if (acao.ActionType == ActionType.Create)
+                    {
+                        var createUrl = !string.IsNullOrEmpty(acao.TargetUrl) ? acao.TargetUrl : $"/gerenciar/{EntityName}/novo";
+                        <a href="@createUrl" class="btn @acao.CssClass">
+                            @if (!string.IsNullOrEmpty(acao.Icon))
+                            {<i class="@acao.Icon me-1"></i>} @acao.Label
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn @acao.CssClass" @onclick="() => ExecutarAcao(acao)">
+                            @if (!string.IsNullOrEmpty(acao.Icon))
+                            {<i class="@acao.Icon me-1"></i>} @acao.Label
+                        </button>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<!-- 3. TABELA DINÂMICA DE DADOS + PAGINAÇÃO -->
+<div class="card shadow-sm border">
+    <div class="card-body p-0">
+        <!-- Topo da Tabela: Seletor de Registros por Página -->
+        <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+            <div class="d-flex align-items-center gap-2 text-muted small">
+                <span>Exibir</span>
+                <select class="form-select form-select-sm" style="width: 75px;" @onchange="OnPageSizeChanged">
+                    <option value="5" selected="@(pageSize == 5)">5</option>
+                    <option value="10" selected="@(pageSize == 10)">10</option>
+                    <option value="25" selected="@(pageSize == 25)">25</option>
+                    <option value="50" selected="@(pageSize == 50)">50</option>
+                </select>
+                <span>registros por página</span>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="text-muted border-bottom">
+                    <tr>
+                        <th style="width: 100px;" class="text-center py-3 fw-semibold">Ações</th>
+                        @foreach (var col in colunasTabela)
+                        {
+                            <th class="py-3 fw-semibold">@col.Label</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (itensPaginados != null && itensPaginados.Any())
+                    {
+                        @foreach (var item in itensPaginados)
+                        {
+                            var itemId = GetPrimaryKeyValue(item);
+                            <tr>
+                                <td class="text-center py-2">
+                                    <a href="/gerenciar/@EntityName/detalhe/@itemId" class="btn btn-primary btn-sm px-2 py-1" title="Editar">
+                                        <i class="mdi mdi-pencil"></i>
+                                    </a>
+                                </td>
+                                @foreach (var col in colunasTabela)
+                                {
+                                    var val = col.GetValue(item);
+                                    <td class="py-2">
+                                        @if (col.FieldType == FieldType.Select && col.Options != null && col.Options.Count > 0)
+                                        {
+                                            var keyStr = val?.ToString() ?? "";
+                                            var descFormatada = col.Options.ContainsKey(keyStr) ? col.Options[keyStr] : keyStr;
+                                            
+                                            // Renderização genérica baseada na chave/descrição do lookup (ex: badge verde para ativos/sucesso ou dinâmico)
+                                            <span class="badge @(keyStr == "1" || descFormatada.Equals("Ativo", StringComparison.OrdinalIgnoreCase) ? "bg-success" : "bg-secondary")">
+                                                @descFormatada
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            @FormatValue(val)
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="@(colunasTabela.Count + 1)" class="text-center text-muted py-4">
+                                <i class="mdi mdi-database-remove font-size-20 d-block mb-1"></i>
+                                Nenhum registro encontrado.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Rodapé com Paginação -->
+        @if (TotalItems > 0)
+        {
+            <div class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top gap-2">
+                <div class="text-muted small">
+                    Exibindo <strong>@StartRecord</strong> a <strong>@EndRecord</strong> de <strong>@TotalItems</strong> registros
+                </div>
+
+                @if (TotalPages > 1)
+                {
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                                <button class="page-link" @onclick="() => GoToPage(currentPage - 1)">Anterior</button>
+                            </li>
+
+                            @for (int p = FirstVisiblePage; p <= LastVisiblePage; p++)
+                            {
+                                var pageNum = p;
+                                <li class="page-item @(currentPage == pageNum ? "active" : "")">
+                                    <button class="page-link" @onclick="() => GoToPage(pageNum)">@pageNum</button>
+                                </li>
+                            }
+
+                            <li class="page-item @(currentPage == TotalPages ? "disabled" : "")">
+                                <button class="page-link" @onclick="() => GoToPage(currentPage + 1)">Próximo</button>
+                            </li>
+                        </ul>
+                    </nav>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public string EntityName { get; set; }
+    [Parameter] public IEnumerable<object> Items { get; set; }
+
+    private List<PropertyMetadata> colunasTabela = new();
+    private List<PropertyMetadata> camposFiltro = new();
+    private List<ActionMetadata> acoesDaTela = new();
+    private List<object> listaGeral = new();
+    private List<object> itensFiltrados = new();
+
+    // Estado da Paginação
+    private int currentPage = 1;
+    private int pageSize = 10;
+
+    private IEnumerable<object> itensPaginados => 
+        itensFiltrados.Skip((currentPage - 1) * pageSize).Take(pageSize);
+
+    private int TotalItems => itensFiltrados.Count;
+    private int TotalPages => (int)Math.Ceiling((double)TotalItems / pageSize);
+    private int StartRecord => TotalItems == 0 ? 0 : ((currentPage - 1) * pageSize) + 1;
+    private int EndRecord => Math.Min(currentPage * pageSize, TotalItems);
+
+    private int FirstVisiblePage => Math.Max(1, currentPage - 2);
+    private int LastVisiblePage => Math.Min(TotalPages, FirstVisiblePage + 4);
+
+    protected override async Task OnParametersSetAsync()
+    {
+        LayoutState.DisableRightSidebar();
+
+        var entityType = EntityRegistry.GetEntityType(EntityName);
+
+        if (entityType != null)
+        {
+            var dummyInstance = Activator.CreateInstance(entityType);
+            var todasPropriedades = ModelMetadataReader.GetProperties(dummyInstance);
+
+            // Carrega as opções de Lookup dinamicamente para colunas do tipo Select (genérico para qualquer tabela)
+            foreach (var prop in todasPropriedades.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
+            {
+                try
+                {
+                    var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
+                    if (lookupData != null)
+                    {
+                        prop.Options = new Dictionary<string, string>();
+                        foreach (var row in lookupData)
+                        {
+                            var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
+                            var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
+
+                            if (keyCol != null && descCol != null)
+                            {
+                                string idVal = row[keyCol]?.ToString();
+                                string descVal = row[descCol]?.ToString();
+                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
+                                {
+                                    prop.Options[idVal] = descVal;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    // Mantém vazio se falhar
+                }
+            }
+
+            colunasTabela = todasPropriedades
+                .Where(p => p.ShowInGrid && p.FieldType != FieldType.Grid)
+                .OrderBy(p => p.Order)
+                .ToList();
+
+            camposFiltro = todasPropriedades.Where(p => p.ShowInFilter).ToList();
+            acoesDaTela = ModelMetadataReader.GetListActions(entityType, EntityName);
+
+            listaGeral = Items?.Cast<object>().ToList() ?? new List<object>();
+            AplicarFiltro();
+        }
+        else
+        {
+            colunasTabela = new();
+            camposFiltro = new();
+            acoesDaTela = new();
+            itensFiltrados = new();
+        }
+    }
+
+    private void GoToPage(int page)
+    {
+        if (page >= 1 && page <= TotalPages)
+        {
+            currentPage = page;
+        }
+    }
+
+    private void OnPageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            pageSize = newSize;
+            currentPage = 1;
+        }
+    }
+
+    private void ExecutarAcao(ActionMetadata acao)
+    {
+        switch (acao.ActionType)
+        {
+            case ActionType.Search:
+                AplicarFiltro();
+                break;
+
+            case ActionType.Clear:
+                LimparFiltros();
+                break;
+
+            case ActionType.Create:
+                var createUrl = !string.IsNullOrEmpty(acao.TargetUrl) ? acao.TargetUrl : $"/gerenciar/{EntityName}/novo";
+                Navigation.NavigateTo(createUrl);
+                break;
+
+            default:
+                if (!string.IsNullOrEmpty(acao.TargetUrl))
+                {
+                    Navigation.NavigateTo(acao.TargetUrl);
+                }
+                break;
+        }
+    }
+
+    private void AplicarFiltro()
+    {
+        itensFiltrados = listaGeral.Where(item =>
+        {
+            foreach (var filtro in camposFiltro)
+            {
+                if (!string.IsNullOrWhiteSpace(filtro.FilterValue))
+                {
+                    var val = filtro.GetValue(item)?.ToString() ?? "";
+                    if (val.IndexOf(filtro.FilterValue, StringComparison.OrdinalIgnoreCase) < 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }).ToList();
+
+        currentPage = 1;
+    }
+
+    private void LimparFiltros()
+    {
+        foreach (var filtro in camposFiltro)
+        {
+            filtro.FilterValue = string.Empty;
+        }
+        AplicarFiltro();
+    }
+
+    private object GetPrimaryKeyValue(object item)
+    {
+        var prop = item.GetType().GetProperty("IdUsuario") ?? 
+                   item.GetType().GetProperty("Codigo") ?? 
+                   item.GetType().GetProperty("Id");
+
+        return prop?.GetValue(item) ?? 0;
+    }
+
+    private string FormatValue(object val)
+    {
+        if (val == null) return "-";
+        if (val is DateTime dt)
+        {
+            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
+        }
+        return val.ToString();
+    }
+}

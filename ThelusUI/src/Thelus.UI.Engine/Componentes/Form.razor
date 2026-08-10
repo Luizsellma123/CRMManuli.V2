@@ -1,0 +1,290 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@using System.Linq
+@using System.Text.RegularExpressions
+@using System.Collections.Generic
+
+@if (Properties != null && Properties.Any())
+{
+    var secoes = Properties.GroupBy(p => p.Section);
+
+    <EditForm Model="@Model" OnSubmit="HandleSubmit">
+        <div class="thelus-form-container">
+            @foreach (var secao in secoes)
+            {
+                <div class="thelus-section mb-4">
+                    <h5 class="thelus-section-title border-bottom pb-2 mb-3">@secao.Key</h5>
+
+                    <div class="row">
+                        @foreach (var prop in secao)
+                        {
+                            var hasError = Errors.ContainsKey(prop.PropertyName);
+                            var inputCss = $"form-control {(hasError ? "is-invalid border-danger" : "")}";
+
+                            <div class="col-12 col-md-@prop.ColSpan mb-3">
+                                <label class="form-label fw-bold">
+                                    @prop.Label
+                                    @if (prop.IsRequired)
+                                    {
+                                        <span class="text-danger">*</span>
+                                    }
+                                </label>
+
+                                <div class="@(string.IsNullOrEmpty(prop.Icon) ? "" : "input-group")">
+                                    @if (!string.IsNullOrEmpty(prop.Icon))
+                                    {
+                                        <span class="input-group-text"><i class="@prop.Icon"></i></span>
+                                    }
+
+                                    @switch (prop.FieldType)
+                                    {
+                                        case FieldType.TextArea:
+                                            <textarea class="@inputCss" rows="@prop.Rows" placeholder="@prop.Placeholder" readonly="@prop.ReadOnly"
+                                                      @onchange="@(e => OnInputChanged(prop, e.Value))">@prop.Value</textarea>
+                                            break;
+
+                                        case FieldType.Password:
+                                            <input type="password" class="@inputCss" placeholder="@prop.Placeholder" value="@prop.Value" readonly="@prop.ReadOnly"
+                                                   @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            break;
+
+                                        case FieldType.Email:
+                                            <input type="email" class="@inputCss" placeholder="@prop.Placeholder" value="@prop.Value" readonly="@prop.ReadOnly"
+                                                   @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            break;
+
+                                        case FieldType.Select:
+                                            <select class="form-select @inputCss" disabled="@prop.ReadOnly" @onchange="@(e => OnInputChanged(prop, e.Value))">
+                                                <option value="">-- Selecione --</option>
+
+                                                @if (!string.IsNullOrEmpty(prop.LookupKey) && Lookups != null && Lookups.ContainsKey(prop.LookupKey))
+                                                {
+                                                    @foreach (var item in Lookups[prop.LookupKey])
+                                                    {
+                                                        var selected = prop.Value?.ToString() == item.Value?.ToString();
+                                                        <option value="@item.Value" selected="@selected">@item.Text</option>
+                                                    }
+                                                }
+                                                else if (Nullable.GetUnderlyingType(prop.PropertyType)?.IsEnum == true || prop.PropertyType.IsEnum)
+                                                {
+                                                    var enumType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                                                    foreach (var item in Enum.GetValues(enumType))
+                                                    {
+                                                        var selected = prop.Value?.ToString() == item.ToString();
+                                                        <option value="@item" selected="@selected">@item</option>
+                                                    }
+                                                }
+                                            </select>
+                                            break;
+
+                                        case FieldType.CheckBox:
+                                        case FieldType.Switch:
+                                            <div class="form-check @(prop.FieldType == FieldType.Switch ? "form-switch" : "") mt-1">
+                                                <input class="form-check-input @(hasError ? "is-invalid" : "")" type="checkbox" checked="@(Convert.ToBoolean(prop.Value ?? false))" disabled="@prop.ReadOnly"
+                                                       @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            </div>
+                                            break;
+
+                                        case FieldType.Date:
+                                            <input type="date" class="@inputCss" value="@FormatDate(prop.Value)" readonly="@prop.ReadOnly"
+                                                   @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            break;
+
+                                        case FieldType.Number:
+                                        case FieldType.Currency:
+                                            <input type="number" step="any" class="@inputCss" placeholder="@prop.Placeholder" value="@prop.Value" readonly="@prop.ReadOnly"
+                                                   @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            break;
+
+                                        default:
+                                            <input type="text" class="@inputCss" placeholder="@prop.Placeholder" value="@prop.Value" readonly="@prop.ReadOnly"
+                                                   @onchange="@(e => OnInputChanged(prop, e.Value))" />
+                                            break;
+
+                                    }
+                                </div>
+
+                                @if (hasError)
+                                {
+                                    <div class="text-danger small mt-1">@Errors[prop.PropertyName]</div>
+                                }
+                                else if (!string.IsNullOrEmpty(prop.HelpText))
+                                {
+                                    <div class="form-text text-muted">@prop.HelpText</div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="thelus-actions border-top pt-3 mt-3 d-flex justify-content-end gap-2">
+                @if (ShowCancelButton)
+                {
+                    <button type="button" class="btn btn-secondary me-2" @onclick="HandleCancel">
+                        @CancelButtonText
+                    </button>
+                }
+                <button type="submit" class="btn btn-primary">
+                    @SaveButtonText
+                </button>
+            </div>
+        </div>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public object Model { get; set; }
+
+    // Coleção de opções dinâmicas fornecidas externamente para os Selects
+    [Parameter] public Dictionary<string, IEnumerable<SelectItem>> Lookups { get; set; }
+
+    [Parameter] public EventCallback<object> OnSave { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public string SaveButtonText { get; set; } = "Salvar";
+    [Parameter] public string CancelButtonText { get; set; } = "Cancelar";
+    [Parameter] public bool ShowCancelButton { get; set; } = true;
+
+    private List<PropertyMetadata> Properties { get; set; } = new List<PropertyMetadata>();
+    private Dictionary<string, string> Errors { get; set; } = new Dictionary<string, string>();
+
+    protected override void OnParametersSet()
+    {
+        if (Model != null)
+        {
+            Properties = ModelMetadataReader.GetProperties(Model);
+        }
+    }
+
+    private void OnInputChanged(PropertyMetadata prop, object rawValue)
+    {
+        SetValue(prop, rawValue);
+        ValidateProperty(prop);
+        StateHasChanged();
+    }
+
+    private void SetValue(PropertyMetadata prop, object rawValue)
+    {
+        if (Model == null || prop.PropertyInfo == null) return;
+
+        try
+        {
+            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            object convertedValue = null;
+
+            if (rawValue != null && !string.IsNullOrWhiteSpace(rawValue.ToString()))
+            {
+                if (targetType.IsEnum)
+                {
+                    convertedValue = Enum.Parse(targetType, rawValue.ToString());
+                }
+                else if (targetType == typeof(DateTime))
+                {
+                    if (DateTime.TryParse(rawValue.ToString(), out var parsedDate))
+                        convertedValue = parsedDate;
+                }
+                else
+                {
+                    convertedValue = Convert.ChangeType(rawValue, targetType);
+                }
+            }
+
+            prop.PropertyInfo.SetValue(Model, convertedValue);
+            prop.Value = convertedValue;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Thelus.UI] Erro ao converter valor para '{prop.PropertyName}': {ex.Message}");
+        }
+    }
+
+    private bool ValidateAll()
+    {
+        Errors.Clear();
+
+        foreach (var prop in Properties)
+        {
+            ValidateProperty(prop);
+        }
+
+        return !Errors.Any();
+    }
+
+    private void ValidateProperty(PropertyMetadata prop)
+    {
+        var valueStr = prop.Value?.ToString()?.Trim();
+        bool isEmpty = string.IsNullOrEmpty(valueStr);
+
+        // 1. Validação de Campo Obrigatório
+        if (prop.IsRequired && isEmpty)
+        {
+            var msg = !string.IsNullOrEmpty(prop.ErrorMessage)
+                ? prop.ErrorMessage
+                : $"O campo '{prop.Label}' é de preenchimento obrigatório.";
+
+            Errors[prop.PropertyName] = msg;
+            return;
+        }
+
+        // 2. Validação de Formato de E-mail
+        if (prop.FieldType == FieldType.Email && !isEmpty)
+        {
+            var emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(valueStr, emailRegex))
+            {
+                Errors[prop.PropertyName] = "Informe um endereço de e-mail válido.";
+                return;
+            }
+        }
+
+        // 3. Validação de Padrão Regex (Pattern)
+        if (!string.IsNullOrEmpty(prop.Pattern) && !isEmpty)
+        {
+            if (!Regex.IsMatch(valueStr, prop.Pattern))
+            {
+                var msg = !string.IsNullOrEmpty(prop.ErrorMessage)
+                    ? prop.ErrorMessage
+                    : $"O campo '{prop.Label}' está em um formato inválido.";
+
+                Errors[prop.PropertyName] = msg;
+                return;
+            }
+        }
+
+        // Se chegou até aqui sem erros, remove do dicionário
+        if (Errors.ContainsKey(prop.PropertyName))
+        {
+            Errors.Remove(prop.PropertyName);
+        }
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (ValidateAll())
+        {
+            if (OnSave.HasDelegate)
+            {
+                await OnSave.InvokeAsync(Model);
+            }
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleCancel()
+    {
+        if (OnCancel.HasDelegate)
+        {
+            await OnCancel.InvokeAsync(null);
+        }
+    }
+
+    private string FormatDate(object value)
+    {
+        if (value is DateTime dt) return dt.ToString("yyyy-MM-dd");
+        return string.Empty;
+    }
+}
