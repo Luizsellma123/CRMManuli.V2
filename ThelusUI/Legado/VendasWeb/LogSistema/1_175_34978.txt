@@ -1,0 +1,31 @@
+Empresa: 1
+Pedido: 34978
+Tipo : Total
+drpStatus : 1
+Data Saída: 18-06-2023 00:00:00
+Data Emissao: 18-03-2022 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À Vista
+Tipo Frete: 5
+Transportadora:  - 
+Data Hora Inclusão: 18-03-2022 00:00:00
+
+Produto: 30.10.40.10.0066 Revenda: 0 Quantidade: 40 Tabela: 1 Valor Unitario: 147,28 Total: 5891,19995117188 Unidade: RL
+Produto: 30.10.40.10.0041 Revenda: 0 Quantidade: 288 Tabela: 1 Valor Unitario: 12,49 Total: 3597,11993408203 Unidade: RL
+
+Historico: 18/03/2022 04:58:12 DEISY.LIMA:Pedido Atualizado.
+
+25-05-2023 03:43:23 moises.gonzalez:Pedido Atualizado. - 18/03/2022 04:58:12 DEISY.LIMA:Pedido Atualizado.
+
+25-05-2023 03:43:23 moises.gonzalez:Pedido Atualizado.
+
+25-05-2023 03:43:43 moises.gonzalez:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

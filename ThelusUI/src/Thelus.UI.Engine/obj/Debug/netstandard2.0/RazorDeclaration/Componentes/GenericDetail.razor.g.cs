@@ -18,49 +18,49 @@ using Microsoft.AspNetCore.Components.Web
 #nullable disable
     ;
 #nullable restore
-#line (10,2)-(10,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (12,2)-(12,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Collections
 
 #nullable disable
     ;
 #nullable restore
-#line (11,2)-(11,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (13,2)-(13,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Reflection
 
 #nullable disable
     ;
 #nullable restore
-#line (12,2)-(12,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (14,2)-(14,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Linq
 
 #nullable disable
     ;
 #nullable restore
-#line (13,2)-(13,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (15,2)-(15,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line (14,2)-(14,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (16,2)-(16,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line (15,2)-(15,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (17,2)-(17,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Servicos
 
 #nullable disable
     ;
 #nullable restore
-#line (16,2)-(16,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (18,2)-(18,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Modelos
 
 #nullable disable
     ;
 #nullable restore
-#line (17,2)-(17,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (19,2)-(19,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Atributos
 
 #nullable disable
@@ -77,7 +77,7 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (468,8)-(860,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (470,8)-(862,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 
     [Parameter] public string EntityName { get; set; }
     [Parameter] public int Id { get; set; }
@@ -477,7 +477,7 @@ using Thelus.UI.Engine.Atributos
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (21,9)-(21,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (23,9)-(23,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 HttpClient
 
 #line default
@@ -485,7 +485,7 @@ HttpClient
 #nullable disable
          
 #nullable restore
-#line (21,20)-(21,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (23,20)-(23,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Http
 
 #line default
@@ -495,7 +495,7 @@ Http
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (20,9)-(20,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (22,9)-(22,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Thelus.UI.Engine.Servicos.LayoutStateService
 
 #line default
@@ -503,7 +503,7 @@ Thelus.UI.Engine.Servicos.LayoutStateService
 #nullable disable
          
 #nullable restore
-#line (20,54)-(20,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (22,54)-(22,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LayoutState
 
 #line default
@@ -513,7 +513,7 @@ LayoutState
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (19,9)-(19,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (21,9)-(21,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 NavigationManager
 
 #line default
@@ -521,7 +521,7 @@ NavigationManager
 #nullable disable
          
 #nullable restore
-#line (19,27)-(19,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (21,27)-(21,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Navigation
 
 #line default
@@ -531,7 +531,7 @@ Navigation
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (18,9)-(18,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (20,9)-(20,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LookupCacheService
 
 #line default
@@ -539,7 +539,7 @@ LookupCacheService
 #nullable disable
          
 #nullable restore
-#line (18,28)-(18,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (20,28)-(20,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 LookupCache
 
 #line default

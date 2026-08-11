@@ -1,0 +1,24 @@
+﻿.texto {
+FONT-SIZE:12px;
+FONT-FAMILY:Arial, Helvetica, sans-serif;
+color:#3F72AF;
+}
+
+.campo {
+FONT-SIZE: 12px;
+FONT-FAMILY: Arial, Helvetica, sans-serif;
+color:#3F72AF;
+background-color:#e7e7e8;
+}
+
+#tabelaLogin
+{
+text-align: center;
+width: 100%; 
+    }
+    
+.textoErro {
+FONT-SIZE:12px;
+FONT-FAMILY:Arial, Helvetica, sans-serif;
+color:red;
+}

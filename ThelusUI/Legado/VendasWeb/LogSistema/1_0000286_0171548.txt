@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0171548
+Tipo : Total
+drpStatus : 13
+Data Saída: 08/03/2016
+Data Emissao: 08/03/2016
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 08/03/2016
+
+Produto: 30.20.10.14.0091 Revenda: 0 Quantidade: 5 Tabela: 000000000000050 Valor Unitario: 11,41 Total: 57,0499992370605 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

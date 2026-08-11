@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0165890
+Tipo : Total
+drpStatus : 13
+Data Saída: 30/09/2015
+Data Emissao: 21/09/2015
+Natureza: Varejista
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0000038 - ALDAIR PISETTA & CIA LTDA
+Data Hora Inclusão: 21/09/2015
+
+Produto: 20.10.10.62.0013 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 108,62 Total: 108,620002746582 Unidade: RL
+
+Historico: 21/09/2015 17:06:55 - MARIO.DUARTE - Origem Vendas WEB - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

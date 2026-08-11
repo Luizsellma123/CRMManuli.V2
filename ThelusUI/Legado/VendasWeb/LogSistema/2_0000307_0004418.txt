@@ -1,0 +1,24 @@
+Empresa: 2
+Pedido: 0004418
+Tipo : Total
+drpStatus : 13
+Data Saída: 29/04/2016
+Data Emissao: 19/04/2016
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000413 - 45 DIAS 
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 19/04/2016
+
+Produto: 30.20.10.19.0039 Revenda: 0 Quantidade: 308 Tabela: 000000000000016 Valor Unitario: 8,41 Total: 2590,27995300293 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

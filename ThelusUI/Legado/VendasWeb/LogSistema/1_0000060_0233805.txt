@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0233805
+Tipo : Total
+drpStatus : 13
+Data Saída: 21/03/2019
+Data Emissao: 21/03/2019
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000372 - REMESSA DEMONSTRACAO E COMODATO
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 21/03/2019
+
+Produto: 60.10.10.11.0033 Revenda: 0 Quantidade: 100 Tabela: 000000000000050 Valor Unitario: 14603,17 Total: 1460316,9921875 Unidade: UN
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

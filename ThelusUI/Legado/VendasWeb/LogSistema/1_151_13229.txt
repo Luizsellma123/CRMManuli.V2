@@ -1,0 +1,26 @@
+Empresa: 1
+Pedido: 13229
+Tipo : Total
+drpStatus : 1
+Data Saída: 01/07/2020 00:00:00
+Data Emissao: 02/06/2020 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 141 - 28,42 e 56 dias
+Tipo Frete: 3
+Transportadora: FOR0001437      - TRANSPORTADORA LABUTA EIRELI
+Data Hora Inclusão: 02/06/2020 00:00:00
+
+Produto: 30.20.10.57.0002 Revenda: 0 Quantidade: 1800 Tabela: 1 Valor Unitario: 6,8 Total: 12240,0003433228 Unidade: KG
+
+Historico: 01/07/2020 02:30:23 :Pedido Atualizado. - 01/07/2020 02:30:23 :Pedido Atualizado.
+
+01/07/2020 03:03:30 LUIZ.CARLOS:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

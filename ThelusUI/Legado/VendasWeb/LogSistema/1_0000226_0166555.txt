@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0166555
+Tipo : Total
+drpStatus : 13
+Data Saída: 05/10/2015
+Data Emissao: 30/09/2015
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000019 - 21/35 DIAS
+Tipo Frete: Emitente
+Transportadora: 0024858 - AVENORTE AVÍCOLA CIANORTE LTDA
+Data Hora Inclusão: 30/09/2015
+
+Produto: 30.20.10.29.0003 Revenda: 0 Quantidade: 4000 Tabela: 000000000000050 Valor Unitario: 7,95 Total: 31799,9992370605 Unidade: KG
+
+Historico: 30/09/2015 11:55:17 - MARIO.DUARTE - Origem Vendas WEB - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

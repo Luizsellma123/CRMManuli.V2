@@ -1,0 +1,24 @@
+Empresa: 1.3
+Pedido: 0025365
+Tipo : Total
+drpStatus : 13
+Data Saída: 12/06/2015
+Data Emissao: 12/06/2015
+Natureza: Consumidor Contribuinte
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 12/06/2015
+
+Produto: 30.20.10.67.0001 Revenda: 0 Quantidade: 128 Tabela: 000000000000050 Valor Unitario: 8,78 Total: 1123,83996582031 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

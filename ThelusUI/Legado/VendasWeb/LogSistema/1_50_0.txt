@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0
+Tipo : Total
+drpStatus : 
+Data Saída: 03-02-2024 00:00:00
+Data Emissao: 02-02-2024 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - 
+Tipo Frete: 3
+Transportadora:  - 
+Data Hora Inclusão: 02-02-2024 00:00:00
+
+Produto: 20.20.10.10.0009 Revenda: 0 Quantidade: 1 Tabela: 1 Valor Unitario: 32,63 Total: 32,6300010681152 Unidade: KG
+
+Historico:  - 02-02-2024 11:09:14 moises.gonzalez:02-02-2024 11:08:20 moises.gonzalez:02-02-2024 11:07:58 moises.gonzalez:02-02-2024 11:07:48 moises.gonzalez:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

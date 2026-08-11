@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0
+Tipo : Total
+drpStatus : 
+Data Saída: 24/03/2020
+Data Emissao: 24/03/2020
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 6 - 
+Tipo Frete: 3
+Transportadora:  - 
+Data Hora Inclusão: 24/03/2020
+
+Produto: 30.10.10.12.0129 Revenda: 0 Quantidade: 1 Tabela: 1 Valor Unitario: 0,63 Total: 0,629999995231628 Unidade: RL
+
+Historico:  - Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

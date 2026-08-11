@@ -1,0 +1,28 @@
+Empresa: 3
+Pedido: 6396
+Tipo : Total
+drpStatus : 1
+Data Saída: 08/05/2024 00:00:00
+Data Emissao: 03/05/2024 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À Vista
+Tipo Frete: 3
+Transportadora: 0               - 
+Data Hora Inclusão: 03/05/2024 00:00:00
+
+Produto: 30.10.10.12.0187 Revenda: 0 Quantidade: 28224 Tabela: 3 Valor Unitario: 2,78 Total: 78462,7191925049 Unidade: RL
+Produto: 30.10.10.12.0188 Revenda: 0 Quantidade: 8064 Tabela: 3 Valor Unitario: 2,66 Total: 21450,2406921387 Unidade: RL
+Produto: 30.10.10.18.0150 Revenda: 0 Quantidade: 4032 Tabela: 3 Valor Unitario: 3,2 Total: 12902,4001922607 Unidade: RL
+
+Historico: 03/05/2024 03:01:18 MATHEUS.ALBUQUERQUE:Pedido Atualizado. - 03/05/2024 03:01:18 MATHEUS.ALBUQUERQUE:Pedido Atualizado.
+
+08/05/2024 02:08:03 LUIZ.CARLOS:teste
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

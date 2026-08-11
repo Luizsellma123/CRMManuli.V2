@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0152646
+Tipo : Total
+drpStatus : 13
+Data Saída: 18/02/2015
+Data Emissao: 18/02/2015
+Natureza: Consumidor
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 18/02/2015
+
+Produto: 30.10.10.11.0002 Revenda: 0 Quantidade: 20 Tabela: 000000000000050 Valor Unitario: 1 Total: 20 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

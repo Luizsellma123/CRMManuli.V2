@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/CRM.Master" AutoEventWireup="true" CodeBehind="NestedMasterPageCRM.master.cs" Inherits="VendasWeb.NestedMasterPageCRM" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" language="javascript">
+        var ModalProgress = '<%= ModalProgress.ClientID %>';         
+    </script>
+
+    <script type="text/javascript">
+        function showProgress() {
+            $find(ModalProgress).show();
+            $get('ctl00_ctl00_ContentPlaceHolder1_UpdateProgress1').style.display = 'block';
+        }
+    </script>
+
+    <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="<%=Page.ResolveClientUrl("~/js/jsUpdateProgress.js")%>" type="text/javascript" language="javascript"></script>
+
+    <asp:Panel ID="panelUpdateProgress" runat="server" CssClass="updateProgress">
+        <asp:UpdateProgress ID="UpdateProgress1" DisplayAfter="0" runat="server">
+            <ProgressTemplate>
+                <div style="text-align: center;">
+                    <img src="<%=Page.ResolveClientUrl("~/imagens/gif_aguarde3.gif")%>" style="vertical-align: middle" alt="Processing" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+    </asp:Panel>
+
+    <ajaxToolkit:ModalPopupExtender ID="ModalProgress" runat="server" TargetControlID="panelUpdateProgress"
+        BackgroundCssClass="modalBackground" PopupControlID="panelUpdateProgress" X="-3"
+        Y="-3" />
+
+    <asp:UpdatePanel ID="updatePanel" runat="server" ValidateRequestMode="Disabled" UpdateMode="Conditional">
+        <ContentTemplate>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

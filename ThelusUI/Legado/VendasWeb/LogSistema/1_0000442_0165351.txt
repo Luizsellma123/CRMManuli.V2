@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0165351
+Tipo : Total
+drpStatus : 13
+Data Saída: 21/09/2015
+Data Emissao: 14/09/2015
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 14/09/2015
+
+Produto: 30.20.10.70.0002 Revenda: 0 Quantidade: 615 Tabela: 000000000000050 Valor Unitario: 8,66 Total: 5325,89990615845 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

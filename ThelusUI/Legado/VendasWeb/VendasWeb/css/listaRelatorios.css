@@ -1,0 +1,62 @@
+﻿.lstTabela
+{
+font: 1em Verdana, Arial, Helvetica;
+width: auto;
+border: 1px solid #979799; 
+}
+
+.lstTabela tr td 
+{
+padding-left: 5px;
+color:#3F72AF;
+FONT-FAMILY:Arial, Helvetica, sans-serif;
+border: 1px solid #979799; 
+}
+
+.lstTabela tr td.extend
+{
+width: 500px;
+}
+
+.lstTabela tr td.extendproduto
+{
+width: 700px;
+}
+
+.lstTabela tr td.grande
+{
+width: 107px;    
+}
+
+.lstTabela tr td.small
+{
+    width: 50px;
+}
+
+.lstTabela tr td.tdcenter
+{
+    text-align: center;
+}
+
+.lstTabela tr td.tdcentersmall
+{
+    text-align: center;
+    width:10px;
+}
+
+.lstTabela tr td.edicao
+{
+width: 5px;
+}
+
+.lstTabela tr td.codigo
+{
+width: 20px;
+}
+
+.lstTabela tr.tabLstCab td
+{
+color:white;
+background: #618cb9;
+font-weight:bold;
+}

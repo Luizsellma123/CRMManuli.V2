@@ -1,0 +1,26 @@
+Empresa: 3
+Pedido: 1484
+Tipo : Total
+drpStatus : 1
+Data Saída: 11/11/2020 00:00:00
+Data Emissao: 06/11/2020 00:00:00
+Natureza: Revendedor
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À Vista
+Tipo Frete: 3
+Transportadora: 0               - 
+Data Hora Inclusão: 06/11/2020 00:00:00
+
+Produto: 20.20.10.10.0007 Revenda: 0 Quantidade: 1 Tabela: 3 Valor Unitario: 9 Total: 9 Unidade: KG
+
+Historico: 06/11/2020 09:51:05 :Pedido Atualizado. - 06/11/2020 09:51:05 :Pedido Atualizado.
+
+06/11/2020 09:51:46 LUIZ.CARLOS:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

@@ -62,7 +62,7 @@ namespace Thelus.Core.Servicos
                       AND up.IdEmpresa = @EmpresaId
                 */
                 // =========================================================================
-                var idsMenuPermitidos = new List<int> { 15, 17, 22, 25, 26, 27 };
+                var idsMenuPermitidos = new List<int> { 11, 15, 17, 22, 25, 26, 27 };
 
                 return new LoginResponseDto
                 {

@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0152634
+Tipo : Total
+drpStatus : 13
+Data Saída: 12/02/2015
+Data Emissao: 12/02/2015
+Natureza: Consumidor
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0000013 - WILSON BELTRAME IRMAOS E CIA LTDA
+Data Hora Inclusão: 12/02/2015
+
+Produto: 30.10.10.11.0001 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 0,87 Total: 0,870000004768372 Unidade: RL
+
+Historico: 12/02/2015 11:04:29 - LUIZ.CARLOS - Origem Vendas WEB - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

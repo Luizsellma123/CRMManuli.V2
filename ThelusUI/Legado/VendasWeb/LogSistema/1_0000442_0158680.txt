@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0158680
+Tipo : Total
+drpStatus : 13
+Data Saída: 25/05/2015
+Data Emissao: 22/05/2015
+Natureza: Consumidor
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 22/05/2015
+
+Produto: 30.10.10.12.0031 Revenda: 0 Quantidade: 1920 Tabela: 000000000000050 Valor Unitario: 2,43 Total: 4665,60012817383 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

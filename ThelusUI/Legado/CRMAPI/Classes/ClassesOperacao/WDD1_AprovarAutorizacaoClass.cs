@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace CRMAPI.Classes.ClassesOperacao
+{
+    public class WDD1_AprovarAutorizacaoClass
+    {
+        public string Status { get; set; }
+		public string ApproverUserName { get; set; }
+		public string ApproverPassword { get; set; }
+		public string Remarks { get; set; }
+    }
+}

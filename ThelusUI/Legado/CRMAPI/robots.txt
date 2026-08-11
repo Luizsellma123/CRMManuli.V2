@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /View/Infraestrutura/
+Disallow: /bin/
+Disallow: /App_Code/
+Allow: /
+
+# Indica aos robôs onde está o seu mapa do site (opcional)
+# Sitemap: https://portal.thelus.curitiba.br/sitemap.xml

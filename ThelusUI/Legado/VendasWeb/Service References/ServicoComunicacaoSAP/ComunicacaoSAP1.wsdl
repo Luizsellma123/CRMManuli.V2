@@ -1,0 +1,2956 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Retorna_Pais">
+        <s:complexType />
+      </s:element>
+      <s:element name="Retorna_PaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Retorna_PaisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Pais">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_PaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_PaisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Estados">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_EstadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_EstadosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Municipios">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_MunicipiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_MunicipiosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Codigos_CNAE">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Codigos_CNAEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Codigos_CNAEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Classe_Vendedores">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Classe_VendedoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Classe_VendedoresResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Vendedores">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_VendedoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_VendedoresResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Tipo_Vendedor">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Tipo_VendedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Tipo_VendedorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Natureza_Juridica">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Natureza_JuridicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Natureza_JuridicaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Grupo_Economico">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Grupo_EconomicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Grupo_EconomicoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Condicao_Pagamento">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Condicao_PagamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Condicao_PagamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Grupo_Clientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Grupo_ClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Grupo_ClientesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Clientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_ClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_ClientesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Endereco_Clientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Endereco_ClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Endereco_ClientesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Clientes_Endereco_IDFiscais">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Clientes_Endereco_IDFiscaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Clientes_Endereco_IDFiscaisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Clientes_Contatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Clientes_ContatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Clientes_ContatosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Clientes_Anexos">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Clientes_AnexosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Clientes_AnexosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Utilizacao">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_UtilizacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_UtilizacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Grupos_Produtos">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Grupos_ProdutosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Grupos_ProdutosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Produtos">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_ProdutosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_ProdutosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Naturezas_Destinacao">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Naturezas_DestinacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Naturezas_DestinacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Fretes_Inconterms">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Fretes_IncontermsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Fretes_IncontermsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Empresa_Filial">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Empresa_FilialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Empresa_FilialResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Impostos_Pedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Impostos_PedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Impostos_PedidoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Impostos_Rascunho_Pedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroRascunho" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Impostos_Rascunho_PedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Impostos_Rascunho_PedidoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insere_Pedido_SAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JSONPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insere_Pedido_SAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insere_Pedido_SAPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Pedido_SAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JSONPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Pedido_SAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Pedido_SAPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Transforma_Esboco_Pedido_SAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JSONPedido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userDIServer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Transforma_Esboco_Pedido_SAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Transforma_Esboco_Pedido_SAPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Numero_Pedido_Esboco">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroEsboco" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Numero_Pedido_EsbocoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Numero_Pedido_EsbocoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Producao_Pedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Producao_PedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Producao_PedidoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Notas_Fiscais_Pedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Notas_Fiscais_PedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Notas_Fiscais_PedidoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Depositos">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_DepositosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_DepositosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_Regras_Aprovacao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroEsbocoSAP" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Valida_Regras_AprovacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Valida_Regras_AprovacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Status_Pedido_Finalizado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPedido" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Status_Pedido_FinalizadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Status_Pedido_FinalizadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Salva_Pedido_SAP_EXTERNO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroPedido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuarioCRM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Salva_Pedido_SAP_EXTERNOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Salva_Pedido_SAP_EXTERNOResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizacaoGeral">
+        <s:complexType />
+      </s:element>
+      <s:element name="AtualizacaoGeralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AtualizacaoGeralResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_IDCliente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="_Operacao" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualiza_Lancamento_ContabilHistoricoAT">
+        <s:complexType />
+      </s:element>
+      <s:element name="Atualiza_Lancamento_ContabilHistoricoATResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Atualiza_Lancamento_ContabilHistoricoATResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Cancela_Pedidos_Periodo">
+        <s:complexType />
+      </s:element>
+      <s:element name="Cancela_Pedidos_PeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cancela_Pedidos_PeriodoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Retorna_PaisSoapIn">
+    <wsdl:part name="parameters" element="tns:Retorna_Pais" />
+  </wsdl:message>
+  <wsdl:message name="Retorna_PaisSoapOut">
+    <wsdl:part name="parameters" element="tns:Retorna_PaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_PaisSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Pais" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_PaisSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_PaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_EstadosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Estados" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_EstadosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_EstadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_MunicipiosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Municipios" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_MunicipiosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_MunicipiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Codigos_CNAESoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Codigos_CNAE" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Codigos_CNAESoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Codigos_CNAEResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Classe_VendedoresSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Classe_Vendedores" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Classe_VendedoresSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Classe_VendedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_VendedoresSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Vendedores" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_VendedoresSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_VendedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Tipo_VendedorSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Tipo_Vendedor" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Tipo_VendedorSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Tipo_VendedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Natureza_JuridicaSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Natureza_Juridica" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Natureza_JuridicaSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Natureza_JuridicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_EconomicoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupo_Economico" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_EconomicoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupo_EconomicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Condicao_PagamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Condicao_Pagamento" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Condicao_PagamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Condicao_PagamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_ClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupo_Clientes" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_ClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupo_ClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_ClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Endereco_ClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Endereco_Clientes" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Endereco_ClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Endereco_ClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_Endereco_IDFiscais" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_Endereco_IDFiscaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_ContatosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_Contatos" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_ContatosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_ContatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_AnexosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_Anexos" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_AnexosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Clientes_AnexosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_UtilizacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Utilizacao" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_UtilizacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_UtilizacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupos_ProdutosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupos_Produtos" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupos_ProdutosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Grupos_ProdutosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ProdutosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Produtos" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ProdutosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_ProdutosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Naturezas_Destinacao" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Naturezas_DestinacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Fretes_IncontermsSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Fretes_Inconterms" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Fretes_IncontermsSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Fretes_IncontermsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Empresa_FilialSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Empresa_Filial" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Empresa_FilialSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Empresa_FilialResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Impostos_Pedido" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Impostos_PedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Impostos_Rascunho_Pedido" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Impostos_Rascunho_PedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPSoapIn">
+    <wsdl:part name="parameters" element="tns:Insere_Pedido_SAP" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPSoapOut">
+    <wsdl:part name="parameters" element="tns:Insere_Pedido_SAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Pedido_SAP" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Pedido_SAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPSoapIn">
+    <wsdl:part name="parameters" element="tns:Transforma_Esboco_Pedido_SAP" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPSoapOut">
+    <wsdl:part name="parameters" element="tns:Transforma_Esboco_Pedido_SAPResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Numero_Pedido_Esboco" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Numero_Pedido_EsbocoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Producao_Pedido" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Producao_PedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Notas_Fiscais_Pedido" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Notas_Fiscais_PedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_DepositosSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Depositos" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_DepositosSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_DepositosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:Valida_Regras_Aprovacao" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:Valida_Regras_AprovacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Status_Pedido_Finalizado" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Status_Pedido_FinalizadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOSoapIn">
+    <wsdl:part name="parameters" element="tns:Salva_Pedido_SAP_EXTERNO" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOSoapOut">
+    <wsdl:part name="parameters" element="tns:Salva_Pedido_SAP_EXTERNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizacaoGeralSoapIn">
+    <wsdl:part name="parameters" element="tns:AtualizacaoGeral" />
+  </wsdl:message>
+  <wsdl:message name="AtualizacaoGeralSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizacaoGeralResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:PostCliente" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:PostClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualiza_Lancamento_ContabilHistoricoAT" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATSoapOut">
+    <wsdl:part name="parameters" element="tns:Atualiza_Lancamento_ContabilHistoricoATResponse" />
+  </wsdl:message>
+  <wsdl:message name="Cancela_Pedidos_PeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:Cancela_Pedidos_Periodo" />
+  </wsdl:message>
+  <wsdl:message name="Cancela_Pedidos_PeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:Cancela_Pedidos_PeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Retorna_PaisHttpGetIn" />
+  <wsdl:message name="Retorna_PaisHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_PaisHttpGetIn" />
+  <wsdl:message name="Atualiza_PaisHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_EstadosHttpGetIn" />
+  <wsdl:message name="Atualiza_EstadosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_MunicipiosHttpGetIn" />
+  <wsdl:message name="Atualiza_MunicipiosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Codigos_CNAEHttpGetIn" />
+  <wsdl:message name="Atualiza_Codigos_CNAEHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Classe_VendedoresHttpGetIn" />
+  <wsdl:message name="Atualiza_Classe_VendedoresHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_VendedoresHttpGetIn" />
+  <wsdl:message name="Atualiza_VendedoresHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Tipo_VendedorHttpGetIn" />
+  <wsdl:message name="Atualiza_Tipo_VendedorHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Natureza_JuridicaHttpGetIn" />
+  <wsdl:message name="Atualiza_Natureza_JuridicaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_EconomicoHttpGetIn" />
+  <wsdl:message name="Atualiza_Grupo_EconomicoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Condicao_PagamentoHttpGetIn" />
+  <wsdl:message name="Atualiza_Condicao_PagamentoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_ClientesHttpGetIn" />
+  <wsdl:message name="Atualiza_Grupo_ClientesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ClientesHttpGetIn" />
+  <wsdl:message name="Atualiza_ClientesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Endereco_ClientesHttpGetIn" />
+  <wsdl:message name="Atualiza_Endereco_ClientesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisHttpGetIn" />
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_ContatosHttpGetIn" />
+  <wsdl:message name="Atualiza_Clientes_ContatosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_AnexosHttpGetIn" />
+  <wsdl:message name="Atualiza_Clientes_AnexosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_UtilizacaoHttpGetIn" />
+  <wsdl:message name="Atualiza_UtilizacaoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupos_ProdutosHttpGetIn" />
+  <wsdl:message name="Atualiza_Grupos_ProdutosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ProdutosHttpGetIn" />
+  <wsdl:message name="Atualiza_ProdutosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoHttpGetIn" />
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Fretes_IncontermsHttpGetIn" />
+  <wsdl:message name="Atualiza_Fretes_IncontermsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Empresa_FilialHttpGetIn" />
+  <wsdl:message name="Atualiza_Empresa_FilialHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoHttpGetIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoHttpGetIn">
+    <wsdl:part name="NumeroRascunho" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPHttpGetIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPHttpGetIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPHttpGetIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+    <wsdl:part name="userDIServer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoHttpGetIn">
+    <wsdl:part name="NumeroEsboco" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoHttpGetIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoHttpGetIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_DepositosHttpGetIn" />
+  <wsdl:message name="Atualiza_DepositosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoHttpGetIn">
+    <wsdl:part name="NumeroEsbocoSAP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoHttpGetIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOHttpGetIn">
+    <wsdl:part name="empresa" type="s:string" />
+    <wsdl:part name="NumeroPedido" type="s:string" />
+    <wsdl:part name="usuarioCRM" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AtualizacaoGeralHttpGetIn" />
+  <wsdl:message name="AtualizacaoGeralHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteHttpGetIn">
+    <wsdl:part name="_IDCliente" type="s:string" />
+    <wsdl:part name="_Operacao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATHttpGetIn" />
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Cancela_Pedidos_PeriodoHttpGetIn" />
+  <wsdl:message name="Cancela_Pedidos_PeriodoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Retorna_PaisHttpPostIn" />
+  <wsdl:message name="Retorna_PaisHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_PaisHttpPostIn" />
+  <wsdl:message name="Atualiza_PaisHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_EstadosHttpPostIn" />
+  <wsdl:message name="Atualiza_EstadosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_MunicipiosHttpPostIn" />
+  <wsdl:message name="Atualiza_MunicipiosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Codigos_CNAEHttpPostIn" />
+  <wsdl:message name="Atualiza_Codigos_CNAEHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Classe_VendedoresHttpPostIn" />
+  <wsdl:message name="Atualiza_Classe_VendedoresHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_VendedoresHttpPostIn" />
+  <wsdl:message name="Atualiza_VendedoresHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Tipo_VendedorHttpPostIn" />
+  <wsdl:message name="Atualiza_Tipo_VendedorHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Natureza_JuridicaHttpPostIn" />
+  <wsdl:message name="Atualiza_Natureza_JuridicaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_EconomicoHttpPostIn" />
+  <wsdl:message name="Atualiza_Grupo_EconomicoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Condicao_PagamentoHttpPostIn" />
+  <wsdl:message name="Atualiza_Condicao_PagamentoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupo_ClientesHttpPostIn" />
+  <wsdl:message name="Atualiza_Grupo_ClientesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ClientesHttpPostIn" />
+  <wsdl:message name="Atualiza_ClientesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Endereco_ClientesHttpPostIn" />
+  <wsdl:message name="Atualiza_Endereco_ClientesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisHttpPostIn" />
+  <wsdl:message name="Atualiza_Clientes_Endereco_IDFiscaisHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_ContatosHttpPostIn" />
+  <wsdl:message name="Atualiza_Clientes_ContatosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Clientes_AnexosHttpPostIn" />
+  <wsdl:message name="Atualiza_Clientes_AnexosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_UtilizacaoHttpPostIn" />
+  <wsdl:message name="Atualiza_UtilizacaoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Grupos_ProdutosHttpPostIn" />
+  <wsdl:message name="Atualiza_Grupos_ProdutosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_ProdutosHttpPostIn" />
+  <wsdl:message name="Atualiza_ProdutosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoHttpPostIn" />
+  <wsdl:message name="Atualiza_Naturezas_DestinacaoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Fretes_IncontermsHttpPostIn" />
+  <wsdl:message name="Atualiza_Fretes_IncontermsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Empresa_FilialHttpPostIn" />
+  <wsdl:message name="Atualiza_Empresa_FilialHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoHttpPostIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_PedidoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoHttpPostIn">
+    <wsdl:part name="NumeroRascunho" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Impostos_Rascunho_PedidoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPHttpPostIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Insere_Pedido_SAPHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPHttpPostIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Pedido_SAPHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPHttpPostIn">
+    <wsdl:part name="JSONPedido" type="s:string" />
+    <wsdl:part name="userDIServer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Transforma_Esboco_Pedido_SAPHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoHttpPostIn">
+    <wsdl:part name="NumeroEsboco" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Numero_Pedido_EsbocoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoHttpPostIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Producao_PedidoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoHttpPostIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Notas_Fiscais_PedidoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_DepositosHttpPostIn" />
+  <wsdl:message name="Atualiza_DepositosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoHttpPostIn">
+    <wsdl:part name="NumeroEsbocoSAP" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Valida_Regras_AprovacaoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoHttpPostIn">
+    <wsdl:part name="NumeroPedido" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Status_Pedido_FinalizadoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOHttpPostIn">
+    <wsdl:part name="empresa" type="s:string" />
+    <wsdl:part name="NumeroPedido" type="s:string" />
+    <wsdl:part name="usuarioCRM" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Salva_Pedido_SAP_EXTERNOHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AtualizacaoGeralHttpPostIn" />
+  <wsdl:message name="AtualizacaoGeralHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteHttpPostIn">
+    <wsdl:part name="_IDCliente" type="s:string" />
+    <wsdl:part name="_Operacao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PostClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATHttpPostIn" />
+  <wsdl:message name="Atualiza_Lancamento_ContabilHistoricoATHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Cancela_Pedidos_PeriodoHttpPostIn" />
+  <wsdl:message name="Cancela_Pedidos_PeriodoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ComunicacaoSAPSoap">
+    <wsdl:operation name="Retorna_Pais">
+      <wsdl:input message="tns:Retorna_PaisSoapIn" />
+      <wsdl:output message="tns:Retorna_PaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <wsdl:input message="tns:Atualiza_PaisSoapIn" />
+      <wsdl:output message="tns:Atualiza_PaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <wsdl:input message="tns:Atualiza_EstadosSoapIn" />
+      <wsdl:output message="tns:Atualiza_EstadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <wsdl:input message="tns:Atualiza_MunicipiosSoapIn" />
+      <wsdl:output message="tns:Atualiza_MunicipiosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <wsdl:input message="tns:Atualiza_Codigos_CNAESoapIn" />
+      <wsdl:output message="tns:Atualiza_Codigos_CNAESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <wsdl:input message="tns:Atualiza_Classe_VendedoresSoapIn" />
+      <wsdl:output message="tns:Atualiza_Classe_VendedoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <wsdl:input message="tns:Atualiza_VendedoresSoapIn" />
+      <wsdl:output message="tns:Atualiza_VendedoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <wsdl:input message="tns:Atualiza_Tipo_VendedorSoapIn" />
+      <wsdl:output message="tns:Atualiza_Tipo_VendedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <wsdl:input message="tns:Atualiza_Natureza_JuridicaSoapIn" />
+      <wsdl:output message="tns:Atualiza_Natureza_JuridicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <wsdl:input message="tns:Atualiza_Grupo_EconomicoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_EconomicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <wsdl:input message="tns:Atualiza_Condicao_PagamentoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Condicao_PagamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <wsdl:input message="tns:Atualiza_Grupo_ClientesSoapIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_ClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <wsdl:input message="tns:Atualiza_ClientesSoapIn" />
+      <wsdl:output message="tns:Atualiza_ClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <wsdl:input message="tns:Atualiza_Endereco_ClientesSoapIn" />
+      <wsdl:output message="tns:Atualiza_Endereco_ClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <wsdl:input message="tns:Atualiza_Clientes_Endereco_IDFiscaisSoapIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_Endereco_IDFiscaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <wsdl:input message="tns:Atualiza_Clientes_ContatosSoapIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_ContatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <wsdl:input message="tns:Atualiza_Clientes_AnexosSoapIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_AnexosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <wsdl:input message="tns:Atualiza_UtilizacaoSoapIn" />
+      <wsdl:output message="tns:Atualiza_UtilizacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <wsdl:input message="tns:Atualiza_Grupos_ProdutosSoapIn" />
+      <wsdl:output message="tns:Atualiza_Grupos_ProdutosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <wsdl:input message="tns:Atualiza_ProdutosSoapIn" />
+      <wsdl:output message="tns:Atualiza_ProdutosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <wsdl:input message="tns:Atualiza_Naturezas_DestinacaoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Naturezas_DestinacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <wsdl:input message="tns:Atualiza_Fretes_IncontermsSoapIn" />
+      <wsdl:output message="tns:Atualiza_Fretes_IncontermsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <wsdl:input message="tns:Atualiza_Empresa_FilialSoapIn" />
+      <wsdl:output message="tns:Atualiza_Empresa_FilialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_PedidoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_PedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_Rascunho_PedidoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_Rascunho_PedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <wsdl:input message="tns:Insere_Pedido_SAPSoapIn" />
+      <wsdl:output message="tns:Insere_Pedido_SAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <wsdl:input message="tns:Atualiza_Pedido_SAPSoapIn" />
+      <wsdl:output message="tns:Atualiza_Pedido_SAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <wsdl:input message="tns:Transforma_Esboco_Pedido_SAPSoapIn" />
+      <wsdl:output message="tns:Transforma_Esboco_Pedido_SAPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <wsdl:input message="tns:Atualiza_Numero_Pedido_EsbocoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Numero_Pedido_EsbocoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <wsdl:input message="tns:Atualiza_Producao_PedidoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Producao_PedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <wsdl:input message="tns:Atualiza_Notas_Fiscais_PedidoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Notas_Fiscais_PedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <wsdl:input message="tns:Atualiza_DepositosSoapIn" />
+      <wsdl:output message="tns:Atualiza_DepositosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <wsdl:input message="tns:Valida_Regras_AprovacaoSoapIn" />
+      <wsdl:output message="tns:Valida_Regras_AprovacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <wsdl:input message="tns:Atualiza_Status_Pedido_FinalizadoSoapIn" />
+      <wsdl:output message="tns:Atualiza_Status_Pedido_FinalizadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <wsdl:input message="tns:Salva_Pedido_SAP_EXTERNOSoapIn" />
+      <wsdl:output message="tns:Salva_Pedido_SAP_EXTERNOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <wsdl:input message="tns:AtualizacaoGeralSoapIn" />
+      <wsdl:output message="tns:AtualizacaoGeralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <wsdl:input message="tns:PostClienteSoapIn" />
+      <wsdl:output message="tns:PostClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <wsdl:input message="tns:Atualiza_Lancamento_ContabilHistoricoATSoapIn" />
+      <wsdl:output message="tns:Atualiza_Lancamento_ContabilHistoricoATSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <wsdl:input message="tns:Cancela_Pedidos_PeriodoSoapIn" />
+      <wsdl:output message="tns:Cancela_Pedidos_PeriodoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ComunicacaoSAPHttpGet">
+    <wsdl:operation name="Retorna_Pais">
+      <wsdl:input message="tns:Retorna_PaisHttpGetIn" />
+      <wsdl:output message="tns:Retorna_PaisHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <wsdl:input message="tns:Atualiza_PaisHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_PaisHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <wsdl:input message="tns:Atualiza_EstadosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_EstadosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <wsdl:input message="tns:Atualiza_MunicipiosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_MunicipiosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <wsdl:input message="tns:Atualiza_Codigos_CNAEHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Codigos_CNAEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <wsdl:input message="tns:Atualiza_Classe_VendedoresHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Classe_VendedoresHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <wsdl:input message="tns:Atualiza_VendedoresHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_VendedoresHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <wsdl:input message="tns:Atualiza_Tipo_VendedorHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Tipo_VendedorHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <wsdl:input message="tns:Atualiza_Natureza_JuridicaHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Natureza_JuridicaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <wsdl:input message="tns:Atualiza_Grupo_EconomicoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_EconomicoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <wsdl:input message="tns:Atualiza_Condicao_PagamentoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Condicao_PagamentoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <wsdl:input message="tns:Atualiza_Grupo_ClientesHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_ClientesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <wsdl:input message="tns:Atualiza_ClientesHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_ClientesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <wsdl:input message="tns:Atualiza_Endereco_ClientesHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Endereco_ClientesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <wsdl:input message="tns:Atualiza_Clientes_Endereco_IDFiscaisHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_Endereco_IDFiscaisHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <wsdl:input message="tns:Atualiza_Clientes_ContatosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_ContatosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <wsdl:input message="tns:Atualiza_Clientes_AnexosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_AnexosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <wsdl:input message="tns:Atualiza_UtilizacaoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_UtilizacaoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <wsdl:input message="tns:Atualiza_Grupos_ProdutosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Grupos_ProdutosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <wsdl:input message="tns:Atualiza_ProdutosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_ProdutosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <wsdl:input message="tns:Atualiza_Naturezas_DestinacaoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Naturezas_DestinacaoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <wsdl:input message="tns:Atualiza_Fretes_IncontermsHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Fretes_IncontermsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <wsdl:input message="tns:Atualiza_Empresa_FilialHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Empresa_FilialHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_PedidoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_PedidoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_Rascunho_PedidoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_Rascunho_PedidoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <wsdl:input message="tns:Insere_Pedido_SAPHttpGetIn" />
+      <wsdl:output message="tns:Insere_Pedido_SAPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <wsdl:input message="tns:Atualiza_Pedido_SAPHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Pedido_SAPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <wsdl:input message="tns:Transforma_Esboco_Pedido_SAPHttpGetIn" />
+      <wsdl:output message="tns:Transforma_Esboco_Pedido_SAPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <wsdl:input message="tns:Atualiza_Numero_Pedido_EsbocoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Numero_Pedido_EsbocoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <wsdl:input message="tns:Atualiza_Producao_PedidoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Producao_PedidoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <wsdl:input message="tns:Atualiza_Notas_Fiscais_PedidoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Notas_Fiscais_PedidoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <wsdl:input message="tns:Atualiza_DepositosHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_DepositosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <wsdl:input message="tns:Valida_Regras_AprovacaoHttpGetIn" />
+      <wsdl:output message="tns:Valida_Regras_AprovacaoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <wsdl:input message="tns:Atualiza_Status_Pedido_FinalizadoHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Status_Pedido_FinalizadoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <wsdl:input message="tns:Salva_Pedido_SAP_EXTERNOHttpGetIn" />
+      <wsdl:output message="tns:Salva_Pedido_SAP_EXTERNOHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <wsdl:input message="tns:AtualizacaoGeralHttpGetIn" />
+      <wsdl:output message="tns:AtualizacaoGeralHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <wsdl:input message="tns:PostClienteHttpGetIn" />
+      <wsdl:output message="tns:PostClienteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <wsdl:input message="tns:Atualiza_Lancamento_ContabilHistoricoATHttpGetIn" />
+      <wsdl:output message="tns:Atualiza_Lancamento_ContabilHistoricoATHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <wsdl:input message="tns:Cancela_Pedidos_PeriodoHttpGetIn" />
+      <wsdl:output message="tns:Cancela_Pedidos_PeriodoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ComunicacaoSAPHttpPost">
+    <wsdl:operation name="Retorna_Pais">
+      <wsdl:input message="tns:Retorna_PaisHttpPostIn" />
+      <wsdl:output message="tns:Retorna_PaisHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <wsdl:input message="tns:Atualiza_PaisHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_PaisHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <wsdl:input message="tns:Atualiza_EstadosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_EstadosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <wsdl:input message="tns:Atualiza_MunicipiosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_MunicipiosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <wsdl:input message="tns:Atualiza_Codigos_CNAEHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Codigos_CNAEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <wsdl:input message="tns:Atualiza_Classe_VendedoresHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Classe_VendedoresHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <wsdl:input message="tns:Atualiza_VendedoresHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_VendedoresHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <wsdl:input message="tns:Atualiza_Tipo_VendedorHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Tipo_VendedorHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <wsdl:input message="tns:Atualiza_Natureza_JuridicaHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Natureza_JuridicaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <wsdl:input message="tns:Atualiza_Grupo_EconomicoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_EconomicoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <wsdl:input message="tns:Atualiza_Condicao_PagamentoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Condicao_PagamentoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <wsdl:input message="tns:Atualiza_Grupo_ClientesHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Grupo_ClientesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <wsdl:input message="tns:Atualiza_ClientesHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_ClientesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <wsdl:input message="tns:Atualiza_Endereco_ClientesHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Endereco_ClientesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <wsdl:input message="tns:Atualiza_Clientes_Endereco_IDFiscaisHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_Endereco_IDFiscaisHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <wsdl:input message="tns:Atualiza_Clientes_ContatosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_ContatosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <wsdl:input message="tns:Atualiza_Clientes_AnexosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Clientes_AnexosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <wsdl:input message="tns:Atualiza_UtilizacaoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_UtilizacaoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <wsdl:input message="tns:Atualiza_Grupos_ProdutosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Grupos_ProdutosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <wsdl:input message="tns:Atualiza_ProdutosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_ProdutosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <wsdl:input message="tns:Atualiza_Naturezas_DestinacaoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Naturezas_DestinacaoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <wsdl:input message="tns:Atualiza_Fretes_IncontermsHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Fretes_IncontermsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <wsdl:input message="tns:Atualiza_Empresa_FilialHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Empresa_FilialHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_PedidoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_PedidoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <wsdl:input message="tns:Atualiza_Impostos_Rascunho_PedidoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Impostos_Rascunho_PedidoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <wsdl:input message="tns:Insere_Pedido_SAPHttpPostIn" />
+      <wsdl:output message="tns:Insere_Pedido_SAPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <wsdl:input message="tns:Atualiza_Pedido_SAPHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Pedido_SAPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <wsdl:input message="tns:Transforma_Esboco_Pedido_SAPHttpPostIn" />
+      <wsdl:output message="tns:Transforma_Esboco_Pedido_SAPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <wsdl:input message="tns:Atualiza_Numero_Pedido_EsbocoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Numero_Pedido_EsbocoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <wsdl:input message="tns:Atualiza_Producao_PedidoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Producao_PedidoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <wsdl:input message="tns:Atualiza_Notas_Fiscais_PedidoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Notas_Fiscais_PedidoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <wsdl:input message="tns:Atualiza_DepositosHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_DepositosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <wsdl:input message="tns:Valida_Regras_AprovacaoHttpPostIn" />
+      <wsdl:output message="tns:Valida_Regras_AprovacaoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <wsdl:input message="tns:Atualiza_Status_Pedido_FinalizadoHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Status_Pedido_FinalizadoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <wsdl:input message="tns:Salva_Pedido_SAP_EXTERNOHttpPostIn" />
+      <wsdl:output message="tns:Salva_Pedido_SAP_EXTERNOHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <wsdl:input message="tns:AtualizacaoGeralHttpPostIn" />
+      <wsdl:output message="tns:AtualizacaoGeralHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <wsdl:input message="tns:PostClienteHttpPostIn" />
+      <wsdl:output message="tns:PostClienteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <wsdl:input message="tns:Atualiza_Lancamento_ContabilHistoricoATHttpPostIn" />
+      <wsdl:output message="tns:Atualiza_Lancamento_ContabilHistoricoATHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <wsdl:input message="tns:Cancela_Pedidos_PeriodoHttpPostIn" />
+      <wsdl:output message="tns:Cancela_Pedidos_PeriodoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ComunicacaoSAPSoap" type="tns:ComunicacaoSAPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Retorna_Pais">
+      <soap:operation soapAction="http://tempuri.org/Retorna_Pais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Pais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Estados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Municipios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Codigos_CNAE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Classe_Vendedores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Vendedores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Tipo_Vendedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Natureza_Juridica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Grupo_Economico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Condicao_Pagamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Grupo_Clientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Clientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Endereco_Clientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Clientes_Endereco_IDFiscais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Clientes_Contatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Clientes_Anexos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Utilizacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Grupos_Produtos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Produtos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Naturezas_Destinacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Fretes_Inconterms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Empresa_Filial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Impostos_Pedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Impostos_Rascunho_Pedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <soap:operation soapAction="http://tempuri.org/Insere_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <soap:operation soapAction="http://tempuri.org/Transforma_Esboco_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Numero_Pedido_Esboco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Producao_Pedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Notas_Fiscais_Pedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Depositos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <soap:operation soapAction="http://tempuri.org/Valida_Regras_Aprovacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Status_Pedido_Finalizado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <soap:operation soapAction="http://tempuri.org/Salva_Pedido_SAP_EXTERNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <soap:operation soapAction="http://tempuri.org/AtualizacaoGeral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <soap:operation soapAction="http://tempuri.org/PostCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <soap:operation soapAction="http://tempuri.org/Atualiza_Lancamento_ContabilHistoricoAT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <soap:operation soapAction="http://tempuri.org/Cancela_Pedidos_Periodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ComunicacaoSAPSoap12" type="tns:ComunicacaoSAPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Retorna_Pais">
+      <soap12:operation soapAction="http://tempuri.org/Retorna_Pais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Pais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Estados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Municipios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Codigos_CNAE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Classe_Vendedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Vendedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Tipo_Vendedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Natureza_Juridica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Grupo_Economico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Condicao_Pagamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Grupo_Clientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Clientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Endereco_Clientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Clientes_Endereco_IDFiscais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Clientes_Contatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Clientes_Anexos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Utilizacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Grupos_Produtos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Produtos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Naturezas_Destinacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Fretes_Inconterms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Empresa_Filial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Impostos_Pedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Impostos_Rascunho_Pedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <soap12:operation soapAction="http://tempuri.org/Insere_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <soap12:operation soapAction="http://tempuri.org/Transforma_Esboco_Pedido_SAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Numero_Pedido_Esboco" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Producao_Pedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Notas_Fiscais_Pedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Depositos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <soap12:operation soapAction="http://tempuri.org/Valida_Regras_Aprovacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Status_Pedido_Finalizado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <soap12:operation soapAction="http://tempuri.org/Salva_Pedido_SAP_EXTERNO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <soap12:operation soapAction="http://tempuri.org/AtualizacaoGeral" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <soap12:operation soapAction="http://tempuri.org/PostCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <soap12:operation soapAction="http://tempuri.org/Atualiza_Lancamento_ContabilHistoricoAT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <soap12:operation soapAction="http://tempuri.org/Cancela_Pedidos_Periodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ComunicacaoSAPHttpGet" type="tns:ComunicacaoSAPHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Retorna_Pais">
+      <http:operation location="/Retorna_Pais" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <http:operation location="/Atualiza_Pais" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <http:operation location="/Atualiza_Estados" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <http:operation location="/Atualiza_Municipios" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <http:operation location="/Atualiza_Codigos_CNAE" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <http:operation location="/Atualiza_Classe_Vendedores" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <http:operation location="/Atualiza_Vendedores" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <http:operation location="/Atualiza_Tipo_Vendedor" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <http:operation location="/Atualiza_Natureza_Juridica" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <http:operation location="/Atualiza_Grupo_Economico" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <http:operation location="/Atualiza_Condicao_Pagamento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <http:operation location="/Atualiza_Grupo_Clientes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <http:operation location="/Atualiza_Clientes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <http:operation location="/Atualiza_Endereco_Clientes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <http:operation location="/Atualiza_Clientes_Endereco_IDFiscais" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <http:operation location="/Atualiza_Clientes_Contatos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <http:operation location="/Atualiza_Clientes_Anexos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <http:operation location="/Atualiza_Utilizacao" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <http:operation location="/Atualiza_Grupos_Produtos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <http:operation location="/Atualiza_Produtos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <http:operation location="/Atualiza_Naturezas_Destinacao" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <http:operation location="/Atualiza_Fretes_Inconterms" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <http:operation location="/Atualiza_Empresa_Filial" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <http:operation location="/Atualiza_Impostos_Pedido" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <http:operation location="/Atualiza_Impostos_Rascunho_Pedido" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <http:operation location="/Insere_Pedido_SAP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <http:operation location="/Atualiza_Pedido_SAP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <http:operation location="/Transforma_Esboco_Pedido_SAP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <http:operation location="/Atualiza_Numero_Pedido_Esboco" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <http:operation location="/Atualiza_Producao_Pedido" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <http:operation location="/Atualiza_Notas_Fiscais_Pedido" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <http:operation location="/Atualiza_Depositos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <http:operation location="/Valida_Regras_Aprovacao" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <http:operation location="/Atualiza_Status_Pedido_Finalizado" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <http:operation location="/Salva_Pedido_SAP_EXTERNO" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <http:operation location="/AtualizacaoGeral" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <http:operation location="/PostCliente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <http:operation location="/Atualiza_Lancamento_ContabilHistoricoAT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <http:operation location="/Cancela_Pedidos_Periodo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ComunicacaoSAPHttpPost" type="tns:ComunicacaoSAPHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Retorna_Pais">
+      <http:operation location="/Retorna_Pais" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pais">
+      <http:operation location="/Atualiza_Pais" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Estados">
+      <http:operation location="/Atualiza_Estados" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Municipios">
+      <http:operation location="/Atualiza_Municipios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Codigos_CNAE">
+      <http:operation location="/Atualiza_Codigos_CNAE" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Classe_Vendedores">
+      <http:operation location="/Atualiza_Classe_Vendedores" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Vendedores">
+      <http:operation location="/Atualiza_Vendedores" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Tipo_Vendedor">
+      <http:operation location="/Atualiza_Tipo_Vendedor" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Natureza_Juridica">
+      <http:operation location="/Atualiza_Natureza_Juridica" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Economico">
+      <http:operation location="/Atualiza_Grupo_Economico" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Condicao_Pagamento">
+      <http:operation location="/Atualiza_Condicao_Pagamento" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupo_Clientes">
+      <http:operation location="/Atualiza_Grupo_Clientes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes">
+      <http:operation location="/Atualiza_Clientes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Endereco_Clientes">
+      <http:operation location="/Atualiza_Endereco_Clientes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Endereco_IDFiscais">
+      <http:operation location="/Atualiza_Clientes_Endereco_IDFiscais" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Contatos">
+      <http:operation location="/Atualiza_Clientes_Contatos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Clientes_Anexos">
+      <http:operation location="/Atualiza_Clientes_Anexos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Utilizacao">
+      <http:operation location="/Atualiza_Utilizacao" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Grupos_Produtos">
+      <http:operation location="/Atualiza_Grupos_Produtos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Produtos">
+      <http:operation location="/Atualiza_Produtos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Naturezas_Destinacao">
+      <http:operation location="/Atualiza_Naturezas_Destinacao" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Fretes_Inconterms">
+      <http:operation location="/Atualiza_Fretes_Inconterms" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Empresa_Filial">
+      <http:operation location="/Atualiza_Empresa_Filial" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Pedido">
+      <http:operation location="/Atualiza_Impostos_Pedido" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Impostos_Rascunho_Pedido">
+      <http:operation location="/Atualiza_Impostos_Rascunho_Pedido" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insere_Pedido_SAP">
+      <http:operation location="/Insere_Pedido_SAP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Pedido_SAP">
+      <http:operation location="/Atualiza_Pedido_SAP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transforma_Esboco_Pedido_SAP">
+      <http:operation location="/Transforma_Esboco_Pedido_SAP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Numero_Pedido_Esboco">
+      <http:operation location="/Atualiza_Numero_Pedido_Esboco" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Producao_Pedido">
+      <http:operation location="/Atualiza_Producao_Pedido" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Notas_Fiscais_Pedido">
+      <http:operation location="/Atualiza_Notas_Fiscais_Pedido" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Depositos">
+      <http:operation location="/Atualiza_Depositos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Valida_Regras_Aprovacao">
+      <http:operation location="/Valida_Regras_Aprovacao" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Status_Pedido_Finalizado">
+      <http:operation location="/Atualiza_Status_Pedido_Finalizado" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Salva_Pedido_SAP_EXTERNO">
+      <http:operation location="/Salva_Pedido_SAP_EXTERNO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizacaoGeral">
+      <http:operation location="/AtualizacaoGeral" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCliente">
+      <http:operation location="/PostCliente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualiza_Lancamento_ContabilHistoricoAT">
+      <http:operation location="/Atualiza_Lancamento_ContabilHistoricoAT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cancela_Pedidos_Periodo">
+      <http:operation location="/Cancela_Pedidos_Periodo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ComunicacaoSAP">
+    <wsdl:port name="ComunicacaoSAPSoap" binding="tns:ComunicacaoSAPSoap">
+      <soap:address location="http://192.168.0.4/CrmManuli/WebServiceSAP/ComunicacaoSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ComunicacaoSAPSoap12" binding="tns:ComunicacaoSAPSoap12">
+      <soap12:address location="http://192.168.0.4/CrmManuli/WebServiceSAP/ComunicacaoSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ComunicacaoSAPHttpGet" binding="tns:ComunicacaoSAPHttpGet">
+      <http:address location="http://192.168.0.4/CrmManuli/WebServiceSAP/ComunicacaoSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ComunicacaoSAPHttpPost" binding="tns:ComunicacaoSAPHttpPost">
+      <http:address location="http://192.168.0.4/CrmManuli/WebServiceSAP/ComunicacaoSAP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

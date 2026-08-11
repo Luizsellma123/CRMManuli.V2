@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0149370
+Tipo : Total
+drpStatus : 13
+Data Saída: 10/02/2015
+Data Emissao: 10/02/2015
+Natureza: Atacadista
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000034 - 28/56 DIAS
+Tipo Frete: Emitente
+Transportadora: 0013564 - RAPIDO TRANSPAULO LTDA - PR
+Data Hora Inclusão: 10/02/2015
+
+Produto: 30.24.01.01.0002 Revenda: 0 Quantidade: 2,5 Tabela: 000000000000060 Valor Unitario: 2,66 Total: 6,65000021457672 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

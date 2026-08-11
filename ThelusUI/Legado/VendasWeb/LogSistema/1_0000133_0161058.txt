@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0161058
+Tipo : Total
+drpStatus : 13
+Data Saída: 31/07/2015
+Data Emissao: 14/07/2015
+Natureza: Transportador
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0009125 - RTE TRANSPORTES LTDA.
+Data Hora Inclusão: 14/07/2015
+
+Produto: 30.10.40.10.0006 Revenda: 0 Quantidade: 144 Tabela: 000000000000050 Valor Unitario: 5,47 Total: 787,679969787598 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

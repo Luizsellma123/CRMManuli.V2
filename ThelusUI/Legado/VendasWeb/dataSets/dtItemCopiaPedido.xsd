@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtItemCopiaPedido" targetNamespace="http://tempuri.org/dtItemCopiaPedido.xsd" xmlns:mstns="http://tempuri.org/dtItemCopiaPedido.xsd" xmlns="http://tempuri.org/dtItemCopiaPedido.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="Apolo_ManuliConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Apolo_ManuliConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.Apolo_ManuliConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ITEM_PED_VENDATableAdapter" GeneratorDataComponentClassName="ITEM_PED_VENDATableAdapter" Name="ITEM_PED_VENDA" UserDataComponentName="ITEM_PED_VENDATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Apolo_ManuliConnectionString (Web.config)" DbObjectName="SELECT CPI.IDEmpresa AS EmpCod, CPI.IDPedido AS PedVendaNum, CP.CodigoProdutoSAP AS ProdCodEstr, CP.UnidadeVenda AS ItPedVendaUnidMedCod, CPI.Quantidade AS ItPedVendaQtd, CPI.PrecoUnitario AS ItPedVendaValUnit, CPI.Quantidade * CPI.PrecoUnitario AS ItPedVendaValTot, CPI.Quantidade * CPI.PrecoUnitario + ISNULL(CPII.ValorImposto, 0) AS ItPedVendaValFinal FROM CRM_MANULI.dbo.CRM_PEDIDO_ITENS AS CPI INNER JOIN CRM_MANULI.dbo.CRM_PRODUTO AS CP ON CPI.IDProduto = CP.IDProduto LEFT OUTER JOIN CRM_MANULI.dbo.CRM_PEDIDO_ITENS_IMPOSTOS AS CPII ON CPII.IDEmpresa = CPI.IDEmpresa AND CPII.IDPedido = CPI.IDPedido AND CPI.IDItem = CPII.IDItem AND CPII.Imposto = 'IPI'" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        EmpCod, PedVendaNum, ProdCodEstr, ItPedVendaUnidMedCod, ItPedVendaQtd, ItPedVendaValUnit, ItPedVendaValTot, ItPedVendaValFinal
+FROM            (SELECT        CPI.IDEmpresa AS EmpCod, CPI.IDPedido AS PedVendaNum, CP.CodigoProdutoSAP AS ProdCodEstr, CP.UnidadeVenda AS ItPedVendaUnidMedCod, 
+                                                    CPI.Quantidade AS ItPedVendaQtd, CPI.PrecoUnitario AS ItPedVendaValUnit, CPI.Quantidade * CPI.PrecoUnitario AS ItPedVendaValTot, 
+                                                    CPI.Quantidade * CPI.PrecoUnitario + ISNULL(CPII.ValorImposto, 0) AS ItPedVendaValFinal
+                          FROM            CRM_MANULI.dbo.CRM_PEDIDO_ITENS AS CPI INNER JOIN
+                                                    CRM_MANULI.dbo.CRM_PRODUTO AS CP ON CPI.IDProduto = CP.IDProduto LEFT OUTER JOIN
+                                                    CRM_MANULI.dbo.CRM_PEDIDO_ITENS_IMPOSTOS AS CPII ON CPII.IDEmpresa = CPI.IDEmpresa AND CPII.IDPedido = CPI.IDPedido AND 
+                                                    CPI.IDItem = CPII.IDItem AND CPII.Imposto = 'IPI') AS ITEM_PED_VENDA</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ProdCodEstr" DataSetColumn="ProdCodEstr" />
+              <Mapping SourceColumn="ItPedVendaQtd" DataSetColumn="ItPedVendaQtd" />
+              <Mapping SourceColumn="ItPedVendaUnidMedCod" DataSetColumn="ItPedVendaUnidMedCod" />
+              <Mapping SourceColumn="ItPedVendaValUnit" DataSetColumn="ItPedVendaValUnit" />
+              <Mapping SourceColumn="ItPedVendaValTot" DataSetColumn="ItPedVendaValTot" />
+              <Mapping SourceColumn="ItPedVendaValFinal" DataSetColumn="ItPedVendaValFinal" />
+              <Mapping SourceColumn="EmpCod" DataSetColumn="EmpCod" />
+              <Mapping SourceColumn="PedVendaNum" DataSetColumn="PedVendaNum" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtItemCopiaPedido" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dtItemCopiaPedido" msprop:Generator_UserDSName="dtItemCopiaPedido">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ITEM_PED_VENDA" msprop:Generator_TableClassName="ITEM_PED_VENDADataTable" msprop:Generator_TableVarName="tableITEM_PED_VENDA" msprop:Generator_TablePropName="ITEM_PED_VENDA" msprop:Generator_RowDeletingName="ITEM_PED_VENDARowDeleting" msprop:Generator_RowChangingName="ITEM_PED_VENDARowChanging" msprop:Generator_RowEvHandlerName="ITEM_PED_VENDARowChangeEventHandler" msprop:Generator_RowDeletedName="ITEM_PED_VENDARowDeleted" msprop:Generator_UserTableName="ITEM_PED_VENDA" msprop:Generator_RowChangedName="ITEM_PED_VENDARowChanged" msprop:Generator_RowEvArgName="ITEM_PED_VENDARowChangeEvent" msprop:Generator_RowClassName="ITEM_PED_VENDARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProdCodEstr" msprop:Generator_ColumnVarNameInTable="columnProdCodEstr" msprop:Generator_ColumnPropNameInRow="ProdCodEstr" msprop:Generator_ColumnPropNameInTable="ProdCodEstrColumn" msprop:Generator_UserColumnName="ProdCodEstr" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItPedVendaQtd" msprop:Generator_ColumnVarNameInTable="columnItPedVendaQtd" msprop:Generator_ColumnPropNameInRow="ItPedVendaQtd" msprop:Generator_ColumnPropNameInTable="ItPedVendaQtdColumn" msprop:Generator_UserColumnName="ItPedVendaQtd" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ItPedVendaUnidMedCod" msprop:Generator_ColumnVarNameInTable="columnItPedVendaUnidMedCod" msprop:Generator_ColumnPropNameInRow="ItPedVendaUnidMedCod" msprop:Generator_ColumnPropNameInTable="ItPedVendaUnidMedCodColumn" msprop:Generator_UserColumnName="ItPedVendaUnidMedCod" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ItPedVendaValUnit" msprop:Generator_ColumnVarNameInTable="columnItPedVendaValUnit" msprop:Generator_ColumnPropNameInRow="ItPedVendaValUnit" msprop:Generator_ColumnPropNameInTable="ItPedVendaValUnitColumn" msprop:Generator_UserColumnName="ItPedVendaValUnit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ItPedVendaValTot" msprop:Generator_ColumnVarNameInTable="columnItPedVendaValTot" msprop:Generator_ColumnPropNameInRow="ItPedVendaValTot" msprop:Generator_ColumnPropNameInTable="ItPedVendaValTotColumn" msprop:Generator_UserColumnName="ItPedVendaValTot" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ItPedVendaValFinal" msprop:Generator_ColumnVarNameInTable="columnItPedVendaValFinal" msprop:Generator_ColumnPropNameInRow="ItPedVendaValFinal" msprop:Generator_ColumnPropNameInTable="ItPedVendaValFinalColumn" msprop:Generator_UserColumnName="ItPedVendaValFinal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="EmpCod" msprop:Generator_ColumnVarNameInTable="columnEmpCod" msprop:Generator_ColumnPropNameInRow="EmpCod" msprop:Generator_ColumnPropNameInTable="EmpCodColumn" msprop:Generator_UserColumnName="EmpCod" type="xs:int" />
+              <xs:element name="PedVendaNum" msprop:Generator_ColumnVarNameInTable="columnPedVendaNum" msprop:Generator_ColumnPropNameInRow="PedVendaNum" msprop:Generator_ColumnPropNameInTable="PedVendaNumColumn" msprop:Generator_UserColumnName="PedVendaNum" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

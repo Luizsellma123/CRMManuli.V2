@@ -1,0 +1,24 @@
+Empresa: 1.2
+Pedido: 0010476
+Tipo : Total
+drpStatus : 13
+Data Saída: 04/11/2014
+Data Emissao: 04/11/2014
+Natureza: Consumidor
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 04/11/2014
+
+Produto: 20.10.10.10.0038 Revenda: 0 Quantidade: 5 Tabela: 000000000000050 Valor Unitario: 2 Total: 10 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

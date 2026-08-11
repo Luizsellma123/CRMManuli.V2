@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0
+Tipo : Total
+drpStatus : 
+Data Saída: 16/08/2019
+Data Emissao: 16/08/2019
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 86 - 
+Tipo Frete: 3
+Transportadora:  - 
+Data Hora Inclusão: 16/08/2019
+
+Produto: 30.10.30.13.0091 Revenda: 0 Quantidade: 5 Tabela: 1 Valor Unitario: 54,33 Total: 271,650009155273 Unidade: RL
+
+Historico:  - 16/08/2019 05:00:31 PATRICIA PIETRO:Teste de inclusão não faturar
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

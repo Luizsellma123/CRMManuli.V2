@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0149373
+Tipo : Total
+drpStatus : 13
+Data Saída: 10/02/2015
+Data Emissao: 10/02/2015
+Natureza: Varejista
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0017743 - TRANSPORTADORA GAMPER LTDA.
+Data Hora Inclusão: 10/02/2015
+
+Produto: 30.24.01.01.0002 Revenda: 0 Quantidade: 100 Tabela: 000000000000060 Valor Unitario: 0,01 Total: 0,999999977648258 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

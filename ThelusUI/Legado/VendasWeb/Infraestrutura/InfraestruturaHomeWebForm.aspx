@@ -1,0 +1,118 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterPageCRM.master" AutoEventWireup="true" CodeBehind="InfraestruturaHomeWebForm.aspx.cs" Inherits="VendasWeb.Infraestrutura.InfraestruturaHomeWebForm" %>
+
+<%@ Register Src="~/usercontrol/InfraestruturaWebUserControl.ascx" TagPrefix="uc1" TagName="InfraestruturaWebUserControl" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <div class="row">
+
+        <!-- COLUNA 1-->
+        <div class="col-sm-9">
+            <!--===================================================-->
+            <!--Painel Carteiras e Filtros-->
+            <!--===================================================-->
+            <div class="panel panel-info">
+                <!--Panel heading-->
+                <!--Título e controles para o painel de Filtros-->
+                <div class="panel-heading">
+                    <div class="panel-control">
+                        <button type="button" class="demo-panel-ref-btn btn btn-default" data-toggle="panel-overlay"
+                            data-target="#filtros">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                        <button type="button" class="btn btn-default" data-target="#filtros" data-toggle="collapse">
+                            <i class="fa fa-chevron-down"></i>
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="panel">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <h3 class="panel-title">Pagina Inicial Infraestrutura</h3>
+                </div>
+                <!--Painel Aberto-->
+                <!--Campos para escolha da carteira e do cliente-->
+                <%--<div id="painel_aberto" class="">
+                    <div class="panel-body">
+                        <!--LINHA 1 - Painel Aberto-->
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <asp:MultiView ID="VendedorMultView" runat="server" ActiveViewIndex="0">
+                                    <asp:View ID="VendedorView" runat="server">
+                                        <div class="col-lg-5">
+                                            <select class="selectpicker show-tick" multiple data-placeholder="Escolha um vendedor..."
+                                                title="Escolha um vendedor..." data-style="btn-primary" data-live-search="true"
+                                                id="VendedoresSelect" runat="server">
+                                            </select>
+                                        </div>
+                                    </asp:View>
+                                </asp:MultiView>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <asp:DropDownList ID="drpEntCod" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="1">NOME FANTASIA</asp:ListItem>
+                                        <asp:ListItem Value="2" Selected="True">RAZÃO SOCIAL</asp:ListItem>
+                                        <asp:ListItem Value="3">CÓD.ENTIDADE</asp:ListItem>
+                                        <asp:ListItem Value="4">CNPJ</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <asp:TextBox ID="txtFiltroEntCod" runat="server" placeholder="Procurar" class="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <!--END LINHA 1 - Painel Aberto-->
+                        <!--===================================================-->
+                    </div>
+                </div>--%>
+                <!-- END Painel Aberto-->
+                <!--===================================================-->
+                <!--Painel FILTROS-->
+                <!--===================================================-->
+                <asp:Literal ID="collapseLiteral" runat="server" Text=""></asp:Literal>
+                <%--<div class="panel-body">
+                    <!-- LINHA 1 - Painel FILTROS-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h5 class="text-bold">Filtros</h5>
+                            <hr>
+                        </div>
+                        <div class="col-sm-3">
+                            <h5>
+                                <asp:Label ID="StatusEntidadeLabel" runat="server" Text="Status de Cadastro:" CssClass="text-thin"></asp:Label></h5>
+                            <asp:DropDownList ID="StatusEntidadeDropDownList" runat="server" CssClass="form-control">
+                            </asp:DropDownList>
+                            <h5>
+                                <asp:Label ID="StatusComercialLabel" runat="server" Text="Status Comercial:" CssClass="text-thin"></asp:Label></h5>
+                            <asp:DropDownList ID="StatusComercialDropDownList" runat="server" CssClass="form-control">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <hr />
+                </div>--%>
+            </div>
+            <!-- END Painel FILTROS-->
+            <!--===================================================-->
+            <!-- Panel Footer-->
+            <!-- Botões de buscar e limpar-->
+            <!--===================================================-->
+            <%--<div class="panel-footer">
+                <div class="row">
+                    <div class="panel-control">
+                        <asp:LinkButton ID="btnListar" class="btn btn-success btn-labeled fa fa-search fa-lg"
+                            runat="server" title="Buscar Cliente" data-rel="tooltip"
+                            CausesValidation="False"> 
+             Buscar Cliente </asp:LinkButton>
+                    </div>
+                </div>
+            </div>--%>
+        </div>
+        <!----PAINEL----->
+         <uc1:InfraestruturaWebUserControl runat="server" id="InfraestruturaWebUserControl" />
+        <!--NÂO REMOVER ESSE /DIV pois esta vinculado ao Literal ID="collapseLiteral" -->
+    </div>
+</asp:Content>

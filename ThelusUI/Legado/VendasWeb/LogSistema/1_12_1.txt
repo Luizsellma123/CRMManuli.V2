@@ -1,0 +1,79 @@
+Empresa: 1
+Pedido: 1
+Tipo : Total
+drpStatus : 1
+Data Saída: 18/07/2019
+Data Emissao: 18/07/2019
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 11 - 45 dias
+Tipo Frete: 1
+Transportadora: FOR0000002      - 24MAIS - TECNOLOGIA LTDA - ME
+Data Hora Inclusão: 18/07/2019
+
+Produto: 30.10.10.11.0003 Revenda: 0 Quantidade: 1 Tabela: 1 Valor Unitario: 2,78 Total: 2,77999997138977 Unidade: RL
+
+Historico: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Novo Teste
+teste de historicochar(13)teste de historico - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

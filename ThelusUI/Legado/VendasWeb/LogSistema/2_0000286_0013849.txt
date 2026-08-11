@@ -1,0 +1,24 @@
+Empresa: 2
+Pedido: 0013849
+Tipo : Total
+drpStatus : 13
+Data Saída: 04/04/2019
+Data Emissao: 04/04/2019
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0013564 - RAPIDO TRANSPAULO LTDA - PR
+Data Hora Inclusão: 04/04/2019
+
+Produto: 30.10.10.18.0185 Revenda: 0 Quantidade: 5 Tabela: 000000000000010 Valor Unitario: 131,89 Total: 659,449996948242 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

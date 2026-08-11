@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0236923
+Tipo : Total
+drpStatus : 13
+Data Saída: 20/05/2019
+Data Emissao: 20/05/2019
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 20/05/2019
+
+Produto: 30.10.10.11.0003 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 3,27 Total: 3,26999998092651 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

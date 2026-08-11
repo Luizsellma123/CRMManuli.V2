@@ -1,0 +1,35 @@
+Empresa: 1
+Pedido: 45082
+Tipo : Total
+drpStatus : 1
+Data Saída: 02/04/2023 00:00:00
+Data Emissao: 21/03/2023 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 59 - 28 e 35 dias
+Tipo Frete: 3
+Transportadora: FOR0000065      - ALFA TRANSPORTES EIRELI.
+Data Hora Inclusão: 21/03/2023 00:00:00
+
+Produto: 30.10.40.25.0013 Revenda: 0 Quantidade: 648 Tabela: 1 Valor Unitario: 7,95 Total: 5151,59987640381 Unidade: RL
+Produto: 30.10.10.18.1005 Revenda: 0 Quantidade: 72 Tabela: 1 Valor Unitario: 6,5 Total: 468 Unidade: RL
+
+Historico: 03/02/2023 09:10:35 CVW:Solicitado por Ivo - Compras
+Quer receber dia 03/04 na sua empresa.
+Frete CIF
+
+ 03/03/2023 11:00:31 EDUARDO.ERNANI: OK ERNANI - 03/02/2023 09:10:35 CVW:Solicitado por Ivo - Compras
+Quer receber dia 03/04 na sua empresa.
+Frete CIF
+
+ 03/03/2023 11:00:31 EDUARDO.ERNANI: OK ERNANI
+
+21/03/2023 02:37:22 LUIZ.CARLOS:Pedido Atualizado.
+Observacao: Ordem de compra nº 585.
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

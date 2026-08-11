@@ -1,0 +1,25 @@
+Empresa: 1
+Pedido: 2
+Tipo : Total
+drpStatus : 1
+Data Saída: 17/07/2019
+Data Emissao: 17/07/2019
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À vista
+Tipo Frete: 1
+Transportadora: FOR0000003      - 2A MONTADORA DE BICICLETAS LTDA - EPP
+Data Hora Inclusão: 17/07/2019
+
+Produto: 30.10.10.11.0001 Revenda: 0 Quantidade: 6 Tabela: 1 Valor Unitario: 1,11 Total: 6,66000008583069 Unidade: RL
+Produto: 30.10.10.12.0031 Revenda: 0 Quantidade: 4 Tabela: 1 Valor Unitario: 2,78 Total: 11,1199998855591 Unidade: RL
+
+Historico: novo historico - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

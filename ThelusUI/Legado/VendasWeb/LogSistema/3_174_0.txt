@@ -1,0 +1,24 @@
+Empresa: 3
+Pedido: 0
+Tipo : Total
+drpStatus : 
+Data Saída: 12/11/2020 00:00:00
+Data Emissao: 12/11/2020 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 20 - 
+Tipo Frete: 3
+Transportadora:  - 
+Data Hora Inclusão: 12/11/2020 00:00:00
+
+Produto: 20.20.10.10.0007 Revenda: 0 Quantidade: 1 Tabela: 3 Valor Unitario: 10,4 Total: 10,3999996185303 Unidade: KG
+
+Historico:  - 12/11/2020 10:37:09 LUIZ.CARLOS:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

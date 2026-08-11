@@ -1,0 +1,26 @@
+Empresa: 1
+Pedido: 18331
+Tipo : Total
+drpStatus : 1
+Data Saída: 15/11/2020 00:00:00
+Data Emissao: 05/11/2020 00:00:00
+Natureza: Transportador
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À Vista
+Tipo Frete: 3
+Transportadora: 0               - 
+Data Hora Inclusão: 05/11/2020 00:00:00
+
+Produto: 30.23.01.01.0003 Revenda: 0 Quantidade: 1 Tabela: 1 Valor Unitario: 10,88 Total: 10,8800001144409 Unidade: KG
+
+Historico: 05/11/2020 05:53:44 :Pedido Atualizado. - 05/11/2020 05:53:44 :Pedido Atualizado.
+
+05/11/2020 05:54:45 LUIZ.CARLOS:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

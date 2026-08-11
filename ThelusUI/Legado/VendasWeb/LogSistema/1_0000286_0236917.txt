@@ -1,0 +1,28 @@
+Empresa: 1
+Pedido: 0236917
+Tipo : Total
+drpStatus : 13
+Data Saída: 21/05/2019
+Data Emissao: 14/05/2019
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000036 - 28 DIAS
+Tipo Frete: Emitente
+Transportadora: 0025187 - INDUSTRIA E COM DE MOVEIS EUROPA LTDA
+Data Hora Inclusão: 14/05/2019
+
+Produto: 30.10.10.11.0002 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 2,6 Total: 2,59999990463257 Unidade: RL
+
+Historico: 14/05/2019 14:54:46 - LUIZ.CARLOS - Origem Vendas WEBConsumo: Sim
+Data :14/05/2019 14:56:17Usuário :LUIZ.CARLOS Status :Aprovado - APOLO - Pedido para analise do financeiro 14/05/2019 14:56:20 - APOLO - Excedeu o limite de crédito   Valor Pedido : 45.13   Valor em aberto: 0.00   Limite : 0.00
+Data :14/05/2019 14:59:18Usuário :LUIZ.CARLOS Status :Faturar
+Data :14/05/2019 15:02:30Usuário :LUIZ.CARLOS Status :Orçamento
+Data :14/05/2019 15:02:31Usuário :LUIZ.CARLOS Status :Orçamento - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

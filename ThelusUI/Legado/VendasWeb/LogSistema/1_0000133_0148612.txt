@@ -1,0 +1,25 @@
+Empresa: 1
+Pedido: 0148612
+Tipo : Total
+drpStatus : 13
+Data Saída: 31/12/2014
+Data Emissao: 01/12/2014
+Natureza: Fabricante
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000373 - REMESSA DE DOAÇÃO/BRINDES/BONIFICAÇÕES E AMOSTRAS
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 01/12/2014
+
+Produto: 20.10.10.10.0038 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 1,06 Total: 1,05999994277954 Unidade: RL
+Produto: 20.20.10.14.0006 Revenda: 0 Quantidade: 1 Tabela: 000000000000050 Valor Unitario: 8,65 Total: 8,64999961853027 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

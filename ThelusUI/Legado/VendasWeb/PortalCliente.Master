@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PortalCliente.master.cs" Inherits="VendasWeb.PortalCliente" %>
+
+<%@ Register Src="~/usercontrol/PortalClienteMenuWebUserControl.ascx" TagPrefix="uc1" TagName="PortalClienteMenuWebUserControl" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Portal Cliente</title>
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/PortalClienteManuli/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/PortalClienteManuli/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/PortalClienteManuli/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/PortalClienteManuli/vendors/css/vendor.bundle.addons.css">
+
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/PortalClienteManuli/css/horizontal-layout/style.css">
+
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/PortalClienteManuli/images/logomanulimini.png" />
+
+
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <!--<script src="../..\vendors\js\vendor.bundle.base.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/vendors/js/vendor.bundle.base.js")%>"></script>
+
+    <!--<script src="../..\vendors\js\vendor.bundle.addons.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/vendors/js/vendor.bundle.addons.js")%>"></script>
+
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <!--<script src="../..\js\off-canvas.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/off-canvas.js")%>"></script>
+
+    <!--<script src="../..\js\hoverable-collapse.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/hoverable-collapse.js")%>"></script>
+
+    <!--<script src="../..\js\template.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/template.js")%>"></script>
+
+    <!--<script src="../..\js\settings.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/settings.js")%>"></script>
+
+    <!--<script src="../..\js\todolist.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/todolist.js")%>"></script>
+
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!--<script src="../..\js\dashboard.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/dashboard.js")%>"></script>
+
+    <!--<script src="../..\js\todolist.js"></script>-->
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/todolist.js")%>"></script>
+    <!-- End custom js for this page-->
+
+    <script src="<%=Page.ResolveClientUrl("~/PortalClienteManuli/js/JsMascarasGerais.js")%>"></script>
+    <!-- End custom js for this page-->
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+
+
+    <div class="container-scroller">
+        <!-- partial:partials/_horizontal-navbar.html -->
+
+        <uc1:PortalClienteMenuWebUserControl runat="server" ID="PortalClienteMenuWebUserControl" />
+
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <form id="form2" runat="server" class="forms-sample">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <div>
+                            <div class="mensagemPortal">
+                                <asp:UpdatePanel ID="MenssagemMasterUpdatePanel" runat="server" UpdateMode="Always">
+                                    <ContentTemplate>
+                                        <asp:Label ID="MenssagemMasterLabel" runat="server" Text="" Visible="false"></asp:Label>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderCorpo" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </form>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="w-100 clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.manulifitasa.com.br" target="_blank">Manuli Fitasa Do Brasil S/A</a>. Todos os Direitos Reservados.</span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+</body>
+</html>

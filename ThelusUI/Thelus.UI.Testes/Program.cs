@@ -21,6 +21,8 @@ namespace Thelus.UI.Testes
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+            // Se o App.razor estiver no próprio projeto Thelus.UI.Testes:
+            builder.RootComponents.Add<Thelus.UI.Testes.App>("#app");
 
             // APONTE O BASEADDRESS PARA A SUA API
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44337/") });
@@ -41,7 +43,7 @@ namespace Thelus.UI.Testes
             // 3. Registra o serviço de Autenticação (AuthService)
             builder.Services.AddScoped<AuthService>();
 
-            // 4. Registra o LayoutStateService inicial (sem montar o menu no boot)
+            // 4. Registra o LayoutStateService inicial
             builder.Services.AddScoped<LayoutStateService>(sp =>
             {
                 return new LayoutStateService
@@ -65,6 +67,10 @@ namespace Thelus.UI.Testes
             EntityRegistry.Register<StatusModel>("Status");
             EntityRegistry.Register<StatusModel>("status");
 
+            // Registro correto da Entidade de Indicadores
+            EntityRegistry.Register<IndicadorTecnologiaInformacao>("Indicadores");
+            EntityRegistry.Register<IndicadorTecnologiaInformacao>("indicadores");
+
             // 6. Registra o serviço de cache de lookups
             builder.Services.AddScoped<LookupCacheService>();
 
@@ -72,56 +78,71 @@ namespace Thelus.UI.Testes
         }
     }
 
-    // Provedor de Menu expandido com os módulos de Cadastros e Controle de Acesso
-    // Provedor de Menu adaptado para a estrutura plana de 1 nível do CRM
     public class MeuProjetoMenuProvider : IMenuProvider
     {
         public List<MenuItem> ObterMenuItens()
         {
             return new()
-        {
-            // Divisor de Categoria
-            new MenuItem { Title = "CADASTROS", IsTitle = true },
+            {
+                // Divisor de Categoria Principal (OBRIGATÓRIO PARA O NIFTY)
+                new MenuItem { Title = "MENU", IsTitle = true },
 
-            // Links Diretos (Sem SubItems)
-            new MenuItem
-            {
-                IdMenu = 26,
-                Title = "Clientes",
-                Url = "/gerenciar/clientes",
-                Icon = "fa fa-child fa-lg",
-                EntityName = "Clientes"
-            },
-            new MenuItem
-            {
-                IdMenu = 22,
-                Title = "Empresas",
-                Url = "/gerenciar/empresas",
-                Icon = "fa fa-building fa-lg",
-                EntityName = "Empresas"
-            },
+                new MenuItem
+                {
+                    IdMenu = 10,
+                    Title = "Home",
+                    Url = "/",
+                    Icon = "fa fa-home fa-lg"
+                },
+                new MenuItem
+                {
+                    IdMenu = 11,
+                    Title = "Indicadores",
+                    Url = "/gerenciar/indicadores",
+                    Icon = "fa fa-line-chart fa-lg",
+                    EntityName = "Indicadores"
+                },
 
-            // Divisor de Categoria
-            new MenuItem { Title = "CONTROLE DE ACESSO", IsTitle = true },
+                // Divisor de Categoria: CADASTROS
+                new MenuItem { Title = "CADASTROS", IsTitle = true },
 
-            // Link Direto para Usuários
-            new MenuItem
-            {
-                IdMenu = 27,
-                Title = "Usuários",
-                Url = "/gerenciar/usuarios",
-                Icon = "fa fa-users fa-lg",
-                EntityName = "Usuarios"
-            },
-            new MenuItem
-            {
-                IdMenu = 25,
-                Title = "Perfis de Acesso",
-                Url = "/gerenciar/perfis",
-                Icon = "fa fa-shield fa-lg",
-                EntityName = "Perfis"
-            }
-        };
+                new MenuItem
+                {
+                    IdMenu = 26,
+                    Title = "Clientes",
+                    Url = "/gerenciar/clientes",
+                    Icon = "fa fa-child fa-lg",
+                    EntityName = "Clientes"
+                },
+                new MenuItem
+                {
+                    IdMenu = 22,
+                    Title = "Empresas",
+                    Url = "/gerenciar/empresas",
+                    Icon = "fa fa-building fa-lg",
+                    EntityName = "Empresas"
+                },
+
+                // Divisor de Categoria: CONTROLE DE ACESSO
+                new MenuItem { Title = "CONTROLE DE ACESSO", IsTitle = true },
+
+                new MenuItem
+                {
+                    IdMenu = 27,
+                    Title = "Usuários",
+                    Url = "/gerenciar/usuarios",
+                    Icon = "fa fa-users fa-lg",
+                    EntityName = "Usuarios"
+                },
+                new MenuItem
+                {
+                    IdMenu = 25,
+                    Title = "Perfis de Acesso",
+                    Url = "/gerenciar/perfis",
+                    Icon = "fa fa-shield fa-lg",
+                    EntityName = "Perfis"
+                }
+            };
         }
     }
 }

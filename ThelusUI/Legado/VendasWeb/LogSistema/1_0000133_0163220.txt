@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0163220
+Tipo : Total
+drpStatus : 13
+Data Saída: 11/08/2015
+Data Emissao: 07/08/2015
+Natureza: Consumidor Contribuinte
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000373 - REMESSA DE DOAÇÃO/BRINDES/BONIFICAÇÕES E AMOSTRAS
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 07/08/2015
+
+Produto: 30.20.10.70.0003 Revenda: 0 Quantidade: 306 Tabela: 000000000000050 Valor Unitario: 9,61 Total: 2940,65989494324 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

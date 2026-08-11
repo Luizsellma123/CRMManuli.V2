@@ -1,0 +1,28 @@
+Empresa: 3
+Pedido: 444
+Tipo : Total
+drpStatus : 1
+Data Saída: 21/11/2019 00:00:00
+Data Emissao: 31/10/2019 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 289 - 56,63,70,77 e 84 dias
+Tipo Frete: 3
+Transportadora: FOR0000074      - ALIANÇA NAVEGAÇAO E LOGISTICA LTDA
+Data Hora Inclusão: 31/10/2019 00:00:00
+
+Produto: 30.10.10.12.0108 Revenda: 0 Quantidade: 8064 Tabela: 3 Valor Unitario: 1,15 Total: 9273,59980773926 Unidade: RL
+Produto: 30.10.10.11.0051 Revenda: 0 Quantidade: 4032 Tabela: 3 Valor Unitario: 2,6 Total: 10483,1996154785 Unidade: RL
+Produto: 30.10.10.12.0109 Revenda: 0 Quantidade: 12096 Tabela: 3 Valor Unitario: 2,6 Total: 31449,5988464355 Unidade: RL
+
+Historico: 21/11/2019 09:13:27 :Pedido Atualizado. - 21/11/2019 09:13:27 :Pedido Atualizado.
+
+21/11/2019 09:14:54 LUIZ.CARLOS:Teste de inclusão Luiz.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

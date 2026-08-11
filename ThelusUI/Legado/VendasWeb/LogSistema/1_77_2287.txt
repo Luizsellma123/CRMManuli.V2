@@ -1,0 +1,27 @@
+Empresa: 1
+Pedido: 2287
+Tipo : Total
+drpStatus : 1
+Data Saída: 31/10/2019 00:00:00
+Data Emissao: 31/10/2019 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 6 - 30 dias
+Tipo Frete: 3
+Transportadora: 0               - 
+Data Hora Inclusão: 31/10/2019 00:00:00
+
+Produto: 30.10.10.12.0031 Revenda: 0 Quantidade: 4 Tabela: 1 Valor Unitario: 2,78 Total: 11,1199998855591 Unidade: RL
+Produto: 30.10.10.12.0031 Revenda: 0 Quantidade: 2 Tabela: 1 Valor Unitario: 2,78 Total: 5,55999994277954 Unidade: RL
+
+Historico: 31/10/2019 11:40:56 LUIZ.CARLOS: - 31/10/2019 11:40:56 LUIZ.CARLOS:
+
+31/10/2019 11:43:03 LUIZ.CARLOS:TEste de historico
+Observacao: 123
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

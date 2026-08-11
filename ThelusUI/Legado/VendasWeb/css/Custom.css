@@ -1,0 +1,174 @@
+﻿/*INICIO CUSTOMIZACAO JACKSON LIZIER 2016-03-03*/
+.pagination-ys {
+    /*display: inline-block;*/
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+ 
+.pagination-ys table > tbody > tr > td {
+    display: inline;
+}
+ 
+.pagination-ys table > tbody > tr > td > a,
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #dd4814;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+ 
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;    
+    margin-left: -1px;
+    z-index: 2;
+    color: #aea79f;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+    cursor: default;
+}
+ 
+.pagination-ys table > tbody > tr > td:first-child > a,
+.pagination-ys table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+ 
+.pagination-ys table > tbody > tr > td:last-child > a,
+.pagination-ys table > tbody > tr > td:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+ 
+.pagination-ys table > tbody > tr > td > a:hover,
+.pagination-ys table > tbody > tr > td > span:hover,
+.pagination-ys table > tbody > tr > td > a:focus,
+.pagination-ys table > tbody > tr > td > span:focus {
+    color: #97310e;
+    background-color: #eeeeee;
+    border-color: #dddddd;
+}
+
+/*INICIO CUSTOMIZACAO JACKSON LIZIER 2016-03-03*/
+
+
+
+
+.sidebar {
+  font-size: 12px;
+  /*padding: 30px;*/
+  margin: 0px 0px 0px 70%;
+  border-style:solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+
+
+
+
+
+/***********************************************
+    CSS validacao erro
+***********************************************/
+
+.validacaoErro
+{
+    FONT-SIZE:12px;
+    FONT-FAMILY:Arial, Helvetica, sans-serif;
+    color: Red;
+    float:right;
+    text-align:left;
+}
+
+
+.modalPopupValidaPanel
+{
+	border-style: none inset inset none;
+	background-color: #ffffdd;
+	padding: 3px;
+	z-index: 10001;
+	border-bottom-color: #000000;
+	border-right-color: #000000;
+	clip: rect(auto, 500px, 400px, auto);
+}
+
+.modalBackground
+{
+  background:#fff;
+  background-repeat:repeat-x;
+  height: 100%;
+  filter: alpha(opacity=50);
+  opacity: 0.50;
+}
+
+
+
+.updateProgress
+{     
+    position: absolute;
+    cursor: wait;
+} 
+
+/***********************************************
+    CSS validacao erro FIM
+***********************************************/
+
+/*********************************************
+    CSS Customização modal
+**********************************************/
+@media (min-width: 992px) {
+  .modal-xl{
+        width: 100%;
+        width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .modal-xl{
+        width: 100%;
+        max-width: 1100px;
+    }
+}
+/*********************************************
+    CSS Customização modal - FIM
+**********************************************/
+
+/** SPINNER CREATION **/
+.loader {
+  position: relative;
+  text-align: center;
+  margin: 15px auto 35px auto;
+  z-index: 9999;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(0, 0, 0, .3);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+

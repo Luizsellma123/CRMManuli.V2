@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 32
+Tipo : Total
+drpStatus : 1
+Data Saída: 24/07/2019
+Data Emissao: 24/07/2019
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 6 - 30 dias
+Tipo Frete: 1
+Transportadora: 0               - 
+Data Hora Inclusão: 24/07/2019
+
+Produto: 30.10.10.12.0031 Revenda: 0 Quantidade: 6 Tabela: 1 Valor Unitario: 2,78 Total: 16,6799998283386 Unidade: RL
+
+Historico: 24/07/2019 08:44:46 LUIZ.CARLOS: - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

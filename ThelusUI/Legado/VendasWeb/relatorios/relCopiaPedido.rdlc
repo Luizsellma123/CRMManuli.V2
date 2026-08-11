@@ -1,0 +1,4092 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <DataSources>
+    <DataSource Name="dtCopiaPedidoCabecario">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>b9532586-c56b-496e-bcd2-dfc3c8d6812f</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dtItemCopiaPedido">
+      <Fields>
+        <Field Name="EmpCod">
+          <DataField>EmpCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaNum">
+          <DataField>PedVendaNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSeq">
+          <DataField>ItPedVendaSeq</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaServ">
+          <DataField>ItPedVendaServ</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProdCodEstr">
+          <DataField>ProdCodEstr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtd">
+          <DataField>ItPedVendaQtd</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdDesm">
+          <DataField>ItPedVendaQtdDesm</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSeqDesm">
+          <DataField>ItPedVendaSeqDesm</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedCod">
+          <DataField>ItPedVendaUnidMedCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedPos">
+          <DataField>ItPedVendaUnidMedPos</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValTabPV">
+          <DataField>ItPedVendaValTabPV</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValInterm">
+          <DataField>ItPedVendaValInterm</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStrDesc">
+          <DataField>ItPedVendaStrDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValUnit">
+          <DataField>ItPedVendaValUnit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValTot">
+          <DataField>ItPedVendaValTot</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ClasFiscCod">
+          <DataField>ClasFiscCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TribCod">
+          <DataField>TribCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercAcrescFin">
+          <DataField>ItPedVendaPercAcrescFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValAcrescFin">
+          <DataField>ItPedVendaValAcrescFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescEspec">
+          <DataField>ItPedVendaPercDescEspec</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescEspec">
+          <DataField>ItPedVendaValDescEspec</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFinal">
+          <DataField>ItPedVendaValFinal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIss">
+          <DataField>ItPedVendaValBaseIss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIss">
+          <DataField>ItPedVendaPercIss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIss">
+          <DataField>ItPedVendaValIss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIrrf">
+          <DataField>ItPedVendaValBaseIrrf</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIrrf">
+          <DataField>ItPedVendaPercIrrf</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIrrf">
+          <DataField>ItPedVendaValIrrf</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedIcms">
+          <DataField>ItPedVendaPercRedIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcms">
+          <DataField>ItPedVendaValBaseIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIcms">
+          <DataField>ItPedVendaPercIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcms">
+          <DataField>ItPedVendaValIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCalcSTPrecoLista">
+          <DataField>ItPedVendaCalcSTPrecoLista</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaMargLucroST">
+          <DataField>ItPedVendaMargLucroST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPrecoListaST">
+          <DataField>ItPedVendaPrecoListaST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedIcmsST">
+          <DataField>ItPedVendaPercRedIcmsST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsST">
+          <DataField>ItPedVendaValBaseIcmsST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIcmsST">
+          <DataField>ItPedVendaPercIcmsST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsST">
+          <DataField>ItPedVendaValIcmsST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsRetST">
+          <DataField>ItPedVendaValIcmsRetST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCalcIPIPrecoLista">
+          <DataField>ItPedVendaCalcIPIPrecoLista</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIpi">
+          <DataField>ItPedVendaValBaseIpi</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIpi">
+          <DataField>ItPedVendaPercIpi</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpi">
+          <DataField>ItPedVendaValIpi</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaNomeProd">
+          <DataField>ItPedVendaNomeProd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseFunrural">
+          <DataField>ItPedVendaValBaseFunrural</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercFunrural">
+          <DataField>ItPedVendaPercFunrural</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFunrural">
+          <DataField>ItPedVendaValFunrural</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NatOpCodEstr">
+          <DataField>NatOpCodEstr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDescIcmsZFM">
+          <DataField>ItPedVendaDescIcmsZFM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IndEconCod">
+          <DataField>IndEconCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCambio">
+          <DataField>ItPedVendaValCambio</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValEmbalagem">
+          <DataField>ItPedVendaValEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsEmbalagem">
+          <DataField>ItPedVendaValIcmsEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiEmbalagem">
+          <DataField>ItPedVendaValIpiEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValEmbalagemST">
+          <DataField>ItPedVendaValEmbalagemST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsEmbalagemST">
+          <DataField>ItPedVendaValIcmsEmbalagemST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFrete">
+          <DataField>ItPedVendaValFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsFrete">
+          <DataField>ItPedVendaValIcmsFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiFrete">
+          <DataField>ItPedVendaValIpiFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFreteST">
+          <DataField>ItPedVendaValFreteST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsFreteST">
+          <DataField>ItPedVendaValIcmsFreteST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValSeguro">
+          <DataField>ItPedVendaValSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsSeguro">
+          <DataField>ItPedVendaValIcmsSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiSeguro">
+          <DataField>ItPedVendaValIpiSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValSeguroST">
+          <DataField>ItPedVendaValSeguroST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsSeguroST">
+          <DataField>ItPedVendaValIcmsSeguroST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDespesa">
+          <DataField>ItPedVendaValDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsDespesa">
+          <DataField>ItPedVendaValIcmsDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiDespesa">
+          <DataField>ItPedVendaValIpiDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDespesaST">
+          <DataField>ItPedVendaValDespesaST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsDespesaST">
+          <DataField>ItPedVendaValIcmsDespesaST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCalcFrete">
+          <DataField>ItPedVendaValCalcFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsCalcFrete">
+          <DataField>ItPedVendaValIcmsCalcFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCalcFreteST">
+          <DataField>ItPedVendaValCalcFreteST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsCalcFreteST">
+          <DataField>ItPedVendaValIcmsCalcFreteST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseInss">
+          <DataField>ItPedVendaValBaseInss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercInss">
+          <DataField>ItPedVendaPercInss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValInss">
+          <DataField>ItPedVendaValInss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaNumSeq">
+          <DataField>ItPedVendaNumSeq</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdBaseCalcIpiPauta">
+          <DataField>ItPedVendaQtdBaseCalcIpiPauta</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStrAcresc">
+          <DataField>ItPedVendaStrAcresc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValUnitBase">
+          <DataField>ItPedVendaValUnitBase</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaTexto">
+          <DataField>ItPedVendaTexto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SetorCodEstr">
+          <DataField>SetorCodEstr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDescrProdAlt">
+          <DataField>ItPedVendaDescrProdAlt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaBaseCalcIcmsUfesp">
+          <DataField>ItPedVendaBaseCalcIcmsUfesp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBasePis">
+          <DataField>ItPedVendaValBasePis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercPis">
+          <DataField>ItPedVendaPercPis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPis">
+          <DataField>ItPedVendaValPis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseCofins">
+          <DataField>ItPedVendaValBaseCofins</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercCofins">
+          <DataField>ItPedVendaPercCofins</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofins">
+          <DataField>ItPedVendaValCofins</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisEmbalagem">
+          <DataField>ItPedVendaValPisEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsEmbalagem">
+          <DataField>ItPedVendaValCofinsEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisFrete">
+          <DataField>ItPedVendaValPisFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsFrete">
+          <DataField>ItPedVendaValCofinsFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisSeguro">
+          <DataField>ItPedVendaValPisSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsSeguro">
+          <DataField>ItPedVendaValCofinsSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisDespesa">
+          <DataField>ItPedVendaValPisDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsDespesa">
+          <DataField>ItPedVendaValCofinsDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProdComprimento">
+          <DataField>ItPedVendaProdComprimento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProdLargura">
+          <DataField>ItPedVendaProdLargura</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProdAltura">
+          <DataField>ItPedVendaProdAltura</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValUnitPeso">
+          <DataField>ItPedVendaValUnitPeso</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPesoUnit">
+          <DataField>ItPedVendaPesoUnit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPesoTot">
+          <DataField>ItPedVendaPesoTot</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPrecoDepComp">
+          <DataField>ItPedVendaPrecoDepComp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPesoBruto">
+          <DataField>ItPedVendaPesoBruto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPesoLiq">
+          <DataField>ItPedVendaPesoLiq</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCustoUnitCompra">
+          <DataField>ItPedVendaCustoUnitCompra</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaMarkup">
+          <DataField>ItPedVendaMarkup</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSelecDesm">
+          <DataField>ItPedVendaSelecDesm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSelecDesmQtd">
+          <DataField>ItPedVendaSelecDesmQtd</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaNumPedEnt">
+          <DataField>ItPedVendaNumPedEnt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TabPvCod">
+          <DataField>TabPvCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedCodVal">
+          <DataField>ItPedVendaUnidMedCodVal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedPosVal">
+          <DataField>ItPedVendaUnidMedPosVal</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedValUnit">
+          <DataField>ItPedVendaUnidMedValUnit</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStrDescGer">
+          <DataField>ItPedVendaStrDescGer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescGer">
+          <DataField>ItPedVendaPercDescGer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStrAcrescGer">
+          <DataField>ItPedVendaStrAcrescGer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercAcrescGer">
+          <DataField>ItPedVendaPercAcrescGer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GarCod">
+          <DataField>GarCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDataInicGar">
+          <DataField>ItPedVendaDataInicGar</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FicTecProdCodEstr">
+          <DataField>FicTecProdCodEstr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FicTecProdSeq">
+          <DataField>FicTecProdSeq</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CtrlDFModForm">
+          <DataField>CtrlDFModForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CtrlDFSerie">
+          <DataField>CtrlDFSerie</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NFNum">
+          <DataField>NFNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItNFSeq">
+          <DataField>ItNFSeq</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigMod">
+          <DataField>ItPedVendaOrigMod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigEspec">
+          <DataField>ItPedVendaOrigEspec</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigSerie">
+          <DataField>ItPedVendaOrigSerie</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigNum">
+          <DataField>ItPedVendaOrigNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigChv">
+          <DataField>ItPedVendaOrigChv</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaOrigSeq">
+          <DataField>ItPedVendaOrigSeq</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="VendCod">
+          <DataField>VendCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseII">
+          <DataField>ItPedVendaValBaseII</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercII">
+          <DataField>ItPedVendaPercII</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValII">
+          <DataField>ItPedVendaValII</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIIEmbalagem">
+          <DataField>ItPedVendaValIIEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIIFrete">
+          <DataField>ItPedVendaValIIFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIISeguro">
+          <DataField>ItPedVendaValIISeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIIDespesa">
+          <DataField>ItPedVendaValIIDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TribACod">
+          <DataField>TribACod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TribBCod">
+          <DataField>TribBCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaNomeProdAlt">
+          <DataField>ItPedVendaNomeProdAlt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedCodEmb">
+          <DataField>ItPedVendaUnidMedCodEmb</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StatPedVendaCod">
+          <DataField>StatPedVendaCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUrgente">
+          <DataField>ItPedVendaUrgente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdEmb">
+          <DataField>ItPedVendaQtdEmb</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValUnitEmb">
+          <DataField>ItPedVendaValUnitEmb</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValSiscomex">
+          <DataField>ItPedVendaValSiscomex</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsSiscomex">
+          <DataField>ItPedVendaValIcmsSiscomex</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEstqBxa">
+          <DataField>ItPedVendaEstqBxa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEstqEmpen">
+          <DataField>ItPedVendaEstqEmpen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEstqReserva">
+          <DataField>ItPedVendaEstqReserva</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaReqCompra">
+          <DataField>ItPedVendaReqCompra</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProcMod">
+          <DataField>ItPedVendaProcMod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProcNum">
+          <DataField>ItPedVendaProcNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProcSeqIt">
+          <DataField>ItPedVendaProcSeqIt</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCalcIssDedTot">
+          <DataField>ItPedVendaValCalcIssDedTot</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCalcDifIcms">
+          <DataField>ItPedVendaCalcDifIcms</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDifIcms">
+          <DataField>ItPedVendaPercDifIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDifIcms">
+          <DataField>ItPedVendaValDifIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercCofinsRF">
+          <DataField>ItPedVendaPercCofinsRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsRF">
+          <DataField>ItPedVendaValCofinsRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercPisRF">
+          <DataField>ItPedVendaPercPisRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisRF">
+          <DataField>ItPedVendaValPisRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseCsll">
+          <DataField>ItPedVendaValBaseCsll</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercCsllRF">
+          <DataField>ItPedVendaPercCsllRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCsllRF">
+          <DataField>ItPedVendaValCsllRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescRepasseFin">
+          <DataField>ItPedVendaValDescRepasseFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValAcrescRepasseFin">
+          <DataField>ItPedVendaValAcrescRepasseFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFreteRepasseEstq">
+          <DataField>ItPedVendaValFreteRepasseEstq</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDataSolic">
+          <DataField>ItPedVendaDataSolic</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDataPrevEntrega">
+          <DataField>ItPedVendaDataPrevEntrega</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdEntregaParc">
+          <DataField>ItPedVendaQtdEntregaParc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUtilizProm">
+          <DataField>ItPedVendaUtilizProm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUtilizShortForm">
+          <DataField>ItPedVendaUtilizShortForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValMultShortForm">
+          <DataField>ItPedVendaValMultShortForm</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValRebate">
+          <DataField>ItPedVendaValRebate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDataPedEnt">
+          <DataField>ItPedVendaDataPedEnt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProdNome">
+          <DataField>ItPedVendaProdNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescRepasComp">
+          <DataField>ItPedVendaValDescRepasComp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValAcrescRepasComp">
+          <DataField>ItPedVendaValAcrescRepasComp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaMargemPad">
+          <DataField>ItPedVendaMargemPad</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaFrtImportValIndEcon">
+          <DataField>ItPedVendaFrtImportValIndEcon</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaFrtImportValIndCor">
+          <DataField>ItPedVendaFrtImportValIndCor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSegImportValIndEcon">
+          <DataField>ItPedVendaSegImportValIndEcon</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSegImportValIndCor">
+          <DataField>ItPedVendaSegImportValIndCor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDespImportValIndEcon">
+          <DataField>ItPedVendaDespImportValIndEcon</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDespImportValIndCor">
+          <DataField>ItPedVendaDespImportValIndCor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsFrtImport">
+          <DataField>ItPedVendaValIcmsFrtImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiFrtImport">
+          <DataField>ItPedVendaValIpiFrtImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsFrtImportST">
+          <DataField>ItPedVendaValIcmsFrtImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValFrtImportST">
+          <DataField>ItPedVendaValFrtImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIIFrtImport">
+          <DataField>ItPedVendaValIIFrtImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsSegImport">
+          <DataField>ItPedVendaValIcmsSegImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiSegImport">
+          <DataField>ItPedVendaValIpiSegImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsSegImportST">
+          <DataField>ItPedVendaValIcmsSegImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValSegImportST">
+          <DataField>ItPedVendaValSegImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIISegImport">
+          <DataField>ItPedVendaValIISegImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsDespImport">
+          <DataField>ItPedVendaValIcmsDespImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiDespImport">
+          <DataField>ItPedVendaValIpiDespImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsDespImportST">
+          <DataField>ItPedVendaValIcmsDespImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDespImportST">
+          <DataField>ItPedVendaValDespImportST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIIDespImport">
+          <DataField>ItPedVendaValIIDespImport</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseCofinsRF">
+          <DataField>ItPedVendaValBaseCofinsRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBasePisRF">
+          <DataField>ItPedVendaValBasePisRF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdDifRatComp">
+          <DataField>ItPedVendaQtdDifRatComp</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDifBasePis">
+          <DataField>ItPedVendaValDifBasePis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDifBaseCofins">
+          <DataField>ItPedVendaValDifBaseCofins</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsEmbRed">
+          <DataField>ItPedVendaValBaseIcmsEmbRed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsFreteRed">
+          <DataField>ItPedVendaValBaseIcmsFreteRed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsSegRed">
+          <DataField>ItPedVendaValBaseIcmsSegRed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsDespRed">
+          <DataField>ItPedVendaValBaseIcmsDespRed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescGer">
+          <DataField>ItPedVendaValDescGer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaProgDescPerc">
+          <DataField>ItPedVendaProgDescPerc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescGerRat">
+          <DataField>ItPedVendaValDescGerRat</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValAcrescGerRat">
+          <DataField>ItPedVendaValAcrescGerRat</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValAcrescGer">
+          <DataField>ItPedVendaValAcrescGer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRepIcmsDifPercDesc">
+          <DataField>ItPedVendaRepIcmsDifPercDesc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRepIcmsDifValDesc">
+          <DataField>ItPedVendaRepIcmsDifValDesc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRepIcmsRedValDesc">
+          <DataField>ItPedVendaRepIcmsRedValDesc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="EntCod">
+          <DataField>EntCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDtEntrCliente">
+          <DataField>ItPedVendaDtEntrCliente</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEntrCliente">
+          <DataField>ItPedVendaEntrCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TipoLancCod">
+          <DataField>TipoLancCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDescPisZFM">
+          <DataField>ItPedVendaDescPisZFM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDescCofinsZFM">
+          <DataField>ItPedVendaDescCofinsZFM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaNumShortForm">
+          <DataField>ItPedVendaNumShortForm</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDataPromEntrega">
+          <DataField>ItPedVendaDataPromEntrega</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="EntProdCodSeq">
+          <DataField>EntProdCodSeq</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="EntCodForn">
+          <DataField>EntCodForn</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescShortForm">
+          <DataField>ItPedVendaPercDescShortForm</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaMargemComis">
+          <DataField>ItPedVendaMargemComis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCustoRebate">
+          <DataField>ItPedVendaValCustoRebate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaGrupo">
+          <DataField>ItPedVendaGrupo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSeqNiv">
+          <DataField>ItPedVendaSeqNiv</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEstrItemTotGrupo">
+          <DataField>ItPedVendaEstrItemTotGrupo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaDespEmbutida">
+          <DataField>ItPedVendaDespEmbutida</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEntCodUsuFinal">
+          <DataField>ItPedVendaEntCodUsuFinal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEntNomeUsuFinal">
+          <DataField>ItPedVendaEntNomeUsuFinal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaEntCnpjUsuFinal">
+          <DataField>ItPedVendaEntCnpjUsuFinal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCap">
+          <DataField>ItPedVendaValCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsCap">
+          <DataField>ItPedVendaValIcmsCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIpiCap">
+          <DataField>ItPedVendaValIpiCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCapST">
+          <DataField>ItPedVendaValCapST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsCapST">
+          <DataField>ItPedVendaValIcmsCapST</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisCap">
+          <DataField>ItPedVendaValPisCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsCap">
+          <DataField>ItPedVendaValCofinsCap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIICap">
+          <DataField>ItPedVendaValIICap</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsCapRed">
+          <DataField>ItPedVendaValBaseIcmsCapRed</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaGravaItem">
+          <DataField>ItPedVendaGravaItem</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStatDescr">
+          <DataField>ItPedVendaStatDescr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaTerc">
+          <DataField>ItPedVendaTerc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedCodApresent">
+          <DataField>ItPedVendaUnidMedCodApresent</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUnidMedPosApresent">
+          <DataField>ItPedVendaUnidMedPosApresent</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSeqGrupo">
+          <DataField>ItPedVendaSeqGrupo</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ITPEDVENDACOTADO">
+          <DataField>ITPEDVENDACOTADO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITPEDVENDAVALUNITCOTADO">
+          <DataField>ITPEDVENDAVALUNITCOTADO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedInss">
+          <DataField>ItPedVendaPercRedInss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaStrDescCusto">
+          <DataField>ItPedVendaStrDescCusto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescCusto">
+          <DataField>ItPedVendaPercDescCusto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescCusto">
+          <DataField>ItPedVendaValDescCusto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaUtilizMargPadItPai">
+          <DataField>ItPedVendaUtilizMargPadItPai</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaAtuDescGer">
+          <DataField>ItPedVendaAtuDescGer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaAtuAcrescGer">
+          <DataField>ItPedVendaAtuAcrescGer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedIPI">
+          <DataField>ItPedVendaPercRedIPI</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedIPI">
+          <DataField>ItPedVendaRedIPI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedIss">
+          <DataField>ItPedVendaPercRedIss</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedIss">
+          <DataField>ItPedVendaRedIss</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedII">
+          <DataField>ItPedVendaPercRedII</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedII">
+          <DataField>ItPedVendaRedII</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedCofins">
+          <DataField>ItPedVendaPercRedCofins</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedCofins">
+          <DataField>ItPedVendaRedCofins</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercRedPis">
+          <DataField>ItPedVendaPercRedPis</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedPis">
+          <DataField>ItPedVendaRedPis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedInss">
+          <DataField>ItPedVendaRedInss</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedIcms">
+          <DataField>ItPedVendaRedIcms</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaRedIcmsST">
+          <DataField>ItPedVendaRedIcmsST</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseDescISS">
+          <DataField>ItPedVendaValBaseDescISS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescISS">
+          <DataField>ItPedVendaPercDescISS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescISS">
+          <DataField>ItPedVendaValDescISS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseDescICMS">
+          <DataField>ItPedVendaValBaseDescICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDescICMS">
+          <DataField>ItPedVendaPercDescICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDescICMS">
+          <DataField>ItPedVendaValDescICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValUnitAnterior">
+          <DataField>ItPedVendaValUnitAnterior</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCtrlAtend">
+          <DataField>ItPedVendaCtrlAtend</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercDiferimICMS">
+          <DataField>ItPedVendaPercDiferimICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValDiferimICMS">
+          <DataField>ItPedVendaValDiferimICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValICMSDevido">
+          <DataField>ItPedVendaValICMSDevido</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCredPresumICMS">
+          <DataField>ItPedVendaValCredPresumICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValICMSRecolher">
+          <DataField>ItPedVendaValICMSRecolher</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercCredPresumICMS">
+          <DataField>ItPedVendaPercCredPresumICMS</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercLimCredPresum">
+          <DataField>ItPedVendaPercLimCredPresum</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercCalcValRecolher">
+          <DataField>ItPedVendaPercCalcValRecolher</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdFicTec">
+          <DataField>ItPedVendaQtdFicTec</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdMaxDetalhamento">
+          <DataField>ItPedVendaQtdMaxDetalhamento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdMinDetalhamento">
+          <DataField>ItPedVendaQtdMinDetalhamento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CTRLPROJNUM">
+          <DataField>CTRLPROJNUM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITCTRLPROJSEQ">
+          <DataField>ITCTRLPROJSEQ</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="BICOCOD">
+          <DataField>BICOCOD</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIcmsExonerado">
+          <DataField>ItPedVendaPercIcmsExonerado</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaGerouOs">
+          <DataField>ItPedVendaGerouOs</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValBaseAssistSoc">
+          <DataField>ItPvValBaseAssistSoc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvPercAssistSoc">
+          <DataField>ItPvPercAssistSoc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValAssistSoc">
+          <DataField>ItPvValAssistSoc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValBaseAssistFin">
+          <DataField>ItPvValBaseAssistFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvPercAssistFin">
+          <DataField>ItPvPercAssistFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValAssistFin">
+          <DataField>ItPvValAssistFin</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValBaseAssocFornCana">
+          <DataField>ItPvValBaseAssocFornCana</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvPercAssocFornCana">
+          <DataField>ItPvPercAssocFornCana</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValAssocFornCana">
+          <DataField>ItPvValAssocFornCana</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValBaseSenar">
+          <DataField>ItPvValBaseSenar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvPercSenar">
+          <DataField>ItPvPercSenar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValSenar">
+          <DataField>ItPvValSenar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValBaseCTC">
+          <DataField>ItPvValBaseCTC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvPercCTC">
+          <DataField>ItPvPercCTC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPvValCTC">
+          <DataField>ItPvValCTC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TribBModBCCod">
+          <DataField>TribBModBCCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TribBModBCSTCod">
+          <DataField>TribBModBCSTCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribTipoIpi">
+          <DataField>ItPedVendaConfTribTipoIpi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribTipoPis">
+          <DataField>ItPedVendaConfTribTipoPis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribTipoCofins">
+          <DataField>ItPedVendaConfTribTipoCofins</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribIpiCod">
+          <DataField>ItPedVendaConfTribIpiCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribPisCod">
+          <DataField>ItPedVendaConfTribPisCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaConfTribCofinsCod">
+          <DataField>ItPedVendaConfTribCofinsCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValBaseIcmsOper">
+          <DataField>ItPedVendaValBaseIcmsOper</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPercIcmsOper">
+          <DataField>ItPedVendaPercIcmsOper</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValIcmsOper">
+          <DataField>ItPedVendaValIcmsOper</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaPrecoVendaVarejo">
+          <DataField>ItPedVendaPrecoVendaVarejo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaSeloCtrl">
+          <DataField>ItPedVendaSeloCtrl</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OrdProducNum">
+          <DataField>OrdProducNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdApont">
+          <DataField>ItPedVendaQtdApont</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TipoFatCod">
+          <DataField>TipoFatCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaCodProd">
+          <DataField>ItPedVendaCodProd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisRFEmbalagem">
+          <DataField>ItPedVendaValPisRFEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsRFEmbalagem">
+          <DataField>ItPedVendaValCofinsRFEmbalagem</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisRFFrete">
+          <DataField>ItPedVendaValPisRFFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsRFFrete">
+          <DataField>ItPedVendaValCofinsRFFrete</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisRFSeguro">
+          <DataField>ItPedVendaValPisRFSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsRFSeguro">
+          <DataField>ItPedVendaValCofinsRFSeguro</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValPisRFDespesa">
+          <DataField>ItPedVendaValPisRFDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaValCofinsRFDespesa">
+          <DataField>ItPedVendaValCofinsRFDespesa</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPVQtdBaseCalcPisPauta">
+          <DataField>ItPVQtdBaseCalcPisPauta</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPVQtdBaseCalcCofinsPauta">
+          <DataField>ItPVQtdBaseCalcCofinsPauta</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaAreaTotal">
+          <DataField>ItPedVendaAreaTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ConfTribSimpNacCod">
+          <DataField>ConfTribSimpNacCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaQtdMes">
+          <DataField>ItPedVendaQtdMes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaFatCalComodato">
+          <DataField>ItPedVendaFatCalComodato</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ItPedVendaBaseLote">
+          <DataField>ItPedVendaBaseLote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ITPEDVENDASELECDESMEMP">
+          <DataField>ITPEDVENDASELECDESMEMP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>dtCopiaPedidoCabecario</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dtItemCopiaPedido</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Luiz Carlos\Documents\Desenvolvimento_Manuli\VendasWebOO_alteracao\VendasWeb\dtItemCopiaPedido.xsd</rd:SchemaPath>
+        <rd:TableName>ITEM_PED_VENDA</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>ITEM_PED_VENDATableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dtCopiaPedidoCabecario">
+      <Fields>
+        <Field Name="EmpCod">
+          <DataField>EmpCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmpNome">
+          <DataField>EmpNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaNum">
+          <DataField>PedVendaNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntCod">
+          <DataField>EntCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntNome">
+          <DataField>EntNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntEnder">
+          <DataField>EntEnder</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntBair">
+          <DataField>EntBair</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CidNome">
+          <DataField>CidNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntCep">
+          <DataField>EntCep</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UfSigla">
+          <DataField>UfSigla</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntCpfCgc">
+          <DataField>EntCpfCgc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CondPagCod">
+          <DataField>CondPagCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CondPagPedVendaNome">
+          <DataField>CondPagPedVendaNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendCod">
+          <DataField>VendCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VendNome">
+          <DataField>VendNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaNatOpProd">
+          <DataField>PedVendaNatOpProd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaStatFrete">
+          <DataField>PedVendaStatFrete</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaTranspEntCod">
+          <DataField>PedVendaTranspEntCod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomeTransportadora">
+          <DataField>NomeTransportadora</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaValMerc">
+          <DataField>PedVendaValMerc</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaValServ">
+          <DataField>PedVendaValServ</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaValIpi">
+          <DataField>PedVendaValIpi</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaValIcms">
+          <DataField>PedVendaValIcms</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaValTotal">
+          <DataField>PedVendaValTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaTexto">
+          <DataField>PedVendaTexto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaTextoHist">
+          <DataField>PedVendaTextoHist</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaDataEntrega">
+          <DataField>PedVendaDataEntrega</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PedVendaData">
+          <DataField>PedVendaData</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ICMSDiferido">
+          <DataField>ICMSDiferido</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ICMSDevido">
+          <DataField>ICMSDevido</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Tipo">
+          <DataField>Tipo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>dtCopiaPedidoCabecario</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dtCopiaPedidoCabecario</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\mario.duarte.MANULIFITASA\Documents\Visual Studio 2010\Projects\V.Web_Manuli_V7.8\VendasWeb\dataSets\dtCopiaPedidoCabecario.xsd</rd:SchemaPath>
+        <rd:TableName>USER_VW_CabecarioCopiaPedido</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>USER_VW_CabecarioCopiaPedidoTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dtItemPedido">
+      <Fields>
+        <Field Name="ProdFoto">
+          <DataField>ProdFoto</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="ProdCodEstr">
+          <DataField>ProdCodEstr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>dtCopiaPedidoCabecario</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dtItemPedido</rd:DataSetName>
+        <rd:SchemaPath>C:\Desenvolvimento\VendasManuli\V.Web_Manuli_V6.5\VendasWeb\dtItemPedido.xsd</rd:SchemaPath>
+        <rd:TableName>dtItemPedido</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>dtItemPedidoTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Entidade:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>2.44417cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Endereço:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>3.22056cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Cidade:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox7</rd:DefaultName>
+        <Top>3.99695cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>CEP:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox10</rd:DefaultName>
+        <Top>5.63654cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox12">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>CNPJ:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox12</rd:DefaultName>
+        <Top>6.44821cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox16">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Condição Pagamento:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox16</rd:DefaultName>
+        <Top>7.2246cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Vendedor:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>7.96571cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox21">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Natureza Ope.:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox21</rd:DefaultName>
+        <Top>8.7421cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Empresa:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>0.15028cm</Top>
+        <Left>0.27848cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Número:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>0.89139cm</Top>
+        <Left>0.27848cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Bairro:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>4.7998cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox42">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Frete:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox42</rd:DefaultName>
+        <Top>11.00952cm</Top>
+        <Left>0.31074cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox45">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor da Mercadoria:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox45</rd:DefaultName>
+        <Top>12.52702cm</Top>
+        <Left>0.29999cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox46">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor do IPI:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>13.33869cm</Top>
+        <Left>0.31074cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox47">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor do ICMS :</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox47</rd:DefaultName>
+        <Top>14.11508cm</Top>
+        <Left>0.31074cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox48">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total do Pedido:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox48</rd:DefaultName>
+        <Top>16.38371cm</Top>
+        <Left>0.3215cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.97091cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EmpCod">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EmpCod.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EmpCod</rd:DefaultName>
+        <Top>0.18556cm</Top>
+        <Left>4.54489cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EmpNome">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EmpNome.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EmpNome</rd:DefaultName>
+        <Top>0.18556cm</Top>
+        <Left>7.186cm</Left>
+        <Height>0.6cm</Height>
+        <Width>9.78234cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaNum">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!PedVendaNum.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaNum</rd:DefaultName>
+        <Top>0.92667cm</Top>
+        <Left>4.50961cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox58">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Data Saída:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox58</rd:DefaultName>
+        <Top>1.66778cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.97091cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaDataEntrega">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Format(Fields!PedVendaDataEntrega.Value, "dd/MM/yyyy"), "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaDataEntrega</rd:DefaultName>
+        <Top>1.66778cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox62">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Data Digitação:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox62</rd:DefaultName>
+        <Top>1.66778cm</Top>
+        <Left>7.74382cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.4525cm</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaData">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(format(Fields!PedVendaData.Value, "dd/MM/yyyy"), "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaData</rd:DefaultName>
+        <Top>1.66778cm</Top>
+        <Left>11.37271cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntCod">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntCod.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntCod</rd:DefaultName>
+        <Top>2.44417cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntNome">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntNome.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntNome</rd:DefaultName>
+        <Top>2.44417cm</Top>
+        <Left>7.19675cm</Left>
+        <Height>0.6cm</Height>
+        <Width>9.77159cm</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntEnder">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntEnder.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntEnder</rd:DefaultName>
+        <Top>3.22056cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.44798cm</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="CidNome">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!CidNome.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>CidNome</rd:DefaultName>
+        <Top>3.99695cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>9.199cm</Width>
+        <ZIndex>26</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntBair">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntBair.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntBair</rd:DefaultName>
+        <Top>4.7998cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.45873cm</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntCep">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntCep.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntCep</rd:DefaultName>
+        <Top>5.63654cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.44798cm</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="UfSigla">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!UfSigla.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>UfSigla</rd:DefaultName>
+        <Top>3.99695cm</Top>
+        <Left>13.89575cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.07259cm</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="EntCpfCgc">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!EntCpfCgc.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>EntCpfCgc</rd:DefaultName>
+        <Top>6.44821cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.44798cm</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="CondPagCod">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!CondPagCod.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>CondPagCod</rd:DefaultName>
+        <Top>7.24112cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="CondPagPedVendaNome">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!CondPagPedVendaNome.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>CondPagPedVendaNome</rd:DefaultName>
+        <Top>7.24112cm</Top>
+        <Left>7.19675cm</Left>
+        <Height>0.6cm</Height>
+        <Width>9.77159cm</Width>
+        <ZIndex>32</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="VendCod">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!VendCod.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>VendCod</rd:DefaultName>
+        <Top>7.96571cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>33</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="VendNome">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!VendNome.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>VendNome</rd:DefaultName>
+        <Top>7.96571cm</Top>
+        <Left>7.19675cm</Left>
+        <Height>0.6cm</Height>
+        <Width>9.77159cm</Width>
+        <ZIndex>34</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaNatOpProd">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!PedVendaNatOpProd.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaNatOpProd</rd:DefaultName>
+        <Top>8.70682cm</Top>
+        <Left>4.52036cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>35</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaStatFrete">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!PedVendaStatFrete.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaStatFrete</rd:DefaultName>
+        <Top>11.00952cm</Top>
+        <Left>4.43352cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.55633cm</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox78">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Transportadora:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox78</rd:DefaultName>
+        <Top>11.75063cm</Top>
+        <Left>0.29999cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValMerc">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!PedVendaValMerc.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValMerc</rd:DefaultName>
+        <Top>12.52702cm</Top>
+        <Left>14.48985cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>38</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="NomeTransportadora">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!NomeTransportadora.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>NomeTransportadora</rd:DefaultName>
+        <Top>11.75063cm</Top>
+        <Left>4.43352cm</Left>
+        <Height>0.6cm</Height>
+        <Width>12.55633cm</Width>
+        <ZIndex>39</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValIpi">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!PedVendaValIpi.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValIpi</rd:DefaultName>
+        <Top>13.33869cm</Top>
+        <Left>14.5006cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>40</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValIcms">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!PedVendaValIcms.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValIcms</rd:DefaultName>
+        <Top>14.11508cm</Top>
+        <Left>14.5006cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>41</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValTotal">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!PedVendaValTotal.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValTotal</rd:DefaultName>
+        <Top>16.38371cm</Top>
+        <Left>14.46833cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>42</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix4">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.28117in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.28117in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Observação:</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox24">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Histórico:</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox24</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.23622in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PedVendaTexto">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PedVendaTexto.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PedVendaTexto</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PedVendaTextoHist">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PedVendaTextoHist.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PedVendaTextoHist</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details1" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dtCopiaPedidoCabecario</DataSetName>
+        <Top>17.12537cm</Top>
+        <Left>0.29999cm</Left>
+        <Height>1.2cm</Height>
+        <Width>16.66834cm</Width>
+        <ZIndex>43</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Tipo:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.92667cm</Top>
+        <Left>7.74382cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.4525cm</Width>
+        <ZIndex>44</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Tipo.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>0.92667cm</Top>
+        <Left>11.38347cm</Left>
+        <Height>0.6cm</Height>
+        <Width>5.59562cm</Width>
+        <ZIndex>45</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix5">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.06071in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.7482in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.26666in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.76073in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.86279in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.00862in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.85464in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.24143in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox41">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Código:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox41</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox44">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Descrição:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox44</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox50">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>UN:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox50</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox52">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Quantidade:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox52</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox54">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Valor Unitário:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox54</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox56">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total S/ IPI.:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox56</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox59">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox59</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.24143in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ProdCodEstr">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ProdCodEstr.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ProdCodEstr</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaTexto1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaTexto.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaTexto1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaUnidMedCod1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaUnidMedCod.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaUnidMedCod1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaQtd1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaQtd.Value</Value>
+                              <Style>
+                                <Format>#,0.00;(#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaQtd1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaValUnit1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaValUnit.Value</Value>
+                              <Style>
+                                <Format>#,0.00;(#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaValUnit1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaValTot1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaValTot.Value</Value>
+                              <Style>
+                                <Format>#,0.00;(#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaValTot1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ItPedVendaValFinal1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ItPedVendaValFinal.Value</Value>
+                              <Style>
+                                <Format>#,0.00;(#,0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ItPedVendaValFinal1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details2" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dtItemCopiaPedido</DataSetName>
+        <Top>9.51849cm</Top>
+        <Left>0.3215cm</Left>
+        <Height>1.22646cm</Height>
+        <Width>16.66837cm</Width>
+        <ZIndex>46</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix7">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.56335in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>5.00322in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.24143in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox79">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Código:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox79</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox81">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Cliche:</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox81</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Turquoise</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>1.94976in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ProdCodEstr1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ProdCodEstr.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ProdCodEstr1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Image Name="Image12">
+                      <Source>Database</Source>
+                      <Value>=Fields!ProdFoto.Value</Value>
+                      <MIMEType>image/png</MIMEType>
+                      <Sizing>FitProportional</Sizing>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                      </Style>
+                    </Image>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>dtItemPedido</DataSetName>
+        <Top>18.50176cm</Top>
+        <Left>0.3215cm</Left>
+        <Height>5.56562cm</Height>
+        <Width>16.67909cm</Width>
+        <ZIndex>47</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox49">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor do Diferimento:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox47</rd:DefaultName>
+        <Top>14.89147cm</Top>
+        <Left>0.28923cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>48</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox51">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor do ICMS Devido :</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox47</rd:DefaultName>
+        <Top>15.67788cm</Top>
+        <Left>0.3215cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.98167cm</Width>
+        <ZIndex>49</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValTotal2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!ICMSDiferido.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValTotal</rd:DefaultName>
+        <Top>14.89147cm</Top>
+        <Left>14.46833cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>50</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="PedVendaValTotal3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!ICMSDevido.Value, "dtCopiaPedidoCabecario")</Value>
+                <Style>
+                  <Format>'R$ '#,0.00;('R$ '#,0.00)</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>PedVendaValTotal</rd:DefaultName>
+        <Top>15.67788cm</Top>
+        <Left>14.5006cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>51</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>9.57327in</Height>
+    <Style>
+      <Border>
+        <Style>Solid</Style>
+      </Border>
+    </Style>
+  </Body>
+  <Width>6.88084in</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Logo_Manuli">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEASABIAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCAA4AZgDASIAAhEBAxEB/8QAHwAAAQQCAwEBAAAAAAAAAAAAAAUICQoGBwEECwID/8QAWhAAAQIFAgMCCAcHEQYEBwAAAQIFAwQGBxEACAkSIRUxExQiQVFhcaEWGVaWotHXFzI4kbG14QojJCUzNTY3QlJ0dXaBtsHwJidld4bHNERFVWJkcoKHprf/xAAcAQABBAMBAAAAAAAAAAAAAAAAAQUGBwIDBAj/xABGEQABAgQDAwYKBwYGAwAAAAABAgMABQYRBBIhBzFREyJBVXGRFRYXYYGSobHR0jI2c7KzwfAjMzQ1cuEUN1KC0/EIQ0X/2gAMAwEAAhEDEQA/AMg0aNGvd9wQSCCOIII7wSB3x43IsbKBF+ggg26bAgE6X3CFBneHVhn5d1Y3VzZHiV/Zsm7NM32a5yH+vq6ZOrC+0hNBcQWwz+zX8plnqO4tCTSqWNd+IIbq1U24VEYn1L4IYjiIQlQITEMI4J8EIiivVdjU/PBcjgM17YOfvXmm1Z9kCL+I5PT/AEdVztKwqFU4mc4ZSm5vI3GwFpOVQzOtgWPAkgHeCLggiJxQNzN1YH/5Ckq5p1uSlV9DrvOlhccREL18bVz1lLtVxa10j+MzFHO4kpOb88+1H94unp7s+jP49T6fNxHY3ht4t3v/AJWaau7+pWAdensHs0xnU1p/FHHSOS47G6qU00pVhoSpptSrDXS6jYa6WF4jk0wwws4m+DwWnOVv/qVbh5te2JW+HHuCdXi4
+rRthunBl7i2pruUcpOnWCtZIVK20pUzAzdvKSyCoAeenSjmSkEKKSQUgKGupxKtoFJ2CqKmbi2xkkMlFV1OOMnO0klWW6n6lZkCJCLRDUlKoLCpBCjDUnI6YJB03Xh8xfBbxrEgjH+0bqCennot//wAj+P3y28Z6OIVo7TwRBjq8ZrxzQSjoMhk7vUevd0x5/SKwma1SjabKsPL1ZG58kl5saIcKivnlNgA5cJJcACla5s97xNpafCtCzQYzUyP6PoFwL31A4d1hFczW37K33uLYOsW+sKBqNybo8rOAvDQZvLY/NfX9pXtj9I6YPeMZGtQaNWzjMLhMbgXMDjgFAoWCCAQbpULEEEEX3gi3stXGExOLwi04zB78ye36Sb8Duvp/eLvlqK2krnW2omvpKXMrLVhTrW9Jlcg+JhSQru8xSokHI/k5ycnGwjKY5sD0H7709PR6tNe2RRTH2r2Pjfr38CEEA9+C5Reh9J6HH/w5z007VSQOoyM8vt85/wAvy68RzBoYWazXCjRKX3mx0gJQ+80NdTayRa5JsOmPW8uxJxWCleLOh5NCr+ctp7OHQBCb4D1+/wDRo8T9X0tKgQCAevUD0fVrnkHpPu+rXHHad8JXifq+lo8B6/f+jSryD0n3fVo5B6T7vq0QQleJ+r6WjxP1fS0q8g9J931aOQek+76tEEJXifq+lo8B6/f+jSryD0n3fVo5B6T7vq0QQleA9fv/AEa6/gPX7/0aXeQek+76tHIPSfd9WiCErxP1fS0eJ+r6WlXkHpPu+rRyD0n3fVoghC8T9X0tdjxP1fS0q8g9J931aOQek+76tEEJXgPX7/0aPE/V9LSryD0n3fVo5B6T7vq0QQleA9fv/Rrr+J+r6Wl3kHpPu+rRyD0n3fVoghC8B6/f+jSM4v8ATjRE8C9vjI2zBA/Yjs7s7b08xwevo7x69ZtyD0n3fVqujxB310rvddPUm0xhMR2BmpaiZKTBOA5vg7eA7/MH
+zA/LogiwNMTzXAby7x3JvgNAxO9pzM6js7qcZypaE49ZWM4I6nOui3VBSjvMeJNVRsrlMAZ8UaXdoczjvPQAnOD3AZ82OmmtbubV15UW3GRtbaNlS9z6pyl2KckzOhtBpliaV58onGfCs7KnkySFYCcd2m88P/bBdKz9b1xVN1GIMxmadaWanAHntPxw45npSx3gcyU8vTOcHzHRe2vDXu1/KDfpx079IlE8T9X0tfIlE4JHcO883cB9X+snSwMEIHXCgoEk5IIJ8+PZn1HUUPF/3jPOzTZ5U9X0TOokLoVxPfAKg5krC1Nro98yHJ/5QMYpqDmYBUcpUpPL1BKXCTS7G1BNpdJsCOdOHA0SQrKknepSkglKUoClq3GyLdNw0Tua4OQyeZTjF/RlDS1pFwFnmkhKAVC6ipQAtfnEQ+qvL82PtSP96t5bUW6minpK15cOkaPWpJPQhL+/QFKPoCU4wAeuM67bZeG0LrT7LVTVc63rlTNTyczMUzUUpW1KuVN1BkjwpaHmE8xJd6SnKsqhLiQwO9cMBOqAuzLhkbsOJZL1bdhtqxubKYg1MqRdrhXMdXx0c36px+/y2bwaVB8QkffRYikwklSQVgkZmc3e8Mnds5SO3C1ll6G+FlD2LsBStETL+3VG0NDbPV+p3en6t3UMMSokK5l1GpK0pPlKUshOcYD3tRpqXUHLlolE4FRTxGUO4dpmxaUQgqSrKXXUgAkgOJHNtuuDDn/4zNtbcq5Eoq+bs7KKOVT7ik1bU62yhaxnISlKltpUpZASkJXnutKrWEWlqff2KpZXx6nnZqeZBKDLGbbJtLg3dM+SClXITk8p8rBJOTjJOMy1ybZzr0qnJO4VFzL6JgShp+UqxnU6qch1MMMiYnhjEBHMAIZz1A5laZFsate/bM9iLLIXalUtdV0Qw3QuNcSXTOdoGWTCcn6oFBEUK/XOWn21uGE4wuEU55kq1U34KLS+X24pFN1w9TcadmqYkbo3
+ZdYi5slKYkQCnoZUnI5h4SukjAwSTy569MaHpRdU09N6jxafApkOGQ8pu2ZTi1pdVksbKGcIFiEkXX2wybU6jwdA7QEUjTjiajkrtVvUw3U6CgBbKHVMt1CEoWpJQ8G1KRzjmQ4gk84WvzeJ+r6Wux4D1+/9GlMJTyg82RjvyMH0n8euD4IdTESB6SpI1F7G50J1PQeJ80PpWkC5WnUXzFSRmH+q5UNDvve2u+E3wHr9/wCjR4n6vpaUx4M9ywfYpJ/JrnlQO9WP7x5u/RY8D3H4QoUki4UkjiFJI7woj2wh+J+r6Wux4n6vpaVOROM56enIx+PGvnmg5x4VGfRzpz+LRYncCewH4QhWhNsy0JvuzLSL9l1C/ovCb4n6vpaPAev3/o0qcqP53r7x3enRyJ789O/OR3enu0nxt6eHb5t/mhbjiN1943cd+7z7vPCX4n6vpaPE/V9LSkfBDviJHtUka5AQe5QPsUD+TS2PA9x+EJnQTYLQTwC0k9wUT7ITPE/V9LRpTPgwcFYB9BUkH8WjRY8D3H4QZ0XIzouNCMybg8CM1wfMQIhe38cPm183a6pLsWipxsomraIknKonRqaApvpx+p8QoseoAtlhp8AH0wEBcKLlAKuaGQIikIFc3V3m+aExLKXdhL+9XbGu0knPeqlHlB7+vcT1I7tUj437rH9v+WvSWyCd46ZSucS/HOLcDamyhTi87gStObKVm6jlKSQSomyrEmwig9pMswmEmsqxmDSEXBzJSLDS43aDceEdbVgHgqE/By9nX/1ul/zKNV/tWAeCr/By9n9d0v8AmUaf9qAtSEx+0ZHbZ1rvhroX61S7gW13HR9BfRu9kRycSP8ADFut/SGr8yaYzp83Ej/DFut/SGr8yaYzqQ0n9VZH9gx+E1DDUtxPJxbTnq++qHn8PT8MqxH9oXb/AAU/alv4zn8TVsf7eOufb2MrHu1Ehw9PwyrE/wBoXb/BT9qW/jOfxNWx/t4659vY
+yse7Vb1L/mrSf9A97kTqR/5eVT+uhEVwdGjRq43Por/pX91cVcjejtR70xcu2UfgrWS/sGzfkiadT5z7B+VWmk7Io8Cb2r2Vjy8YR4KqPhBKu8qPaUxjI9KeUj8R07bzn2D8p14enAPhebXuCcTid97/AL97jrHrGS/yiWW1syi9ujmDfbdv6bQJ7h7B+TUIXEgvvcKk7yU1R1A10907KtdDtk66SlPu3Zig5Pju+JX4Tu5lqY0tC+YYBSpOO7U3o7h7BqtfuJko9998tT0nIx/GQ53Ha7e+qQa2L9oX32fvG+dfNg9OutLH0yeA9+kO0ZfJuO+XdXIQHanI9Vpo9tlPFJQyk2KabFKIAJJGPhEeUAZPXCQB0Gda2Yr4bntqtxJZpqt1qOBHbJwKdqUqCdLk2PrZjyVpUk5B65SpJCgTlJBAJsiUnSzTRdOs9MMMnAbmdlkkSclKSwIShCfMMgdSSSScnJ6kAY1C1xX/ABP4d2x8F4t4/wDBF08Z9PJ2ynHN6883f5WMZ640ma6iABbW1u0+aCNc1tuc3P7uKrmKWs+11EyU+hIBYaVnEp6JByp+fAEpAGOY4ASPMAOg1jUkHeXtYn2eo3x1ranJeanP2HN9sdpUzP8Ad+0r56/P+TPTUvOwi00lbmwVNOZb0y77XiE1O9zcQjx1aFqIZ0rBBzyQhzYJ5SFjmBGcHEQjNkLa3XBc/F/CeOUz4hn/ANz7ZhcmP5XLgLxn/wC7rovrYDSOeM82k7g5fcNayBU8eXgSFTM82plq2RlyjwaXWGmGC4IBT5KI6ULXhRIBREJOORCWdbzN+c9b19cLT2fjyoqhuzK1JVXIZ7sJzVynsZph55VRyEp51qSnlI5EJSObm1TsMrBwtntv3R3DgpBiMEk3OLTnv7XQzvYQPR152VXUd6B7Dprh9Whkb13seaqriF2y0UJJGppuVmxkz9UvrwSxF6Tg8ykpS+qCeUk8voydFgCT0f2vHRCQw7fd
+6995cVdPLqyYgzY8eknSralDaqfGcZA78DBGcY6d/o/duuRu52b1ZIS9ZfCNdPzE8R2VUE72lTT43Jyk9hEdULT1GQQtJz1B1Y2CfBoCIYwQMDPmHnJ6f3ddNs3YUCx3FsRX7U8QJdUZspx0e2mbIP7AcmaGYiIiT34yPB8vTqTnHKCcuXO4gW/Ls3QRD9bPcBdq+27JghNlc1ax0bUtdGfNKSjx+1be1AcxZj3ebJ9uf73G8S6+Fa0PU9uKUoWsXqmo5aXZ7eS0TpbiVlX7SFRPermBBJz3AdCMabhwxKRS+X8cKkVC8PL0bSDlNBR64VUKghGM95K1JAz06gaQd6M3O3g3kOFHNQExMSs5S9vpTH84kknzZyp8yT35yT3nSdPYPfHPHNN3P3s7j2Fno+gZ+rZmnmCS8SnJxqnOzRPjqSX19P7/AI8/5fPrHX8bydqbm0VE/Ota063Tc4PFJovAc6YcMEHsV9HdnoCP7j3nOrB9rbbU/aihWGhqXk4Mq2sUomXGIYAnJ4JhiI4rVkq5oqwtRxg8pAH3gJbpxBeyTtTuWXSBAmFf7K9lJV39pms2DkIOcDoD6c9QeuDpM2traR0RnG1K/wDA3D2pb6vjQJdvqKQmls9WtMsSUt7tDAygH+SFA82AceSs9Og1FZcG8t1K73wR6Go6vqtbaYFyGumC0tDuA1lsYzl/IGe9SmTm9JJycnv3nwwJ4U5Za9FWz2C0t1SeO8pz1hMNHw3uMoHzcqInTr0JHt01TYg0Rrj7vfhXP/sgNZqiszOH/wB1JAA7/wDjoHo6n+8GhUf1xgixTpm2+S4rpbHbrVbtTrtMM1QuU80srRNycxyz6Ir06JhqVCJGQCkqSepHKSjm6HLydRB8V+q1QaTtlR0GNhLo9Ob1MgfzWKGjOR5iF8w83d6Ma0wRsfhr1DcCs7dV7XFf1hUVWpmqka2VpVUU6XCI39gsyVPSUFI6AxHlBWCcHA6HpiOm2sJV69/k
+lPxOWahTV63Wp4YX0SW+hnnt5AJyOhp5jAwMEgjBzqTXbwn7i2w6JVUciWcIdJVTW84P+KeCiQzjzDo0oPXzDPnxpiPC5pQPV8qmqiZTzStG0M5GUJISEuz099iQ19SCcMCHkADrkg4IB1v/ANR9H67454dNxM7yVpbxstfTtEVW8U1PO0zUr48TDLOBuchIsimRTSoL6FSVlT1jIBygnHXGnR7KY9XTm3SgHqtntwqaoX5Do/TDm8TnaDkpveHmIphC4mTyo7B8XOehGCfKBUBEvxL6pmKp3KwKVkuWZNHUjTVNGVTj9831XbqM+lQhvaEk57hjOManjtpS8vRlu6HpKX/cGGm2lpHsgNiArv8AQfP6NYnQDz/9+3846DuPRodeGm/0b4xm+U7WUjZi581btsnXeukUNU3wSa23AcJ+p1M0dLIiEThKYhmhAzzYyAAMnl15wW9RO/ilHKl6D3uPF14U9Nl1rGj6VuTUyamTlKiwKeGRSakIyk5yD1SrII79emyrmVECwrMMglQ7jgZz7sj0nVA/jm1nDvJxLYlAtkwqalKRk6GtymVlySuRdJmIqYfSe7zxT0Hd0HmJN3bBpmpFRTLCCWNPIRhnnlOqGZxtbaP2eSwypSolRJ0OlhbMY897fZeXJBLMR4UcaKsS2zkB5rmdSQTZJGZVlCwIVpc2002lwqNtfE2abt7anKQbrzUTtHcq4pq4dQxZaqA10S40uhJW+gsSajiRQmrBgkphrIBCglXQH9OIhvG3RXA4p9W2Hshfe6NI0xM3StZZanKepWpXhubQ6viafYH7mZRhKiKjfHzqMJOMgAdNXNLaU02WfsZRFMw4cCBL27tfTjIoHokGmqSl4C0g4H8uWVjBJUFK9OqIfDNbIu6njH0XXrinxyVnL03Rv/OzOMiTDL2/XLEgjuIVUamNOD06+3Ujp+f+Nc2rWr8fKMLkkFNYpDaEpBaUoLeS267nQRyq0pbS4pAJyk2JskxH
+akkS6VlFG0lgZw8FT6pMOtRS4sOZSllagnKsHILkpBITew4w5zi5S3E9pa8W565cb7t9EbPC6tdCtcaDWaTQ07Q0ZoY6EWvsP4RIWU1fHEXMQw0GIt9WVBK+YCKfZhY/fjcCeqi4GyCl7oR3BhHwZrGo7aPTLTTlIdu5fizZNRpwD39e4HGSdWpP1SxdEUvs8tjbCBOplHG696muPNyYHWfpWh2N5jPiT58IqN+ogj/6ydZx+p2rYw7c7A525M5BTLfdauRXlb+MnBy20/EhUGk+oJTRC1HzkhI13SytsbLNkhm4ktNAvPmlmwW/2r6VFKQ8pFklbigpalKsRmAOgNo4ZlQuEme1bwOqcVMoNtip13cJQlSEXUgkrIAJSEgKsrKSLdMa73Z8TqpuG1tJsNZCemI1y96DpamkzVS6ynu0jTbl2NDjPT/W8eDFzEeCrugnMOKQVqC4akhUDNE2z4tfE8mJ2u2p9uZU9KzU5yN79UNSu1C0JIBI7qfT5IOAO5I6DzYxpLtvSrnxRuLLMSNfRpiYp2ubo1Q9VHJ9wb6BoMdGQegD+C2e4efuOPQGoqjKStxSbHRdFMjfTFM07JQ2lnaWuVEnISEhA6JhQYKekNIwV+SSVLUT1znTLOJxgNlWAlWGwsoadrKeIVisS+8A6hht27hCAUOKQ2NUtNpKEhtrMsqUdXaTSmc7UcfNsTipu9JKRkRcpptppakuvclZKl3zpRmsAVOknnKsFbrUH6pt1xdeFnPyNyXV3uJT9ISc2hU+/NNSpre2k6FZ5WZ+RnKQrlVylQAUUnHcdY/uj4uu6zdTc207zba4FwLORhQlM0XUVJ2+qN3bWx8rsvb+Xt2YglKQEVOjsKFDGCoIQhKipQKjf1uTb6lbo0FU1v6zZG+oaYq5nn2p3ZnWXE9ITstGRyqEWGsBJAGYgB5VlSehBSQfO52f7eJN14rtCWEbpdLmxUBuweGeZCjgOFM2mrKoS+A47gadYupH
+m6+jL1Q1UyOssBP51PZLhxO6ewzyg82yhIUyWXjcgpBBCmlcwqWnRJbUkLUIZq3padUZj5FJ6eqyqFSievNJUhTvKapdaCk5gq+Ug7xbmqNwbRYe4z3EJvLsgtHYTa7aCqnNuvBWdsm+eru6URwVEqNtpqn2WFTyYrG8L8mHUtW1DLu8VFS8iVwFskVWeeKs6hMauG/xM6+2/DelDq18n2l2pmHdySl566D8m4s/TMRrS7Q6v7NUgS3jERiUmpIct4bw61EFEJQ6mVf9Uh7O7mV1P2p3U0BTjjVrDRtHOltbjy7RI+PudLtRei9sj4pOAOw0KenxMykZKFlClBIioTrRnC4449K2vtrSG1Td+0Ro9umRrRQNJ3Ok5IOCWamU+Bp9iZ67ZoY5yxQ4CRCTVOSAkiHFQpISlKUunEYagJZOKCk+Hnk6GIeVVzS2kvO8kHnlFttBIWDkIAABSBctpOpVuqdTeJr2ZSiupw/IZLyLSaUeStxCOU5JsBxawQk8/nElWp0UQYeHwBeIvda/kSt9sV+aln6zqKhGCFUtA1c8rVP1E406uImE7Mb688yULiUzEMKAgqAWQsISrISk5vxfOM7F2tvM/t221BucrzSsmo1dWU7KKcGuhUrTylmbEJUIcepVJOeWIgoheSEp508+pKJS32zzbzZq4u7fbjbO1zFFkLRVbU7VWlFSMPL80obO34UIKQpSVQpp4gta4gUDEAISswirwYp/8JDb9B3/APEAcq0vQJipmKl5x0vPXUm7kOQfnZT3ysDK+5KcgEjmweblBxk41HJJLqUns2q2v5jJVYeS080lfiy4AhKqkKVlWdISLNNrBUpK7DMuxT0GRzmaVXIZVSlBy+b+HJxP3ClNTpULppsqGUpJUSXAhSUggk2TvvrHXoLaPxfN/wBKpuhFnrrvDO6J8dkKnuZXrvTLbPIT0HYKBghI7ug5RkDuxhXXX/Fh4Rla0w83Cnq+gUNNTgkuyqgejWto
+6qUQQGdC0lMSFFAOUrhqREQTzIUk4Or+8o3SUg3S0hJS8KRkZSXEvLysoEQ5SWho6JQmGgQwAnGPvR1ye8kls28Xb/R+5bbfda01XN8lPt9TUe9oaZmdSmIprqJDNESyO7YspUYcSWmFJUhaFjOYkPykxV45MNtfRjMY3gJpR9LGSOOJY5NOGCXW21qDQVmCQk8mFJJSEgWSchBCY78TsedwWCXMZVVlUGq22+WDhxCi2paUlxSOTKrJSchSFXJN7Eb7UuoHEN3Pb3OI5beBbq6t2bWW7vTdyzdMyls6eq93S2Uk0ITQTDXZKUpSkABL7VJ5UpSMdAO7RrFOAJaz7oXEbt29zEJMdutPRle3MnVHuSksvwDZldxyUv8AXDMoDu8nBwNGu7alMsDT04lEqkrLAwzNP4Ba0lhtYStwrUhANwQUtWuFXVbKSTe5YNm1Pz2spTM6imr7qcTj57jyByyk3S3kaJsVpAutBPNFtT2RfPvn/Etd3/lfXP8AhZ47v9d2qREb91j+3/LV3e+f8S13f+V9c5+azxqkRG/dY/t/y1zbEf3U77Wfw3ImW1n+JlP+/wC/HW1YB4Kv8HL2f13S/wCZRqv9qwDwVf4OXs/rul/zKNTjaj9UJj9oz+K1EYoT60y37Jf3FRHJxI/wxbrf0hq/MmmM6fNxI/wxbrf0hq/MmmM6kNJ/VWR/YMfhNQxVL/PJxwzm/ZnMPP4en4ZVif7Qu3+Cn7UuXGYlIsax1uptJzLytxxAnM/zY7TGKevtQrp6gNRGcPU43k2J/tA7n/8ASn7VjPfpZebvpttremGqAmYf2UwatpyVKkpE07MpWrlJOCoxGSK7wUJBKlLioSkE91XVtMcPK9pNKYzFWyBDZVfQWU6tF7gHQBaTvA01UALxYdJ4YYuhqnwmEBzHMBffcNhRsN5uEn89bRT+0a7EaDHkosxAjwPFZiV/8b/odPb39Trr6u0KCk5xqlQzAjUEEZtCLg6HoJip
+bFJt0pNtdNQbebpESgbKOIk5bb2YW7rhkmKqt4mZXNMsVpmkrdGCHEA54akqBSuGvlSVJI68oIKT11ZopSpZCraZpmsG7wiWyqGBpqOSMYkKQ3vjXDd5cKycBQhxIQV06Hu8nl1RX1dy2/8AWxVmvT9yy3X9/wDsiyJxn+4ezr5sa877W5JK8A5KpxgAE+Gw8p1I0upCUkEiwGYqvc2BNhcm0XbswnWNxqZng8YSrkiCjX6I3WG/S24ewbo2a6OMuzyE86TsUS7e3Sk9OTcwcYQmGSv6ICselQSDqvPsQlI1zd4/wynz4xMNXw8uFOZP/qj7+0JJ7sdHzJ+rU4G4VdQrsfc2SpBsn3mp3Wj3ZjZWtslhPuERzfoXYpEJBUQtaEupWQcFMJK1jyc4j64b+3y4ds6hudVFx6PeqUmZtrZGhmDtJhvM+BGfFPagnOQByshCsYHKSPvdU6nQE/rh7/7RbW7zfrzxLtqutxAXg13uuTSkE5gNQpamJT0F1fR1x5znr/n6NWKdQOtW3i91abz1XCqq3VVttGuN0i+zrtONIS1BqSnIJUThKRg+V3AA+bOsmCAokm2nxP5QlxxHePjE2VHtECn6Rphkl4XgEtTA1SIGB5JgNYQoZ85StCs58/TuGoyuKvV6Wy29AUbLxsR36qI71Oj/AIaxtUQrUPTzKJPtPr1LLqGDiHWmvRd26VKytE28qupafpenV8jq0tZW29oP8TLwMqPMVCGzQkqyT5ShhagUqVpw97i99/T2jjBccR3j4wtbfLWzs5w5rny7VDTMu9dSNeVPKoPLzTxZlcsJoJJBAKqfiQ0gffFWMeSQNHcLy5zLSFzK4oF6m5aRmbiNTKpnmJshJLnT0V8WpmSSQCpKXoqSkkBRSEkgEHUxlh6ITb6zNs6RmJZUtMM1KNXaspMkBUi8RUdrvhGcZ5X+PFJBPQALBwDqKLdJw/a3aatn7ibfJHtBom53tmZpRpnQ21HTDmU83hKc
+UFKSpKh15eYrSAeYYwpW29yQfd6PePhBccR3j4xOPpi2+u+bHaizD9Txn5VVX13IxGVla8cqxDUsqd3XoAeSFDPLhWSVeUOvMdRkM90+I8zSsClpGQuz+xgJKUM3QfaTmcdep+DfcAcgE+v16w64e0zd5VUs3V9WVLVZVtUVVOkTcoT2k6SLWBkh765YD0OQPQT6dIEWOp7Oj3/l0wXHEd4+MPN4WtPQGSgLsXHnoIHM4Qm6UPn7LZ2lDzgeg5XkH1aaXtelI9398sCpZg+MyyawqmtTOephGWPPn834tSSWOtlXtpdk79TUGlnj7pTkzVS4CmzKDtXtR+HKGgJ78Acyc9E+UendjQ3Dp273LtvX1Y1jcajnmlEmmuxmkO8mW8T7h21lZwOqgUBWO8EjuIyNZcT6B3dHfGiJjdRYcVCqkt1oKBpGXipEzVNeqm1cucdnU+0xPCjz5KYz60dR0Oc951KfqHLiOWuvPdq4Fv5KgLf1XVLBTNIOZLm0yaXBuS7v7sFqSsBXWIEsbIpQ78YJ6AqOnD3uL30N9f7xvuOI7x8YzPbVTcej+HfWztL4lnCsabulUxJzkJIfWLoP53weY4ff0wD6Bpv/AAny1i4t0DOxpZTv8HGotAGQf36f+3CACOvMAeuAADknpqXK1dupKnLH0XbF1kkiXk7dNVKPEp3KWrsOEzvSSTkAKC1pPqPQZ1CLdHZ5uL28XFmass5I1M+M0rOmcpuoqJSXFzkGsd7K9sZACknrhScpUOqVEYOtu/MOk/8AX5QXHEd4+MWFI8xAk4UWPHjQYEvLjMzMzBwAMA5JykecdScdcAHGDW83uXfkL+7gZeRpyP2jTFLdmUa0TcocifUp7Jf8E9fviSM+buGsvgynEOv2n4HOv3R0ssyDJTc06M/wJbDjqQ9PQ6nAB6JBPQ+rXXs1svvQwbgqIgVJQL0KPYawap14q0tADZPtbIcD1DJ6D0noOuNKBa/Hp/X/AFppGiJC
+t688i12y1NES5RLzc020Jb6ByElOSiGXgk5PUyrI6qOPJ8rp341rvhQ0gG22lx63jwwn4UVg1tMqT1PJT7MkqA83Xt0A56YJ8+sk4kdC3YuVTdt6Ut5RT9VcjLvbo9PJZ5NM8JOKIXYjOSnOPCEPMSIU9SIacnoknW7drlAVXZfag2NkanZ+WuDKMlV1HOU0uV5nCLUcVbstnZzDAyVeDhNCIecgEknyVKxifo9v5n9e2N9xxHePjEPUb/fZv6mP/Mtzrfjv7/H6XoV683/TjHgddWVD5EM+flH4/wDXv1BhsQ2z3fpPcPLVxcygqip2RY6cqmbkHSoJZIK3d8hlmENGT1WYb0/LA/mArPkgkTpnuPs1niDzxb3+ew90Fx02I6RcajpG/phFmZqWk5OYcI6/AQZaAuYmCVdyUBSiRnJ68pHdg9M4GSPPXsrBj7vuNDIuzpAEy31NuadXt3GTjstgecjP9zF/rv1fE3ER6mlbH3djUOyOVR1X9zuppWmqfZZczro4vTs0x2loQ1wkkBSzMRfClABB5VqVgJPNVa4HvD/3NWl3mON6twVm66t23UzQlTpZ3StGFLapxqZ/AZogQQrJWJYLipCfKKQFDp5WrY2ZzLA09T20Cah1Dc5ewqGcGguNB3VDgJaStaXFlJW1ohKxdAum970rtOl2Ons/2fyxiWFyUIqVLmIXY5AlACiVZQQEAJWecbXPSbXsWcSS6aLLbGNy9by0ZMq4y9qqsZ2Qn76JUT60rZGYj0Dw0wgkdxynv7xWU/Uylsg8bg7/AF3JiAmalqBtg0UfJzKiQZJ3rV8C4AT3d7LQzqlWemFEZBI1N1xyLc30vDswmLTWHt/Vdxqgry4NJoeGmjWsT7lJ04xRVP8AMRRDUoJwuK0wE8/fzKTDwkFIVq7gFbRrk7Wdut0Zy9NBvNt7j3BugtM5T9QSiW9xXS9INMGDTrotGclEeI9vZCsYzDwSMknOSTXASnZRVLAcR4an
++JaZSyHRygw6XW0KGVKuUAyNu5rpyEkglIIjCeSzHTTa7Sq/Bh8DyFhaw4UEoDoaUUkG2W4VlA1JFhv6Yhv1TXdRT/uUsLZ+DMCblrdWldawmj1Bb3S59ZIlogPnP7R0E0EEd6SPXq0JsPtCLTbEdvFpY8JLa4SViqYkHsHPkVK9sKY9QKUO/IfXaMUHBySAM+erzxBNim8LdlxUasrJdgrlzFk3+6dsLfSlbKp50h07KWzZE0JRVQvvbKSlPYEQIqKr1JhpwQmIodAoi603ykGQkZVsgZEKUlocunvxgBIIz3HoDk5OT0GdYVrN8DhaF2e0/gXWlrYSrF4pLa23Mrxs4eVDSlZVJWs2DiUqOWxvYmM6JlmLxVc1/PsdLlNcsThcOteYEoKVtpDZUNQUAE5ebr6I88zh7XNlNlHFTk/uuhNOScrXFfWxquaeVFKGNb68HkeVKTkhJVjKgCQnOAeg16FkpPyrrJwJ6QiS7i3zcuiYgxoC0EReYA86COgSroQT0JODgggVv+MBwXnHdFUM5uO21dnSd3ZqTKK2oKemVNTZXaUJJ7XbHoJSJapEoSEhUUJhxfJKSFrTC1DBbi5fHS2ttKbUUdSe5uVZGLEpINrtal1rxqkcfelhfqgppQNOjqUkHp3DzakVRy6TbVcNJ5tKpzh5JPGWEYfFYXEqFrNpSSRryicpCglWQtONKBulVoilPzCc7KcZN5BM5Q9O5M86p9l1lJJzOqWoC+VSFXCglQUcySPNF0PeHuqtttAsVW127jPck3y7UyuSKaZfG0pdKnqUwCWhlaEjPPHjxiOcHCUoBOebouo1wDWadvTxE7rX+qSH4ZxpahrnXVmz/KVU1dvKmaMhPQ+UZetKhwSOh6+bWobvbHOMJvCol2vnuEpq6dVTDAW5FHW6quWQ2VLPKd3hKloZLU0+cU8pCMKVUpHMEAkjlBIm5/U+2y28O2ajtwNS36tq/wBuqmr14pZqp1oqtsDa7ppp
+jFRLcipAyVQYynVqwrKQpUHCOblXy7G8BTNB7O6pZw09w08n0+LTDwwziCG0B1tLqUJLpdAS2XLqIuFKzAaBIxMwqSvdoNMKxdLOySSyMOuIW9mJUooWpBJyhGqg3YAW0sN143ltJ42+33edflt2uy1nblUdUlXyVTykOJXkSkJ6nnBbExvj2+Mq0ydQR1xytgYnhS0ploiOVASqAuGlQLBeOFwrLC0dZOr94NkmhuthUFGuTREryjWcJbqWqxtf3lDIXRlZ0YhMlSCoKghrRGgDwUZJX5ELkwtlnEI4Ue77bFukqHcfs9pmsqsoRyr11uXRLlaeVW4VvbV5fCHl/ZXdkZEwlRqZTGUYKYqElBpAGCcxExIYbdcB74yXEJk6dspXlJXyrunJKaaZpLPM22TQ9LpcEAhLxWz2KapEJSkfepqoADJ5cd+nqmafleBmkmq2hqvRIpElpk1Xh3n15wrKFPIWhbxSsOC6EBaApCwSFrBtDRU0+m2Mlk4pOt6SVOp0XHBSr7bI0GZSW1BxDd0lAyqJDnOAsoA2MPz4Lbzcq+uxPfztpmXNzc2Bsod0j0G2TWP2tc6jY6gAZGUk5MOJFYYKMDP64YRIHLnTav1P5fyltvm9Kq7cXEnoFOKuzTX3P5GZdFcqjVLC9ftGxoUSAlShlKVEjlJyT0JFnnhTcP8Ak9gm3ZNJ1E4QH26deTyanuS7SJHZcs6RUkQ2NnSoEeKU8lS4KVkYiK+8JCQpUO/FP4Gdf1LcR/3IbLGuWn5t9nlVLV9qpecDW5S1SpAw/wBDHCEq5kqSVUwlKUKVzGGAkYDfhatpGfVHtAp3FTQSORVGczWICBySn205QtSgkJBdUlDiFkgKsoZgchV34mjqrkVP0BUWElip3OqfCeUZzHOhpfOy5b3slJUm1iAQNBrFt1OPJKFp5e/CQCTkZBIH6cenUWnFe3pUps52s184xnuURcyvafd6RtbT3jSe0nCpnyFFgw3flJTE
+Sy00YvjMeNyDCYaZcp6lQq20TuH4+drWyXtsxUzuem4DYAzScCobIu9SukkkDKT2/UFNZIAPk9cDJx3k617fDhrcV29tMN+4K91GXUuncGqKi7FkqSdVpqSuJBqLSXftp6YwrFAU8mKDCNK9eWJhChzFKSzyXZXKJVOpVjairClvA4cS82G3gXHUoWFtpKVFVgsobzZbg3KQvnXL1O9qc4m0mmmBp+kanROMhbUS2QlsqSUOEKCQbJzLtqNBe2mkkX6l/teiLUO6C9cxC8qA00NbZnmfOtDq71BUL/g+pbJToODnBwdGpWOBlthuBta2ax6duxRzvQ1xK2ujVFZvVPP0siRdW1vW00/T7NCiwskqQYTGZhIThSVOhKuhA0arrabNWJtWk5xmHIXhy+llhaClSFNMNttpUgoUtJSohRSQrdpYEWiydmEmflVGSnCYgFL3JrdcSq4UFurK1Ajmm4JINxe4JuQREql8/wCJa7v/ACvrnPzWeNUiI37rH9v+WjRqx9iP7qd9rP4bkRDaz/Eyn/f9+OtqwDwVf4OXs/rul/zKNGjU42o/VCY/aM/itRGKE+tMt+yX9xURycSP8MW639IavzJpjOjRqQ0p9VZJ9gx+C1DDUv8APJx9ofvqh53D1/DJsV/aB3/wU/6t/HqCPMYfUeY+3v8AeDo0aovbOT4xSg9Ip5o+kOnX2Rb+y7WTTK/S6kHz/syNe2ILt9fDPdareHa8Fg5KWmHh0zPVbbjJkET7ilKldtUetOUQIqUp/XKaURAirwqCvmX4FEElSUrUdIPExTlVMb3Tb+1/+Maagk+znOQ9fTI/Lo0alGyWqZrNcIzK8a4lzDy9lp7DqseUAeWtBbWSSFpRkulR5xByquACYltEk+ClrwxGEbKFqWQRcZdQlRNgBa+Y6bunSMf1d02/fxE2bGcZtbbr/CDD10aNaNt37qRDou/YdA/Zt7huG/oEOeyb+Imx6eZ74alxAd1FX7U7bUfU
+dAydNOdTVHXKWJMlVbe7OTWWtDI+PbxGX2LUVLTCYkFcJrEE+H5eSKsrTFicq4cTfxxe6X5LWU+aNaef/wDJGjRrv2aUTTc7kCcVMZe2+9ndGclQsA4QAAFAbu08THBW9UzuXzvkMLjXG2yBzRa24+a3RB8cZul+S1lPmjWn2kaPjjN0vyWsp80a0+0jRo1PfJpRvVDXrL+eIf48VL1g5B8cZul+S1lPmjWn2kaPjjN0vyWsp80a0+0jRo0eTSjeqGvWX88HjxUvWDkHxxm6X5LWU+aNafaRo+OM3S/JaynzRrT7SNGjR5NKN6oa9ZfzwePFS9YOQfHGbpfktZT5o1p9pGj44zdL8lrKfNGtPtI0aNHk0o3qhr1l/PB48VL1g5B8cZul+S1lPmjWn2kaPjjN0vyWsp80a0+0jRo0eTSjeqGvWX88HjxUvWDkHxxm6X5LWU+aNafaRo+OM3S/JaynzRrT7SNGjR5NKN6oa9ZfzwePFS9YOQfHGbpfktZT5o1p9pGj44zdL8lrKfNGtPtI0aNHk0o3qhr1l/PB48VL1g5B8cZul+S1lPmjWn2kaPjjN0vyWsp80a0+0jRo0eTSjeqGvWX88HjxUvWDkHxxm6X5LWU+aNafaRo+OM3S/JaynzRrT7SNGjR5NKN6oa9ZfzwePFS9YOQfHGbpfktZT5o1p9pGj44zdL8lrKfNGtPtI0aNHk0o3qhr1l/PB48VL1g5B8cZul+S1lPmjWn2ka4+OK3SA5FKWTB9PwQrPP4/ukaNGjyaUb1Q16y/ng8eKk0PhBdwbg21B4g7wfOCD545PGL3SnvpWyh9tI1of+5GgcYvdKO6lbKD2UjWg/7kaNGk8mlG9UM+sv54PHipL38IOX42179/tjj44rdITk0pZMn0/BCs8/8A9I1z8cZum+S1lPR/BGtO70fxkaNGl8mlG9UNesv54BXFSC9pgsX32Fr9trX9N4Dxi90p76VsofbSNaHv7++5Gvn4
+4jdEe+k7JH/o+svtH0aNHk0o4bpQ0OxS/wDkhDW9Rq+lj1HtSD7wY5+OK3SfJSyfzQrP7SNc/HF7pR3UrZMf9I1n9pGjRo8mlG9UNesv54Xx3qTox6x2AD8o4PGL3SHoaVsmR6DSFZn8tyNfI4xG6IdRSdkQfSKPrIfkuPo0aPJpR3VLXrOf8kIa2qIm5xyiRuJSkkdhKSR6CI+xxjN0w7qWsoPZSNaD/uRoPGM3THvpayh9tI1p9pGjRpPJpRvVDPev54y8eKltbwi5bh0d272R8njE7oj30nZI+2j6y+0fXPxxe6Qd1K2TH/SFZ/aRo0axc2a0cG1qEpaulC1DnL0IQsj/ANnECBFbVFnSP8coZlpBslIuCpINyADuJG+LDlmaif6utNbiq6ul26WqWqqNpmpXmVbYMSWkJRwemiE8RkIERcRaUoVF5FEnIWPvcEEmjRrx1jtMU8BoA66ABuADjiQBv0ASB6I9QYFR/wAKydNUIJ7ShBJ0I3kkmP/Z</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportID>0fc77ee6-593b-4215-8582-1f463f92fbdb</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+</Report>

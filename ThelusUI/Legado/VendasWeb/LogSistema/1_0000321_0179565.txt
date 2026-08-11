@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0179565
+Tipo : Total
+drpStatus : 13
+Data Saída: 01/07/2016
+Data Emissao: 30/06/2016
+Natureza: Consumidor
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 30/06/2016
+
+Produto: 20.20.40.11.0008 Revenda: 0 Quantidade: 10 Tabela: 000000000000050 Valor Unitario: 8,82 Total: 88,1999969482422 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

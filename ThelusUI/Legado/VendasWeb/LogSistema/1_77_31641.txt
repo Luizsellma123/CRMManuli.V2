@@ -1,0 +1,35 @@
+Empresa: 1
+Pedido: 31641
+Tipo : Total
+drpStatus : 1
+Data Saída: 10/12/2021 00:00:00
+Data Emissao: 22/11/2021 00:00:00
+Natureza: Atacadista
+Operacao: 1
+Especie: 
+Condicao Pagamento: 7 - À Vista
+Tipo Frete: 3
+Transportadora: FOR0000065      - ALFA TRANSPORTES EIRELI.
+Data Hora Inclusão: 22/11/2021 00:00:00
+
+Produto: 60.14.01.03.0017 Revenda: 0 Quantidade: 2500 Tabela: 1 Valor Unitario: 14,49 Total: 36224,9994277954 Unidade: KG
+Produto: 30.20.10.29.0014 Revenda: 0 Quantidade: 3360 Tabela: 1 Valor Unitario: 14,75 Total: 49560 Unidade: KG
+
+Historico: 22/11/2021 09:47:06 FRANCIELLE.STORI:Pedido Atualizado.
+
+22/11/2021 03:46:17 FRANCIELLE.STORI:22/11/2021 09:47:06 FRANCIELLE.STORI:Pedido Atualizado.
+
+22/11/2021 03:44:39 FRANCIELLE.STORI:Pedido Atualizado. - 22/11/2021 09:47:06 FRANCIELLE.STORI:Pedido Atualizado.
+
+22/11/2021 03:46:17 FRANCIELLE.STORI:22/11/2021 09:47:06 FRANCIELLE.STORI:Pedido Atualizado.
+
+22/11/2021 03:44:39 FRANCIELLE.STORI:Pedido Atualizado.
+
+22/11/2021 03:47:56 FRANCIELLE.STORI:Pedido Atualizado.
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

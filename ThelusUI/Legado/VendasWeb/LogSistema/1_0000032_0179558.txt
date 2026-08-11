@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0179558
+Tipo : Total
+drpStatus : 13
+Data Saída: 30/06/2016
+Data Emissao: 29/06/2016
+Natureza: Varejista
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000036 - 28 DIAS
+Tipo Frete: Emitente
+Transportadora:  - 
+Data Hora Inclusão: 29/06/2016
+
+Produto: 20.20.40.11.0008 Revenda: 0 Quantidade: 10 Tabela: 000000000000050 Valor Unitario: 9,51 Total: 95,1000022888184 Unidade: KG
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0

@@ -1,0 +1,24 @@
+Empresa: 1
+Pedido: 0194377
+Tipo : Total
+drpStatus : 13
+Data Saída: 24/03/2017
+Data Emissao: 23/03/2017
+Natureza: Atacadista
+Operacao: Venda
+Especie: Venda
+Condicao Pagamento: 0000025 - A VISTA
+Tipo Frete: Emitente
+Transportadora: 0016069 - RODONAVES TRANSPORTES E ENCOMENDAS LTDA
+Data Hora Inclusão: 23/03/2017
+
+Produto: 30.10.10.12.0044 Revenda: 0 Quantidade: 2 Tabela: 000000000000050 Valor Unitario: 3,3 Total: 6,59999990463257 Unidade: RL
+
+Historico:  - 
+Observacao: 
+
+Dados Logistica: 
+Quantidades: 0
+Especie: 
+Peso Liquido: 0
+Peso Bruto: 0
