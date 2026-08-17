@@ -88,6 +88,9 @@ namespace Thelus.UI.Engine.Modelos
                     ShowInList = attr.ShowInList, // Flag para a tabela principal (GenericList)
                     ShowInGrid = attr.ShowInGrid, // Flag para sub-grids de detalhe (GenericDetail)
 
+                    // MAPEAMENTO ADICIONADO PARA O SELECT:
+                    AllowNullOption = attr.AllowNullOption,
+
                     Rows = attr.Rows,
                     Mask = attr.Mask,
                     Format = attr.Format,

@@ -86,6 +86,12 @@ namespace Thelus.UI.Engine.Atributos
         /// </summary>
         public bool ShowInList { get; set; } = true;
 
+        /// <summary>
+        /// Define se o campo do tipo Select/Dropdown deve exibir a opção nula ou vazia ("Todas" / "Selecione...").
+        /// O valor padrão é true. Defina como false para ocultar a opção nula e forçar a seleção de um item válido.
+        /// </summary>
+        public bool AllowNullOption { get; set; } = true;
+
         #endregion
 
         #region 3. Formatação, Máscaras e Regras

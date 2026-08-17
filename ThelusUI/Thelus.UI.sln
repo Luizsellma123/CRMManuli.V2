@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thelus.UI.Engine", "src\Thelus.UI.Engine\Thelus.UI.Engine.csproj", "{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thelus.UI.Testes", "Thelus.UI.Testes\Thelus.UI.Testes.csproj", "{DF9006F9-B413-401F-8835-F26E221E604A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thelus.UI.Interface", "Thelus.UI.Testes\Thelus.UI.Interface.csproj", "{DF9006F9-B413-401F-8835-F26E221E604A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thelus.UI.Core", "Thelus.UI.Core\Thelus.UI.Core.csproj", "{AEAB267A-B7EE-4987-B6A6-3512CF4689FD}"
 EndProject

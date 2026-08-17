@@ -52,6 +52,10 @@
           "framework": "netstandard2.0",
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[3.1.32, )"
+            },
             "Microsoft.AspNetCore.Components.Web": {
               "target": "Package",
               "version": "[3.1.32, )"
@@ -303,6 +307,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.1.79, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[5.0.17, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",

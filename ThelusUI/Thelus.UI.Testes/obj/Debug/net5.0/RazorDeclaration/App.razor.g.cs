@@ -4,12 +4,11 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Thelus.UI.Testes
+namespace Thelus.UI.Interface
 {
     #line default
     using global::System;
     using global::System.Collections.Generic;
-    using global::System.Linq;
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
@@ -62,13 +61,13 @@ using Microsoft.JSInterop
     ;
 #nullable restore
 #line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes
+using Thelus.UI.Interface
 
 #nullable disable
     ;
 #nullable restore
 #line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes.Shared
+using Thelus.UI.Interface.Shared
 
 #nullable disable
     ;
@@ -78,10 +77,48 @@ using Thelus.UI.Engine.Layouts
 
 #nullable disable
     ;
+#nullable restore
+#line 13 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Authorization
+
+#nullable disable
+    ;
+#nullable restore
+#line 1 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+ using Microsoft.AspNetCore.Components.Authorization
+
+#nullable disable
+    ;
+#nullable restore
+#line 2 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+ using Thelus.UI.Engine.Servicos
+
+#nullable disable
+    ;
+#nullable restore
+#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+ using Thelus.UI.Engine.Modelos
+
+#nullable disable
+    ;
+#nullable restore
+#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+ using System.Linq
+
+#nullable disable
+    ;
     #line default
     #line hidden
     #nullable restore
-    public partial class App : global::Microsoft.AspNetCore.Components.ComponentBase
+    public partial class App : global::Microsoft.AspNetCore.Components.ComponentBase, 
+#nullable restore
+#line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+            IDisposable
+
+#line default
+#line hidden
+#nullable disable
+
     #nullable disable
     {
         #pragma warning disable 1998
@@ -89,6 +126,101 @@ using Thelus.UI.Engine.Layouts
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 40 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+       
+    protected override async Task OnInitializedAsync()
+    {
+        // 1. Escuta mudanças no estado de autenticação
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationChanged;
+
+        // 2. Tenta carregar o menu assim que o app inicia
+        await CarregarEAtualizarMenuGlobalAsync();
+    }
+
+    private async void OnAuthenticationChanged(Task<AuthenticationState> task)
+    {
+        await CarregarEAtualizarMenuGlobalAsync();
+    }
+
+    private async Task CarregarEAtualizarMenuGlobalAsync()
+    {
+        // Busca os menus filtrados usando as claims do cookie
+        var menusFiltrados = await MenuService.ObterMenuFiltradoAsync();
+
+        if (menusFiltrados != null && menusFiltrados.Any())
+        {
+            // Popula a propriedade compartilhada usada pelo MainLayout da Engine
+            LayoutState.MenuItens = menusFiltrados;
+
+            // Se o seu LayoutStateService tiver o método para notificar a alteração, descomente a linha abaixo:
+            // LayoutState.NotifyStateChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationChanged;
+    }
+
+#line default
+#line hidden
+#nullable disable
+
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+        LayoutStateService
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+                           LayoutState
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+        IMenuService
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+                     MenuService
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+        AuthenticationStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\App.razor"
+                                    AuthStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
     }
 }
 #pragma warning restore 1591

@@ -88,7 +88,7 @@ else if (Auth.UsuarioEstaLogado)
             </div>
             <!-- ==================== END CONTEÚDO ==================== -->
 
-           <!-- ==================== MENU LATERAL (1 NÍVEL PLANO) ==================== -->
+            <!-- ==================== MENU LATERAL (HÍBRIDO) ==================== -->
             <nav id="mainnav-container">
                 <div id="mainnav">
                     <div id="mainnav-menu-wrap">
@@ -101,21 +101,49 @@ else if (Auth.UsuarioEstaLogado)
                                     {
                                         @foreach (var item in LayoutState.MenuItens)
                                         {
-                                            <li class="">
-                                                <a href="@ResolverUrl(item.Url)">
-                                                    @if (!string.IsNullOrEmpty(item.Icon))
+                                            if (item.IsTitle)
+                                            {
+                                                <li class="list-header">@item.Title</li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    @switch (item.TipoMenu)
                                                     {
-                                                        <i class="@item.Icon"></i>
+                                                        case "Blazor":
+                                                        case "2":
+                                                            @* 1. Navegação Blazor SPA *@
+                                                            <NavLink class="nav-link" href="@ResolverUrl(item.Url)" Match="NavLinkMatch.Prefix">
+                                                                <i class="@(string.IsNullOrEmpty(item.Icon) ? "fa fa-angle-right" : item.Icon)"></i>
+                                                                <span class="menu-title">
+                                                                    <strong>@item.Title</strong>
+                                                                </span>
+                                                            </NavLink>
+                                                            break;
+
+                                                        case "Externo":
+                                                        case "3":
+                                                            @* 2. Link Externo (Abre em Nova Aba) *@
+                                                            <a href="@item.Url" target="_blank" rel="noopener noreferrer">
+                                                                <i class="@(string.IsNullOrEmpty(item.Icon) ? "fa fa-angle-right" : item.Icon)"></i>
+                                                                <span class="menu-title">
+                                                                    <strong>@item.Title</strong>
+                                                                </span>
+                                                            </a>
+                                                            break;
+
+                                                        default:
+                                                            @* 3. WebForms Legado ("WebForms" ou "1") *@
+                                                            <a href="@ResolverUrl(item.Url)">
+                                                                <i class="@(string.IsNullOrEmpty(item.Icon) ? "fa fa-angle-right" : item.Icon)"></i>
+                                                                <span class="menu-title">
+                                                                    <strong>@item.Title</strong>
+                                                                </span>
+                                                            </a>
+                                                            break;
                                                     }
-                                                    else
-                                                    {
-                                                        <i class="fa fa-angle-right"></i>
-                                                    }
-                                                    <span class="menu-title">
-                                                        <strong>@item.Title</strong>
-                                                    </span>
-                                                </a>
-                                            </li>
+                                                </li>
+                                            }
                                         }
                                     }
                                 </ul>
@@ -139,7 +167,7 @@ else if (Auth.UsuarioEstaLogado)
 @code {
     protected override async Task OnInitializedAsync()
     {
-        // Se inscreve para escutar alterações de estado do layout e autenticação
+        // Inscreve-se para escutar alterações de estado do layout e autenticação
         LayoutState.OnStateChanged += StateHasChanged;
         LayoutState.OnChange += StateHasChanged;
         Auth.OnChange += OnAuthChanged;
@@ -159,8 +187,6 @@ else if (Auth.UsuarioEstaLogado)
     {
         if (!Auth.UsuarioEstaLogado && !IsPaginaLogin())
         {
-            // Redireciona para o login do Web Forms forçando recarregamento
-            //Navigation.NavigateTo("/login.aspx", forceLoad: true);
             Navigation.NavigateTo("/login");
         }
     }
@@ -182,20 +208,23 @@ else if (Auth.UsuarioEstaLogado)
     {
         if (string.IsNullOrEmpty(url)) return "#";
 
-        // Se for link externo completo (HTTP/HTTPS)
+        // 1. Se for link externo completo (HTTP/HTTPS), mantém como está
         if (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
             return url;
         }
 
-        // Se for tela legada (.aspx), adiciona a barra inicial para cair no site raiz
+        // 2. Se for tela legada (.aspx), direciona para a porta/URL do WebForms legado
         if (url.EndsWith(".aspx", StringComparison.OrdinalIgnoreCase) || url.Contains(".aspx?"))
         {
-            return $"/{url.TrimStart('/')}";
+            // AJUSTE AQUI: Substitua a porta 44300 pela porta real onde o seu projeto WebForms roda no IIS/Visual Studio
+            string urlBaseWebForms = "http://localhost:37636"; 
+        
+            return $"{urlBaseWebForms}/{url.TrimStart('/')}";
         }
 
-        // Rota Razor interna
+        // 3. Rota Razor/Blazor SPA interna
         return url;
     }
 
@@ -210,4 +239,5 @@ else if (Auth.UsuarioEstaLogado)
         LayoutState.OnChange -= StateHasChanged;
         Auth.OnChange -= OnAuthChanged;
     }
+
 }

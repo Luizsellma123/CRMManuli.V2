@@ -1,7 +1,12 @@
 ﻿@using Thelus.UI.Engine.Modelos
 @using Thelus.UI.Engine.Servicos
+@using Microsoft.AspNetCore.Components.Authorization
+
 @inject LayoutStateService LayoutState
+@inject IMenuService MenuService
+@inject AuthenticationStateProvider AuthStateProvider
 @inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
 @implements IDisposable
 
 <div class="top-row pl-4 navbar navbar-dark">
@@ -73,14 +78,52 @@
         collapseNavMenu = !collapseNavMenu;
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        // Inscreve para atualizar o menu sempre que houver alteração no LayoutState
+        // 1. Inscreve para ouvir mudanças de estado do Layout
         LayoutState.OnChange += StateHasChanged;
+
+        // 2. Inscreve para recarregar caso a autenticação atualize assincronamente
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationChanged;
+
+        // 3. Carrega e popula os menus no LayoutState
+        await CarregarEAtualizarMenuAsync();
+    }
+
+    private async void OnAuthenticationChanged(Task<AuthenticationState> task)
+    {
+        await CarregarEAtualizarMenuAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task CarregarEAtualizarMenuAsync()
+    {
+        // Busca a lista filtrada de menus a partir do WasmAuthStateProvider / Claims da API
+        var menusFiltrados = await MenuService.ObterMenuFiltradoAsync();
+
+        if (menusFiltrados != null && menusFiltrados.Any())
+        {
+            // Popula o objeto que o HTML deste componente consome
+            LayoutState.MenuItens = menusFiltrados;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (LayoutState.MenuItens != null && LayoutState.MenuItens.Any())
+        {
+            // Força o Nifty / Bootstrap a bindar os estilos nos elementos recém-criados
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                if (typeof $.niftyNav !== 'undefined') {
+                    $.niftyNav('bind');
+                }
+            ");
+        }
     }
 
     public void Dispose()
     {
         LayoutState.OnChange -= StateHasChanged;
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationChanged;
     }
 }

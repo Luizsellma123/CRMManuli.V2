@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0Hi14Zhydng=",
+  "dgSpecHash": "AZXhFsQ3W94=",
   "success": true,
   "projectFilePath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.API\\Thelus.UI.API.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.32\\microsoft.aspnetcore.authorization.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.32\\microsoft.aspnetcore.components.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.1.32\\microsoft.aspnetcore.components.analyzers.3.1.32.nupkg.sha512",
+    "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\3.1.32\\microsoft.aspnetcore.components.authorization.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\3.1.32\\microsoft.aspnetcore.components.forms.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.components.web\\3.1.32\\microsoft.aspnetcore.components.web.3.1.32.nupkg.sha512",
     "C:\\Users\\luiz.carlos\\.nuget\\packages\\microsoft.aspnetcore.metadata\\3.1.32\\microsoft.aspnetcore.metadata.3.1.32.nupkg.sha512",

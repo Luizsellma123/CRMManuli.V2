@@ -725,6 +725,7 @@ D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\ne
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Dapper.dll.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Authorization.dll.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.dll.gz
+D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Forms.dll.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Web.dll.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.WebAssembly.dll.gz
@@ -943,6 +944,7 @@ D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\ne
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Dapper.dll
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Authorization.dll
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.dll
+D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Forms.dll
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Web.dll
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.Components.WebAssembly.dll
@@ -1195,6 +1197,7 @@ D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\ne
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\mNQeOAFf.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\XLLchn5L.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\wbd8tKOe.gz
+D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\MkxuS3r5.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\3hHTdAeu.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\pGFanOkS.gz
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\obj\Debug\net5.0\build-gz\OP0EGQMr.gz

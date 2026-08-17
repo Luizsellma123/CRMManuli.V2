@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Thelus.UI.Testes.Shared
+namespace Thelus.UI.Interface.Shared
 {
     #line default
     using global::System;
@@ -62,19 +62,25 @@ using Microsoft.JSInterop
     ;
 #nullable restore
 #line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes
+using Thelus.UI.Interface
 
 #nullable disable
     ;
 #nullable restore
 #line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes.Shared
+using Thelus.UI.Interface.Shared
 
 #nullable disable
     ;
 #nullable restore
 #line 11 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Engine.Layouts
+
+#nullable disable
+    ;
+#nullable restore
+#line 13 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Authorization
 
 #nullable disable
     ;
@@ -90,12 +96,18 @@ using Thelus.UI.Engine.Layouts
 
 #nullable disable
     ;
+#nullable restore
+#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+ using Microsoft.AspNetCore.Components.Authorization
+
+#nullable disable
+    ;
     #line default
     #line hidden
     #nullable restore
     public partial class NavMenu : global::Microsoft.AspNetCore.Components.ComponentBase, 
 #nullable restore
-#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
             IDisposable
 
 #line default
@@ -110,7 +122,7 @@ using Thelus.UI.Engine.Layouts
         }
         #pragma warning restore 1998
 #nullable restore
-#line 67 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 72 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -120,15 +132,53 @@ using Thelus.UI.Engine.Layouts
         collapseNavMenu = !collapseNavMenu;
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        // Inscreve para atualizar o menu sempre que houver alteração no LayoutState
+        // 1. Inscreve para ouvir mudanças de estado do Layout
         LayoutState.OnChange += StateHasChanged;
+
+        // 2. Inscreve para recarregar caso a autenticação atualize assincronamente
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationChanged;
+
+        // 3. Carrega e popula os menus no LayoutState
+        await CarregarEAtualizarMenuAsync();
+    }
+
+    private async void OnAuthenticationChanged(Task<AuthenticationState> task)
+    {
+        await CarregarEAtualizarMenuAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task CarregarEAtualizarMenuAsync()
+    {
+        // Busca a lista filtrada de menus a partir do WasmAuthStateProvider / Claims da API
+        var menusFiltrados = await MenuService.ObterMenuFiltradoAsync();
+
+        if (menusFiltrados != null && menusFiltrados.Any())
+        {
+            // Popula o objeto que o HTML deste componente consome
+            LayoutState.MenuItens = menusFiltrados;
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (LayoutState.MenuItens != null && LayoutState.MenuItens.Any())
+        {
+            // Força o Nifty / Bootstrap a bindar os estilos nos elementos recém-criados
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                if (typeof $.niftyNav !== 'undefined') {
+                    $.niftyNav('bind');
+                }
+            ");
+        }
     }
 
     public void Dispose()
     {
         LayoutState.OnChange -= StateHasChanged;
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationChanged;
     }
 
 #line default
@@ -137,7 +187,25 @@ using Thelus.UI.Engine.Layouts
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+        IJSRuntime
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+                   JSRuntime
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
         NavigationManager
 
 #line default
@@ -145,7 +213,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 8 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
                           Navigation
 
 #line default
@@ -155,7 +223,43 @@ using Thelus.UI.Engine.Layouts
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+        AuthenticationStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 7 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+                                    AuthStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+        IMenuService
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line 6 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+                     MenuService
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
         LayoutStateService
 
 #line default
@@ -163,7 +267,7 @@ using Thelus.UI.Engine.Layouts
 #nullable disable
          
 #nullable restore
-#line 3 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
+#line 5 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\NavMenu.razor"
                            LayoutState
 
 #line default

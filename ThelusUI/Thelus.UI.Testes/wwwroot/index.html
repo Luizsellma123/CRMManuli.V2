@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -9,8 +10,8 @@
     <!-- Favicon do CRM -->
     <link rel="shortcut icon" href="img/logomanuli2.png">
 
-    <!-- Fonte Open Sans -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Fonte Open Sans (Corrigido para HTTPS) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- CSS do CRM Legado (Nifty Admin / Bootstrap) -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -21,8 +22,9 @@
 
     <!-- Estilos de Isolamento do Blazor -->
     <link href="css/app.css" rel="stylesheet" />
-    <link href="Thelus.UI.Testes.styles.css" rel="stylesheet" />
+    <link href="Thelus.UI.Interface.styles.css" rel="stylesheet" />
 </head>
+
 <body>
     <div id="app">
         <!-- Loader simples de inicialização -->
@@ -40,12 +42,15 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    <!-- 1. Scripts Base do CRM Legado (jQuery e Bootstrap JS) -->
+    <!-- 1. Scripts Base Essenciais (jQuery e Bootstrap) -->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/crm-manulifitasa.min.js"></script>
 
-    <!-- 2. Framework Blazor WebAssembly -->
+    <!-- 2. Framework Blazor WebAssembly (Carrega PRIMEIRO para assumir o container #app) -->
     <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- 3. Script do Tema CRM/Nifty (Iniciado APÓS o Blazor para não destruir a div #app) -->
+    <script src="js/crm-manulifitasa.min.js"></script>
 </body>
+
 </html>

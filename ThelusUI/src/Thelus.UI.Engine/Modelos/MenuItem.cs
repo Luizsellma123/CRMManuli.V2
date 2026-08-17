@@ -14,6 +14,7 @@ namespace Thelus.UI.Engine.Modelos
         public string Url { get; set; } = "javascript:void(0);";
         public string EntityName { get; set; }  // Liga o menu direto à engine genérica (ex: "Usuarios")
         public bool IsTitle { get; set; } = false;
+        public string TipoMenu { get; set; } // 1: WebForms | 2: Blazor | 3: Externo
         public List<MenuItem> SubItems { get; set; } = new();
     }
 }

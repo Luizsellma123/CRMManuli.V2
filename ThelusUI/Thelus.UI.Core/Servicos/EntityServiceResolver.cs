@@ -20,14 +20,22 @@ namespace Thelus.Core.Servicos
             _genericService = genericService;
         }
 
+        // MÉTODO AUXILIAR: Localiza o serviço por nome exato OU por prefixo (ex: "acesso-empresas" localiza "acesso")
+        private IEntityService ObterServicoEspecifico(string entityName)
+        {
+            if (string.IsNullOrWhiteSpace(entityName)) return null;
+
+            return _servicosEspecificos.FirstOrDefault(s =>
+                s.EntityName.Equals(entityName, StringComparison.OrdinalIgnoreCase) ||
+                entityName.StartsWith(s.EntityName + "-", StringComparison.OrdinalIgnoreCase));
+        }
+
         // 1. CONSULTA LISTAGEM
         public async Task<List<dynamic>> ObterListagemAsync(string entityName, FiltroConsulta filtro = null)
         {
             filtro ??= new FiltroConsulta { EntityName = entityName };
 
-            // Procura serviço customizado para essa entidade (ex: UsuarioServico)
-            var servicoEspecifico = _servicosEspecificos
-                .FirstOrDefault(s => s.EntityName.Equals(entityName, StringComparison.OrdinalIgnoreCase));
+            var servicoEspecifico = ObterServicoEspecifico(entityName);
 
             if (servicoEspecifico != null)
             {
@@ -41,9 +49,7 @@ namespace Thelus.Core.Servicos
         // 2. CONSULTA POR ID
         public async Task<object> ObterPorIdAsync(string entityName, int id)
         {
-            // Tenta obter pelo serviço específico
-            var servicoEspecifico = _servicosEspecificos
-                .FirstOrDefault(s => s.EntityName.Equals(entityName, StringComparison.OrdinalIgnoreCase));
+            var servicoEspecifico = ObterServicoEspecifico(entityName);
 
             if (servicoEspecifico != null)
             {
@@ -62,9 +68,7 @@ namespace Thelus.Core.Servicos
                 return ResultadoOperacao.Falha("Nenhum objeto foi fornecido para a gravação.");
             }
 
-            // Procura serviço customizado da entidade
-            var servicoEspecifico = _servicosEspecificos
-                .FirstOrDefault(s => s.EntityName.Equals(entityName, StringComparison.OrdinalIgnoreCase));
+            var servicoEspecifico = ObterServicoEspecifico(entityName);
 
             if (servicoEspecifico != null)
             {

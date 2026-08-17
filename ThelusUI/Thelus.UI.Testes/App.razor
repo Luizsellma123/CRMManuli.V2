@@ -1,17 +1,74 @@
-<Router AppAssembly="@typeof(Program).Assembly"
-        AdditionalAssemblies="new[] { typeof(Thelus.UI.Engine.Servicos.LayoutStateService).Assembly }"
-        PreferExactMatches="@true">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)" />
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)">
-            <div class="container mt-5 text-center">
-                <div class="alert alert-warning shadow-sm p-4" role="alert">
-                    <h4 class="alert-heading fw-bold">⚠️ Página não encontrada!</h4>
-                    <p class="text-muted">O endereço que você tentou acessar não existe ou a rota está incorreta.</p>
+@using Microsoft.AspNetCore.Components.Authorization
+@using Thelus.UI.Engine.Servicos
+@using Thelus.UI.Engine.Modelos
+@using System.Linq
+
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IMenuService MenuService
+@inject LayoutStateService LayoutState
+@implements IDisposable
+
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly"
+            AdditionalAssemblies="new[] { typeof(Thelus.UI.Engine.Servicos.LayoutStateService).Assembly }"
+            PreferExactMatches="@true">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)">
+                <NotAuthorized>
+                    <div class="container mt-5 text-center">
+                        <div class="alert alert-danger shadow-sm p-4" role="alert">
+                            <h4 class="alert-heading fw-bold">⛔ Acesso Não Autorizado</h4>
+                            <p class="text-muted">Você não tem permissão para acessar este recurso ou sua sessão expirou.</p>
+                        </div>
+                    </div>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(Thelus.UI.Engine.Layouts.MainLayout)">
+                <div class="container mt-5 text-center">
+                    <div class="alert alert-warning shadow-sm p-4" role="alert">
+                        <h4 class="alert-heading fw-bold">⚠️ Página não encontrada!</h4>
+                        <p class="text-muted">O endereço que você tentou acessar não existe ou a rota está incorreta.</p>
+                    </div>
                 </div>
-            </div>
-        </LayoutView>
-    </NotFound>
-</Router>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        // 1. Escuta mudanças no estado de autenticação
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationChanged;
+
+        // 2. Tenta carregar o menu assim que o app inicia
+        await CarregarEAtualizarMenuGlobalAsync();
+    }
+
+    private async void OnAuthenticationChanged(Task<AuthenticationState> task)
+    {
+        await CarregarEAtualizarMenuGlobalAsync();
+    }
+
+    private async Task CarregarEAtualizarMenuGlobalAsync()
+    {
+        // Busca os menus filtrados usando as claims do cookie
+        var menusFiltrados = await MenuService.ObterMenuFiltradoAsync();
+
+        if (menusFiltrados != null && menusFiltrados.Any())
+        {
+            // Popula a propriedade compartilhada usada pelo MainLayout da Engine
+            LayoutState.MenuItens = menusFiltrados;
+
+            // Se o seu LayoutStateService tiver o método para notificar a alteração, descomente a linha abaixo:
+            // LayoutState.NotifyStateChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationChanged;
+    }
+}

@@ -5,7 +5,25 @@
     <RootNamespace>CRMAPI</RootNamespace>
     <AssemblyName>CRMAPI</AssemblyName>
     <OutputType>Library</OutputType>
-    
+
+    <!-- Força a saída de compilação diretamente para a pasta bin/ exigida pelo IIS/ASP.NET -->
+    <OutputPath>bin\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+    <!-- GUIDs de Web Application (.NET Framework Web API) -->
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+
+    <!-- Habilita o IIS Express no Visual Studio -->
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+
+    <!-- Define explicitamente o executável do IIS Express -->
+    <RunCommand>$(ProgramFiles)\IIS Express\iisexpress.exe</RunCommand>
+    <RunArguments>/path:"$(MSBuildProjectDirectory)" /port:50000</RunArguments>
+
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>true</Deterministic>
 
@@ -14,6 +32,16 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
+
+  <!-- Garante a publicação dos arquivos de configuração e views do System.Web -->
+  <ItemGroup>
+    <Content Include="Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Views\**\*.*" />
+    <Content Include="Areas\**\*.*" />
+  </ItemGroup>
 
   <!-- Pacotes NuGet Alinhados -->
   <ItemGroup>
@@ -59,7 +87,7 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="126.0.6478.18200" />
     <PackageReference Include="Swashbuckle.Core" Version="5.6.0" />
     
-    <!-- Ecossistema System.Text.Json estável e atualizado para .NET 4.8 -->
+    <!-- Ecossistema System.Text.Json -->
     <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using Thelus.UI.Engine.Atributos;
 
-namespace Thelus.UI.Testes.Modelos
+namespace Thelus.UI.Interface.Modelos
 {
     public enum TipoPessoa
     {
@@ -9,8 +9,6 @@ namespace Thelus.UI.Testes.Modelos
         Juridica
     }
 
-    // Configura a listagem desta entidade com o Menu Lateral Direito (9 colunas + 3 colunas)
-    [ListLayout(ListLayoutMode.FullWidth)]
     public class ClienteTeste
     {
         [FormField(Label = "Código", Section = "Identificação", ColSpan = 3, Order = 1, ReadOnly = true)]

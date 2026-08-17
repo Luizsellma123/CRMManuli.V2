@@ -3,11 +3,15 @@
     "Name": "Novo Perfil",
     "Projects": [
       {
-        "Path": "Thelus.UI.Testes\\Thelus.UI.Testes.csproj",
+        "Path": "Thelus.UI.Testes\\Thelus.UI.Interface.csproj",
         "Action": "Start"
       },
       {
         "Path": "Thelus.UI.API\\Thelus.UI.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Legado\\VendasWeb\\VendasWeb.csproj",
         "Action": "Start"
       }
     ]

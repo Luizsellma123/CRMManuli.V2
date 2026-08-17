@@ -69,19 +69,31 @@ using Microsoft.JSInterop
     ;
 #nullable restore
 #line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes
+using Thelus.UI.Interface
 
 #nullable disable
     ;
 #nullable restore
 #line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes.Shared
+using Thelus.UI.Interface.Shared
 
 #nullable disable
     ;
 #nullable restore
 #line 11 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Engine.Layouts
+
+#nullable disable
+    ;
+#nullable restore
+#line 12 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Components.Authorization
+
+#nullable disable
+    ;
+#nullable restore
+#line 13 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Authorization
 
 #nullable disable
     ;
@@ -119,11 +131,11 @@ using Thelus.UI.Engine.Layouts
         }
         #pragma warning restore 1998
 #nullable restore
-#line 139 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
+#line 167 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Shared\MainLayout.razor"
        
     protected override async Task OnInitializedAsync()
     {
-        // Se inscreve para escutar alterações de estado do layout e autenticação
+        // Inscreve-se para escutar alterações de estado do layout e autenticação
         LayoutState.OnStateChanged += StateHasChanged;
         LayoutState.OnChange += StateHasChanged;
         Auth.OnChange += OnAuthChanged;
@@ -143,8 +155,6 @@ using Thelus.UI.Engine.Layouts
     {
         if (!Auth.UsuarioEstaLogado && !IsPaginaLogin())
         {
-            // Redireciona para o login do Web Forms forçando recarregamento
-            //Navigation.NavigateTo("/login.aspx", forceLoad: true);
             Navigation.NavigateTo("/login");
         }
     }
@@ -166,20 +176,23 @@ using Thelus.UI.Engine.Layouts
     {
         if (string.IsNullOrEmpty(url)) return "#";
 
-        // Se for link externo completo (HTTP/HTTPS)
+        // 1. Se for link externo completo (HTTP/HTTPS), mantém como está
         if (url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
         {
             return url;
         }
 
-        // Se for tela legada (.aspx), adiciona a barra inicial para cair no site raiz
+        // 2. Se for tela legada (.aspx), direciona para a porta/URL do WebForms legado
         if (url.EndsWith(".aspx", StringComparison.OrdinalIgnoreCase) || url.Contains(".aspx?"))
         {
-            return $"/{url.TrimStart('/')}";
+            // AJUSTE AQUI: Substitua a porta 44300 pela porta real onde o seu projeto WebForms roda no IIS/Visual Studio
+            string urlBaseWebForms = "http://localhost:37636"; 
+        
+            return $"{urlBaseWebForms}/{url.TrimStart('/')}";
         }
 
-        // Rota Razor interna
+        // 3. Rota Razor/Blazor SPA interna
         return url;
     }
 
@@ -194,6 +207,7 @@ using Thelus.UI.Engine.Layouts
         LayoutState.OnChange -= StateHasChanged;
         Auth.OnChange -= OnAuthChanged;
     }
+
 
 #line default
 #line hidden

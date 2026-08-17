@@ -105,6 +105,23 @@
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
         }
       },
+      "Microsoft.AspNetCore.Components.Authorization/5.0.17": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "5.0.17",
+          "Microsoft.AspNetCore.Components": "5.0.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Components.Forms/5.0.17": {
         "type": "package",
         "dependencies": {
@@ -426,6 +443,25 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
             "related": ".xml"
           }
         }
@@ -1087,6 +1123,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Components.Authorization": "3.1.32",
           "Microsoft.AspNetCore.Components.Web": "3.1.32",
           "System.Net.Http.Json": "5.0.0"
         },
@@ -1213,6 +1250,23 @@
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Authorization/5.0.17": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "5.0.17",
+          "Microsoft.AspNetCore.Components": "5.0.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.AspNetCore.Components.Forms/5.0.17": {
@@ -1508,6 +1562,25 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.dll": {
             "related": ".xml"
           }
         }
@@ -2097,6 +2170,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Components.Authorization": "3.1.32",
           "Microsoft.AspNetCore.Components.Web": "3.1.32",
           "System.Net.Http.Json": "5.0.0"
         },
@@ -2226,6 +2300,21 @@
         "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
         "microsoft.aspnetcore.components.analyzers.5.0.17.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Authorization/5.0.17": {
+      "sha512": "BBf2s9n5zR0gdagzDbTdhbBYUxRQF34o5h/czfh9LHqA+REP1Q+7wSoQrq2uTM2f6dxl4SsTNSYpjZMV/EjnJw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.authorization/5.0.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Authorization.xml",
+        "microsoft.aspnetcore.components.authorization.5.0.17.nupkg.sha512",
+        "microsoft.aspnetcore.components.authorization.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Components.Forms/5.0.17": {
@@ -2718,6 +2807,26 @@
         "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.xml",
         "microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
         "microsoft.extensions.filesystemglobbing.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Http/5.0.0": {
+      "sha512": "kT1ijDKZuSUhBtYoC1sXrmVKP7mA08h9Xrsr4VrS/QOtiKCEtUTTd7dd3XI9dwAb46tZSak13q/zdIcr4jqbyg==",
+      "type": "package",
+      "path": "microsoft.extensions.http/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Http.dll",
+        "lib/net461/Microsoft.Extensions.Http.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Http.xml",
+        "microsoft.extensions.http.5.0.0.nupkg.sha512",
+        "microsoft.extensions.http.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -4555,10 +4664,10 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Dapper >= 2.1.79",
+      "Microsoft.AspNetCore.Components.Authorization >= 5.0.17",
       "Microsoft.AspNetCore.Components.WebAssembly >= 5.0.17",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 5.0.17",
-      "Microsoft.Data.SqlClient >= 3.1.7",
+      "Microsoft.Extensions.Http >= 5.0.0",
       "Microsoft.NET.ILLink.Analyzers >= 7.0.100-1.23211.1",
       "Microsoft.NET.ILLink.Tasks >= 7.0.100-1.23211.1",
       "Microsoft.TypeScript.MSBuild >= 7.0.0",
@@ -4575,9 +4684,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Testes\\Thelus.UI.Testes.csproj",
-      "projectName": "Thelus.UI.Testes",
-      "projectPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Testes\\Thelus.UI.Testes.csproj",
+      "projectUniqueName": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Testes\\Thelus.UI.Interface.csproj",
+      "projectName": "Thelus.UI.Interface",
+      "projectPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Testes\\Thelus.UI.Interface.csproj",
       "packagesPath": "C:\\Users\\luiz.carlos\\.nuget\\packages\\",
       "outputPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Testes\\obj\\",
       "projectStyle": "PackageReference",
@@ -4630,9 +4739,9 @@
         "framework": "net5.0",
         "targetAlias": "net5.0",
         "dependencies": {
-          "Dapper": {
+          "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
-            "version": "[2.1.79, )"
+            "version": "[5.0.17, )"
           },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
@@ -4643,9 +4752,9 @@
             "target": "Package",
             "version": "[5.0.17, )"
           },
-          "Microsoft.Data.SqlClient": {
+          "Microsoft.Extensions.Http": {
             "target": "Package",
-            "version": "[3.1.7, )"
+            "version": "[5.0.0, )"
           },
           "Microsoft.NET.ILLink.Analyzers": {
             "suppressParent": "All",

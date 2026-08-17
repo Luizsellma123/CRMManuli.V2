@@ -109,7 +109,11 @@
                                                     @if (col.FieldType == FieldType.Select)
                                                     {
                                                         <select class="form-control" @onchange="(e) => SetNovoSubItemValue(col.PropertyName, e.Value)">
-                                                            <option value="">Selecione...</option>
+                                                            @if (col.AllowNullOption)
+                                                            {
+                                                                <option value="">Selecione...</option>
+                                                            }
+
                                                             @if (col.Options != null && col.Options.Any())
                                                             {
                                                                 @foreach (var opt in col.Options)

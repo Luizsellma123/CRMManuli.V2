@@ -1,27 +1,62 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
 using Thelus.UI.Engine.Modelos;
 
 namespace Thelus.UI.Engine.Servicos
 {
     public interface IMenuService
     {
-        List<MenuItem> ObterMenuFiltrado(IEnumerable<int> idsMenuPermitidos);
+        Task<List<MenuItem>> ObterMenuFiltradoAsync(IEnumerable<int> idsMenuPermitidos);
+        Task<List<MenuItem>> ObterMenuFiltradoAsync();
     }
 
     public class MenuService : IMenuService
     {
         private readonly IMenuProvider _menuProvider;
+        private readonly AuthenticationStateProvider _authStateProvider;
 
-        public MenuService(IMenuProvider menuProvider)
+        public MenuService(IMenuProvider menuProvider, AuthenticationStateProvider authStateProvider = null)
         {
             _menuProvider = menuProvider;
+            _authStateProvider = authStateProvider;
         }
 
-        public List<MenuItem> ObterMenuFiltrado(IEnumerable<int> idsMenuPermitidos)
+        // =========================================================================
+        // MÉTODOS ASSÍNCRONOS PARA O BLAZOR WASM (Lê a Claim "MenuPermitido")
+        // =========================================================================
+        public async Task<List<MenuItem>> ObterMenuFiltradoAsync()
         {
-            var todosOsMenus = _menuProvider.ObterMenuItens();
-            var idsPermitidosSet = new HashSet<int>(idsMenuPermitidos);
+            if (_authStateProvider == null)
+            {
+                return await ObterMenuFiltradoAsync(Enumerable.Empty<int>());
+            }
+
+            var authState = await _authStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user == null || !user.Identity?.IsAuthenticated == true)
+            {
+                return new List<MenuItem>();
+            }
+
+            // Extrai os IDs de menu gravados no WasmAuthStateProvider ("MenuPermitido")
+            var idsPermitidos = user.Claims
+                                    .Where(c => c.Type == "MenuPermitido")
+                                    .Select(c => int.TryParse(c.Value, out int id) ? id : 0)
+                                    .Where(id => id > 0);
+
+            return await ObterMenuFiltradoAsync(idsPermitidos);
+        }
+
+        public async Task<List<MenuItem>> ObterMenuFiltradoAsync(IEnumerable<int> idsMenuPermitidos)
+        {
+            // Consulta assíncrona do catálogo no banco/API via IMenuProvider
+            var todosOsMenus = await _menuProvider.ObterMenuItensAsync();
+            var idsPermitidosSet = new HashSet<int>(idsMenuPermitidos ?? Enumerable.Empty<int>());
 
             return FiltrarItens(todosOsMenus, idsPermitidosSet);
         }

@@ -39,6 +39,18 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Components.Authorization/3.1.32": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.32",
+          "Microsoft.AspNetCore.Components": "3.1.32"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "assemblyVersion": "3.1.32.0",
+            "fileVersion": "3.100.3222.56610"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Components.Forms/3.1.32": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.32"
@@ -129,6 +141,7 @@
       },
       "Thelus.UI.Engine/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Components.Authorization": "3.1.32",
           "Microsoft.AspNetCore.Components.Web": "3.1.32"
         },
         "runtime": {
@@ -159,6 +172,13 @@
       "sha512": "sha512-rjn0qgM5/8CdDgfb6+dE2r2LrbQKTo/1yMXW+FBS5ie8atR0f+NgODvMmsy5VW14hRyjLbFbdYGiCnkXiMsIoQ==",
       "path": "microsoft.aspnetcore.components/3.1.32",
       "hashPath": "microsoft.aspnetcore.components.3.1.32.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Authorization/3.1.32": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cpxwx+0hB5DSA0c+KhEF8Jvi7YAvxP5diASvUWbBXcZlSKv+X4HlZ/tTRq3Vr1ZNANC15TT1W2j0wKKTtURLow==",
+      "path": "microsoft.aspnetcore.components.authorization/3.1.32",
+      "hashPath": "microsoft.aspnetcore.components.authorization.3.1.32.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.Forms/3.1.32": {
       "type": "package",

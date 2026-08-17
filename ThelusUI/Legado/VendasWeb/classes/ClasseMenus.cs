@@ -11,5 +11,6 @@ namespace VendasWeb.classes
         public string Endereco { get; set; }
         public string Administrador { get; set; }
         public string IconeCSS { get; set; }
+        public string TipoMenu { get; set; }
     }
 }

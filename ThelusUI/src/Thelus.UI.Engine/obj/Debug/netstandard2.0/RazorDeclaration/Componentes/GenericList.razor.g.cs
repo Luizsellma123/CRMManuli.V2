@@ -77,13 +77,14 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (339,8)-(597,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (352,8)-(614,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 
     [Parameter] public string EntityName { get; set; }
     [Parameter] public IEnumerable<object> Items { get; set; }
     [Parameter] public ListLayoutMode? LayoutMode { get; set; }
 
     private ListLayoutMode effectiveLayoutMode = ListLayoutMode.WithSideMenu;
+    private bool showQuickSearch = true;
 
     private List<PropertyMetadata> colunasTabela = new();
     private List<PropertyMetadata> camposFiltro = new();
@@ -106,7 +107,7 @@ using Thelus.UI.Engine.Atributos
         {
             var query = Items?.Cast<object>().AsEnumerable() ?? Enumerable.Empty<object>();
 
-            if (!string.IsNullOrWhiteSpace(termoBuscaAplicado))
+            if (showQuickSearch && !string.IsNullOrWhiteSpace(termoBuscaAplicado))
             {
                 query = query.Where(x => x.ToString()?.Contains(termoBuscaAplicado, StringComparison.OrdinalIgnoreCase) ?? false);
             }
@@ -175,14 +176,17 @@ using Thelus.UI.Engine.Atributos
             if (layoutAttr != null)
             {
                 effectiveLayoutMode = layoutAttr.Mode;
+                showQuickSearch = layoutAttr.ShowQuickSearch;
             }
             else if (LayoutMode.HasValue)
             {
                 effectiveLayoutMode = LayoutMode.Value;
+                showQuickSearch = true;
             }
             else
             {
                 effectiveLayoutMode = ListLayoutMode.WithSideMenu;
+                showQuickSearch = true;
             }
 
             var dummyInstance = Activator.CreateInstance(entityType);

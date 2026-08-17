@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using VendasWeb.classes;
 
 namespace VendasWeb.usercontrol
@@ -234,38 +235,47 @@ namespace VendasWeb.usercontrol
 
             foreach (ClasseMenus Menu in usuarioClass.ListaMenus)
             {
-                menus += contatenaMenus(Menu.NomeMenu, Menu.Endereco, Menu.IconeCSS, prefix);
+                // Passa o TipoMenu retornado da classe de menus
+                menus += contatenaMenus(Menu.NomeMenu, Menu.Endereco, Menu.IconeCSS, prefix, Menu.TipoMenu);
             }
 
             return menus;
         }
 
-        public string contatenaMenus(string nome, string endereco, string IconeCSS, string prefix)
+        public string contatenaMenus(string nome, string endereco, string IconeCSS, string prefix, string tipoMenu = "")
         {
             string Menus = "";
 
-            
             Menus += "<li class=\"" + DashBoardActive + "\">";
 
-            //Verifica se é um menu ou link
-            if (endereco.Substring(0, 4) == "http")
+            // Busca a URL base do Blazor configurada no Web.config (com fallback para local)
+            string blazorBaseUrl = ConfigurationManager.AppSettings["BlazorBaseUrl"] ?? "https://localhost:44395";
+
+            // 1. Rota do Blazor SPA: Redireciona para o app Blazor (ex: http://localhost:44395/negociacao)
+            if (tipoMenu == "Blazor" || tipoMenu == "2")
+            {
+                string urlBlazor = blazorBaseUrl.TrimEnd('/') + "/" + endereco.TrimStart('/');
+                Menus += "<a href=\"" + urlBlazor + "\">";
+            }
+            // 2. Links Externos (HTTP / HTTPS)
+            else if (endereco.StartsWith("http", StringComparison.OrdinalIgnoreCase))
             {
                 Menus += "<a href=\"" + endereco + "\">";
-            }else
+            }
+            // 3. Rotas Legadas ASPX
+            else
             {
                 Menus += "<a href=\"" + prefix + endereco + "\">";
             }
 
             Menus += "<i class=\"" + IconeCSS + "\"></i>";
             Menus += "<span class=\"menu-title\">";
-            Menus += "<strong>" + nome.ToString() + "</strong>";
-            //MenuLiteral.Text += "<span class=\"label label-success pull-right\">Novo</span>";
+            Menus += "<strong>" + nome + "</strong>";
             Menus += "</span>";
             Menus += "</a>";
             Menus += "</li>";
 
             return Menus;
-
         }
 
 

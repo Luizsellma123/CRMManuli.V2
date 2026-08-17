@@ -251,6 +251,7 @@ namespace VendasWeb
                                 OBJMenu.Endereco = row["Endereco"].ToString();
                                 OBJMenu.Administrador = row["Administrador"].ToString();
                                 OBJMenu.IconeCSS = row["IconeCSS"].ToString();
+                                OBJMenu.TipoMenu = row["TipoMenu"].ToString();
 
                                 //Verifica se esta instanciado
                                 if (this.ListaMenus == null)

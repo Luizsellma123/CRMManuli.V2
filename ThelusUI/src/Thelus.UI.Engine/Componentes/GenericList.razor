@@ -83,38 +83,51 @@
             <div class="collapse in" id="painel-filtros" aria-expanded="true">
                 <div class="panel-body">
                     <div class="row">
-                        <!-- Busca Rápida Genérica -->
-                        <div class="col-sm-2">
-                            <div class="form-group" style="padding-top: 7px;">
-                                <span>Busca Rápida:</span>
+                        <!-- Busca Rápida Genérica (Exibida apenas se showQuickSearch == true) -->
+                        @if (showQuickSearch)
+                        {
+                            <div class="col-sm-2">
+                                <div class="form-group" style="padding-top: 7px;">
+                                    <span>Busca Rápida:</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Número ou Descrição..." 
-                                       @bind="termoBuscaRascunho" @onkeyup="HandleKeyUp" />
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Número ou Descrição..." 
+                                           @bind="termoBuscaRascunho" @onkeyup="HandleKeyUp" />
+                                </div>
                             </div>
-                        </div>
+                        }
 
                         <!-- Renderização Dinâmica dos Campos com ShowInFilter = true -->
                         @if (camposFiltro.Any())
                         {
                             @foreach (var campo in camposFiltro)
                             {
-                                <div class="col-sm-2">
+                                var totalColSpan = campo.ColSpan > 0 ? campo.ColSpan : 6;
+                                var labelColSpan = 2;
+                                var inputColSpan = totalColSpan > labelColSpan ? totalColSpan - labelColSpan : 4;
+
+                                <div class="col-sm-@labelColSpan">
                                     <div class="form-group" style="padding-top: 7px;">
                                         <span>@campo.Label:</span>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-@inputColSpan">
                                     <div class="form-group">
                                         @if (campo.FieldType == FieldType.Select)
                                         {
                                             <select class="form-control" 
                                                     value="@GetFiltroRascunho(campo.PropertyName)"
                                                     @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)">
-                                                <option value="">Todos</option>
-                                                @if (campo.Options != null)
+                                                
+                                                @* Respeita a regra de AllowNullOption para omitir ou exibir a opção padrão nos filtros *@
+                                                @if (campo.AllowNullOption)
+                                                {
+                                                    <option value="">Todas</option>
+                                                }
+
+                                                @if (campo.Options != null && campo.Options.Any())
                                                 {
                                                     @foreach (var opt in campo.Options)
                                                     {
@@ -342,6 +355,7 @@
     [Parameter] public ListLayoutMode? LayoutMode { get; set; }
 
     private ListLayoutMode effectiveLayoutMode = ListLayoutMode.WithSideMenu;
+    private bool showQuickSearch = true;
 
     private List<PropertyMetadata> colunasTabela = new();
     private List<PropertyMetadata> camposFiltro = new();
@@ -364,7 +378,7 @@
         {
             var query = Items?.Cast<object>().AsEnumerable() ?? Enumerable.Empty<object>();
 
-            if (!string.IsNullOrWhiteSpace(termoBuscaAplicado))
+            if (showQuickSearch && !string.IsNullOrWhiteSpace(termoBuscaAplicado))
             {
                 query = query.Where(x => x.ToString()?.Contains(termoBuscaAplicado, StringComparison.OrdinalIgnoreCase) ?? false);
             }
@@ -433,14 +447,17 @@
             if (layoutAttr != null)
             {
                 effectiveLayoutMode = layoutAttr.Mode;
+                showQuickSearch = layoutAttr.ShowQuickSearch;
             }
             else if (LayoutMode.HasValue)
             {
                 effectiveLayoutMode = LayoutMode.Value;
+                showQuickSearch = true;
             }
             else
             {
                 effectiveLayoutMode = ListLayoutMode.WithSideMenu;
+                showQuickSearch = true;
             }
 
             var dummyInstance = Activator.CreateInstance(entityType);

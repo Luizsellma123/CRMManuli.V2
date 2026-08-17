@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Thelus.UI.Testes.Pages
+namespace Thelus.UI.Interface.Pages
 {
     #line default
     using global::System;
@@ -61,19 +61,31 @@ using Microsoft.JSInterop
     ;
 #nullable restore
 #line 9 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes
+using Thelus.UI.Interface
 
 #nullable disable
     ;
 #nullable restore
 #line 10 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
-using Thelus.UI.Testes.Shared
+using Thelus.UI.Interface.Shared
 
 #nullable disable
     ;
 #nullable restore
 #line 11 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
 using Thelus.UI.Engine.Layouts
+
+#nullable disable
+    ;
+#nullable restore
+#line 12 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Components.Authorization
+
+#nullable disable
+    ;
+#nullable restore
+#line 13 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\_Imports.razor"
+using Microsoft.AspNetCore.Authorization
 
 #nullable disable
     ;
@@ -91,7 +103,7 @@ using Thelus.UI.Engine.Layouts
     ;
 #nullable restore
 #line 4 "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Thelus.UI.Testes\Pages\Index.razor"
- using Thelus.UI.Testes.Modelos
+ using Thelus.UI.Interface.Modelos
 
 #nullable disable
     ;

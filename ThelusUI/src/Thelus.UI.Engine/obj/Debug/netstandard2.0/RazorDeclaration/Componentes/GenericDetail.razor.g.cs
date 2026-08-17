@@ -77,7 +77,7 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (470,8)-(862,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (474,8)-(866,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 
     [Parameter] public string EntityName { get; set; }
     [Parameter] public int Id { get; set; }

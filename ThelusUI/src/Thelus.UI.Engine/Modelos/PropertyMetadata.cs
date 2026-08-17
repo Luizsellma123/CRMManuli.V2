@@ -21,7 +21,6 @@ namespace Thelus.UI.Engine.Modelos
         /// </summary>
         public string LookupKey { get; set; }
 
-        // ADICIONE ESTA PROPRIEDADE PARA A LISTAGEM PRINCIPAL
         public bool ShowInList { get; set; } = true;
 
         public string Icon { get; set; }
@@ -43,6 +42,11 @@ namespace Thelus.UI.Engine.Modelos
         /// Se verdadeiro, exibe este campo na tabela/grid de listagem de registros.
         /// </summary>
         public bool ShowInGrid { get; set; }
+
+        /// <summary>
+        /// Define se o campo do tipo Select/Dropdown deve exibir a opção nula ou vazia ("Todas" / "Selecione...").
+        /// </summary>
+        public bool AllowNullOption { get; set; } = true;
 
         public string FilterValue { get; set; } = string.Empty;
 

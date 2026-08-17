@@ -48,7 +48,7 @@
           "Microsoft.AspNetCore.Authentication.OAuth": "5.0.0.0",
           "Microsoft.AspNetCore.Authorization.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Authorization.Policy": "5.0.0.0",
-          "Microsoft.AspNetCore.Components.Authorization": "5.0.0.0",
+          "Microsoft.AspNetCore.Components.Authorization.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Components.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Components.Forms.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Components.Server": "5.0.0.0",
@@ -738,6 +738,7 @@
       },
       "Thelus.UI.Engine/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Components.Authorization": "3.1.32",
           "Microsoft.AspNetCore.Components.Web": "3.1.32",
           "System.Net.Http.Json": "5.0.0"
         },
@@ -813,7 +814,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Components.Authorization/5.0.0.0": {
+      "Microsoft.AspNetCore.Components.Authorization.Reference/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Components.Authorization.dll": {}
         },
@@ -2464,6 +2465,13 @@
       "Microsoft.AspNetCore.Components.Analyzers/3.1.32": {
         "compileOnly": true
       },
+      "Microsoft.AspNetCore.Components.Authorization/3.1.32": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.32",
+          "Microsoft.AspNetCore.Components": "3.1.32"
+        },
+        "compileOnly": true
+      },
       "Microsoft.AspNetCore.Components.Forms/3.1.32": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.32"
@@ -2830,7 +2838,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Components.Authorization/5.0.0.0": {
+    "Microsoft.AspNetCore.Components.Authorization.Reference/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -4210,6 +4218,13 @@
       "sha512": "sha512-DCw6X2xu7ApISs4EiiCTYpSnXdbfD+Ie3S9T1oaRq2Wx8RZ8jo6XpbkxYkBuBP472oR3/OyzuaKkHq9aJLjtOg==",
       "path": "microsoft.aspnetcore.components.analyzers/3.1.32",
       "hashPath": "microsoft.aspnetcore.components.analyzers.3.1.32.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Authorization/3.1.32": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cpxwx+0hB5DSA0c+KhEF8Jvi7YAvxP5diASvUWbBXcZlSKv+X4HlZ/tTRq3Vr1ZNANC15TT1W2j0wKKTtURLow==",
+      "path": "microsoft.aspnetcore.components.authorization/3.1.32",
+      "hashPath": "microsoft.aspnetcore.components.authorization.3.1.32.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.Forms/3.1.32": {
       "type": "package",

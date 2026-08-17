@@ -104,7 +104,7 @@ namespace Thelus.UI.Engine.Servicos
                         var idsDoBanco = resultado.IdsMenuPermitidos ?? new List<int>();
 
                         _layoutState.UserName = NomeUsuario;
-                        _layoutState.SetMenu(_menuService.ObterMenuFiltrado(idsDoBanco));
+                        _layoutState.SetMenu(await _menuService.ObterMenuFiltradoAsync(idsDoBanco));
 
                         NotificarMudancaEstado();
                         return true;

@@ -127,7 +127,7 @@ namespace VendasWeb
             return msgErro;
         }
 
-        public string validaStatus()
+        public string validaStatus_OLD()
         {
             string sql = "";
             string UsuStat = "";
@@ -158,7 +158,7 @@ namespace VendasWeb
             }
         }
 
-        private void WriteCookies()
+        private void WriteCookies_OLD()
         {
             var CookieUsuario = new HttpCookie("usuario");
             CookieUsuario.Value = Session["usuario"].ToString();
@@ -174,6 +174,79 @@ namespace VendasWeb
             CookieidLogin.Value = Session["idLogin"].ToString();
             CookieidLogin.Expires = DateTime.Now.AddMinutes(480); //Expira em 480 minutos.
             Response.Cookies.Add(CookieidLogin);
+        }
+
+        public string validaStatus()
+        {
+            string sql = "";
+            string UsuStat = "";
+
+            sql = "Select Status from CRM_CADASTRO_USUARIO where CodigoUsuario ='" + UsuarioTextBox.Text.Trim() + "' and Senha='" + SenhaTextBox.Text.ToString() + "'";
+            UsuStat = mdlfuncoes.ExecutaSqlReader(sql, "validaStatus").ToString();
+
+            if (UsuStat == "Ativo")
+            {
+                sql = "Select CodigoUsuario from CRM_CADASTRO_USUARIO where CodigoUsuario ='" + UsuarioTextBox.Text.Trim() + "'";
+                string codUsuario = mdlfuncoes.ExecutaSqlReader(sql, "validaStatus").ToString();
+                Session["usuario"] = codUsuario;
+
+                sql = "Select IDUsuario from CRM_CADASTRO_USUARIO where CodigoUsuario ='" + UsuarioTextBox.Text.Trim() + "'";
+                string idUsuario = mdlfuncoes.ExecutaSqlReader(sql, "validaStatus").ToString();
+
+                // MANTÉM TODAS AS CHAVES DE SESSION ANTIGAS
+                Session["IDUsuario"] = idUsuario;
+                Session["id_user_s"] = idUsuario; // Garante o alinhamento com a SessionClass
+
+                return "";
+            }
+            else
+            {
+                if (UsuStat == "Desligado")
+                {
+                    return "Usuario Desativado";
+                }
+                else
+                {
+                    return "Usuario ou Senha Invalida";
+                }
+            }
+        }
+
+        private void WriteCookies()
+        {
+            int tempoExpiracaoMinutos = 480; // 8 horas de sessão
+
+            // 1. Cookie 'usuario'
+            var cookieUsuario = new HttpCookie("usuario", Session["usuario"].ToString())
+            {
+                Path = "/", // FUNDAMENTAL: Permite que o Blazor/Razor leia este cookie
+                Expires = DateTime.Now.AddMinutes(tempoExpiracaoMinutos)
+            };
+            Response.Cookies.Add(cookieUsuario);
+
+            // 2. Cookie 'IDUsuario'
+            var cookieIDUsuario = new HttpCookie("IDUsuario", Session["IDUsuario"].ToString())
+            {
+                Path = "/",
+                Expires = DateTime.Now.AddMinutes(tempoExpiracaoMinutos)
+            };
+            Response.Cookies.Add(cookieIDUsuario);
+
+            // 3. Cookie 'idLogin'
+            var cookieidLogin = new HttpCookie("idLogin", Session["idLogin"].ToString())
+            {
+                Path = "/",
+                Expires = DateTime.Now.AddMinutes(tempoExpiracaoMinutos)
+            };
+            Response.Cookies.Add(cookieidLogin);
+
+            // 4. Cookie 'id_user_s' (Garante compatibilidade total com a SessionClass)
+            var cookieIdUserS = new HttpCookie("id_user_s", Session["IDUsuario"].ToString())
+            {
+                Path = "/",
+                Expires = DateTime.Now.AddMinutes(tempoExpiracaoMinutos)
+            };
+            Response.Cookies.Add(cookieIdUserS);
         }
 
         protected string ValidaIntegridadeSenhaUsuario()

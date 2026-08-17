@@ -14,6 +14,11 @@ namespace Thelus.UI.Engine.Atributos
         public ListLayoutMode Mode { get; set; }
 
         /// <summary>
+        /// Define se o campo de Busca Rápida deve ser exibido no painel de filtros.
+        /// </summary>
+        public bool ShowQuickSearch { get; set; } = true;
+
+        /// <summary>
         /// Define o modo de layout da listagem.
         /// Se usado como [ListLayout], assume automaticamente o modo FullWidth (Tela Cheia).
         /// </summary>
