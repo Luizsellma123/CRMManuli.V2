@@ -7,8 +7,6 @@
 namespace Thelus.UI.Engine.Componentes
 {
     #line default
-    using global::System;
-    using global::System.Collections.Generic;
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
@@ -18,50 +16,68 @@ using Microsoft.AspNetCore.Components.Web
 #nullable disable
     ;
 #nullable restore
-#line (55,2)-(55,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (15,2)-(15,14) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+using System
+
+#nullable disable
+    ;
+#nullable restore
+#line (16,2)-(16,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using System.Collections
 
 #nullable disable
     ;
 #nullable restore
-#line (56,2)-(56,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (17,2)-(17,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+using System.Collections.Generic
+
+#nullable disable
+    ;
+#nullable restore
+#line (18,2)-(18,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using System.Reflection
 
 #nullable disable
     ;
 #nullable restore
-#line (57,2)-(57,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (19,2)-(19,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using System.Linq
 
 #nullable disable
     ;
 #nullable restore
-#line (58,2)-(58,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (20,2)-(20,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line (59,2)-(59,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (21,2)-(21,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line (60,2)-(60,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (22,2)-(22,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using Thelus.UI.Engine.Servicos
 
 #nullable disable
     ;
 #nullable restore
-#line (61,2)-(61,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (23,2)-(23,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using Thelus.UI.Engine.Modelos
 
 #nullable disable
     ;
 #nullable restore
-#line (62,2)-(62,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (24,2)-(24,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 using Thelus.UI.Engine.Atributos
+
+#nullable disable
+    ;
+#nullable restore
+#line (25,2)-(25,36) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+using Thelus.UI.Engine.Componentes
 
 #nullable disable
     ;
@@ -77,7 +93,7 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (352,8)-(614,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (63,8)-(242,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 
     [Parameter] public string EntityName { get; set; }
     [Parameter] public IEnumerable<object> Items { get; set; }
@@ -90,14 +106,9 @@ using Thelus.UI.Engine.Atributos
     private List<PropertyMetadata> camposFiltro = new();
     private List<ListActionAttribute> listActions = new();
 
-    // Dicionários para separar rascunho (digitado) de aplicados (efetivados ao buscar)
-    private string termoBuscaRascunho = "";
     private string termoBuscaAplicado = "";
-
-    private Dictionary<string, string> filtrosRascunho = new();
     private Dictionary<string, string> filtrosAplicados = new();
 
-    // Estado da Paginação
     private int currentPage = 1;
     private int pageSize = 10;
 
@@ -130,12 +141,6 @@ using Thelus.UI.Engine.Atributos
         dadosFiltrados.Skip((currentPage - 1) * pageSize).Take(pageSize);
 
     private int TotalItems => dadosFiltrados.Count();
-    private int TotalPages => (int)Math.Ceiling((double)TotalItems / pageSize);
-    private int StartRecord => TotalItems == 0 ? 0 : ((currentPage - 1) * pageSize) + 1;
-    private int EndRecord => Math.Min(currentPage * pageSize, TotalItems);
-
-    private int FirstVisiblePage => Math.Max(1, currentPage - 2);
-    private int LastVisiblePage => Math.Min(TotalPages, Math.Max(1, FirstVisiblePage + 4));
 
     protected override async Task OnParametersSetAsync()
     {
@@ -144,13 +149,10 @@ using Thelus.UI.Engine.Atributos
         if (!string.IsNullOrEmpty(EntityName))
         {
             entityType = EntityRegistry.GetEntityType(EntityName);
-
             if (entityType == null)
             {
                 entityType = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(a => {
-                        try { return a.GetTypes(); } catch { return Array.Empty<Type>(); }
-                    })
+                    .SelectMany(a => { try { return a.GetTypes(); } catch { return Array.Empty<Type>(); } })
                     .FirstOrDefault(t => t.Name.Equals(EntityName, StringComparison.OrdinalIgnoreCase));
             }
         }
@@ -170,7 +172,7 @@ using Thelus.UI.Engine.Atributos
                                        .ToList();
             }
 
-            var layoutAttr = entityType.GetCustomAttribute<ListLayoutAttribute>(true) 
+            var layoutAttr = entityType.GetCustomAttribute<ListLayoutAttribute>(true)
                           ?? (ListLayoutAttribute)Attribute.GetCustomAttribute(entityType, typeof(ListLayoutAttribute));
 
             if (layoutAttr != null)
@@ -192,18 +194,9 @@ using Thelus.UI.Engine.Atributos
             var dummyInstance = Activator.CreateInstance(entityType);
             var todasPropriedades = ModelMetadataReader.GetProperties(dummyInstance);
 
-            // REGRA ESTRITA: Exibe APENAS colunas com ShowInGrid = true
-            colunasTabela = todasPropriedades
-                .Where(p => p.ShowInGrid && p.FieldType != FieldType.Grid)
-                .OrderBy(p => p.Order)
-                .ToList();
+            colunasTabela = todasPropriedades.Where(p => p.ShowInGrid && p.FieldType != FieldType.Grid).OrderBy(p => p.Order).ToList();
+            camposFiltro = todasPropriedades.Where(p => p.ShowInFilter).OrderBy(p => p.Order).ToList();
 
-            camposFiltro = todasPropriedades
-                .Where(p => p.ShowInFilter)
-                .OrderBy(p => p.Order)
-                .ToList();
-
-            // Carrega lookups dinamicamente
             foreach (var prop in todasPropriedades.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
             {
                 try
@@ -221,20 +214,49 @@ using Thelus.UI.Engine.Atributos
                             {
                                 string idVal = row[keyCol]?.ToString();
                                 string descVal = row[descCol]?.ToString();
-                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
-                                {
-                                    prop.Options[idVal] = descVal;
-                                }
+                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal)) prop.Options[idVal] = descVal;
                             }
                         }
                     }
                 }
-                catch
-                {
-                    // Falha silenciosa
-                }
+                catch { }
             }
         }
+    }
+
+    private void AplicarFiltro(GenericFilterPanel.FiltroAplicadoEventArgs e)
+    {
+        termoBuscaAplicado = e.TermoBusca;
+        filtrosAplicados = e.Filtros;
+        currentPage = 1;
+    }
+
+    private void LimparFiltros()
+    {
+        termoBuscaAplicado = "";
+        filtrosAplicados.Clear();
+        currentPage = 1;
+    }
+
+    private void GoToPage(int page) => currentPage = page;
+
+    private void OnPageSizeChanged(int newSize)
+    {
+        pageSize = newSize;
+        currentPage = 1;
+    }
+
+    private void NovoRegistro() => Navigation.NavigateTo($"/gerenciar/{EntityName}/novo");
+
+    private string GetEntityTitle() =>
+        string.IsNullOrEmpty(EntityName) ? "Registros" : System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
+
+    private string GetListTitle() => $"{GetEntityTitle()} - Lista {GetEntityTitle()}";
+
+    private string GetCreateActionTitle()
+    {
+        var createAction = listActions.FirstOrDefault(a => GetActionType(a) == ActionType.Create);
+        return createAction != null ? GetActionTitle(createAction) : $"Novo {GetEntityTitle()}";
     }
 
     private ActionType GetActionType(ListActionAttribute attr)
@@ -252,102 +274,13 @@ using Thelus.UI.Engine.Atributos
         return prop?.GetValue(attr)?.ToString() ?? "Ação";
     }
 
-    private string GetCreateActionTitle()
-    {
-        var createAction = listActions.FirstOrDefault(a => GetActionType(a) == ActionType.Create);
-        if (createAction != null) return GetActionTitle(createAction);
-        return $"Novo {GetEntityTitle()}";
-    }
-
-    private string GetFiltroRascunho(string propName) =>
-        filtrosRascunho.TryGetValue(propName, out var val) ? val : "";
-
-    private void SetFiltroRascunho(string propName, object val) =>
-        filtrosRascunho[propName] = val?.ToString() ?? "";
-
-    private void HandleKeyUp(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            AplicarFiltro();
-        }
-    }
-
-    private void AplicarFiltro()
-    {
-        termoBuscaAplicado = termoBuscaRascunho;
-        filtrosAplicados = new Dictionary<string, string>(filtrosRascunho);
-        currentPage = 1;
-    }
-
-    private void LimparFiltros()
-    {
-        termoBuscaRascunho = "";
-        termoBuscaAplicado = "";
-        filtrosRascunho.Clear();
-        filtrosAplicados.Clear();
-        currentPage = 1;
-    }
-
-    private void GoToPage(int page)
-    {
-        if (page >= 1 && page <= TotalPages)
-        {
-            currentPage = page;
-        }
-    }
-
-    private void OnPageSizeChanged(ChangeEventArgs e)
-    {
-        if (int.TryParse(e.Value?.ToString(), out int newSize))
-        {
-            pageSize = newSize;
-            currentPage = 1;
-        }
-    }
-
-    private void NovoRegistro() => Navigation.NavigateTo($"/gerenciar/{EntityName}/novo");
-
-    private object GetPrimaryKeyValue(object item)
-    {
-        if (item == null) return 0;
-        var prop = item.GetType().GetProperty("IdUsuario") ?? 
-                   item.GetType().GetProperty("Codigo") ?? 
-                   item.GetType().GetProperty("Id") ??
-                   item.GetType().GetProperties().FirstOrDefault(p => p.Name.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
-
-        return prop?.GetValue(item) ?? 0;
-    }
-
-    private string FormatValue(object val)
-    {
-        if (val == null) return "-";
-        if (val is DateTime dt)
-        {
-            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
-        }
-        return val.ToString();
-    }
-
-    private string GetEntityTitle()
-    {
-        if (string.IsNullOrEmpty(EntityName)) return "Registros";
-        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
-    }
-
-    private string GetListTitle()
-    {
-        var title = GetEntityTitle();
-        return $"{title} - Lista {title}";
-    }
-
 #line default
 #line hidden
 #nullable disable
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (66,9)-(66,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (29,9)-(29,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 HttpClient
 
 #line default
@@ -355,7 +288,7 @@ HttpClient
 #nullable disable
          
 #nullable restore
-#line (66,20)-(66,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (29,20)-(29,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 Http
 
 #line default
@@ -365,7 +298,7 @@ Http
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (65,9)-(65,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (28,9)-(28,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 Thelus.UI.Engine.Servicos.LayoutStateService
 
 #line default
@@ -373,7 +306,7 @@ Thelus.UI.Engine.Servicos.LayoutStateService
 #nullable disable
          
 #nullable restore
-#line (65,54)-(65,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (28,54)-(28,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 LayoutState
 
 #line default
@@ -383,7 +316,7 @@ LayoutState
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (64,9)-(64,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (27,9)-(27,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 NavigationManager
 
 #line default
@@ -391,7 +324,7 @@ NavigationManager
 #nullable disable
          
 #nullable restore
-#line (64,27)-(64,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (27,27)-(27,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 Navigation
 
 #line default
@@ -401,7 +334,7 @@ Navigation
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (63,9)-(63,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (26,9)-(26,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 LookupCacheService
 
 #line default
@@ -409,7 +342,7 @@ LookupCacheService
 #nullable disable
          
 #nullable restore
-#line (63,28)-(63,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
+#line (26,28)-(26,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericList.razor"
 LookupCache
 
 #line default

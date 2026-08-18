@@ -31,7 +31,9 @@ namespace Thelus.UI.Engine.Modelos
             foreach (var prop in properties)
             {
                 var attr = prop.GetCustomAttribute<FormFieldAttribute>();
-                if (attr == null || !attr.Visible) continue; // Ignora se não tiver atributo ou estiver oculto
+                var detailAttr = prop.GetCustomAttribute<FormDetailFieldAttribute>();
+
+                if (attr == null) continue; // Ignora propriedades sem o atributo base FormField
 
                 var propType = prop.PropertyType;
                 var nullableType = Nullable.GetUnderlyingType(propType);
@@ -71,9 +73,12 @@ namespace Thelus.UI.Engine.Modelos
                     PropertyType = prop.PropertyType,
                     PropertyInfo = prop,
                     Label = attr.Label ?? prop.Name,
-                    Section = attr.Section,
-                    ColSpan = attr.ColSpan,
-                    Order = attr.Order,
+
+                    // FALLBACK DE LAYOUT (Se FormDetailField foi informado e tem valor, usa dele. Senão, herda do FormField)
+                    Section = !string.IsNullOrEmpty(detailAttr?.Section) ? detailAttr.Section : attr.Section,
+                    ColSpan = (detailAttr?.ColSpan > 0) ? detailAttr.ColSpan : attr.ColSpan,
+                    Order = (detailAttr?.Order > 0) ? detailAttr.Order : attr.Order,
+
                     FieldType = computedFieldType,
                     LookupKey = attr.LookupKey,
                     Icon = attr.Icon,
@@ -86,10 +91,17 @@ namespace Thelus.UI.Engine.Modelos
 
                     // REGISTROS DE VISIBILIDADE:
                     ShowInList = attr.ShowInList, // Flag para a tabela principal (GenericList)
-                    ShowInGrid = attr.ShowInGrid, // Flag para sub-grids de detalhe (GenericDetail)
+                    ShowInGrid = attr.ShowInGrid, // Flag para sub-grids de detalhe
 
-                    // MAPEAMENTO ADICIONADO PARA O SELECT:
+                    // REGRAS EXCLUSIVAS PARA A TELA DE DETALHE (FormDetailField)
+                    VisibleInDetail = detailAttr != null ? detailAttr.Visible : attr.Visible,
+                    ReadOnlyInDetail = detailAttr?.ReadOnly ?? attr.ReadOnly,
+                    ReadOnlyOnEdit = detailAttr?.ReadOnlyOnEdit ?? false,
+                    DefaultValueType = detailAttr?.DefaultValue ?? DefaultValueType.None,
+
+                    // MAPEAMENTO PARA O SELECT:
                     AllowNullOption = attr.AllowNullOption,
+                    EnableSearch = attr.EnableSearch,
 
                     Rows = attr.Rows,
                     Mask = attr.Mask,

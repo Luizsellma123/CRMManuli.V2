@@ -1,0 +1,58 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+
+<div class="col-sm-3 bg-gray pad-ver">
+    <div class="row">
+        <div class="col-xs-12">
+            @if (Sections != null && Sections.Any())
+            {
+                @foreach (var secao in Sections)
+                {
+                    var iconeSecao = GetIconeParaSecao(secao);
+                    var isAtiva = ActiveSection == secao;
+                    <button type="button"
+                            class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro @iconeSecao fa-3x @(isAtiva ? "active" : "")"
+                            @onclick="() => SelectSection(secao)">
+                        @secao
+                    </button>
+                }
+            }
+            else
+            {
+                <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-home fa-3x active">
+                    Principal
+                </button>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public IEnumerable<string>? Sections { get; set; }
+    [Parameter] public string ActiveSection { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> OnSectionChanged { get; set; }
+
+    private async Task SelectSection(string section)
+    {
+        if (OnSectionChanged.HasDelegate)
+        {
+            await OnSectionChanged.InvokeAsync(section);
+        }
+    }
+
+    private string GetIconeParaSecao(string nomeSecao)
+    {
+        var nomeLower = nomeSecao.ToLowerInvariant();
+        if (nomeLower.Contains("principal") || nomeLower.Contains("geral")) return "fa fa-home";
+        if (nomeLower.Contains("identifica") || nomeLower.Contains("usuario") || nomeLower.Contains("dados")) return "fa fa-user";
+        if (nomeLower.Contains("seguran") || nomeLower.Contains("acesso") || nomeLower.Contains("perfil")) return "fa fa-lock";
+        if (nomeLower.Contains("auditor") || nomeLower.Contains("log")) return "fa fa-history";
+        if (nomeLower.Contains("responsav")) return "fa fa-pencil-square";
+        if (nomeLower.Contains("anexo")) return "fa fa-list";
+        if (nomeLower.Contains("histor")) return "fa fa-binoculars";
+        if (nomeLower.Contains("projet")) return "fa fa-trello";
+        if (nomeLower.Contains("hora") || nomeLower.Contains("apontament")) return "fa fa-clock-o";
+
+        return "fa fa-folder-open";
+    }
+}

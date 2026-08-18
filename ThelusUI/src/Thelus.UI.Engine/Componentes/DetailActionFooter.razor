@@ -1,0 +1,82 @@
+﻿@using System.Collections.Generic
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+
+<div class="panel-footer">
+    <div class="row">
+        <div class="col-xs-12 text-right">
+            @if (Actions != null)
+            {
+                @foreach (var acao in Actions)
+                {
+                    var iconeClass = MapearIconeFontAwesome(acao.Icon);
+
+                    if (acao.ActionType == ActionType.Save)
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled fa fa-save fa-lg" @onclick="TriggerActionSave" disabled="@IsSaving">
+                            @if (IsSaving)
+                            {
+                                <span>Salvando...</span>
+                            }
+                            else
+                            {
+                                @acao.Label
+                            }
+                        </button>
+                    }
+                    else if (acao.ActionType == ActionType.Back)
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled fa fa-arrow-circle-left fa-lg" @onclick="() => TriggerAction(acao)" disabled="@IsSaving">
+                            @acao.Label
+                        </button>
+                    }
+                    else if (!string.IsNullOrEmpty(acao.TargetUrl))
+                    {
+                        <a href="@acao.TargetUrl" class="btn @acao.CssClass btn-labeled @iconeClass fa-lg @(IsSaving ? "disabled" : "")">
+                            @acao.Label
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled @iconeClass fa-lg" @onclick="() => TriggerAction(acao)" disabled="@IsSaving">
+                            @acao.Label
+                        </button>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public IEnumerable<ActionMetadata>? Actions { get; set; }
+    [Parameter] public bool IsSaving { get; set; }
+    [Parameter] public EventCallback<ActionMetadata> OnExecuteAction { get; set; }
+
+    private async Task TriggerActionSave()
+    {
+        var saveAction = new ActionMetadata { ActionType = ActionType.Save };
+        await TriggerAction(saveAction);
+    }
+
+    private async Task TriggerAction(ActionMetadata acao)
+    {
+        if (OnExecuteAction.HasDelegate)
+        {
+            await OnExecuteAction.InvokeAsync(acao);
+        }
+    }
+
+    private string MapearIconeFontAwesome(string iconeOriginal)
+    {
+        if (string.IsNullOrEmpty(iconeOriginal)) return "fa fa-cog";
+        if (iconeOriginal.StartsWith("fa ")) return iconeOriginal;
+
+        if (iconeOriginal.Contains("content-save")) return "fa fa-save";
+        if (iconeOriginal.Contains("keyboard-return")) return "fa fa-arrow-circle-left";
+        if (iconeOriginal.Contains("trash")) return "fa fa-trash";
+        if (iconeOriginal.Contains("database")) return "fa fa-database";
+
+        return "fa fa-check-square-o";
+    }
+}

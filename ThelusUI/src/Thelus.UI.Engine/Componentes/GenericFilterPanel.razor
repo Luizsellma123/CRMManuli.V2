@@ -1,0 +1,266 @@
+﻿@using System.Collections
+@using System.Collections.Generic
+@using System.Reflection
+@using System.Linq
+@using System.Text
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Web
+@using Thelus.UI.Engine.Servicos
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@using Thelus.UI.Engine.Componentes
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-control">
+            <button type="button" class="btn btn-default" data-target="#painel-filtros" data-toggle="collapse">
+                <i class="fa fa-chevron-down"></i>
+            </button>
+        </div>
+        <h3 class="panel-title">@Title</h3>
+    </div>
+
+    <div class="collapse in" id="painel-filtros" aria-expanded="true">
+        <div class="panel-body">
+            <div class="style-row-filter">
+                @if (ShowQuickSearch)
+                {
+                    <div class="col-sm-6 form-group-filter">
+                        <label class="filter-label">Busca Rápida:</label>
+                        <div class="filter-control-container">
+                            <input type="text" class="form-control" placeholder="Número ou Descrição..."
+                                   @bind="termoBuscaRascunho" @onkeyup="HandleKeyUp" />
+                        </div>
+                    </div>
+                }
+
+                @if (Campos != null && Campos.Any())
+                {
+                    @foreach (var campo in Campos)
+                    {
+                        var totalColSpan = campo.ColSpan > 0 ? campo.ColSpan : 6;
+                        var maskFormat = GetMaskFormat(campo);
+
+                        <div class="col-sm-@totalColSpan form-group-filter">
+                            <label class="filter-label">@campo.Label:</label>
+                            <div class="filter-control-container">
+                                @if (campo.FieldType == FieldType.Select)
+                                {
+                                    @if (campo.EnableSearch)
+                                    {
+                                        <SearchableSelect Options="campo.Options"
+                                                          AllowNull="campo.AllowNullOption"
+                                                          NullText="Todas"
+                                                          Value="@GetFiltroRascunho(campo.PropertyName)"
+                                                          ValueChanged="(v) => SetFiltroRascunho(campo.PropertyName, v)" />
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control"
+                                                value="@GetFiltroRascunho(campo.PropertyName)"
+                                                @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)">
+                                            @if (campo.AllowNullOption)
+                                            {
+                                                <option value="">Todas</option>
+                                            }
+                                            @if (campo.Options != null && campo.Options.Any())
+                                            {
+                                                @foreach (var opt in campo.Options)
+                                                {
+                                                    <option value="@opt.Key">@opt.Value</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                }
+                                else if (campo.FieldType == FieldType.CheckBox)
+                                {
+                                    <select class="form-control"
+                                            value="@GetFiltroRascunho(campo.PropertyName)"
+                                            @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)">
+                                        <option value="">Todos</option>
+                                        <option value="true">Sim / Ativo</option>
+                                        <option value="false">Não / Inativo</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" placeholder="@campo.Placeholder"
+                                           value="@GetFiltroRascunho(campo.PropertyName)"
+                                           @oninput="(e) => OnInputMasked(campo, e.Value?.ToString())"
+                                           @onkeyup="HandleKeyUp"
+                                           maxlength="@(!string.IsNullOrEmpty(maskFormat) ? maskFormat.Length : 255)" />
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <div class="row">
+                <div class="panel-control">
+                    @if (ListActions != null && ListActions.Any())
+                    {
+                        @foreach (var action in ListActions)
+                        {
+                            var aType = GetActionType(action);
+                            var aTitle = GetActionTitle(action);
+
+                            if (aType == ActionType.Create)
+                            {
+                                <button type="button" class="btn btn-primary btn-labeled fa fa-plus mar-lft" @onclick="OnCreate">
+                                    @aTitle
+                                </button>
+                            }
+                            else if (aType == ActionType.Clear)
+                            {
+                                <button type="button" class="btn btn-warning btn-labeled fa fa-eraser mar-lft" @onclick="Limpar">
+                                    @aTitle
+                                </button>
+                            }
+                            else if (aType == ActionType.Search)
+                            {
+                                <button type="button" class="btn btn-success btn-labeled fa fa-search fa-lg mar-lft" @onclick="Aplicar">
+                                    @aTitle
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-default mar-lft">
+                                    @aTitle
+                                </button>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary btn-labeled fa fa-plus mar-rgt" @onclick="OnCreate">
+                            Novo
+                        </button>
+                        <button type="button" class="btn btn-warning mar-rgt" @onclick="Limpar">
+                            <i class="fa fa-eraser"></i> Limpar
+                        </button>
+                        <button type="button" class="btn btn-success btn-labeled fa fa-search fa-lg" @onclick="Aplicar">
+                            Pesquisar
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public bool ShowQuickSearch { get; set; }
+    [Parameter] public List<PropertyMetadata> Campos { get; set; } = new();
+    [Parameter] public List<ListActionAttribute> ListActions { get; set; } = new();
+
+    [Parameter] public EventCallback<FiltroAplicadoEventArgs> OnSearch { get; set; }
+    [Parameter] public EventCallback OnClear { get; set; }
+    [Parameter] public EventCallback OnCreate { get; set; }
+
+    private string termoBuscaRascunho = "";
+    private Dictionary<string, string> filtrosRascunho = new();
+
+    private string GetFiltroRascunho(string propName) =>
+        filtrosRascunho.TryGetValue(propName, out var val) ? val : "";
+
+    private void SetFiltroRascunho(string propName, object val) =>
+        filtrosRascunho[propName] = val?.ToString() ?? "";
+
+    private string GetMaskFormat(PropertyMetadata campo)
+    {
+        if (!string.IsNullOrEmpty(campo.Mask)) return campo.Mask;
+        if (campo.FieldType == FieldType.Date) return "00/00/0000";
+        return null;
+    }
+
+    private void OnInputMasked(PropertyMetadata campo, string rawValue)
+    {
+        var mask = GetMaskFormat(campo);
+        if (!string.IsNullOrEmpty(mask))
+        {
+            var formatted = ApplyMask(rawValue, mask);
+            SetFiltroRascunho(campo.PropertyName, formatted);
+        }
+        else
+        {
+            SetFiltroRascunho(campo.PropertyName, rawValue);
+        }
+    }
+
+    private string ApplyMask(string value, string mask)
+    {
+        if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(mask))
+            return value ?? "";
+
+        var digits = new string(value.Where(char.IsDigit).ToArray());
+        if (digits.Length == 0) return "";
+
+        var result = new StringBuilder();
+        int digitIndex = 0;
+
+        foreach (char m in mask)
+        {
+            if (digitIndex >= digits.Length) break;
+
+            if (m == '0' || m == '9' || m == '#')
+            {
+                result.Append(digits[digitIndex]);
+                digitIndex++;
+            }
+            else
+            {
+                result.Append(m);
+            }
+        }
+
+        return result.ToString();
+    }
+
+    private void HandleKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") Aplicar();
+    }
+
+    private async Task Aplicar()
+    {
+        await OnSearch.InvokeAsync(new FiltroAplicadoEventArgs
+        {
+            TermoBusca = termoBuscaRascunho,
+            Filtros = new Dictionary<string, string>(filtrosRascunho)
+        });
+    }
+
+    private async Task Limpar()
+    {
+        termoBuscaRascunho = "";
+        filtrosRascunho.Clear();
+        await OnClear.InvokeAsync(null);
+    }
+
+    private ActionType GetActionType(ListActionAttribute attr)
+    {
+        var prop = attr.GetType().GetProperty("ActionType") ?? attr.GetType().GetProperty("Type");
+        if (prop != null && prop.GetValue(attr) is ActionType at) return at;
+        return ActionType.Search;
+    }
+
+    private string GetActionTitle(ListActionAttribute attr)
+    {
+        var prop = attr.GetType().GetProperty("Title") 
+                ?? attr.GetType().GetProperty("Label") 
+                ?? attr.GetType().GetProperty("Name");
+        return prop?.GetValue(attr)?.ToString() ?? "Ação";
+    }
+
+    public class FiltroAplicadoEventArgs
+    {
+        public string TermoBusca { get; set; }
+        public Dictionary<string, string> Filtros { get; set; } = new();
+    }
+}

@@ -1,0 +1,298 @@
+﻿@namespace Thelus.UI.Engine.Componentes
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+
+<div class="searchable-select-wrapper">
+    @* Disparador (Mostra o item selecionado) *@
+    <div class="searchable-select-trigger @(isOpen ? "open" : "")" @onclick="ToggleDropdown">
+        <span class="searchable-select-label @(string.IsNullOrEmpty(Value) ? "placeholder" : "")">
+            @TextoExibicao
+        </span>
+        <i class="fa fa-chevron-down searchable-select-caret"></i>
+    </div>
+
+    @* Fundo invisível para fechar ao clicar fora *@
+    @if (isOpen)
+    {
+        <div class="searchable-select-backdrop" @onclick="CloseDropdown"></div>
+
+        <div class="searchable-select-dropdown">
+            @* Campo de Busca Interno *@
+            <div class="searchable-select-search-box">
+                <i class="fa fa-search search-icon"></i>
+                <input @ref="searchInputRef"
+                       type="text"
+                       class="searchable-select-input"
+                       placeholder="Digite para pesquisar..."
+                       value="@textoBusca"
+                       @oninput="OnInputChanged" />
+            </div>
+
+            @* Lista de Opções *@
+            <ul class="searchable-select-options">
+                @if (AllowNull)
+                {
+                    <li class="searchable-select-option null-option @(string.IsNullOrEmpty(Value) ? "selected" : "")"
+                        @onclick='() => SelecionarItem("", NullText)'>
+                        <em>@NullText</em>
+                    </li>
+                }
+
+                @if (opcoesFiltradas != null && opcoesFiltradas.Any())
+                {
+                    @foreach (var opt in opcoesFiltradas)
+                    {
+                        var isSelected = opt.Key == Value;
+                        <li class="searchable-select-option @(isSelected ? "selected" : "")"
+                            @onclick="() => SelecionarItem(opt.Key, opt.Value)">
+                            @opt.Value
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="searchable-select-empty">
+                        Nenhum resultado encontrado
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+<style>
+    <style>
+    .searchable-select-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Backdrop invisível para fechar ao clicar fora */
+    .searchable-select-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1040;
+        background: transparent;
+    }
+
+    /* Trigger: Identico ao .form-control nativo do Nifty */
+    .searchable-select-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 32px; /* Altura padrão dos inputs do formulário */
+        padding: 4px 10px;
+        background-color: #ffffff;
+        border: 1px solid #e9e9e9; /* Cor exata da borda padrão */
+        border-radius: 2px; /* Cantos sutis padrão do tema */
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 12px; /* Tamanho exato da fonte dos inputs */
+        color: #555555;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        user-select: none;
+    }
+
+    .searchable-select-trigger:hover {
+        border-color: #dcdcdc;
+    }
+
+    /* Estado Focado/Aberto alinhado com a cor do tema */
+    .searchable-select-trigger.open {
+        border-color: #25a5d8; /* Azul Nifty */
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(37, 165, 216, .6);
+    }
+
+    .searchable-select-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 6px;
+    }
+
+    .searchable-select-label.placeholder {
+        color: #999999;
+    }
+
+    .searchable-select-caret {
+        font-size: 10px;
+        color: #777777;
+        transition: transform 0.15s ease;
+    }
+
+    .searchable-select-trigger.open .searchable-select-caret {
+        transform: rotate(180deg);
+    }
+
+    /* Card do Dropdown com estilo limpo Nifty */
+    .searchable-select-dropdown {
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 0;
+        width: 100%;
+        min-width: 240px;
+        background: #ffffff;
+        border: 1px solid #25a5d8;
+        border-radius: 2px;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        z-index: 1050;
+        padding: 5px;
+    }
+
+    /* Input de Pesquisa Interno */
+    .searchable-select-search-box {
+        position: relative;
+        margin-bottom: 5px;
+    }
+
+    .searchable-select-search-box .search-icon {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999999;
+        font-size: 11px;
+    }
+
+    .searchable-select-input {
+        width: 100%;
+        height: 28px;
+        padding: 3px 6px 3px 24px;
+        font-size: 12px;
+        color: #555555;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .searchable-select-input:focus {
+        border-color: #25a5d8;
+    }
+
+    /* Lista e Itens */
+    .searchable-select-options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .searchable-select-option {
+        padding: 5px 8px;
+        font-size: 12px;
+        color: #555555;
+        border-radius: 2px;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .searchable-select-option:hover {
+        background-color: #25a5d8;
+        color: #ffffff;
+    }
+
+    .searchable-select-option.selected {
+        background-color: #f2f2f2;
+        color: #25a5d8;
+        font-weight: 600;
+    }
+
+    .searchable-select-option.null-option {
+        color: #888888;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 3px;
+    }
+
+    .searchable-select-empty {
+        padding: 8px;
+        font-size: 12px;
+        color: #999999;
+        text-align: center;
+    }
+
+    /* Scrollbar Discreta */
+    .searchable-select-options::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .searchable-select-options::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .searchable-select-options::-webkit-scrollbar-thumb {
+        background: #ccc;
+    }
+</style>
+</style>
+
+@code {
+    [Parameter] public Dictionary<string, string> Options { get; set; } = new();
+    [Parameter] public bool AllowNull { get; set; } = true;
+    [Parameter] public string NullText { get; set; } = "Todas";
+    [Parameter] public string Placeholder { get; set; } = "Selecione...";
+    [Parameter] public string Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    private ElementReference searchInputRef;
+    private string textoBusca = "";
+    private bool isOpen = false;
+
+    private string TextoExibicao
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(Value) && Options != null && Options.TryGetValue(Value, out var desc))
+            {
+                return desc;
+            }
+            return AllowNull ? NullText : Placeholder;
+        }
+    }
+
+    private IEnumerable<KeyValuePair<string, string>> opcoesFiltradas =>
+        string.IsNullOrWhiteSpace(textoBusca)
+            ? Options
+            : Options?.Where(x => x.Value.Contains(textoBusca, StringComparison.OrdinalIgnoreCase));
+
+    private async Task ToggleDropdown()
+    {
+        isOpen = !isOpen;
+        if (isOpen)
+        {
+            textoBusca = "";
+            await Task.Delay(50);
+            try
+            {
+                // Foco compatível via JavaScript Interop Naitvo
+                await JSRuntime.InvokeVoidAsync("HTMLElement.prototype.focus.call", searchInputRef);
+            }
+            catch { }
+        }
+    }
+
+    private void CloseDropdown()
+    {
+        isOpen = false;
+    }
+
+    private void OnInputChanged(ChangeEventArgs e)
+    {
+        textoBusca = e.Value?.ToString() ?? "";
+    }
+
+    private async Task SelecionarItem(string key, string label)
+    {
+        Value = key;
+        isOpen = false;
+        textoBusca = "";
+        await ValueChanged.InvokeAsync(Value);
+    }
+}

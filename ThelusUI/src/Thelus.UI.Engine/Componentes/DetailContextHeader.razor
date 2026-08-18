@@ -1,0 +1,41 @@
+﻿@using Thelus.UI.Engine.Modelos
+
+@if (PropertyWithHeader?.ContextHeaderProps != null && PropertyWithHeader.ContextHeaderProps.Any() && ModelInstance != null)
+{
+    <div class="well well-sm mb-3">
+        <div class="row">
+            @foreach (var nomePropPai in PropertyWithHeader.ContextHeaderProps)
+            {
+                var propPai = ModelInstance.GetType().GetProperty(nomePropPai);
+                if (propPai != null)
+                {
+                    <div class="col-sm-2">
+                        <div class="form-group" style="padding-top: 7px;">
+                            <span><strong>@nomePropPai:</strong></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-sm" value="@FormatValue(propPai.GetValue(ModelInstance))" disabled />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public object? ModelInstance { get; set; }
+    [Parameter] public PropertyMetadata? PropertyWithHeader { get; set; }
+
+    private string FormatValue(object? val)
+    {
+        if (val == null) return "-";
+        if (val is DateTime dt)
+        {
+            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
+        }
+        return val.ToString() ?? "-";
+    }
+}

@@ -1,0 +1,35 @@
+﻿@using System.Collections
+@using System.Collections.Generic
+@using System.Reflection
+@using System.Linq
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Thelus.UI.Engine.Servicos
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@using Thelus.UI.Engine.Componentes
+
+<div class="col-sm-3 bg-gray pad-ver">
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="/" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-home fa-3x">
+                Home
+            </a>
+            <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-pencil-square-o fa-3x" @onclick="OnCreate">
+                @CreateTitle
+            </button>
+            <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-list-alt fa-3x active">
+                @EntityTitle
+            </button>
+            <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-cloud-upload fa-3x">
+                Importar @EntityTitle
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string EntityTitle { get; set; }
+    [Parameter] public string CreateTitle { get; set; }
+    [Parameter] public EventCallback OnCreate { get; set; }
+}

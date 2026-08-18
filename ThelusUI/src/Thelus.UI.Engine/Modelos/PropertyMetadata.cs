@@ -48,7 +48,36 @@ namespace Thelus.UI.Engine.Modelos
         /// </summary>
         public bool AllowNullOption { get; set; } = true;
 
+        /// <summary>
+        /// Define se o campo do tipo Select/Dropdown deve permitir pesquisa de opções na interface.
+        /// </summary>
+        public bool EnableSearch { get; set; } = false;
+
         public string FilterValue { get; set; } = string.Empty;
+
+        #region Configurações Exclusivas de Detalhe (FormDetailField)
+
+        /// <summary>
+        /// Define se o campo deve ser exibido no formulário de detalhe.
+        /// </summary>
+        public bool VisibleInDetail { get; set; } = true;
+
+        /// <summary>
+        /// Se verdadeiro, trava o campo para edição na tela de detalhe (tanto na Inclusão quanto na Edição).
+        /// </summary>
+        public bool ReadOnlyInDetail { get; set; } = false;
+
+        /// <summary>
+        /// Se verdadeiro, trava o campo para edição apenas no modo Edição (liberado na Inclusão).
+        /// </summary>
+        public bool ReadOnlyOnEdit { get; set; } = false;
+
+        /// <summary>
+        /// Provedor de valor padrão automático para o detalhe (ex: Usuário Logado, Data Atual).
+        /// </summary>
+        public DefaultValueType DefaultValueType { get; set; } = DefaultValueType.None;
+
+        #endregion
 
         #region Mapeamento de Grids e Sub-Entidades
 

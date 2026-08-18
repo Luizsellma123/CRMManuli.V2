@@ -38,6 +38,10 @@
 
         // Coleções e Sub-Entidades
         /// <summary>Representa uma coleção/lista de dados (1 para N) renderizada em formato de Tabela/Grid.</summary>
-        Grid
+        Grid,
+
+        // Pesquisa Avançada
+        /// <summary>Pesquisa de chave estrangeira via Modal Zoom paginado/filtrado.</summary>
+        ModalLookup
     }
 }

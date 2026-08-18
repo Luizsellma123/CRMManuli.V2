@@ -1,58 +1,20 @@
 ﻿<style>
-    .btn-menu-escuro,
-    .btn-menu-escuro:before,
-    .btn-menu-escuro i {
-        color: #2c3e50 !important;
-    }
-
-    /* Estilos do Grid Moderno */
-    .grid-card-moderno {
-        background: #ffffff;
-        border-radius: 6px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .grid-table-moderna thead {
-        background-color: #f8fafc;
-        border-bottom: 2px solid #edf2f7;
-    }
-
-    .grid-table-moderna th {
-        color: #475569;
-        font-weight: 600;
-        font-size: 13px;
-        padding: 12px 16px !important;
-    }
-
-    .grid-table-moderna td {
-        padding: 10px 16px !important;
-        vertical-align: middle !important;
-        border-top: 1px solid #f1f5f9;
-        color: #334155;
-        font-size: 13px;
-    }
-
-    .badge-status-ativo {
-        background-color: #0ac07d !important;
-        color: #ffffff !important;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 11px;
-        font-weight: 600;
-    }
-
-    .badge-status-inativo {
-        background-color: #6c757d !important;
-        color: #ffffff !important;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 11px;
-        font-weight: 600;
-    }
+    .btn-menu-escuro, .btn-menu-escuro:before, .btn-menu-escuro i { color: #2c3e50 !important; }
+    .grid-card-moderno { background: #ffffff; border-radius: 6px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .grid-table-moderna thead { background-color: #f8fafc; border-bottom: 2px solid #edf2f7; }
+    .grid-table-moderna th { color: #475569; font-weight: 600; font-size: 13px; padding: 12px 16px !important; }
+    .grid-table-moderna td { padding: 10px 16px !important; vertical-align: middle !important; border-top: 1px solid #f1f5f9; color: #334155; font-size: 13px; }
+    .badge-status-ativo { background-color: #0ac07d !important; color: #ffffff !important; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .badge-status-inativo { background-color: #6c757d !important; color: #ffffff !important; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .style-row-filter { display: flex; flex-wrap: wrap; margin-right: -10px; margin-left: -10px; }
+    .form-group-filter { display: flex; align-items: center; margin-bottom: 10px; padding-left: 10px; padding-right: 10px; }
+    .form-group-filter .filter-label { width: 95px; min-width: 95px; margin-bottom: 0; font-size: 12px; color: #555555; font-weight: normal; text-align: left; padding-right: 5px; }
+    .form-group-filter .filter-control-container { flex: 1; width: 100%; }
 </style>
 
+@using System
 @using System.Collections
+@using System.Collections.Generic
 @using System.Reflection
 @using System.Linq
 @using System.Net.Http
@@ -60,292 +22,41 @@
 @using Thelus.UI.Engine.Servicos
 @using Thelus.UI.Engine.Modelos
 @using Thelus.UI.Engine.Atributos
+@using Thelus.UI.Engine.Componentes
 @inject LookupCacheService LookupCache
 @inject NavigationManager Navigation
 @inject Thelus.UI.Engine.Servicos.LayoutStateService LayoutState
 @inject HttpClient Http
 
 <div class="row">
-    <!-- COLUNA 1: FILTROS NIFTY E GRID MODERNO -->
     <div class="@(effectiveLayoutMode == ListLayoutMode.WithSideMenu ? "col-sm-9" : "col-sm-12")">
+        
+        <!-- Painel de Filtros -->
+        <GenericFilterPanel Title="@GetListTitle()"
+                            ShowQuickSearch="showQuickSearch"
+                            Campos="camposFiltro"
+                            ListActions="listActions"
+                            OnSearch="AplicarFiltro"
+                            OnClear="LimparFiltros"
+                            OnCreate="NovoRegistro" />
 
-        <!-- 1. PAINEL DE FILTROS NIFTY LEGADO -->
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-control">
-                    <button type="button" class="btn btn-default" data-target="#painel-filtros" data-toggle="collapse">
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                </div>
-                <h3 class="panel-title">@GetListTitle()</h3>
-            </div>
-
-            <div class="collapse in" id="painel-filtros" aria-expanded="true">
-                <div class="panel-body">
-                    <div class="row">
-                        <!-- Busca Rápida Genérica (Exibida apenas se showQuickSearch == true) -->
-                        @if (showQuickSearch)
-                        {
-                            <div class="col-sm-2">
-                                <div class="form-group" style="padding-top: 7px;">
-                                    <span>Busca Rápida:</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Número ou Descrição..." 
-                                           @bind="termoBuscaRascunho" @onkeyup="HandleKeyUp" />
-                                </div>
-                            </div>
-                        }
-
-                        <!-- Renderização Dinâmica dos Campos com ShowInFilter = true -->
-                        @if (camposFiltro.Any())
-                        {
-                            @foreach (var campo in camposFiltro)
-                            {
-                                var totalColSpan = campo.ColSpan > 0 ? campo.ColSpan : 6;
-                                var labelColSpan = 2;
-                                var inputColSpan = totalColSpan > labelColSpan ? totalColSpan - labelColSpan : 4;
-
-                                <div class="col-sm-@labelColSpan">
-                                    <div class="form-group" style="padding-top: 7px;">
-                                        <span>@campo.Label:</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-@inputColSpan">
-                                    <div class="form-group">
-                                        @if (campo.FieldType == FieldType.Select)
-                                        {
-                                            <select class="form-control" 
-                                                    value="@GetFiltroRascunho(campo.PropertyName)"
-                                                    @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)">
-                                                
-                                                @* Respeita a regra de AllowNullOption para omitir ou exibir a opção padrão nos filtros *@
-                                                @if (campo.AllowNullOption)
-                                                {
-                                                    <option value="">Todas</option>
-                                                }
-
-                                                @if (campo.Options != null && campo.Options.Any())
-                                                {
-                                                    @foreach (var opt in campo.Options)
-                                                    {
-                                                        <option value="@opt.Key">@opt.Value</option>
-                                                    }
-                                                }
-                                            </select>
-                                        }
-                                        else if (campo.FieldType == FieldType.CheckBox)
-                                        {
-                                            <select class="form-control" 
-                                                    value="@GetFiltroRascunho(campo.PropertyName)"
-                                                    @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)">
-                                                <option value="">Todos</option>
-                                                <option value="true">Sim / Ativo</option>
-                                                <option value="false">Não / Inativo</option>
-                                            </select>
-                                        }
-                                        else
-                                        {
-                                            <input type="text" class="form-control" placeholder="@campo.Placeholder"
-                                                   value="@GetFiltroRascunho(campo.PropertyName)"
-                                                   @onchange="(e) => SetFiltroRascunho(campo.PropertyName, e.Value)"
-                                                   @onkeyup="HandleKeyUp" />
-                                        }
-                                    </div>
-                                </div>
-                            }
-                        }
-                    </div>
-                </div>
-
-                <!-- RODAPÉ DO PAINEL DE FILTROS -->
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="panel-control">
-                            @if (listActions.Any())
-                            {
-                                @foreach (var action in listActions)
-                                {
-                                    var aType = GetActionType(action);
-                                    var aTitle = GetActionTitle(action);
-
-                                    if (aType == ActionType.Create)
-                                    {
-                                        <button type="button" class="btn btn-primary btn-labeled fa fa-plus mar-lft" @onclick="NovoRegistro">
-                                            @aTitle
-                                        </button>
-                                    }
-                                    else if (aType == ActionType.Clear)
-                                    {
-                                        <button type="button" class="btn btn-warning btn-labeled fa fa-eraser mar-lft" @onclick="LimparFiltros">
-                                            @aTitle
-                                        </button>
-                                    }
-                                    else if (aType == ActionType.Search)
-                                    {
-                                        <button type="button" class="btn btn-success btn-labeled fa fa-search fa-lg mar-lft" @onclick="AplicarFiltro">
-                                            @aTitle
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button type="button" class="btn btn-default mar-lft">
-                                            @aTitle
-                                        </button>
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                <button type="button" class="btn btn-primary btn-labeled fa fa-plus mar-rgt" @onclick="NovoRegistro">
-                                    Novo @GetEntityTitle()
-                                </button>
-                                <button type="button" class="btn btn-warning mar-rgt" @onclick="LimparFiltros">
-                                    <i class="fa fa-eraser"></i> Limpar
-                                </button>
-                                <button type="button" class="btn btn-success btn-labeled fa fa-search fa-lg" @onclick="AplicarFiltro">
-                                    Pesquisar
-                                </button>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. GRID MODERNO E ELEGANTE -->
-        <div class="grid-card-moderno mb-4">
-            <!-- Topo da Tabela: Seletor de Registros por Página -->
-            <div class="d-flex justify-content-between align-items-center pad-all" style="padding: 14px 18px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between;">
-                <div class="d-flex align-items-center gap-2 text-muted small" style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748b;">
-                    <span>Exibir</span>
-                    <select class="form-select form-select-sm" style="width: 75px; height: 32px; padding: 2px 8px; font-size: 13px; border-radius: 4px; border: 1px solid #cbd5e1;" @onchange="OnPageSizeChanged">
-                        <option value="5" selected="@(pageSize == 5)">5</option>
-                        <option value="10" selected="@(pageSize == 10)">10</option>
-                        <option value="25" selected="@(pageSize == 25)">25</option>
-                        <option value="50" selected="@(pageSize == 50)">50</option>
-                    </select>
-                    <span>registros por página</span>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mar-no grid-table-moderna" style="width: 100%; margin: 0;">
-                    <thead>
-                        <tr>
-                            <th style="width: 90px;" class="text-center">Ações</th>
-                            @foreach (var col in colunasTabela)
-                            {
-                                <th>@col.Label</th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (itensPaginados != null && itensPaginados.Any())
-                        {
-                            @foreach (var item in itensPaginados)
-                            {
-                                var itemId = GetPrimaryKeyValue(item);
-                                <tr>
-                                    <td class="text-center">
-                                        <a href="/gerenciar/@EntityName/detalhe/@itemId" class="btn btn-primary btn-sm px-2 py-1" style="padding: 4px 8px; border-radius: 4px;" title="Editar">
-                                            <i class="mdi mdi-pencil fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    @foreach (var col in colunasTabela)
-                                    {
-                                        var val = col.GetValue(item);
-                                        <td>
-                                            @if (col.FieldType == FieldType.Select && col.Options != null && col.Options.Count > 0)
-                                            {
-                                                var keyStr = val?.ToString() ?? "";
-                                                var descFormatada = col.Options.ContainsKey(keyStr) ? col.Options[keyStr] : keyStr;
-                                                var isAtivo = keyStr == "1" || descFormatada.Equals("Ativo", StringComparison.OrdinalIgnoreCase);
-
-                                                <span class="@(isAtivo ? "badge-status-ativo" : "badge-status-inativo")">
-                                                    @descFormatada
-                                                </span>
-                                            }
-                                            else
-                                            {
-                                                @FormatValue(val)
-                                            }
-                                        </td>
-                                    }
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="@(colunasTabela.Count + 1)" class="text-center text-muted pad-ver" style="padding: 35px; text-align: center; color: #94a3b8;">
-                                    <i class="fa fa-database fa-2x d-block mb-1" style="display: block; margin-bottom: 8px;"></i>
-                                    Nenhum registro encontrado.
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Rodapé com Paginação Moderna -->
-            @if (TotalItems > 0)
-            {
-                <div class="d-flex flex-wrap justify-content-between align-items-center pad-all" style="padding: 14px 18px; border-top: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-                    <div class="text-muted small" style="color: #64748b; font-size: 13px;">
-                        Exibindo <strong>@StartRecord</strong> a <strong>@EndRecord</strong> de <strong>@TotalItems</strong> registros
-                    </div>
-
-                    @if (TotalPages > 1)
-                    {
-                        <nav>
-                            <ul class="pagination pagination-sm mar-no" style="margin: 0; display: flex; list-style: none; padding-left: 0;">
-                                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-                                    <button class="page-link" style="padding: 5px 12px; font-size: 12px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; border-top-left-radius: 4px; border-bottom-left-radius: 4px;" @onclick="() => GoToPage(currentPage - 1)">Anterior</button>
-                                </li>
-
-                                @for (int p = FirstVisiblePage; p <= LastVisiblePage; p++)
-                                {
-                                    var pageNum = p;
-                                    <li class="page-item @(currentPage == pageNum ? "active" : "")">
-                                        <button class="page-link" style="padding: 5px 12px; font-size: 12px; border: 1px solid #cbd5e1; background: @(currentPage == pageNum ? "#0284c7" : "#fff"); color: @(currentPage == pageNum ? "#fff" : "#0284c7"); font-weight: @(currentPage == pageNum ? "600" : "400");" @onclick="() => GoToPage(pageNum)">@pageNum</button>
-                                    </li>
-                                }
-
-                                <li class="page-item @(currentPage == TotalPages ? "disabled" : "")">
-                                    <button class="page-link" style="padding: 5px 12px; font-size: 12px; border: 1px solid #cbd5e1; background: #fff; color: #0284c7; border-top-right-radius: 4px; border-bottom-right-radius: 4px;" @onclick="() => GoToPage(currentPage + 1)">Próximo</button>
-                                </li>
-                            </ul>
-                        </nav>
-                    }
-                </div>
-            }
-        </div>
+        <!-- Grid e Paginação -->
+        <GenericDataGrid EntityName="@EntityName"
+                         Items="itensPaginados"
+                         Colunas="colunasTabela"
+                         CurrentPage="currentPage"
+                         PageSize="pageSize"
+                         TotalItems="TotalItems"
+                         OnPageChanged="GoToPage"
+                         OnPageSizeChanged="OnPageSizeChanged" />
     </div>
 
-    <!-- COLUNA 2: MENU LATERAL DIREITO (NIFTY) -->
+    <!-- Menu Lateral -->
     @if (effectiveLayoutMode == ListLayoutMode.WithSideMenu)
     {
-        <div class="col-sm-3 bg-gray pad-ver">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="/" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-home fa-3x">
-                        Home
-                    </a>
-                    <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-pencil-square-o fa-3x" @onclick="NovoRegistro">
-                        @GetCreateActionTitle()
-                    </button>
-                    <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-list-alt fa-3x active">
-                        @GetEntityTitle()
-                    </button>
-                    <button type="button" class="btn btn-lg btn-block btn-info btn-labeled btn-menu-escuro fa fa-cloud-upload fa-3x">
-                        Importar @GetEntityTitle()
-                    </button>
-                </div>
-            </div>
-        </div>
+        <GenericSideMenu EntityTitle="@GetEntityTitle()"
+                         CreateTitle="@GetCreateActionTitle()"
+                         OnCreate="NovoRegistro" />
     }
 </div>
 
@@ -361,14 +72,9 @@
     private List<PropertyMetadata> camposFiltro = new();
     private List<ListActionAttribute> listActions = new();
 
-    // Dicionários para separar rascunho (digitado) de aplicados (efetivados ao buscar)
-    private string termoBuscaRascunho = "";
     private string termoBuscaAplicado = "";
-
-    private Dictionary<string, string> filtrosRascunho = new();
     private Dictionary<string, string> filtrosAplicados = new();
 
-    // Estado da Paginação
     private int currentPage = 1;
     private int pageSize = 10;
 
@@ -401,12 +107,6 @@
         dadosFiltrados.Skip((currentPage - 1) * pageSize).Take(pageSize);
 
     private int TotalItems => dadosFiltrados.Count();
-    private int TotalPages => (int)Math.Ceiling((double)TotalItems / pageSize);
-    private int StartRecord => TotalItems == 0 ? 0 : ((currentPage - 1) * pageSize) + 1;
-    private int EndRecord => Math.Min(currentPage * pageSize, TotalItems);
-
-    private int FirstVisiblePage => Math.Max(1, currentPage - 2);
-    private int LastVisiblePage => Math.Min(TotalPages, Math.Max(1, FirstVisiblePage + 4));
 
     protected override async Task OnParametersSetAsync()
     {
@@ -415,13 +115,10 @@
         if (!string.IsNullOrEmpty(EntityName))
         {
             entityType = EntityRegistry.GetEntityType(EntityName);
-
             if (entityType == null)
             {
                 entityType = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(a => {
-                        try { return a.GetTypes(); } catch { return Array.Empty<Type>(); }
-                    })
+                    .SelectMany(a => { try { return a.GetTypes(); } catch { return Array.Empty<Type>(); } })
                     .FirstOrDefault(t => t.Name.Equals(EntityName, StringComparison.OrdinalIgnoreCase));
             }
         }
@@ -441,7 +138,7 @@
                                        .ToList();
             }
 
-            var layoutAttr = entityType.GetCustomAttribute<ListLayoutAttribute>(true) 
+            var layoutAttr = entityType.GetCustomAttribute<ListLayoutAttribute>(true)
                           ?? (ListLayoutAttribute)Attribute.GetCustomAttribute(entityType, typeof(ListLayoutAttribute));
 
             if (layoutAttr != null)
@@ -463,18 +160,9 @@
             var dummyInstance = Activator.CreateInstance(entityType);
             var todasPropriedades = ModelMetadataReader.GetProperties(dummyInstance);
 
-            // REGRA ESTRITA: Exibe APENAS colunas com ShowInGrid = true
-            colunasTabela = todasPropriedades
-                .Where(p => p.ShowInGrid && p.FieldType != FieldType.Grid)
-                .OrderBy(p => p.Order)
-                .ToList();
+            colunasTabela = todasPropriedades.Where(p => p.ShowInGrid && p.FieldType != FieldType.Grid).OrderBy(p => p.Order).ToList();
+            camposFiltro = todasPropriedades.Where(p => p.ShowInFilter).OrderBy(p => p.Order).ToList();
 
-            camposFiltro = todasPropriedades
-                .Where(p => p.ShowInFilter)
-                .OrderBy(p => p.Order)
-                .ToList();
-
-            // Carrega lookups dinamicamente
             foreach (var prop in todasPropriedades.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
             {
                 try
@@ -492,20 +180,49 @@
                             {
                                 string idVal = row[keyCol]?.ToString();
                                 string descVal = row[descCol]?.ToString();
-                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
-                                {
-                                    prop.Options[idVal] = descVal;
-                                }
+                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal)) prop.Options[idVal] = descVal;
                             }
                         }
                     }
                 }
-                catch
-                {
-                    // Falha silenciosa
-                }
+                catch { }
             }
         }
+    }
+
+    private void AplicarFiltro(GenericFilterPanel.FiltroAplicadoEventArgs e)
+    {
+        termoBuscaAplicado = e.TermoBusca;
+        filtrosAplicados = e.Filtros;
+        currentPage = 1;
+    }
+
+    private void LimparFiltros()
+    {
+        termoBuscaAplicado = "";
+        filtrosAplicados.Clear();
+        currentPage = 1;
+    }
+
+    private void GoToPage(int page) => currentPage = page;
+
+    private void OnPageSizeChanged(int newSize)
+    {
+        pageSize = newSize;
+        currentPage = 1;
+    }
+
+    private void NovoRegistro() => Navigation.NavigateTo($"/gerenciar/{EntityName}/novo");
+
+    private string GetEntityTitle() =>
+        string.IsNullOrEmpty(EntityName) ? "Registros" : System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
+
+    private string GetListTitle() => $"{GetEntityTitle()} - Lista {GetEntityTitle()}";
+
+    private string GetCreateActionTitle()
+    {
+        var createAction = listActions.FirstOrDefault(a => GetActionType(a) == ActionType.Create);
+        return createAction != null ? GetActionTitle(createAction) : $"Novo {GetEntityTitle()}";
     }
 
     private ActionType GetActionType(ListActionAttribute attr)
@@ -521,94 +238,5 @@
                 ?? attr.GetType().GetProperty("Label") 
                 ?? attr.GetType().GetProperty("Name");
         return prop?.GetValue(attr)?.ToString() ?? "Ação";
-    }
-
-    private string GetCreateActionTitle()
-    {
-        var createAction = listActions.FirstOrDefault(a => GetActionType(a) == ActionType.Create);
-        if (createAction != null) return GetActionTitle(createAction);
-        return $"Novo {GetEntityTitle()}";
-    }
-
-    private string GetFiltroRascunho(string propName) =>
-        filtrosRascunho.TryGetValue(propName, out var val) ? val : "";
-
-    private void SetFiltroRascunho(string propName, object val) =>
-        filtrosRascunho[propName] = val?.ToString() ?? "";
-
-    private void HandleKeyUp(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            AplicarFiltro();
-        }
-    }
-
-    private void AplicarFiltro()
-    {
-        termoBuscaAplicado = termoBuscaRascunho;
-        filtrosAplicados = new Dictionary<string, string>(filtrosRascunho);
-        currentPage = 1;
-    }
-
-    private void LimparFiltros()
-    {
-        termoBuscaRascunho = "";
-        termoBuscaAplicado = "";
-        filtrosRascunho.Clear();
-        filtrosAplicados.Clear();
-        currentPage = 1;
-    }
-
-    private void GoToPage(int page)
-    {
-        if (page >= 1 && page <= TotalPages)
-        {
-            currentPage = page;
-        }
-    }
-
-    private void OnPageSizeChanged(ChangeEventArgs e)
-    {
-        if (int.TryParse(e.Value?.ToString(), out int newSize))
-        {
-            pageSize = newSize;
-            currentPage = 1;
-        }
-    }
-
-    private void NovoRegistro() => Navigation.NavigateTo($"/gerenciar/{EntityName}/novo");
-
-    private object GetPrimaryKeyValue(object item)
-    {
-        if (item == null) return 0;
-        var prop = item.GetType().GetProperty("IdUsuario") ?? 
-                   item.GetType().GetProperty("Codigo") ?? 
-                   item.GetType().GetProperty("Id") ??
-                   item.GetType().GetProperties().FirstOrDefault(p => p.Name.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
-
-        return prop?.GetValue(item) ?? 0;
-    }
-
-    private string FormatValue(object val)
-    {
-        if (val == null) return "-";
-        if (val is DateTime dt)
-        {
-            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
-        }
-        return val.ToString();
-    }
-
-    private string GetEntityTitle()
-    {
-        if (string.IsNullOrEmpty(EntityName)) return "Registros";
-        return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
-    }
-
-    private string GetListTitle()
-    {
-        var title = GetEntityTitle();
-        return $"{title} - Lista {title}";
     }
 }

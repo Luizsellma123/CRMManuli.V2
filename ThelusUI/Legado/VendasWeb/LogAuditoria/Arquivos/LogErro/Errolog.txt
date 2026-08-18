@@ -12052,3 +12052,55 @@ Error Number:2812,State:62,Class:16
    em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
    em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 18/08/2026 10:48:27 ===
+Não foi possível carregar arquivo ou assembly 'System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' ou uma de suas dependências. O arquivo de paginação é muito pequeno para que esta operação seja concluída. (Exceção de HRESULT: 0x800705AF) (D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\web.config line 94)
+/Home.aspx
+System.IO.FileLoadException: Não foi possível carregar arquivo ou assembly 'System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' ou uma de suas dependências. O arquivo de paginação é muito pequeno para que esta operação seja concluída. (Exceção de HRESULT: 0x800705AF)
+Nome do arquivo: 'System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
+   em System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   em System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   em System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   em System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean forIntrospection)
+   em System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   em System.Reflection.Assembly.Load(String assemblyString)
+   em System.Web.Configuration.CompilationSection.LoadAssemblyHelper(String assemblyName, Boolean starDirective)
+
+=== Informações sobre estado pré-associação ===
+LOG: DisplayName = System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+ (Fully-specified)
+LOG: Appbase = file:///D:/Dados/Projetos/Manuli/CRM/CRMManuli.V2/ThelusUI/Legado/VendasWeb/
+LOG: PrivatePath inicial = D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\bin
+Chamando assembly: (Unknown).
+===
+LOG: esta associação começa no contexto de carregamento default.
+LOG: usando arquivo de configuração de aplicativo: D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\web.config
+LOG: usando arquivo de configuração de host: C:\Users\luiz.carlos\Documents\IISExpress\config\aspnet.config
+LOG: usando arquivo de configuração da máquina de C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: associação bem-sucedida. Retorna assembly de C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Design\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Design.dll.
+LOG: assembly carregado no contexto de carregamento default.
+
+   em System.Web.Configuration.CompilationSection.LoadAssemblyHelper(String assemblyName, Boolean starDirective)
+   em System.Web.Configuration.CompilationSection.LoadAssembly(AssemblyInfo ai)
+   em System.Web.Compilation.BuildManager.GetReferencedAssemblies(CompilationSection compConfig)
+   em System.Web.Compilation.BuildManager.GetReferencedAssemblies()
+   em System.Web.UI.ScriptManager.get_DefaultAjaxFrameworkAssembly()
+   em System.Web.UI.ScriptManager..ctor()
+   em ASP.crm_master.__BuildControlScriptManager1() na d:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\CRM.Master:linha 203
+   em ASP.crm_master.__BuildControlform1() na d:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\CRM.Master:linha 202
+   em ASP.crm_master.__BuildControlTree(crm_master __ctrl) na d:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\CRM.Master:linha 1
+   em ASP.crm_master.FrameworkInitialize() na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_okhibjlr.6.cs:linha 0
+   em System.Web.UI.UserControl.InitializeAsUserControlInternal()
+   em System.Web.UI.MasterPage.CreateMaster(TemplateControl owner, HttpContext context, VirtualPath masterPageFile, IDictionary contentTemplateCollection)
+   em System.Web.UI.Page.get_Master()
+   em System.Web.UI.Page.ApplyMasterPage()
+   em System.Web.UI.Page.PerformPreInit()
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.home_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_mqrsfsev.1.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

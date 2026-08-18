@@ -92,6 +92,12 @@ namespace Thelus.UI.Engine.Atributos
         /// </summary>
         public bool AllowNullOption { get; set; } = true;
 
+        /// <summary>
+        /// Quando verdadeiro, ativa a barra de pesquisa dentro do controle Select/Dropdown.
+        /// Padrão: false (renderiza um select HTML simples).
+        /// </summary>
+        public bool EnableSearch { get; set; } = false;
+
         #endregion
 
         #region 3. Formatação, Máscaras e Regras

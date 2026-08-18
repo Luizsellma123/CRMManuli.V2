@@ -1,0 +1,328 @@
+﻿#nullable enable
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Components
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@using Thelus.UI.Engine.Componentes @* Importante: Ajuste aqui o namespace/pasta onde está o LookupModal.razor *@
+
+@if (Property != null && ModelInstance != null)
+{
+    bool isTextAreaOuGrande = Property.FieldType == FieldType.TextArea || Property.PropertyName.Contains("Descricao") || Property.PropertyName.Contains("Assunto");
+
+    if (isTextAreaOuGrande)
+    {
+        <div class="col-sm-2">
+            <div class="form-group">
+                <span>@Property.Label:</span>
+            </div>
+        </div>
+        <div class="col-sm-10"></div>
+
+        <div class="col-sm-12">
+            <div class="form-group">
+                @if (Property.FieldType == FieldType.TextArea)
+                {
+                    <textarea class="form-control" rows="3" placeholder="@Property.Placeholder"
+                              value="@Property.GetValue(ModelInstance)"
+                              disabled="@Property.ReadOnly"
+                              @onchange="(e) => SetPropValue(e.Value)"></textarea>
+                }
+                else
+                {
+                    <input type="text" class="form-control" placeholder="@Property.Placeholder"
+                           value="@FormatValue(Property.GetValue(ModelInstance))"
+                           disabled="@Property.ReadOnly"
+                           @oninput="AplicarMascaraEspecial" />
+                }
+            </div>
+        </div>
+    }
+    else if (Property.ColSpan == 12)
+    {
+        <div class="col-sm-2">
+            <div class="form-group" style="padding-top: 7px;">
+                <span>@Property.Label: @if (Property.IsRequired) { <span class="text-danger">*</span> }</span>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-group">
+                @if (Property.ReadOnly)
+                {
+                    <input type="text" class="form-control" value="@FormatValue(Property.GetValue(ModelInstance))" disabled />
+                }
+                else if (Property.FieldType == FieldType.ModalLookup)
+                {
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly
+                               value="@descricaoModalExibicao"
+                               placeholder="@(string.IsNullOrEmpty(Property.Placeholder) ? "Clique na lupa para selecionar..." : Property.Placeholder)" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" disabled="@Property.ReadOnly" @onclick="() => modalAberto = true">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            @if (!string.IsNullOrEmpty(descricaoModalExibicao) && !Property.ReadOnly)
+                            {
+                                <button type="button" class="btn btn-danger" @onclick="LimparSelecaoModal">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            }
+                        </span>
+                    </div>
+
+                    <LookupModal IsOpen="@modalAberto"
+                                 Title="@Property.Label"
+                                 LookupKey="@Property.LookupKey"
+                                 OnSelect="ItemModalSelecionado"
+                                 OnClose="() => modalAberto = false" />
+                }
+                else if (Property.FieldType == FieldType.Select)
+                {
+                    <select class="form-control" @onchange="(e) => SetPropValue(e.Value)">
+                        <option value="">Selecione...</option>
+                        @if (Property.Options != null && Property.Options.Any())
+                        {
+                            @foreach (var opt in Property.Options)
+                            {
+                                <option value="@opt.Key" selected="@(Property.GetValue(ModelInstance)?.ToString() == opt.Key)">@opt.Value</option>
+                            }
+                        }
+                    </select>
+                }
+                else
+                {
+                    <input type="text" class="form-control" placeholder="@Property.Placeholder"
+                           value="@Property.GetValue(ModelInstance)"
+                           @oninput="AplicarMascaraEspecial" />
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-2">
+            <div class="form-group" style="padding-top: 7px;">
+                <span>@Property.Label: @if (Property.IsRequired) { <span class="text-danger">*</span> }</span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                @if (Property.ReadOnly)
+                {
+                    <input type="text" class="form-control" value="@FormatValue(Property.GetValue(ModelInstance))" disabled />
+                }
+                else if (Property.FieldType == FieldType.ModalLookup)
+                {
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly
+                               value="@descricaoModalExibicao"
+                               placeholder="@(string.IsNullOrEmpty(Property.Placeholder) ? "Clique na lupa para selecionar..." : Property.Placeholder)" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" disabled="@Property.ReadOnly" @onclick="() => modalAberto = true">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            @if (!string.IsNullOrEmpty(descricaoModalExibicao) && !Property.ReadOnly)
+                            {
+                                <button type="button" class="btn btn-danger" @onclick="LimparSelecaoModal">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            }
+                        </span>
+                    </div>
+
+                    <LookupModal IsOpen="@modalAberto"
+                                 Title="@Property.Label"
+                                 LookupKey="@Property.LookupKey"
+                                 OnSelect="ItemModalSelecionado"
+                                 OnClose="() => modalAberto = false" />
+                }
+                else if (Property.FieldType == FieldType.Select)
+                {
+                    <select class="form-control" @onchange="(e) => SetPropValue(e.Value)">
+                        <option value="">Selecione...</option>
+                        @if (Property.Options != null && Property.Options.Any())
+                        {
+                            @foreach (var opt in Property.Options)
+                            {
+                                <option value="@opt.Key" selected="@(Property.GetValue(ModelInstance)?.ToString() == opt.Key)">@opt.Value</option>
+                            }
+                        }
+                    </select>
+                }
+                else if (Property.FieldType == FieldType.Date)
+                {
+                    <input type="date" class="form-control"
+                           value="@FormatDateForInput(Property.GetValue(ModelInstance))"
+                           @onchange="(e) => SetPropValue(e.Value)" />
+                }
+                else if (Property.FieldType == FieldType.Password)
+                {
+                    <input type="password" class="form-control" placeholder="@Property.Placeholder"
+                           value="@Property.GetValue(ModelInstance)"
+                           @onchange="(e) => SetPropValue(e.Value)" />
+                }
+                else
+                {
+                    <input type="text" class="form-control" placeholder="@Property.Placeholder"
+                           value="@Property.GetValue(ModelInstance)"
+                           @oninput="AplicarMascaraEspecial" />
+                }
+
+                @if (!string.IsNullOrEmpty(Property.HelpText))
+                {
+                    <small class="help-block text-muted">@Property.HelpText</small>
+                }
+            </div>
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public PropertyMetadata? Property { get; set; }
+    [Parameter] public object? ModelInstance { get; set; }
+
+    private bool modalAberto;
+    private string descricaoModalExibicao = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        if (Property?.FieldType == FieldType.ModalLookup && ModelInstance != null)
+        {
+            var val = Property.GetValue(ModelInstance)?.ToString();
+            if (!string.IsNullOrEmpty(val) && Property.Options != null && Property.Options.ContainsKey(val))
+            {
+                descricaoModalExibicao = Property.Options[val];
+            }
+            else if (!string.IsNullOrEmpty(val))
+            {
+                descricaoModalExibicao = $"Código: {val}";
+            }
+            else
+            {
+                descricaoModalExibicao = string.Empty;
+            }
+        }
+    }
+
+    private void ItemModalSelecionado(KeyValuePair<string, string> item)
+    {
+        SetPropValue(item.Key);
+        descricaoModalExibicao = item.Value;
+
+        if (Property != null)
+        {
+            Property.Options[item.Key] = item.Value;
+        }
+    }
+
+    private void LimparSelecaoModal()
+    {
+        SetPropValue(null);
+        descricaoModalExibicao = string.Empty;
+    }
+
+    private void SetPropValue(object? value)
+    {
+        if (ModelInstance == null || Property?.PropertyInfo == null) return;
+
+        if (Property.PropertyInfo.CanWrite)
+        {
+            var targetType = Nullable.GetUnderlyingType(Property.PropertyType) ?? Property.PropertyType;
+
+            object? safeValue = null;
+            if (value != null && !string.IsNullOrEmpty(value.ToString()))
+            {
+                if (targetType == typeof(DateTime))
+                {
+                    if (DateTime.TryParse(value.ToString(), out DateTime dt))
+                    {
+                        safeValue = dt;
+                    }
+                }
+                else if (targetType.IsEnum)
+                {
+                    safeValue = Enum.Parse(targetType, value.ToString()!);
+                }
+                else
+                {
+                    safeValue = Convert.ChangeType(value, targetType);
+                }
+            }
+
+            Property.SetValue(ModelInstance, safeValue);
+        }
+    }
+
+    private void AplicarMascaraEspecial(ChangeEventArgs e)
+    {
+        if (Property == null) return;
+        var valorDigitado = e.Value?.ToString() ?? string.Empty;
+        string valorFormatado = valorDigitado;
+
+        if (!string.IsNullOrEmpty(Property.Mask))
+        {
+            var apenasNumeros = new string(valorDigitado.Where(char.IsDigit).ToArray());
+
+            if (Property.Mask == "000.000.000-00")
+            {
+                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
+
+                if (apenasNumeros.Length <= 3)
+                    valorFormatado = apenasNumeros;
+                else if (apenasNumeros.Length <= 6)
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3)}";
+                else if (apenasNumeros.Length <= 9)
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6)}";
+                else
+                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6, 3)}-{apenasNumeros.Substring(9)}";
+            }
+            else if (Property.Mask == "(00) 0000-0000" || Property.Mask == "(00) 00000-0000")
+            {
+                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
+
+                if (apenasNumeros.Length <= 2)
+                    valorFormatado = apenasNumeros.Length > 0 ? $"({apenasNumeros}" : "";
+                else if (apenasNumeros.Length <= 6)
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2)}";
+                else if (apenasNumeros.Length <= 10)
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 4)}-{apenasNumeros.Substring(6)}";
+                else
+                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 5)}-{apenasNumeros.Substring(7)}";
+            }
+        }
+
+        SetPropValue(valorFormatado);
+    }
+
+    private string FormatValue(object? val)
+    {
+        if (val == null || string.IsNullOrEmpty(val.ToString())) return "-";
+
+        string keyStr = val.ToString()!;
+
+        if (Property?.Options != null && Property.Options.Any())
+        {
+            if (Property.Options.TryGetValue(keyStr, out var desc))
+            {
+                return desc;
+            }
+        }
+
+        if (val is DateTime dt)
+        {
+            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        return keyStr;
+    }
+
+    private string FormatDateForInput(object? val)
+    {
+        if (val is DateTime dt)
+        {
+            return dt.ToString("yyyy-MM-dd");
+        }
+        return string.Empty;
+    }
+}

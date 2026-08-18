@@ -30,6 +30,7 @@ namespace Thelus.UI.API.Config
             services.AddScoped<IEntityService, UsuarioServico>();
             services.AddScoped<IEntityService, NegociacaoServico>();
             services.AddScoped<IEntityService, AcessoUsuarioServico>();
+            services.AddScoped<IEntityService, GlobalServico>();
 
             services.AddScoped<IGenericEntityService, DatabaseGenericEntityService>();
             services.AddScoped<EntityServiceResolver>();

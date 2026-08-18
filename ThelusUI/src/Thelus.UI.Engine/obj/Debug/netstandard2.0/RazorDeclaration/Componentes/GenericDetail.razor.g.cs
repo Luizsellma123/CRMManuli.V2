@@ -8,7 +8,6 @@ namespace Thelus.UI.Engine.Componentes
 {
     #line default
     using global::System;
-    using global::System.Collections.Generic;
     using global::System.Threading.Tasks;
     using global::Microsoft.AspNetCore.Components;
 #nullable restore
@@ -18,49 +17,49 @@ using Microsoft.AspNetCore.Components.Web
 #nullable disable
     ;
 #nullable restore
-#line (12,2)-(12,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-using System.Collections
+#line (11,2)-(11,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+using System.Collections.Generic
 
 #nullable disable
     ;
 #nullable restore
-#line (13,2)-(13,25) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-using System.Reflection
-
-#nullable disable
-    ;
-#nullable restore
-#line (14,2)-(14,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (12,2)-(12,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Linq
 
 #nullable disable
     ;
 #nullable restore
-#line (15,2)-(15,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (13,2)-(13,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line (16,2)-(16,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (14,2)-(14,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line (17,2)-(17,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (15,2)-(15,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+using Microsoft.AspNetCore.Components.Authorization
+
+#nullable disable
+    ;
+#nullable restore
+#line (16,2)-(16,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Servicos
 
 #nullable disable
     ;
 #nullable restore
-#line (18,2)-(18,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (17,2)-(17,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Modelos
 
 #nullable disable
     ;
 #nullable restore
-#line (19,2)-(19,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (18,2)-(18,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Atributos
 
 #nullable disable
@@ -77,40 +76,29 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (474,8)-(866,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (91,8)-(310,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 
-    [Parameter] public string EntityName { get; set; }
+    [Parameter] public string EntityName { get; set; } = string.Empty;
     [Parameter] public int Id { get; set; }
-    [Parameter] public object Item { get; set; }
+    [Parameter] public object? Item { get; set; }
 
-    private object modelInstance;
+    private object? modelInstance;
     private Dictionary<string, List<PropertyMetadata>> propriedadesPorSecao = new();
     private List<ActionMetadata> acoesDoModelo = new();
     private string secaoAtiva = "";
 
-    private object novoSubItem;
-
-    // Estado de Feedback e Salvamento
     private string? mensagemFeedback;
     private bool sucessoFeedback;
     private bool salvando;
 
-    // Estado da Paginação do Sub-Grid (Detalhes)
-    private int subGridCurrentPage = 1;
-    private int subGridPageSize = 5;
-
     private string GetPanelTitle()
     {
-        if (string.IsNullOrEmpty(EntityName))
-            return secaoAtiva;
+        if (string.IsNullOrEmpty(EntityName)) return secaoAtiva;
 
         var entityFormatted = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(EntityName.ToLower());
         var acao = Id > 0 ? "Editar" : "Cadastro de";
 
-        if (string.IsNullOrEmpty(secaoAtiva))
-            return $"{acao} {entityFormatted}";
-
-        return $"{acao} {entityFormatted} - {secaoAtiva}";
+        return string.IsNullOrEmpty(secaoAtiva) ? $"{acao} {entityFormatted}" : $"{acao} {entityFormatted} - {secaoAtiva}";
     }
 
     protected override async Task OnParametersSetAsync()
@@ -120,10 +108,61 @@ using Thelus.UI.Engine.Atributos
         if (entityType != null)
         {
             modelInstance = Item ?? Activator.CreateInstance(entityType);
+            bool isEditMode = Id > 0; // Verifica se é Edição (Id > 0) ou Inclusão
 
             var listProperties = ModelMetadataReader.GetProperties(modelInstance);
 
-            foreach (var prop in listProperties.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
+            // Obter usuário logado para auto-preenchimento
+            string? currentUserName = null;
+            try
+            {
+                var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+                currentUserName = authState.User.Identity?.Name;
+            }
+            catch { }
+
+            // PROCESSAMENTO DAS REGRAS DO FormDetailField
+            var propriedadesFiltradas = new List<PropertyMetadata>();
+
+            foreach (var prop in listProperties)
+            {
+                // 1. Ocultar campos que não devem aparecer no Detalhe
+                if (!prop.VisibleInDetail)
+                    continue;
+
+                // 2. Aplicar trava de ReadOnly (Sempre ou Apenas na Edição)
+                if (prop.ReadOnlyInDetail)
+                {
+                    prop.ReadOnly = true;
+                }
+                else if (prop.ReadOnlyOnEdit && isEditMode)
+                {
+                    prop.ReadOnly = true;
+                }
+
+                // 3. Auto-Preenchimento caso o campo esteja vazio
+                var valorAtual = prop.GetValue(modelInstance);
+                if (valorAtual == null || string.IsNullOrEmpty(valorAtual.ToString()))
+                {
+                    if (prop.DefaultValueType == DefaultValueType.CurrentUser && !string.IsNullOrEmpty(currentUserName))
+                    {
+                        prop.SetValue(modelInstance, currentUserName);
+                    }
+                    else if (prop.DefaultValueType == DefaultValueType.CurrentDate)
+                    {
+                        prop.SetValue(modelInstance, DateTime.Today);
+                    }
+                    else if (prop.DefaultValueType == DefaultValueType.CurrentDateTime)
+                    {
+                        prop.SetValue(modelInstance, DateTime.Now);
+                    }
+                }
+
+                propriedadesFiltradas.Add(prop);
+            }
+
+            // Carregamento de Lookups para campos Select
+            foreach (var prop in propriedadesFiltradas.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
             {
                 try
                 {
@@ -139,8 +178,8 @@ using Thelus.UI.Engine.Atributos
 
                             if (keyCol != null && descCol != null)
                             {
-                                string idVal = row[keyCol]?.ToString();
-                                string descVal = row[descCol]?.ToString();
+                                string? idVal = row[keyCol]?.ToString();
+                                string? descVal = row[descCol]?.ToString();
                                 if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
                                 {
                                     prop.Options[idVal] = descVal;
@@ -149,12 +188,11 @@ using Thelus.UI.Engine.Atributos
                         }
                     }
                 }
-                catch
-                {
-                }
+                catch { }
             }
 
-            propriedadesPorSecao = listProperties
+            // Agrupa os campos visíveis por Seção
+            propriedadesPorSecao = propriedadesFiltradas
                 .GroupBy(p => p.Section ?? "Geral")
                 .ToDictionary(g => g.Key, g => g.ToList());
 
@@ -163,7 +201,6 @@ using Thelus.UI.Engine.Atributos
             if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
             {
                 secaoAtiva = propriedadesPorSecao.Keys.First();
-                InicializarSubItemSeForGrid();
             }
         }
         else
@@ -172,70 +209,6 @@ using Thelus.UI.Engine.Atributos
             acoesDoModelo = new();
             secaoAtiva = "";
         }
-    }
-
-    private void SetPropValue(PropertyMetadata prop, object value)
-    {
-        if (modelInstance == null || prop?.PropertyInfo == null) return;
-
-        if (prop.PropertyInfo.CanWrite)
-        {
-            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-
-            object safeValue = null;
-            if (value != null && !string.IsNullOrEmpty(value.ToString()))
-            {
-                if (targetType == typeof(DateTime))
-                {
-                    if (DateTime.TryParse(value.ToString(), out DateTime dt))
-                    {
-                        safeValue = dt;
-                    }
-                }
-                else
-                {
-                    safeValue = Convert.ChangeType(value, targetType);
-                }
-            }
-
-            prop.SetValue(modelInstance, safeValue);
-        }
-    }
-
-    private string FormatDateForInput(object val)
-    {
-        if (val is DateTime dt)
-        {
-            return dt.ToString("yyyy-MM-dd");
-        }
-        return string.Empty;
-    }
-
-    private void GoToSubGridPage(int page, int totalPages)
-    {
-        if (page >= 1 && page <= totalPages)
-        {
-            subGridCurrentPage = page;
-        }
-    }
-
-    private void OnSubGridPageSizeChanged(ChangeEventArgs e)
-    {
-        if (int.TryParse(e.Value?.ToString(), out int newSize))
-        {
-            subGridPageSize = newSize;
-            subGridCurrentPage = 1;
-        }
-    }
-
-    private string FormatValue(object val)
-    {
-        if (val == null) return "-";
-        if (val is DateTime dt)
-        {
-            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
-        }
-        return val.ToString();
     }
 
     private List<ActionMetadata> GetAcoesDaSecaoAtiva()
@@ -275,84 +248,6 @@ using Thelus.UI.Engine.Atributos
     private void MudarSecao(string nomeSecao)
     {
         secaoAtiva = nomeSecao;
-        subGridCurrentPage = 1;
-        InicializarSubItemSeForGrid();
-    }
-
-    private void InicializarSubItemSeForGrid()
-    {
-        if (propriedadesPorSecao.ContainsKey(secaoAtiva))
-        {
-            var propGrid = propriedadesPorSecao[secaoAtiva].FirstOrDefault(p => p.FieldType == FieldType.Grid);
-            if (propGrid?.ChildType != null)
-            {
-                novoSubItem = Activator.CreateInstance(propGrid.ChildType);
-            }
-        }
-    }
-
-    private object GetNovoSubItemValue(string propName)
-    {
-        if (novoSubItem == null) return null;
-        return novoSubItem.GetType().GetProperty(propName)?.GetValue(novoSubItem);
-    }
-
-    private void SetNovoSubItemValue(string propName, object value)
-    {
-        if (novoSubItem == null) return;
-        var prop = novoSubItem.GetType().GetProperty(propName);
-        if (prop != null && prop.CanWrite)
-        {
-            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-            var safeValue = (value == null || string.IsNullOrEmpty(value.ToString()))
-                ? null
-                : Convert.ChangeType(value, targetType);
-
-            prop.SetValue(novoSubItem, safeValue);
-        }
-    }
-
-    private void AdicionarNaGrid(PropertyMetadata propGrid)
-    {
-        if (novoSubItem == null || propGrid.ChildType == null) return;
-
-        var lista = propGrid.GetValue(modelInstance) as IList;
-        if (lista != null)
-        {
-            lista.Add(novoSubItem);
-            novoSubItem = Activator.CreateInstance(propGrid.ChildType);
-            subGridCurrentPage = 1;
-            StateHasChanged();
-        }
-    }
-
-    private void LimparFormularioGrid()
-    {
-        if (propriedadesPorSecao.ContainsKey(secaoAtiva))
-        {
-            var propGrid = propriedadesPorSecao[secaoAtiva].FirstOrDefault(p => p.FieldType == FieldType.Grid);
-            if (propGrid?.ChildType != null)
-            {
-                novoSubItem = Activator.CreateInstance(propGrid.ChildType);
-                StateHasChanged();
-            }
-        }
-    }
-
-    private void RemoverDaGrid(IList lista, object item)
-    {
-        if (lista != null && lista.Contains(item))
-        {
-            lista.Remove(item);
-
-            var totalPages = (int)Math.Ceiling((double)lista.Count / subGridPageSize);
-            if (subGridCurrentPage > totalPages && totalPages > 0)
-            {
-                subGridCurrentPage = totalPages;
-            }
-
-            StateHasChanged();
-        }
     }
 
     private async Task Salvar()
@@ -402,82 +297,31 @@ using Thelus.UI.Engine.Atributos
         }
     }
 
-    private void AplicarMascaraEspecial(PropertyMetadata prop, ChangeEventArgs e)
-    {
-        var valorDigitado = e.Value?.ToString() ?? string.Empty;
-        string valorFormatado = valorDigitado;
-
-        if (!string.IsNullOrEmpty(prop.Mask))
-        {
-            var apenasNumeros = new string(valorDigitado.Where(char.IsDigit).ToArray());
-
-            if (prop.Mask == "000.000.000-00")
-            {
-                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
-
-                if (apenasNumeros.Length <= 3)
-                    valorFormatado = apenasNumeros;
-                else if (apenasNumeros.Length <= 6)
-                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3)}";
-                else if (apenasNumeros.Length <= 9)
-                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6)}";
-                else
-                    valorFormatado = $"{apenasNumeros.Substring(0, 3)}.{apenasNumeros.Substring(3, 3)}.{apenasNumeros.Substring(6, 3)}-{apenasNumeros.Substring(9)}";
-            }
-            else if (prop.Mask == "(00) 0000-0000" || prop.Mask == "(00) 00000-0000")
-            {
-                if (apenasNumeros.Length > 11) apenasNumeros = apenasNumeros.Substring(0, 11);
-
-                if (apenasNumeros.Length <= 2)
-                    valorFormatado = apenasNumeros.Length > 0 ? $"({apenasNumeros}" : "";
-                else if (apenasNumeros.Length <= 6)
-                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2)}";
-                else if (apenasNumeros.Length <= 10)
-                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 4)}-{apenasNumeros.Substring(6)}";
-                else
-                    valorFormatado = $"({apenasNumeros.Substring(0, 2)}) {apenasNumeros.Substring(2, 5)}-{apenasNumeros.Substring(7)}";
-            }
-        }
-
-        SetPropValue(prop, valorFormatado);
-    }
-
-    private string GetIconeParaSecao(string nomeSecao)
-    {
-        var nomeLower = nomeSecao.ToLowerInvariant();
-        if (nomeLower.Contains("principal") || nomeLower.Contains("geral")) return "fa fa-home";
-        if (nomeLower.Contains("identifica") || nomeLower.Contains("usuario") || nomeLower.Contains("dados")) return "fa fa-user";
-        if (nomeLower.Contains("seguran") || nomeLower.Contains("acesso") || nomeLower.Contains("perfil")) return "fa fa-lock";
-        if (nomeLower.Contains("auditor") || nomeLower.Contains("log")) return "fa fa-history";
-        if (nomeLower.Contains("responsav")) return "fa fa-pencil-square";
-        if (nomeLower.Contains("anexo")) return "fa fa-list";
-        if (nomeLower.Contains("histor")) return "fa fa-binoculars";
-        if (nomeLower.Contains("projet")) return "fa fa-trello";
-        if (nomeLower.Contains("hora") || nomeLower.Contains("apontament")) return "fa fa-clock-o";
-
-        return "fa fa-folder-open";
-    }
-
-    private string MapearIconeFontAwesome(string iconeOriginal)
-    {
-        if (string.IsNullOrEmpty(iconeOriginal)) return "fa fa-cog";
-        if (iconeOriginal.StartsWith("fa ")) return iconeOriginal;
-
-        if (iconeOriginal.Contains("content-save")) return "fa fa-save";
-        if (iconeOriginal.Contains("keyboard-return")) return "fa fa-arrow-circle-left";
-        if (iconeOriginal.Contains("trash")) return "fa fa-trash";
-        if (iconeOriginal.Contains("database")) return "fa fa-database";
-
-        return "fa fa-check-square-o";
-    }
-
 #line default
 #line hidden
 #nullable disable
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (23,9)-(23,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (21,9)-(21,36) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+AuthenticationStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         
+#nullable restore
+#line (21,37)-(21,54) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+AuthStateProvider
+
+#line default
+#line hidden
+#nullable disable
+         { get; set; }
+         = default!;
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
+#nullable restore
+#line (20,9)-(20,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 HttpClient
 
 #line default
@@ -485,7 +329,7 @@ HttpClient
 #nullable disable
          
 #nullable restore
-#line (23,20)-(23,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (20,20)-(20,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Http
 
 #line default
@@ -495,25 +339,7 @@ Http
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (22,9)-(22,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-Thelus.UI.Engine.Servicos.LayoutStateService
-
-#line default
-#line hidden
-#nullable disable
-         
-#nullable restore
-#line (22,54)-(22,65) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-LayoutState
-
-#line default
-#line hidden
-#nullable disable
-         { get; set; }
-         = default!;
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
-#nullable restore
-#line (21,9)-(21,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (19,9)-(19,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 NavigationManager
 
 #line default
@@ -521,26 +347,8 @@ NavigationManager
 #nullable disable
          
 #nullable restore
-#line (21,27)-(21,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (19,27)-(19,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Navigation
-
-#line default
-#line hidden
-#nullable disable
-         { get; set; }
-         = default!;
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
-#nullable restore
-#line (20,9)-(20,27) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-LookupCacheService
-
-#line default
-#line hidden
-#nullable disable
-         
-#nullable restore
-#line (20,28)-(20,39) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
-LookupCache
 
 #line default
 #line hidden

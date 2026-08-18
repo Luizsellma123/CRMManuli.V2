@@ -1,0 +1,313 @@
+﻿@using System
+@using System.Collections
+@using System.Collections.Generic
+@using System.Linq
+@using Thelus.UI.Engine.Modelos
+@using Thelus.UI.Engine.Atributos
+@using Thelus.UI.Engine.Servicos
+
+@if (PropGrid != null && ModelInstance != null)
+{
+    var colunasFilho = ModelMetadataReader.GetChildProperties(PropGrid.ChildType);
+    var acoesGrid = ModelMetadataReader.GetGridActions(PropGrid.PropertyInfo);
+
+    <div class="panel panel-default mb-3">
+        <div class="panel-heading">
+            <h4 class="panel-title">Novo Item - @SectionName</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @foreach (var col in colunasFilho)
+                {
+                    <div class="col-sm-2">
+                        <div class="form-group" style="padding-top: 7px;">
+                            <span>@col.Label @if (col.IsRequired) { <span class="text-danger">*</span> }</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            @if (col.FieldType == FieldType.Select)
+                            {
+                                <select class="form-control" @onchange="(e) => SetNovoSubItemValue(col.PropertyName, e.Value)">
+                                    @if (col.AllowNullOption)
+                                    {
+                                        <option value="">Selecione...</option>
+                                    }
+
+                                    @if (col.Options != null && col.Options.Any())
+                                    {
+                                        @foreach (var opt in col.Options)
+                                        {
+                                            <option value="@opt.Key">@opt.Value</option>
+                                        }
+                                    }
+                                </select>
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control" placeholder="@col.Placeholder"
+                                       value="@GetNovoSubItemValue(col.PropertyName)"
+                                       @onchange="(e) => SetNovoSubItemValue(col.PropertyName, e.Value)" />
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="text-right">
+                @foreach (var acao in acoesGrid)
+                {
+                    var iconeAcao = MapearIconeFontAwesome(acao.Icon);
+
+                    if (acao.ActionType == ActionType.Create)
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled @iconeAcao" @onclick="AdicionarNaGrid">
+                            @acao.Label
+                        </button>
+                    }
+                    else if (acao.ActionType == ActionType.Clear)
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled @iconeAcao" @onclick="LimparFormularioGrid">
+                            @acao.Label
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn @acao.CssClass btn-labeled @iconeAcao" @onclick="() => ExecutarAcao(acao)">
+                            @acao.Label
+                        </button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    var listaSubGrid = PropGrid.GetValue(ModelInstance) as IList;
+    var totalSubGridItems = listaSubGrid?.Count ?? 0;
+    var totalSubGridPages = (int)Math.Ceiling((double)totalSubGridItems / subGridPageSize);
+    var subGridPaginado = listaSubGrid?.Cast<object>().Skip((subGridCurrentPage - 1) * subGridPageSize).Take(subGridPageSize);
+    var subGridStartRecord = totalSubGridItems == 0 ? 0 : ((subGridCurrentPage - 1) * subGridPageSize) + 1;
+    var subGridEndRecord = Math.Min(subGridCurrentPage * subGridPageSize, totalSubGridItems);
+
+    var firstVisibleSubPage = Math.Max(1, subGridCurrentPage - 2);
+    var lastVisibleSubPage = Math.Min(totalSubGridPages, firstVisibleSubPage + 4);
+
+    if (totalSubGridItems > 0)
+    {
+        <div class="row pad-btm">
+            <div class="col-sm-12 form-inline">
+                <label class="control-label mar-rgt">Exibir</label>
+                <select class="form-control input-sm" style="width: 75px;" @onchange="OnSubGridPageSizeChanged">
+                    <option value="5" selected="@(subGridPageSize == 5)">5</option>
+                    <option value="10" selected="@(subGridPageSize == 10)">10</option>
+                    <option value="25" selected="@(subGridPageSize == 25)">25</option>
+                </select>
+                <label class="control-label mar-lft">registros por página</label>
+            </div>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th style="width: 80px;" class="text-center">Ações</th>
+                    @foreach (var col in colunasFilho)
+                    {
+                        <th>@col.Label</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @if (subGridPaginado != null && subGridPaginado.Any())
+                {
+                    @foreach (var item in subGridPaginado)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <button class="btn btn-xs btn-danger" @onclick="() => RemoverDaGrid(listaSubGrid, item)" title="Excluir">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                            @foreach (var col in colunasFilho)
+                            {
+                                var val = col.GetValue(item);
+                                <td>@FormatValue(val)</td>
+                            }
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="@(colunasFilho.Count + 1)" class="text-center text-muted pad-ver">
+                            <i class="fa fa-database fa-2x d-block mb-1"></i>
+                            Nenhum registro adicionado.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    if (totalSubGridItems > 0)
+    {
+        <div class="row pad-top">
+            <div class="col-sm-6 text-muted">
+                Exibindo <strong>@subGridStartRecord</strong> a <strong>@subGridEndRecord</strong> de <strong>@totalSubGridItems</strong> registros
+            </div>
+            @if (totalSubGridPages > 1)
+            {
+                <div class="col-sm-6 text-right">
+                    <ul class="pagination pagination-sm mar-no">
+                        <li class="@(subGridCurrentPage == 1 ? "disabled" : "")">
+                            <a href="javascript:void(0);" @onclick="() => GoToSubGridPage(subGridCurrentPage - 1, totalSubGridPages)">Anterior</a>
+                        </li>
+                        @for (int p = firstVisibleSubPage; p <= lastVisibleSubPage; p++)
+                        {
+                            var pageNum = p;
+                            <li class="@(subGridCurrentPage == pageNum ? "active" : "")">
+                                <a href="javascript:void(0);" @onclick="() => GoToSubGridPage(pageNum, totalSubGridPages)">@pageNum</a>
+                            </li>
+                        }
+                        <li class="@(subGridCurrentPage == totalSubGridPages ? "disabled" : "")">
+                            <a href="javascript:void(0);" @onclick="() => GoToSubGridPage(subGridCurrentPage + 1, totalSubGridPages)">Próximo</a>
+                        </li>
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public PropertyMetadata? PropGrid { get; set; }
+    [Parameter] public object? ModelInstance { get; set; }
+    [Parameter] public string SectionName { get; set; } = string.Empty;
+    [Parameter] public EventCallback<ActionMetadata> OnExecuteAction { get; set; }
+
+    private object? novoSubItem;
+    private int subGridCurrentPage = 1;
+    private int subGridPageSize = 5;
+
+    protected override void OnParametersSet()
+    {
+        InicializarNovoSubItem();
+    }
+
+    private void InicializarNovoSubItem()
+    {
+        if (PropGrid?.ChildType != null && novoSubItem == null)
+        {
+            novoSubItem = Activator.CreateInstance(PropGrid.ChildType);
+        }
+    }
+
+    private object? GetNovoSubItemValue(string propName)
+    {
+        if (novoSubItem == null) return null;
+        return novoSubItem.GetType().GetProperty(propName)?.GetValue(novoSubItem);
+    }
+
+    private void SetNovoSubItemValue(string propName, object? value)
+    {
+        if (novoSubItem == null) return;
+        var prop = novoSubItem.GetType().GetProperty(propName);
+        if (prop != null && prop.CanWrite)
+        {
+            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            var safeValue = (value == null || string.IsNullOrEmpty(value.ToString()))
+                ? null
+                : Convert.ChangeType(value, targetType);
+
+            prop.SetValue(novoSubItem, safeValue);
+        }
+    }
+
+    private void AdicionarNaGrid()
+    {
+        if (novoSubItem == null || PropGrid?.ChildType == null || ModelInstance == null) return;
+
+        var lista = PropGrid.GetValue(ModelInstance) as IList;
+        if (lista != null)
+        {
+            lista.Add(novoSubItem);
+            novoSubItem = Activator.CreateInstance(PropGrid.ChildType);
+            subGridCurrentPage = 1;
+            StateHasChanged();
+        }
+    }
+
+    private void LimparFormularioGrid()
+    {
+        if (PropGrid?.ChildType != null)
+        {
+            novoSubItem = Activator.CreateInstance(PropGrid.ChildType);
+            StateHasChanged();
+        }
+    }
+
+    private void RemoverDaGrid(IList? lista, object item)
+    {
+        if (lista != null && lista.Contains(item))
+        {
+            lista.Remove(item);
+
+            var totalPages = (int)Math.Ceiling((double)lista.Count / subGridPageSize);
+            if (subGridCurrentPage > totalPages && totalPages > 0)
+            {
+                subGridCurrentPage = totalPages;
+            }
+
+            StateHasChanged();
+        }
+    }
+
+    private void GoToSubGridPage(int page, int totalPages)
+    {
+        if (page >= 1 && page <= totalPages)
+        {
+            subGridCurrentPage = page;
+        }
+    }
+
+    private void OnSubGridPageSizeChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int newSize))
+        {
+            subGridPageSize = newSize;
+            subGridCurrentPage = 1;
+        }
+    }
+
+    private async Task ExecutarAcao(ActionMetadata acao)
+    {
+        if (OnExecuteAction.HasDelegate)
+        {
+            await OnExecuteAction.InvokeAsync(acao);
+        }
+    }
+
+    private string FormatValue(object? val)
+    {
+        if (val == null) return "-";
+        if (val is DateTime dt)
+        {
+            return dt.TimeOfDay == TimeSpan.Zero ? dt.ToString("dd/MM/yyyy") : dt.ToString("dd/MM/yyyy HH:mm");
+        }
+        return val.ToString() ?? "-";
+    }
+
+    private string MapearIconeFontAwesome(string iconeOriginal)
+    {
+        if (string.IsNullOrEmpty(iconeOriginal)) return "fa fa-cog";
+        if (iconeOriginal.StartsWith("fa ")) return iconeOriginal;
+
+        if (iconeOriginal.Contains("content-save")) return "fa fa-save";
+        if (iconeOriginal.Contains("keyboard-return")) return "fa fa-arrow-circle-left";
+        if (iconeOriginal.Contains("trash")) return "fa fa-trash";
+        if (iconeOriginal.Contains("database")) return "fa fa-database";
+
+        return "fa fa-check-square-o";
+    }
+}
