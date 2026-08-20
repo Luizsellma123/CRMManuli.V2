@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using VendasWeb.classes;
 using VendasWeb.GerencialVendas;
@@ -63,69 +65,124 @@ namespace VendasWeb.Recebimento
             FornecedorDropDownList.DataValueField = "IDCliente";
             FornecedorDropDownList.DataTextField = "Cliente";
             FornecedorDropDownList.DataBind();
-
-            objRecebimento.IDSetor = Convert.ToInt32(SetorDropDownList.SelectedValue);
-            UsuariosDropDownList.DataSource = objRecebimento.ConsultaUsuariosSetor();
-            UsuariosDropDownList.DataValueField = "IDUsuario";
-            UsuariosDropDownList.DataTextField = "Nome";
-            UsuariosDropDownList.DataBind();
         }
 
+        protected void SetarCombosInicial()
+        {
+            string idUsuario = Session["IDUsuario"].ToString();
+
+            objRecebimento.IDUsuarioLogado = Convert.ToInt32(Session["IDUsuario"]);
+            DataTable outputTable = objRecebimento.ConsultaSetorUsuario();
+
+            // Verifica se a DataTable retornou ao menos uma linha
+            if (outputTable != null && outputTable.Rows.Count > 0)
+            {
+                string idSetorInicial = outputTable.Rows[0]["IDSetor"].ToString();
+
+                if (SetorDropDownList.Items.FindByValue(idSetorInicial) != null)
+                {
+                    SetorDropDownList.SelectedValue = idSetorInicial;
+                    objRecebimento.IDSetor = Convert.ToInt32(idSetorInicial);
+
+                    // 1. LIMPA A SELEÇÃO ANTERIOR (Evita o estouro no DataBind)
+                    UsuariosDropDownList.ClearSelection();
+
+                    // 2. Popula os novos dados
+                    UsuariosDropDownList.DataSource = objRecebimento.ConsultaUsuariosSetor();
+                    UsuariosDropDownList.DataValueField = "IDUsuario";
+                    UsuariosDropDownList.DataTextField = "Nome";
+                    UsuariosDropDownList.DataBind();
+
+                    // 3. Insere a opção "Todos" se houver múltiplos usuários
+                    if (UsuariosDropDownList.Items.Count > 1)
+                    {
+                        UsuariosDropDownList.Items.Insert(0, new ListItem("Todos", "0"));
+                    }
+                }
+            }
+
+            // Garante que o ID do usuário logado realmente existe no DropDown do setor selecionado
+            if (UsuariosDropDownList.Items.FindByValue(idUsuario) != null)
+            {
+                UsuariosDropDownList.SelectedValue = idUsuario;
+            }
+
+        }
 
         protected void CarregaDadosNaTela()
         {
             if (Session["objRecebimento"] != null)
             {
+                // ==========================================
+                // MODO EDIÇÃO / PÓS-GRAVAÇÃO
+                // ==========================================
                 objRecebimento = (RecebimentoClass)Session["objRecebimento"];
-
                 objRecebimento.CarregaRecebimento();
 
+                EmpresaDropDownList.ClearSelection();
                 EmpresaDropDownList.SelectedValue = objRecebimento.IDEmpresa.ToString();
-
                 EmpresaDropDownList.CssClass = "form-control";
-
                 EmpresaDropDownList.Enabled = false;
 
                 IDRecebimentoTextBox.Text = objRecebimento.IDRecebimento.ToString();
 
+                StatusDropDownList.ClearSelection();
                 StatusDropDownList.SelectedValue = objRecebimento.IDStatus.ToString();
 
+                SetorDropDownList.ClearSelection();
                 SetorDropDownList.SelectedValue = objRecebimento.IDSetor.ToString();
 
-                UsuariosDropDownList.SelectedValue = objRecebimento.IDUsuario.ToString();
+                // Recarrega a lista de usuários baseada no Setor
+                objRecebimento.IDSetor = objRecebimento.IDSetor;
+                UsuariosDropDownList.ClearSelection(); // ESSENCIAL ANTES DO DATABIND
+                UsuariosDropDownList.DataSource = objRecebimento.ConsultaUsuariosSetor();
+                UsuariosDropDownList.DataValueField = "IDUsuario";
+                UsuariosDropDownList.DataTextField = "Nome";
+                UsuariosDropDownList.DataBind();
+
+                if (UsuariosDropDownList.Items.Count > 1)
+                {
+                    UsuariosDropDownList.Items.Insert(0, new ListItem("Todos", "0"));
+                }
+
+                string idUsuarioRegistro = objRecebimento.IDUsuario.ToString();
+                if (UsuariosDropDownList.Items.FindByValue(idUsuarioRegistro) != null)
+                {
+                    UsuariosDropDownList.SelectedValue = idUsuarioRegistro;
+                }
 
                 if (objRecebimento.IDFornecedor > 0)
+                {
+                    FornecedorDropDownList.ClearSelection();
                     FornecedorDropDownList.SelectedValue = objRecebimento.IDFornecedor.ToString();
+                }
 
                 ManualCheckBox.Checked = objRecebimento.Manual;
-
                 CNPJTextBox.Text = objRecebimento.CNPJ;
-
                 FornecedorTextBox.Text = objRecebimento.NomeFornecedor;
-
                 NFTextBox.Text = objRecebimento.NumeroNotaFiscal;
-
                 DataTextBox.Text = objRecebimento.DataCriacao.ToString("yyyy-MM-dd");
-
                 ObservacaoTextBox.Text = objRecebimento.Observacao;
 
-                //Campos do fornecedor só habilitados se for manual
                 LiberaCamposFornecedor(objRecebimento.Manual);
             }
             else
             {
-                //Escolher status como "Recebido" e Bloqueia
-                //procura no propio DataSource do DropDownList qual é o IDStatus que tem a descrição "Recebido"
+                // ==========================================
+                // MODO NOVO REGISTRO (!IsPostBack / Inicial)
+                // ==========================================
+                StatusDropDownList.ClearSelection();
                 StatusDropDownList.SelectedValue = StatusDropDownList.Items.Cast<ListItem>().FirstOrDefault(item => item.Text == "Recebido")?.Value;
-
                 StatusDropDownList.CssClass = "form-control";
-
                 StatusDropDownList.Enabled = false;
 
                 LiberaCamposFornecedor(false);
-
                 DataTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
+                // 1. PRIMEIRO monta os combos com suas regras de negócio/usuário logado
+                SetarCombosInicial();
+
+                // 2. SÓ DEPOIS dispara preenchimentos que dependem da tela já estar montada
                 FornecedorDropDownList_SelectedIndexChanged(null, null);
             }
         }
@@ -155,37 +212,57 @@ namespace VendasWeb.Recebimento
 
         protected void FornecedorDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int IDFornecedor = Convert.ToInt32(FornecedorDropDownList.SelectedValue);
+            int IDFornecedor = 0;
+            int.TryParse(FornecedorDropDownList.SelectedValue, out IDFornecedor);
 
             if (IDFornecedor > 0)
             {
                 ClienteClasse objCliente = new ClienteClasse();
-
                 objCliente.IDCliente = IDFornecedor;
-
                 objCliente.carregaDadosPrincipais();
 
                 CNPJTextBox.Text = objCliente.CNPJCliente;
-
                 FornecedorTextBox.Text = objCliente.NomeCliente;
             }
+            else
+            {
+                CNPJTextBox.Text = string.Empty;
+                FornecedorTextBox.Text = string.Empty;
+            }
+
+            // Apenas garante a reconstrução visual do plugin
+            ScriptManager.RegisterStartupScript(
+                this,
+                GetType(),
+                "RebindFstDropdownFornecedor_" + Guid.NewGuid().ToString("N"),
+                "if (typeof setFstDropdown === 'function') { setFstDropdown(); } else if (typeof setFstDropdowns === 'function') { setFstDropdowns(); }",
+                true
+            );
         }
 
         protected void SetorDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             objRecebimento.IDUsuarioLogado = Convert.ToInt32(Session["IDUsuario"]);
             objRecebimento.IDSetor = Convert.ToInt32(SetorDropDownList.SelectedValue);
+
+            UsuariosDropDownList.ClearSelection(); // PROTEÇÃO
             UsuariosDropDownList.DataSource = objRecebimento.ConsultaUsuariosSetor();
             UsuariosDropDownList.DataValueField = "IDUsuario";
             UsuariosDropDownList.DataTextField = "Nome";
             UsuariosDropDownList.DataBind();
 
-            // Inclui "Todos" apenas se a consulta retornar 2 ou mais setores
             if (UsuariosDropDownList.Items.Count > 1)
             {
                 UsuariosDropDownList.Items.Insert(0, new ListItem("Todos", "0"));
             }
+
+            ScriptManager.RegisterStartupScript(
+                this,
+                GetType(),
+                "RebindFstDropdown_" + Guid.NewGuid().ToString("N"),
+                "if (typeof setFstDropdown === 'function') { setFstDropdown(); } else if (typeof setFstDropdowns === 'function') { setFstDropdowns(); }",
+                true
+            );
         }
 
         protected string CarregaDadosDaTela()

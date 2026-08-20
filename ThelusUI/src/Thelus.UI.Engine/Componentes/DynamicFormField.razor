@@ -1,11 +1,10 @@
-﻿#nullable enable
-@using System
+﻿@using System
 @using System.Collections.Generic
 @using System.Linq
 @using Microsoft.AspNetCore.Components
 @using Thelus.UI.Engine.Modelos
 @using Thelus.UI.Engine.Atributos
-@using Thelus.UI.Engine.Componentes @* Importante: Ajuste aqui o namespace/pasta onde está o LookupModal.razor *@
+@using Thelus.UI.Engine.Componentes
 
 @if (Property != null && ModelInstance != null)
 {
@@ -27,74 +26,14 @@
                     <textarea class="form-control" rows="3" placeholder="@Property.Placeholder"
                               value="@Property.GetValue(ModelInstance)"
                               disabled="@Property.ReadOnly"
-                              @onchange="(e) => SetPropValue(e.Value)"></textarea>
+                              @onchange="OnTextAreaChanged"></textarea>
                 }
                 else
                 {
                     <input type="text" class="form-control" placeholder="@Property.Placeholder"
                            value="@FormatValue(Property.GetValue(ModelInstance))"
                            disabled="@Property.ReadOnly"
-                           @oninput="AplicarMascaraEspecial" />
-                }
-            </div>
-        </div>
-    }
-    else if (Property.ColSpan == 12)
-    {
-        <div class="col-sm-2">
-            <div class="form-group" style="padding-top: 7px;">
-                <span>@Property.Label: @if (Property.IsRequired) { <span class="text-danger">*</span> }</span>
-            </div>
-        </div>
-        <div class="col-sm-10">
-            <div class="form-group">
-                @if (Property.ReadOnly)
-                {
-                    <input type="text" class="form-control" value="@FormatValue(Property.GetValue(ModelInstance))" disabled />
-                }
-                else if (Property.FieldType == FieldType.ModalLookup)
-                {
-                    <div class="input-group">
-                        <input type="text" class="form-control" readonly
-                               value="@descricaoModalExibicao"
-                               placeholder="@(string.IsNullOrEmpty(Property.Placeholder) ? "Clique na lupa para selecionar..." : Property.Placeholder)" />
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" disabled="@Property.ReadOnly" @onclick="() => modalAberto = true">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            @if (!string.IsNullOrEmpty(descricaoModalExibicao) && !Property.ReadOnly)
-                            {
-                                <button type="button" class="btn btn-danger" @onclick="LimparSelecaoModal">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            }
-                        </span>
-                    </div>
-
-                    <LookupModal IsOpen="@modalAberto"
-                                 Title="@Property.Label"
-                                 LookupKey="@Property.LookupKey"
-                                 OnSelect="ItemModalSelecionado"
-                                 OnClose="() => modalAberto = false" />
-                }
-                else if (Property.FieldType == FieldType.Select)
-                {
-                    <select class="form-control" @onchange="(e) => SetPropValue(e.Value)">
-                        <option value="">Selecione...</option>
-                        @if (Property.Options != null && Property.Options.Any())
-                        {
-                            @foreach (var opt in Property.Options)
-                            {
-                                <option value="@opt.Key" selected="@(Property.GetValue(ModelInstance)?.ToString() == opt.Key)">@opt.Value</option>
-                            }
-                        }
-                    </select>
-                }
-                else
-                {
-                    <input type="text" class="form-control" placeholder="@Property.Placeholder"
-                           value="@Property.GetValue(ModelInstance)"
-                           @oninput="AplicarMascaraEspecial" />
+                           @onchange="AplicarMascaraEspecial" />
                 }
             </div>
         </div>
@@ -106,40 +45,56 @@
                 <span>@Property.Label: @if (Property.IsRequired) { <span class="text-danger">*</span> }</span>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="@(Property.ColSpan == 12 ? "col-sm-10" : "col-sm-4")">
             <div class="form-group">
                 @if (Property.ReadOnly)
                 {
                     <input type="text" class="form-control" value="@FormatValue(Property.GetValue(ModelInstance))" disabled />
                 }
+                else if (Property.PropertyType == typeof(bool) || Property.FieldType == FieldType.CheckBox)
+                {
+                    <div class="checkbox" style="margin-top: 5px;">
+                        <label>
+                            <input type="checkbox" 
+                                   checked="@(Property.GetValue(ModelInstance) is bool b && b)" 
+                                   @onchange="OnCheckboxChanged" />
+                            <strong>@Property.Label</strong>
+                        </label>
+                    </div>
+                }
                 else if (Property.FieldType == FieldType.ModalLookup)
                 {
                     <div class="input-group">
                         <input type="text" class="form-control" readonly
-                               value="@descricaoModalExibicao"
-                               placeholder="@(string.IsNullOrEmpty(Property.Placeholder) ? "Clique na lupa para selecionar..." : Property.Placeholder)" />
+                               value="@GetLookupDisplayValue()"
+                               placeholder="@(string.IsNullOrEmpty(Property.Placeholder) ? "Clique na lupa para pesquisar..." : Property.Placeholder)" />
+                        
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary" disabled="@Property.ReadOnly" @onclick="() => modalAberto = true">
+                            <button type="button" class="btn btn-primary" disabled="@Property.ReadOnly" @onclick="() => modalLookupAberto = true"
+                                    style="height: 26px; line-height: 26px; padding: 0 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;"
+                                    title="Pesquisar">
                                 <i class="fa fa-search"></i>
                             </button>
-                            @if (!string.IsNullOrEmpty(descricaoModalExibicao) && !Property.ReadOnly)
+                            @if (!string.IsNullOrEmpty(GetLookupDisplayValue()) && !Property.ReadOnly)
                             {
-                                <button type="button" class="btn btn-danger" @onclick="LimparSelecaoModal">
+                                <button type="button" class="btn btn-danger" @onclick="LimparLookup"
+                                        style="height: 26px; line-height: 26px; padding: 0 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;"
+                                        title="Limpar">
                                     <i class="fa fa-times"></i>
                                 </button>
                             }
                         </span>
                     </div>
 
-                    <LookupModal IsOpen="@modalAberto"
+                    <LookupModal IsOpen="@modalLookupAberto"
                                  Title="@Property.Label"
                                  LookupKey="@Property.LookupKey"
-                                 OnSelect="ItemModalSelecionado"
-                                 OnClose="() => modalAberto = false" />
+                                 OnSelect="ItemLookupSelecionado"
+                                 OnClose="() => modalLookupAberto = false" />
                 }
                 else if (Property.FieldType == FieldType.Select)
                 {
-                    <select class="form-control" @onchange="(e) => SetPropValue(e.Value)">
+                    <select class="form-control" @onchange="OnSelectChanged">
                         <option value="">Selecione...</option>
                         @if (Property.Options != null && Property.Options.Any())
                         {
@@ -154,22 +109,22 @@
                 {
                     <input type="date" class="form-control"
                            value="@FormatDateForInput(Property.GetValue(ModelInstance))"
-                           @onchange="(e) => SetPropValue(e.Value)" />
+                           @onchange="OnDateChanged" />
                 }
                 else if (Property.FieldType == FieldType.Password)
                 {
                     <input type="password" class="form-control" placeholder="@Property.Placeholder"
                            value="@Property.GetValue(ModelInstance)"
-                           @onchange="(e) => SetPropValue(e.Value)" />
+                           @onchange="OnPasswordChanged" />
                 }
                 else
                 {
                     <input type="text" class="form-control" placeholder="@Property.Placeholder"
                            value="@Property.GetValue(ModelInstance)"
-                           @oninput="AplicarMascaraEspecial" />
+                           @onchange="AplicarMascaraEspecial" />
                 }
 
-                @if (!string.IsNullOrEmpty(Property.HelpText))
+                @if (!string.IsNullOrEmpty(Property.HelpText) && Property.ColSpan != 12)
                 {
                     <small class="help-block text-muted">@Property.HelpText</small>
                 }
@@ -179,50 +134,55 @@
 }
 
 @code {
+    #nullable enable
+
     [Parameter] public PropertyMetadata? Property { get; set; }
     [Parameter] public object? ModelInstance { get; set; }
+    [Parameter] public EventCallback OnModelChanged { get; set; }
 
-    private bool modalAberto;
-    private string descricaoModalExibicao = string.Empty;
+    private bool modalLookupAberto;
 
-    protected override void OnParametersSet()
+    private string GetLookupDisplayValue()
     {
-        if (Property?.FieldType == FieldType.ModalLookup && ModelInstance != null)
+        var val = Property?.GetValue(ModelInstance)?.ToString();
+        if (string.IsNullOrEmpty(val)) return string.Empty;
+
+        if (Property?.Options != null && Property.Options.TryGetValue(val, out var desc))
         {
-            var val = Property.GetValue(ModelInstance)?.ToString();
-            if (!string.IsNullOrEmpty(val) && Property.Options != null && Property.Options.ContainsKey(val))
-            {
-                descricaoModalExibicao = Property.Options[val];
-            }
-            else if (!string.IsNullOrEmpty(val))
-            {
-                descricaoModalExibicao = $"Código: {val}";
-            }
-            else
-            {
-                descricaoModalExibicao = string.Empty;
-            }
+            return desc;
         }
+        return val;
     }
 
-    private void ItemModalSelecionado(KeyValuePair<string, string> item)
+    private async Task ItemLookupSelecionado(KeyValuePair<string, string> item)
     {
-        SetPropValue(item.Key);
-        descricaoModalExibicao = item.Value;
-
-        if (Property != null)
+        modalLookupAberto = false;
+        if (Property?.Options != null)
         {
             Property.Options[item.Key] = item.Value;
         }
+        await SetPropValue(item.Key);
     }
 
-    private void LimparSelecaoModal()
+    private async Task LimparLookup()
     {
-        SetPropValue(null);
-        descricaoModalExibicao = string.Empty;
+        await SetPropValue(null);
     }
 
-    private void SetPropValue(object? value)
+    private async Task OnCheckboxChanged(ChangeEventArgs e)
+    {
+        if (bool.TryParse(e.Value?.ToString(), out bool val))
+        {
+            await SetPropValue(val);
+        }
+    }
+
+    private async Task OnSelectChanged(ChangeEventArgs e) => await SetPropValue(e.Value);
+    private async Task OnDateChanged(ChangeEventArgs e) => await SetPropValue(e.Value);
+    private async Task OnPasswordChanged(ChangeEventArgs e) => await SetPropValue(e.Value);
+    private async Task OnTextAreaChanged(ChangeEventArgs e) => await SetPropValue(e.Value);
+
+    private async Task SetPropValue(object? value)
     {
         if (ModelInstance == null || Property?.PropertyInfo == null) return;
 
@@ -233,12 +193,13 @@
             object? safeValue = null;
             if (value != null && !string.IsNullOrEmpty(value.ToString()))
             {
-                if (targetType == typeof(DateTime))
+                if (targetType == typeof(bool))
                 {
-                    if (DateTime.TryParse(value.ToString(), out DateTime dt))
-                    {
-                        safeValue = dt;
-                    }
+                    if (bool.TryParse(value.ToString(), out bool b)) safeValue = b;
+                }
+                else if (targetType == typeof(DateTime))
+                {
+                    if (DateTime.TryParse(value.ToString(), out DateTime dt)) safeValue = dt;
                 }
                 else if (targetType.IsEnum)
                 {
@@ -251,10 +212,15 @@
             }
 
             Property.SetValue(ModelInstance, safeValue);
+
+            if (OnModelChanged.HasDelegate)
+            {
+                await OnModelChanged.InvokeAsync(null);
+            }
         }
     }
 
-    private void AplicarMascaraEspecial(ChangeEventArgs e)
+    private async Task AplicarMascaraEspecial(ChangeEventArgs e)
     {
         if (Property == null) return;
         var valorDigitado = e.Value?.ToString() ?? string.Empty;
@@ -292,7 +258,7 @@
             }
         }
 
-        SetPropValue(valorFormatado);
+        await SetPropValue(valorFormatado);
     }
 
     private string FormatValue(object? val)

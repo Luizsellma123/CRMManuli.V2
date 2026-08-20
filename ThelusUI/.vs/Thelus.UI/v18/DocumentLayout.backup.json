@@ -3,44 +3,32 @@
   "WorkspaceRootPath": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\componentes\\dynamicformfield.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\componentes\\dynamicformfield.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\negociacao\\negociacaodetalhewebform.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\negociacao\\negociacaodetalhewebform.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9401429F-ACE1-44AF-B7AF-E8D7AB9E1319}|Thelus.UI.Model\\Thelus.UI.Model.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\thelus.ui.model\\entidades\\negociacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9401429F-ACE1-44AF-B7AF-E8D7AB9E1319}|Thelus.UI.Model\\Thelus.UI.Model.csproj|solutionrelative:thelus.ui.model\\entidades\\negociacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\usercontrol\\negociacaowebusercontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\usercontrol\\negociacaowebusercontrol.ascx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\componentes\\lookupmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\componentes\\lookupmodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\negociacao\\negociacaodetalhewebform.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\negociacao\\negociacaodetalhewebform.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\atributos\\fieldtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\atributos\\fieldtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\classes\\negociacaoclasse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\classes\\negociacaoclasse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\componentes\\genericdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\componentes\\genericdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\negociacao\\listanegociacaowebform.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\negociacao\\listanegociacaowebform.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\modelos\\modelmetadatareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\modelos\\modelmetadatareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\negociacao\\listanegociacaowebform.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\negociacao\\listanegociacaowebform.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\modelos\\propertymetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\modelos\\propertymetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\atributos\\formdetailfieldattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\atributos\\formdetailfieldattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\atributos\\formfieldattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\atributos\\formfieldattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\src\\thelus.ui.engine\\atributos\\detailactionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95DEECFB-1FB4-471B-8128-2E2B4B34F55F}|src\\Thelus.UI.Engine\\Thelus.UI.Engine.csproj|solutionrelative:src\\thelus.ui.engine\\atributos\\detailactionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|d:\\dados\\projetos\\manuli\\crm\\crmmanuli.v2\\thelusui\\legado\\vendasweb\\usercontrol\\negociacaowebusercontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{FC0D7484-7897-4C79-B4A9-27C83DA384B1}|Legado\\VendasWeb\\VendasWeb.csproj|solutionrelative:legado\\vendasweb\\usercontrol\\negociacaowebusercontrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +38,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LookupModal.razor",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\LookupModal.razor",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Componentes\\LookupModal.razor",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\LookupModal.razor",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Componentes\\LookupModal.razor",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAcwJYAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-18T15:19:19.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FieldType.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FieldType.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Atributos\\FieldType.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FieldType.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Atributos\\FieldType.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAA5wC4AAAABAAAAAAAAAA==",
+              "Title": "NegociacaoClasse.cs",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\classes\\NegociacaoClasse.cs",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\classes\\NegociacaoClasse.cs",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\classes\\NegociacaoClasse.cs",
+              "RelativeToolTip": "Legado\\VendasWeb\\classes\\NegociacaoClasse.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAASwD4BAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T15:18:04.322Z",
+              "WhenOpened": "2026-08-20T20:26:57.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DynamicFormField.razor",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\DynamicFormField.razor",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Componentes\\DynamicFormField.razor",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\DynamicFormField.razor",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Componentes\\DynamicFormField.razor",
-              "ViewState": "AgIAAC4BAAAAAAAAAAAAwEcBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-18T15:08:33.618Z",
+              "Title": "NegociacaoDetalheWebForm.aspx.cs",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx.cs",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx.cs",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx.cs",
+              "RelativeToolTip": "Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx.cs",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAYwPoAAACSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T20:07:01.264Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ModelMetadataReader.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Modelos\\ModelMetadataReader.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Modelos\\ModelMetadataReader.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Modelos\\ModelMetadataReader.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Modelos\\ModelMetadataReader.cs",
-              "ViewState": "AgIAAFYBAAAAAAAAAAAcwG4BAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:59:00.666Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PropertyMetadata.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Modelos\\PropertyMetadata.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Modelos\\PropertyMetadata.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Modelos\\PropertyMetadata.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Modelos\\PropertyMetadata.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:57:34.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FormFieldAttribute.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FormFieldAttribute.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Atributos\\FormFieldAttribute.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FormFieldAttribute.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Atributos\\FormFieldAttribute.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAwwJIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:54:42.637Z",
+              "DocumentIndex": 2,
+              "Title": "NegociacaoDetalheWebForm.aspx",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx",
+              "RelativeToolTip": "Legado\\VendasWeb\\Negociacao\\NegociacaoDetalheWebForm.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-20T20:03:15.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Negociacao.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Model\\Entidades\\Negociacao.cs",
-              "RelativeDocumentMoniker": "Thelus.UI.Model\\Entidades\\Negociacao.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Thelus.UI.Model\\Entidades\\Negociacao.cs",
-              "RelativeToolTip": "Thelus.UI.Model\\Entidades\\Negociacao.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAD4AAAA6AAAAAAAAAA==",
+              "Title": "NegociacaoWebUserControl.ascx.cs",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx.cs",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx.cs",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx.cs",
+              "RelativeToolTip": "Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAwCEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:34:06.305Z",
+              "WhenOpened": "2026-08-20T19:57:42.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "GenericDetail.razor",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\GenericDetail.razor",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Componentes\\GenericDetail.razor",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Componentes\\GenericDetail.razor",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Componentes\\GenericDetail.razor",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAcwDUBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-18T15:00:34.077Z",
+              "Title": "ListaNegociacaoWebForm.aspx.cs",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx.cs",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx.cs",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx.cs",
+              "RelativeToolTip": "Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwGIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T19:49:52.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FormDetailFieldAttribute.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FormDetailFieldAttribute.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Atributos\\FormDetailFieldAttribute.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\FormDetailFieldAttribute.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Atributos\\FormDetailFieldAttribute.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAUwEIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:54:28.564Z",
+              "DocumentIndex": 5,
+              "Title": "ListaNegociacaoWebForm.aspx",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx",
+              "RelativeToolTip": "Legado\\VendasWeb\\Negociacao\\ListaNegociacaoWebForm.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-08-20T20:38:08.407Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DetailActionAttribute.cs",
-              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\DetailActionAttribute.cs",
-              "RelativeDocumentMoniker": "src\\Thelus.UI.Engine\\Atributos\\DetailActionAttribute.cs",
-              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\src\\Thelus.UI.Engine\\Atributos\\DetailActionAttribute.cs",
-              "RelativeToolTip": "src\\Thelus.UI.Engine\\Atributos\\DetailActionAttribute.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T14:43:35.815Z",
+              "DocumentIndex": 6,
+              "Title": "NegociacaoWebUserControl.ascx",
+              "DocumentMoniker": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx",
+              "RelativeDocumentMoniker": "Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx",
+              "ToolTip": "D:\\Dados\\Projetos\\Manuli\\CRM\\CRMManuli.V2\\ThelusUI\\Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx",
+              "RelativeToolTip": "Legado\\VendasWeb\\usercontrol\\NegociacaoWebUserControl.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-08-20T19:54:40.409Z",
               "EditorCaption": ""
             }
           ]

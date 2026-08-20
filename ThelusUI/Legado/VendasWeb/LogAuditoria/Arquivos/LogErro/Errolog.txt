@@ -12104,3 +12104,177 @@ LOG: assembly carregado no contexto de carregamento default.
    em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
    em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 19/08/2026 12:22:50 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Recebimento/DetalheWebForm.aspx
+System.ArgumentOutOfRangeException: 'UsuariosDropDownList' tem um SelectedValue que é inválido porque ele não existe na lista de itens.
+Nome do parâmetro: value
+   em System.Web.UI.WebControls.ListControl.set_SelectedValue(String value)
+   em VendasWeb.Recebimento.DetalheWebForm.CarregaDadosNaTela() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 129
+   em VendasWeb.Recebimento.DetalheWebForm.GravarLinkButton_Click(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 310
+   em System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   em System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   em System.Web.UI.WebControls.LinkButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   em System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   em System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.recebimento_detalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_2kkn4u30.2.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 19/08/2026 12:37:00 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Recebimento/DetalheWebForm.aspx
+System.ArgumentOutOfRangeException: 'UsuariosDropDownList' tem um SelectedValue que é inválido porque ele não existe na lista de itens.
+Nome do parâmetro: value
+   em System.Web.UI.WebControls.ListControl.PerformDataBinding(IEnumerable dataSource)
+   em System.Web.UI.WebControls.ListControl.OnDataBinding(EventArgs e)
+   em System.Web.UI.WebControls.ListControl.PerformSelect()
+   em System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   em VendasWeb.Recebimento.DetalheWebForm.SetarCombosInicial() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 97
+   em VendasWeb.Recebimento.DetalheWebForm.CarregaDadosNaTela() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 175
+   em VendasWeb.Recebimento.DetalheWebForm.Page_Load(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 41
+   em System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   em System.Web.UI.Control.OnLoad(EventArgs e)
+   em System.Web.UI.Control.LoadRecursive()
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.recebimento_detalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_ce30felo.2.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 19/08/2026 12:39:12 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Recebimento/DetalheWebForm.aspx
+System.ArgumentOutOfRangeException: 'UsuariosDropDownList' tem um SelectedValue que é inválido porque ele não existe na lista de itens.
+Nome do parâmetro: value
+   em System.Web.UI.WebControls.ListControl.PerformDataBinding(IEnumerable dataSource)
+   em System.Web.UI.WebControls.ListControl.OnDataBinding(EventArgs e)
+   em System.Web.UI.WebControls.ListControl.PerformSelect()
+   em System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   em VendasWeb.Recebimento.DetalheWebForm.SetarCombosInicial() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 97
+   em VendasWeb.Recebimento.DetalheWebForm.CarregaDadosNaTela() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 175
+   em VendasWeb.Recebimento.DetalheWebForm.Page_Load(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 41
+   em System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   em System.Web.UI.Control.OnLoad(EventArgs e)
+   em System.Web.UI.Control.LoadRecursive()
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.recebimento_detalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_ce30felo.2.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 19/08/2026 12:39:45 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Recebimento/DetalheWebForm.aspx
+System.ArgumentOutOfRangeException: 'UsuariosDropDownList' tem um SelectedValue que é inválido porque ele não existe na lista de itens.
+Nome do parâmetro: value
+   em System.Web.UI.WebControls.ListControl.PerformDataBinding(IEnumerable dataSource)
+   em System.Web.UI.WebControls.ListControl.OnDataBinding(EventArgs e)
+   em System.Web.UI.WebControls.ListControl.PerformSelect()
+   em System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   em VendasWeb.Recebimento.DetalheWebForm.SetarCombosInicial() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 97
+   em VendasWeb.Recebimento.DetalheWebForm.CarregaDadosNaTela() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 175
+   em VendasWeb.Recebimento.DetalheWebForm.Page_Load(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 41
+   em System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   em System.Web.UI.Control.OnLoad(EventArgs e)
+   em System.Web.UI.Control.LoadRecursive()
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.recebimento_detalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_ce30felo.2.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 19/08/2026 13:03:08 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Recebimento/DetalheWebForm.aspx
+System.ArgumentOutOfRangeException: 'UsuariosDropDownList' tem um SelectedValue que é inválido porque ele não existe na lista de itens.
+Nome do parâmetro: value
+   em System.Web.UI.WebControls.ListControl.PerformDataBinding(IEnumerable dataSource)
+   em System.Web.UI.WebControls.ListControl.OnDataBinding(EventArgs e)
+   em System.Web.UI.WebControls.ListControl.PerformSelect()
+   em System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   em VendasWeb.Recebimento.DetalheWebForm.SetarCombosInicial() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 96
+   em VendasWeb.Recebimento.DetalheWebForm.CarregaDadosNaTela() na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 176
+   em VendasWeb.Recebimento.DetalheWebForm.Page_Load(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Recebimento\DetalheWebForm.aspx.cs:linha 40
+   em System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   em System.Web.UI.Control.OnLoad(EventArgs e)
+   em System.Web.UI.Control.LoadRecursive()
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.recebimento_detalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_52dc5fqp.2.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+=== 20/08/2026 19:55:53 ===
+Exceção do tipo 'System.Web.HttpUnhandledException' foi acionada.
+/Negociacao/NegociacaoDetalheWebForm.aspx
+System.Web.HttpException (0x80004005): Não foi encontrado campo ou propriedade com o nome 'CodigoClienteSAP' na fonte de dados selecionada.
+   em System.Web.UI.WebControls.BoundField.TryGetSimplePropertyValue(Object dataItem, Object& data)
+   em System.Web.UI.WebControls.BoundField.GetValue(Control controlContainer)
+   em System.Web.UI.WebControls.BoundField.OnDataBindField(Object sender, EventArgs e)
+   em System.Web.UI.Control.OnDataBinding(EventArgs e)
+   em System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   em System.Web.UI.Control.DataBind()
+   em System.Web.UI.Control.DataBindChildren()
+   em System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   em System.Web.UI.Control.DataBind()
+   em System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   em System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   em System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   em System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   em System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   em System.Web.UI.DataSourceView.Select(DataSourceSelectArguments arguments, DataSourceViewSelectCallback callback)
+   em System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   em System.Web.UI.WebControls.BaseDataBoundControl.DataBind()
+   em System.Web.UI.WebControls.GridView.DataBind()
+   em VendasWeb.Negociacao.NegociacaoDetalheWebForm.CarregarClientesModal(String filtro) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Negociacao\NegociacaoDetalheWebForm.aspx.cs:linha 332
+   em VendasWeb.Negociacao.NegociacaoDetalheWebForm.btnProcurarCliente_Click(Object sender, EventArgs e) na D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\Legado\VendasWeb\Negociacao\NegociacaoDetalheWebForm.aspx.cs:linha 314
+   em System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   em System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   em System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   em System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   em System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.HandleError(Exception e)
+   em System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   em System.Web.UI.Page.ProcessRequest()
+   em System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   em System.Web.UI.Page.ProcessRequest(HttpContext context)
+   em ASP.negociacao_negociacaodetalhewebform_aspx.ProcessRequest(HttpContext context) na c:\Users\luiz.carlos\AppData\Local\Temp\Temporary ASP.NET Files\vs\f30bacda\2edcc03e\App_Web_0wesusms.0.cs:linha 0
+   em System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   em System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   em System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

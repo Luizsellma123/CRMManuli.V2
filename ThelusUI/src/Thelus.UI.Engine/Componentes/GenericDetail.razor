@@ -1,14 +1,4 @@
-﻿#nullable enable
-
-<style>
-    .btn-menu-escuro,
-    .btn-menu-escuro:before,
-    .btn-menu-escuro i {
-        color: #2c3e50 !important;
-    }
-</style>
-
-@using System.Collections.Generic
+﻿@using System.Collections.Generic
 @using System.Linq
 @using System.Net.Http
 @using System.Net.Http.Json
@@ -19,6 +9,14 @@
 @inject NavigationManager Navigation
 @inject HttpClient Http
 @inject AuthenticationStateProvider AuthStateProvider
+
+<style>
+    .btn-menu-escuro,
+    .btn-menu-escuro:before,
+    .btn-menu-escuro i {
+        color: #2c3e50 !important;
+    }
+</style>
 
 <div class="row">
     <!-- Formulário Dinâmico da Seção Ativa (9 Colunas) -->
@@ -41,7 +39,14 @@
             <!-- CONTEÚDO DO PAINEL -->
             <div class="collapse in" id="secao-conteudo" aria-expanded="true">
                 <div class="panel-body">
-                    @if (modelInstance != null && propriedadesPorSecao.ContainsKey(secaoAtiva))
+                    @if (carregando)
+                    {
+                        <div class="text-center" style="padding: 30px;">
+                            <i class="fa fa-spinner fa-spin fa-2x text-info"></i>
+                            <p class="mt-2 text-muted">Carregando formulário...</p>
+                        </div>
+                    }
+                    else if (modelInstance != null && propriedadesPorSecao.ContainsKey(secaoAtiva))
                     {
                         var propriedadesDaSecao = propriedadesPorSecao[secaoAtiva];
                         var propGrid = propriedadesDaSecao.FirstOrDefault(p => p.FieldType == FieldType.Grid);
@@ -63,7 +68,10 @@
                             <div class="row">
                                 @foreach (var prop in propriedadesDaSecao.OrderBy(p => p.Order))
                                 {
-                                    <DynamicFormField Property="@prop" ModelInstance="@modelInstance" />
+                                    <DynamicFormField @key="prop.PropertyName"
+                                                      Property="@prop" 
+                                                      ModelInstance="@modelInstance" 
+                                                      OnModelChanged="StateHasChanged" />
                                 }
                             </div>
                         }
@@ -89,6 +97,8 @@
 </div>
 
 @code {
+    #nullable enable
+
     [Parameter] public string EntityName { get; set; } = string.Empty;
     [Parameter] public int Id { get; set; }
     [Parameter] public object? Item { get; set; }
@@ -96,11 +106,13 @@
     private object? modelInstance;
     private Dictionary<string, List<PropertyMetadata>> propriedadesPorSecao = new();
     private List<ActionMetadata> acoesDoModelo = new();
+    private List<PropertyMetadata> propriedadesFiltradas = new();
     private string secaoAtiva = "";
 
     private string? mensagemFeedback;
     private bool sucessoFeedback;
     private bool salvando;
+    private bool carregando = true;
 
     private string GetPanelTitle()
     {
@@ -114,44 +126,75 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        var entityType = EntityRegistry.GetEntityType(EntityName);
+        carregando = true;
 
-        if (entityType != null)
+        try
         {
-            modelInstance = Item ?? Activator.CreateInstance(entityType);
-            bool isEditMode = Id > 0; // Verifica se é Edição (Id > 0) ou Inclusão
+            var entityType = EntityRegistry.GetEntityType(EntityName);
 
-            var listProperties = ModelMetadataReader.GetProperties(modelInstance);
-
-            // Obter usuário logado para auto-preenchimento
-            string? currentUserName = null;
-            try
+            if (entityType != null)
             {
-                var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-                currentUserName = authState.User.Identity?.Name;
+                modelInstance = Item ?? Activator.CreateInstance(entityType);
+                bool isEditMode = Id > 0;
+
+                var listProperties = ModelMetadataReader.GetProperties(modelInstance);
+                propriedadesFiltradas = listProperties.Where(p => p.VisibleInDetail).ToList();
+
+                foreach (var prop in propriedadesFiltradas)
+                {
+                    if (prop.ReadOnlyInDetail)
+                    {
+                        prop.ReadOnly = true;
+                    }
+                    else if (prop.ReadOnlyOnEdit && isEditMode)
+                    {
+                        prop.ReadOnly = true;
+                    }
+                }
+
+                propriedadesPorSecao = propriedadesFiltradas
+                    .GroupBy(p => p.Section ?? "Geral")
+                    .ToDictionary(g => g.Key, g => g.ToList());
+
+                acoesDoModelo = ModelMetadataReader.GetDetailActions(entityType, EntityName);
+
+                if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
+                {
+                    secaoAtiva = propriedadesPorSecao.Keys.First();
+                }
             }
-            catch { }
-
-            // PROCESSAMENTO DAS REGRAS DO FormDetailField
-            var propriedadesFiltradas = new List<PropertyMetadata>();
-
-            foreach (var prop in listProperties)
+            else
             {
-                // 1. Ocultar campos que não devem aparecer no Detalhe
-                if (!prop.VisibleInDetail)
-                    continue;
+                propriedadesPorSecao = new();
+                acoesDoModelo = new();
+                secaoAtiva = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            sucessoFeedback = false;
+            mensagemFeedback = $"Erro ao carregar estrutura do formulário: {ex.Message}";
+        }
+        finally
+        {
+            carregando = false;
+        }
 
-                // 2. Aplicar trava de ReadOnly (Sempre ou Apenas na Edição)
-                if (prop.ReadOnlyInDetail)
-                {
-                    prop.ReadOnly = true;
-                }
-                else if (prop.ReadOnlyOnEdit && isEditMode)
-                {
-                    prop.ReadOnly = true;
-                }
+        if (modelInstance != null)
+        {
+            await CarregarDadosAssincronos();
+        }
+    }
 
-                // 3. Auto-Preenchimento caso o campo esteja vazio
+    private async Task CarregarDadosAssincronos()
+    {
+        try
+        {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            var currentUserName = authState.User.Identity?.Name;
+
+            foreach (var prop in propriedadesFiltradas)
+            {
                 var valorAtual = prop.GetValue(modelInstance);
                 if (valorAtual == null || string.IsNullOrEmpty(valorAtual.ToString()))
                 {
@@ -168,58 +211,46 @@
                         prop.SetValue(modelInstance, DateTime.Now);
                     }
                 }
-
-                propriedadesFiltradas.Add(prop);
             }
+            await InvokeAsync(StateHasChanged);
+        }
+        catch { }
 
-            // Carregamento de Lookups para campos Select
-            foreach (var prop in propriedadesFiltradas.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
+        var selectProps = propriedadesFiltradas
+            .Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey))
+            .ToList();
+
+        foreach (var prop in selectProps)
+        {
+            try
             {
-                try
+                var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
+
+                if (lookupData != null)
                 {
-                    var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
-
-                    if (lookupData != null)
+                    var options = new Dictionary<string, string>();
+                    foreach (var row in lookupData)
                     {
-                        prop.Options = new Dictionary<string, string>();
-                        foreach (var row in lookupData)
-                        {
-                            var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
-                            var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
+                        var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
+                        var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
 
-                            if (keyCol != null && descCol != null)
+                        if (keyCol != null && descCol != null)
+                        {
+                            string? idVal = row[keyCol]?.ToString();
+                            string? descVal = row[descCol]?.ToString();
+                            if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
                             {
-                                string? idVal = row[keyCol]?.ToString();
-                                string? descVal = row[descCol]?.ToString();
-                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
-                                {
-                                    prop.Options[idVal] = descVal;
-                                }
+                                options[idVal] = descVal;
                             }
                         }
                     }
+                    prop.Options = options;
                 }
-                catch { }
             }
-
-            // Agrupa os campos visíveis por Seção
-            propriedadesPorSecao = propriedadesFiltradas
-                .GroupBy(p => p.Section ?? "Geral")
-                .ToDictionary(g => g.Key, g => g.ToList());
-
-            acoesDoModelo = ModelMetadataReader.GetDetailActions(entityType, EntityName);
-
-            if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
-            {
-                secaoAtiva = propriedadesPorSecao.Keys.First();
-            }
+            catch { }
         }
-        else
-        {
-            propriedadesPorSecao = new();
-            acoesDoModelo = new();
-            secaoAtiva = "";
-        }
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private List<ActionMetadata> GetAcoesDaSecaoAtiva()

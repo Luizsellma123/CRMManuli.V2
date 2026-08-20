@@ -6,6 +6,15 @@
     <script language="javascript" src="<%=Page.ResolveClientUrl("~/js/fstdropdown.js?aux=1")%>" type="text/javascript"></script>
     <script language="javascript" src="<%=Page.ResolveClientUrl("~/js/JsMascarasGerais.js?aux=3")%>" type="text/javascript"></script>
     <script language="javascript" src="<%=Page.ResolveClientUrl("~/js/RecebimentoPrincipalJavaScript.js?aux=2")%>" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        // Executa tanto no carregamento inicial quanto após atualizações do UpdatePanel
+        Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function (sender, args) {
+            if (typeof setFstDropdown === 'function') {
+                setFstDropdown();
+            }
+        });
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

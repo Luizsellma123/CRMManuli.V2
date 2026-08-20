@@ -200,6 +200,37 @@ namespace VendasWeb.classes
 
         }
 
+        public DataTable ConsultaSetorUsuario()
+        {
+            DataTable outputTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection dbConnection = new SqlConnection(strConec))
+                {
+                    //Abre Conexao
+                    dbConnection.Open();
+
+                    SqlCommand dbCommand = new SqlCommand("CRM_SP_RETORNA_SETORES_USUARIO", dbConnection);
+
+                    dbCommand.CommandType = CommandType.StoredProcedure;
+                    dbCommand.Parameters.Add("@IDUsuario", SqlDbType.Int).Value = this.IDUsuarioLogado;
+
+                    using (SqlDataReader dataReader = dbCommand.ExecuteReader())
+                    {
+                        outputTable.Load(dataReader);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return outputTable;
+        }
+
+
         public DataTable ConsultaUsuariosSetor()
         {
 

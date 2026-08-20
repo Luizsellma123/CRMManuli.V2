@@ -81,6 +81,7 @@ namespace Thelus.UI.Engine.Modelos
 
                     FieldType = computedFieldType,
                     LookupKey = attr.LookupKey,
+                    ToggleEditableProperty = detailAttr?.ToggleEditableBy, // Mapeia a propriedade que alterna a editabilidade
                     Icon = attr.Icon,
                     HelpText = attr.HelpText,
                     Placeholder = attr.Placeholder,

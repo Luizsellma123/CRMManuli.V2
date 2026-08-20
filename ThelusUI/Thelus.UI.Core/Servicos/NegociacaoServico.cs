@@ -27,74 +27,99 @@ namespace Thelus.Core.Servicos
         {
             string recurso = filtro?.EntityName?.ToLower() ?? "";
 
-            // SE A REQUISIÇÃO FOR PARA O LOOKUP DE USUÁRIOS DA NEGOCIAÇÃO:
-            if (recurso == "negociacao-usuarios")
+            return recurso switch
             {
-                try
-                {
-                    string connStr = ConfigurationManager.GetConnectionString();
-                    if (!string.IsNullOrEmpty(connStr) && _db != null)
-                    {
-                        string sqlUsers = @"
-                                        SELECT 
-                                            IDUsuario AS Id, 
-                                            CASE 
-                                                WHEN Nome IS NULL OR LTRIM(RTRIM(CAST(Nome AS VARCHAR(MAX)))) = '' THEN CodigoUsuario
-                                                ELSE CAST(Nome AS VARCHAR(MAX))
-                                            END AS Descricao 
-                                        FROM CRM_CADASTRO_USUARIO 
-                                        ORDER BY 
-                                            CASE 
-                                                WHEN Nome IS NULL OR LTRIM(RTRIM(CAST(Nome AS VARCHAR(MAX)))) = '' THEN CodigoUsuario
-                                                ELSE CAST(Nome AS VARCHAR(MAX))
-                                            END";
+                "negociacao-usuarios" => await ObterUsuariosLookupAsync(),
+                "negociacao-frete" => ObterFretesLookup(),
+                "negociacao-clientes" => await ObterClientesLookupAsync(filtro),
+                _ => await ObterNegociacoesAsync()
+            };
+        }
 
-                        var usuarios = await _db.QueryAsync<dynamic>(sqlUsers);
-                        if (usuarios != null && usuarios.Count > 0) return usuarios;
-                    }
-                }
-                catch
-                {
-                    // Erro tratado silenciosamente para cair no fallback
-                }
-
-                // Fallback de contingência para o lookup de usuários
-                return new List<dynamic>
-                {
-                    new { Id = "LUIZ", Descricao = "Luiz Carlos" },
-                    new { Id = "TODOS", Descricao = "Luiz/Todos" }
-                };
-            }
-
-            if (recurso == "negociacao-frete")
-            {
-                try
-                {
-                    return new List<dynamic>
-                    {
-                        new { Id = "1", Descricao = "CIF" },
-                        new { Id = "2", Descricao = "FOB" },
-                        new { Id = "3", Descricao = "CIF até SP" },
-                    };
-                }
-                catch
-                {
-                    // Erro tratado silenciosamente para cair no fallback
-                }
-
-                // Fallback de contingência para o lookup de usuários
-                return new List<dynamic>
-                {
-                    new { Id = "LUIZ", Descricao = "Luiz Carlos" },
-                    new { Id = "TODOS", Descricao = "Luiz/Todos" }
-                };
-            }
-
-            // CASO CONTRÁRIO: FLUXO NORMAL DE LISTAGEM DE NEGOCIAÇÕES
+        private async Task<List<dynamic>> ObterUsuariosLookupAsync()
+        {
             try
             {
                 string connStr = ConfigurationManager.GetConnectionString();
+                if (!string.IsNullOrEmpty(connStr) && _db != null)
+                {
+                    string sqlUsers = @"
+                        SELECT 
+                            IDUsuario AS Id, 
+                            CASE 
+                                WHEN Nome IS NULL OR LTRIM(RTRIM(CAST(Nome AS VARCHAR(MAX)))) = '' THEN CodigoUsuario
+                                ELSE CAST(Nome AS VARCHAR(MAX))
+                            END AS Descricao 
+                        FROM CRM_CADASTRO_USUARIO 
+                        ORDER BY 
+                            CASE 
+                                WHEN Nome IS NULL OR LTRIM(RTRIM(CAST(Nome AS VARCHAR(MAX)))) = '' THEN CodigoUsuario
+                                ELSE CAST(Nome AS VARCHAR(MAX))
+                            END";
 
+                    var usuarios = await _db.QueryAsync<dynamic>(sqlUsers);
+                    if (usuarios != null && usuarios.Count > 0) return usuarios;
+                }
+            }
+            catch { }
+
+            return new List<dynamic>
+            {
+                new { Id = "LUIZ", Descricao = "Luiz Carlos" },
+                new { Id = "TODOS", Descricao = "Luiz/Todos" }
+            };
+        }
+
+        private List<dynamic> ObterFretesLookup()
+        {
+            return new List<dynamic>
+            {
+                new { Id = "1", Descricao = "CIF" },
+                new { Id = "2", Descricao = "FOB" },
+                new { Id = "3", Descricao = "CIF até SP" }
+            };
+        }
+
+        private async Task<List<dynamic>> ObterClientesLookupAsync(FiltroConsulta filtro = null)
+        {
+            try
+            {
+                string connStr = ConfigurationManager.GetConnectionString();
+                if (!string.IsNullOrEmpty(connStr) && _db != null)
+                {
+                    string termo = filtro?.TermoBusca ?? string.Empty;
+
+                    string sqlClientes = @"
+                        SELECT TOP 50
+                            IDCliente AS Id, 
+                            RTRIM(LTRIM(ISNULL(CodigoClienteSAP, ''))) + ' - ' + NomeCliente + ' (CNPJ: ' + ISNULL(CNPJ, '') + ')' AS Descricao
+                        FROM CRM_CLIENTE 
+                        WHERE TipoCliente = 'C'";
+
+                    var parametros = new Dictionary<string, object>();
+
+                    if (!string.IsNullOrWhiteSpace(termo))
+                    {
+                        sqlClientes += " AND (NomeCliente LIKE @Termo OR CodigoClienteSAP LIKE @Termo OR CNPJ LIKE @Termo)";
+                        parametros["Termo"] = $"%{termo}%";
+                    }
+
+                    sqlClientes += " ORDER BY Id";
+
+                    var clientes = await _db.QueryAsync<dynamic>(sqlClientes, parametros);
+                    if (clientes != null && clientes.Count > 0) return clientes;
+                }
+            }
+            catch { }
+
+            return new List<dynamic>();
+        }
+
+        private async Task<List<dynamic>> ObterNegociacoesAsync()
+        {
+            try
+            {
+                string connStr = ConfigurationManager.GetConnectionString();
                 if (!string.IsNullOrEmpty(connStr) && _db != null)
                 {
                     string sql = @"
@@ -122,19 +147,14 @@ namespace Thelus.Core.Servicos
                         ORDER BY n.IdNegociacao DESC";
 
                     List<Negociacao> dados = await _db.QueryAsync<Negociacao>(sql);
-
                     if (dados != null && dados.Count > 0)
                     {
                         return dados.Cast<dynamic>().ToList();
                     }
                 }
             }
-            catch
-            {
-                // Fallback em caso de indisponibilidade de banco
-            }
+            catch { }
 
-            // FALLBACK / MOCK DE NEGOCIAÇÕES
             var mockList = new List<Negociacao>
             {
                 new Negociacao { IdNegociacao = 1, IdEmpresa = 1, Solicitante = "Luiz Carlos", IdSituacao = 1, Cliente = "CLI0017804 - AFVAL - GESTAO DE RESIDUOS RECICLAVEIS LTDA", Data = DateTime.Now, Frete = "CIF" },
@@ -166,10 +186,7 @@ namespace Thelus.Core.Servicos
                     if (negociacao != null) return negociacao;
                 }
             }
-            catch
-            {
-                // Tratamento de exceção de conexão
-            }
+            catch { }
 
             var listagem = await ObterListagemAsync();
             return listagem.FirstOrDefault(x => x.IdNegociacao == id);
@@ -270,7 +287,6 @@ namespace Thelus.Core.Servicos
 
                 return ResultadoOperacao.Falha("Conexão com o banco de dados não configurada.");
             }
-            /***** Bloco de exceções mantido igual / omitido por brevidade *****/
             catch (Exception ex)
             {
                 return ResultadoOperacao.Falha($"Erro ao salvar no banco de dados: {ex.Message}");

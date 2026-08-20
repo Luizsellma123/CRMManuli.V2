@@ -55,7 +55,7 @@ namespace Thelus.UI.Model.Entidades
         public string Frete { get; set; }
 
         // LINHA 5 FILTRO (12 Colunas)
-        [FormField(Label = "Cliente", Section = "Identificação", ColSpan = 12, Order = 8, IsRequired = true, Placeholder = "Clique na lupa para pesquisar o cliente...", FieldType = FieldType.ModalLookup, LookupKey = "clientes", ShowInFilter = true, ShowInGrid = true)]
+        [FormField(Label = "Cliente", Section = "Identificação", ColSpan = 12, Order = 8, IsRequired = true, Placeholder = "Clique na lupa para pesquisar o cliente...", FieldType = FieldType.ModalLookup, LookupKey = "negociacao-clientes", ShowInFilter = true, ShowInGrid = true)]
         public string Cliente { get; set; }
 
         // PROPRIEDADE EXCLUSIVA DA GRID (Sem exibição no filtro para não quebrar a ordem)

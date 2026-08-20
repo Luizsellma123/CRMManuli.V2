@@ -21,6 +21,11 @@ namespace Thelus.UI.Engine.Modelos
         /// </summary>
         public string LookupKey { get; set; }
 
+        /// <summary>
+        /// Define o nome da propriedade booleana (ex: "Novo") que alterna este campo para digitação manual/livre.
+        /// </summary>
+        public string ToggleEditableProperty { get; set; }
+
         public bool ShowInList { get; set; } = true;
 
         public string Icon { get; set; }

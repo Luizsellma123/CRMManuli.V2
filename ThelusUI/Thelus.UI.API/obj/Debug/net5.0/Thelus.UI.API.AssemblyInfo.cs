@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Thelus.UI.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5163fe0659b08233f9d4a4908a4b34709f4addc8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4809836f2c09e1b175e11f108d6f015e0947130")]
 [assembly: System.Reflection.AssemblyProductAttribute("Thelus.UI.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Thelus.UI.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

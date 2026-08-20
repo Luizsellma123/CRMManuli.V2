@@ -3226,6 +3226,8 @@
     <Content Include="Logistica_New\StatusFechamentoFaturaDetalheWebForm.aspx" />
     <Content Include="Logistica_New\StatusFechamentoFaturaWebForm.aspx" />
     <Content Include="logoff.aspx" />
+    <Content Include="Negociacao\ListaNegociacaoWebForm.aspx" />
+    <Content Include="Negociacao\NegociacaoDetalheWebForm.aspx" />
     <Content Include="PortalClienteManuli\contato\ContatoWebForm.aspx" />
     <Content Include="PortalClienteManuli\Financeiro\ListaParcelasWebForm.aspx" />
     <Content Include="PortalClienteManuli\Financeiro\SolicitacaoLimiteWebForm.aspx" />
@@ -3886,6 +3888,7 @@
     <Content Include="usercontrol\InfraestruturaMaquinaWebUserControl.ascx" />
     <Content Include="usercontrol\InfraestruturaWebUserControl.ascx" />
     <Content Include="usercontrol\LogisticaWebUserControl.ascx" />
+    <Content Include="usercontrol\NegociacaoWebUserControl.ascx" />
     <Content Include="usercontrol\PortalClienteMenuWebUserControl.ascx" />
     <Content Include="usercontrol\PosicaoDiariaWebUserControl.ascx" />
     <Content Include="usercontrol\PrazoProducaoProdutosWebUserControl.ascx" />
@@ -4422,6 +4425,7 @@
     <Compile Include="classes\MapsClass.cs" />
     <Compile Include="classes\menu.cs" />
     <Compile Include="classes\modulo.cs" />
+    <Compile Include="classes\NegociacaoClasse.cs" />
     <Compile Include="classes\OfficeClass.cs" />
     <Compile Include="classes\ParametroGeral.cs" />
     <Compile Include="classes\PortalClass.cs" />
@@ -6006,6 +6010,20 @@
     <Compile Include="logoff.aspx.designer.cs">
       <DependentUpon>logoff.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Negociacao\ListaNegociacaoWebForm.aspx.cs">
+      <DependentUpon>ListaNegociacaoWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Negociacao\ListaNegociacaoWebForm.aspx.designer.cs">
+      <DependentUpon>ListaNegociacaoWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Negociacao\NegociacaoDetalheWebForm.aspx.cs">
+      <DependentUpon>NegociacaoDetalheWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Negociacao\NegociacaoDetalheWebForm.aspx.designer.cs">
+      <DependentUpon>NegociacaoDetalheWebForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NestedMasterPageCRM.master.cs">
       <DependentUpon>NestedMasterPageCRM.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6888,6 +6906,13 @@
     </Compile>
     <Compile Include="usercontrol\LogisticaWebUserControl.ascx.designer.cs">
       <DependentUpon>LogisticaWebUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\NegociacaoWebUserControl.ascx.cs">
+      <DependentUpon>NegociacaoWebUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\NegociacaoWebUserControl.ascx.designer.cs">
+      <DependentUpon>NegociacaoWebUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\PortalClienteMenuWebUserControl.ascx.cs">
       <DependentUpon>PortalClienteMenuWebUserControl.ascx</DependentUpon>

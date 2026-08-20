@@ -21,11 +21,24 @@ namespace Thelus.UI.API.Controllers
 
         // Rota: GET /api/generic/usuarios
         [HttpGet("{entityName}")]
-        public async Task<IActionResult> ObterListagem(string entityName)
+        public async Task<IActionResult> ObterListagem(
+            string entityName,
+            [FromQuery] string? termoBusca = null,
+            [FromQuery] string? term = null)
         {
             try
             {
-                var dados = await _serviceResolver.ObterListagemAsync(entityName);
+                string? termoFinal = !string.IsNullOrWhiteSpace(termoBusca) ? termoBusca : term;
+
+                var filtro = new FiltroConsulta
+                {
+                    EntityName = entityName,
+                    TermoBusca = termoFinal
+                };
+
+                // PASSE OS 2 ARGUMENTOS NA ORDEM CORRETA:
+                var dados = await _serviceResolver.ObterListagemAsync(entityName, filtro);
+
                 return Ok(dados);
             }
             catch (Exception ex)

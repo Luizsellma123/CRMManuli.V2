@@ -17,49 +17,49 @@ using Microsoft.AspNetCore.Components.Web
 #nullable disable
     ;
 #nullable restore
-#line (11,2)-(11,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (1,2)-(1,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Collections.Generic
 
 #nullable disable
     ;
 #nullable restore
-#line (12,2)-(12,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (2,2)-(2,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Linq
 
 #nullable disable
     ;
 #nullable restore
-#line (13,2)-(13,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (3,2)-(3,23) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http
 
 #nullable disable
     ;
 #nullable restore
-#line (14,2)-(14,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (4,2)-(4,28) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using System.Net.Http.Json
 
 #nullable disable
     ;
 #nullable restore
-#line (15,2)-(15,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (5,2)-(5,53) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Microsoft.AspNetCore.Components.Authorization
 
 #nullable disable
     ;
 #nullable restore
-#line (16,2)-(16,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (6,2)-(6,33) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Servicos
 
 #nullable disable
     ;
 #nullable restore
-#line (17,2)-(17,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (7,2)-(7,32) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Modelos
 
 #nullable disable
     ;
 #nullable restore
-#line (18,2)-(18,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (8,2)-(8,34) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 using Thelus.UI.Engine.Atributos
 
 #nullable disable
@@ -76,7 +76,9 @@ using Thelus.UI.Engine.Atributos
         }
         #pragma warning restore 1998
 #nullable restore
-#line (91,8)-(310,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (99,8)-(341,1) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+
+    #nullable enable
 
     [Parameter] public string EntityName { get; set; } = string.Empty;
     [Parameter] public int Id { get; set; }
@@ -85,11 +87,13 @@ using Thelus.UI.Engine.Atributos
     private object? modelInstance;
     private Dictionary<string, List<PropertyMetadata>> propriedadesPorSecao = new();
     private List<ActionMetadata> acoesDoModelo = new();
+    private List<PropertyMetadata> propriedadesFiltradas = new();
     private string secaoAtiva = "";
 
     private string? mensagemFeedback;
     private bool sucessoFeedback;
     private bool salvando;
+    private bool carregando = true;
 
     private string GetPanelTitle()
     {
@@ -103,44 +107,75 @@ using Thelus.UI.Engine.Atributos
 
     protected override async Task OnParametersSetAsync()
     {
-        var entityType = EntityRegistry.GetEntityType(EntityName);
+        carregando = true;
 
-        if (entityType != null)
+        try
         {
-            modelInstance = Item ?? Activator.CreateInstance(entityType);
-            bool isEditMode = Id > 0; // Verifica se é Edição (Id > 0) ou Inclusão
+            var entityType = EntityRegistry.GetEntityType(EntityName);
 
-            var listProperties = ModelMetadataReader.GetProperties(modelInstance);
-
-            // Obter usuário logado para auto-preenchimento
-            string? currentUserName = null;
-            try
+            if (entityType != null)
             {
-                var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-                currentUserName = authState.User.Identity?.Name;
+                modelInstance = Item ?? Activator.CreateInstance(entityType);
+                bool isEditMode = Id > 0;
+
+                var listProperties = ModelMetadataReader.GetProperties(modelInstance);
+                propriedadesFiltradas = listProperties.Where(p => p.VisibleInDetail).ToList();
+
+                foreach (var prop in propriedadesFiltradas)
+                {
+                    if (prop.ReadOnlyInDetail)
+                    {
+                        prop.ReadOnly = true;
+                    }
+                    else if (prop.ReadOnlyOnEdit && isEditMode)
+                    {
+                        prop.ReadOnly = true;
+                    }
+                }
+
+                propriedadesPorSecao = propriedadesFiltradas
+                    .GroupBy(p => p.Section ?? "Geral")
+                    .ToDictionary(g => g.Key, g => g.ToList());
+
+                acoesDoModelo = ModelMetadataReader.GetDetailActions(entityType, EntityName);
+
+                if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
+                {
+                    secaoAtiva = propriedadesPorSecao.Keys.First();
+                }
             }
-            catch { }
-
-            // PROCESSAMENTO DAS REGRAS DO FormDetailField
-            var propriedadesFiltradas = new List<PropertyMetadata>();
-
-            foreach (var prop in listProperties)
+            else
             {
-                // 1. Ocultar campos que não devem aparecer no Detalhe
-                if (!prop.VisibleInDetail)
-                    continue;
+                propriedadesPorSecao = new();
+                acoesDoModelo = new();
+                secaoAtiva = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            sucessoFeedback = false;
+            mensagemFeedback = $"Erro ao carregar estrutura do formulário: {ex.Message}";
+        }
+        finally
+        {
+            carregando = false;
+        }
 
-                // 2. Aplicar trava de ReadOnly (Sempre ou Apenas na Edição)
-                if (prop.ReadOnlyInDetail)
-                {
-                    prop.ReadOnly = true;
-                }
-                else if (prop.ReadOnlyOnEdit && isEditMode)
-                {
-                    prop.ReadOnly = true;
-                }
+        if (modelInstance != null)
+        {
+            await CarregarDadosAssincronos();
+        }
+    }
 
-                // 3. Auto-Preenchimento caso o campo esteja vazio
+    private async Task CarregarDadosAssincronos()
+    {
+        try
+        {
+            var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+            var currentUserName = authState.User.Identity?.Name;
+
+            foreach (var prop in propriedadesFiltradas)
+            {
                 var valorAtual = prop.GetValue(modelInstance);
                 if (valorAtual == null || string.IsNullOrEmpty(valorAtual.ToString()))
                 {
@@ -157,58 +192,46 @@ using Thelus.UI.Engine.Atributos
                         prop.SetValue(modelInstance, DateTime.Now);
                     }
                 }
-
-                propriedadesFiltradas.Add(prop);
             }
+            await InvokeAsync(StateHasChanged);
+        }
+        catch { }
 
-            // Carregamento de Lookups para campos Select
-            foreach (var prop in propriedadesFiltradas.Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey)))
+        var selectProps = propriedadesFiltradas
+            .Where(p => p.FieldType == FieldType.Select && !string.IsNullOrEmpty(p.LookupKey))
+            .ToList();
+
+        foreach (var prop in selectProps)
+        {
+            try
             {
-                try
+                var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
+
+                if (lookupData != null)
                 {
-                    var lookupData = await Http.GetFromJsonAsync<List<Dictionary<string, object>>>($"api/generic/{prop.LookupKey}");
-
-                    if (lookupData != null)
+                    var options = new Dictionary<string, string>();
+                    foreach (var row in lookupData)
                     {
-                        prop.Options = new Dictionary<string, string>();
-                        foreach (var row in lookupData)
-                        {
-                            var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
-                            var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
+                        var keyCol = row.Keys.FirstOrDefault(k => k.Equals(prop.PropertyName, StringComparison.OrdinalIgnoreCase) || k.Equals("Id", StringComparison.OrdinalIgnoreCase) || k.StartsWith("Id", StringComparison.OrdinalIgnoreCase));
+                        var descCol = row.Keys.FirstOrDefault(k => k.Equals("Descricao", StringComparison.OrdinalIgnoreCase) || k.Equals("Nome", StringComparison.OrdinalIgnoreCase));
 
-                            if (keyCol != null && descCol != null)
+                        if (keyCol != null && descCol != null)
+                        {
+                            string? idVal = row[keyCol]?.ToString();
+                            string? descVal = row[descCol]?.ToString();
+                            if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
                             {
-                                string? idVal = row[keyCol]?.ToString();
-                                string? descVal = row[descCol]?.ToString();
-                                if (!string.IsNullOrEmpty(idVal) && !string.IsNullOrEmpty(descVal))
-                                {
-                                    prop.Options[idVal] = descVal;
-                                }
+                                options[idVal] = descVal;
                             }
                         }
                     }
+                    prop.Options = options;
                 }
-                catch { }
             }
-
-            // Agrupa os campos visíveis por Seção
-            propriedadesPorSecao = propriedadesFiltradas
-                .GroupBy(p => p.Section ?? "Geral")
-                .ToDictionary(g => g.Key, g => g.ToList());
-
-            acoesDoModelo = ModelMetadataReader.GetDetailActions(entityType, EntityName);
-
-            if (propriedadesPorSecao.Any() && (string.IsNullOrEmpty(secaoAtiva) || !propriedadesPorSecao.ContainsKey(secaoAtiva)))
-            {
-                secaoAtiva = propriedadesPorSecao.Keys.First();
-            }
+            catch { }
         }
-        else
-        {
-            propriedadesPorSecao = new();
-            acoesDoModelo = new();
-            secaoAtiva = "";
-        }
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private List<ActionMetadata> GetAcoesDaSecaoAtiva()
@@ -303,7 +326,7 @@ using Thelus.UI.Engine.Atributos
 
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (21,9)-(21,36) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (11,9)-(11,36) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 AuthenticationStateProvider
 
 #line default
@@ -311,7 +334,7 @@ AuthenticationStateProvider
 #nullable disable
          
 #nullable restore
-#line (21,37)-(21,54) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (11,37)-(11,54) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 AuthStateProvider
 
 #line default
@@ -321,7 +344,7 @@ AuthStateProvider
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (20,9)-(20,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (10,9)-(10,19) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 HttpClient
 
 #line default
@@ -329,7 +352,7 @@ HttpClient
 #nullable disable
          
 #nullable restore
-#line (20,20)-(20,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (10,20)-(10,24) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Http
 
 #line default
@@ -339,7 +362,7 @@ Http
          = default!;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private 
 #nullable restore
-#line (19,9)-(19,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (9,9)-(9,26) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 NavigationManager
 
 #line default
@@ -347,7 +370,7 @@ NavigationManager
 #nullable disable
          
 #nullable restore
-#line (19,27)-(19,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
+#line (9,27)-(9,37) "D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\Componentes\GenericDetail.razor"
 Navigation
 
 #line default

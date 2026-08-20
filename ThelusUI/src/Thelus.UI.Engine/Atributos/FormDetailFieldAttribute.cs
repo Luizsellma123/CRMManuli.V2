@@ -53,6 +53,11 @@ namespace Thelus.UI.Engine.Atributos
         /// </summary>
         public bool ReadOnlyOnEdit { get; set; } = false;
 
+        /// <summary>
+        /// Nome da propriedade booleana (ex: nameof(Novo)) que habilita a digitação manual/livre para campos ModalLookup.
+        /// </summary>
+        public string ToggleEditableBy { get; set; } = string.Empty;
+
         #endregion
 
         #region 3. Auto-Preenchimento no Detalhe

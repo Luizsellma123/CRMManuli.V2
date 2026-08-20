@@ -59,6 +59,7 @@ D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debu
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Componentes\Grid.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Componentes\Login.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Componentes\LookupModal.razor.g.cs
+D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Componentes\LookupModalEditable.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Componentes\SearchableSelect.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\Layouts\AuthLayout.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\RazorDeclaration\_Imports.razor.g.cs
@@ -82,6 +83,7 @@ D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debu
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Componentes\Grid.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Componentes\Login.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Componentes\LookupModal.razor.g.cs
+D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Componentes\LookupModalEditable.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Componentes\SearchableSelect.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\Layouts\AuthLayout.razor.g.cs
 D:\Dados\Projetos\Manuli\CRM\CRMManuli.V2\ThelusUI\src\Thelus.UI.Engine\obj\Debug\netstandard2.0\Razor\_Imports.razor.g.cs

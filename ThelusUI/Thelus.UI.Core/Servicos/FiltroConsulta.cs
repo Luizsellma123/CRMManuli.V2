@@ -6,6 +6,7 @@ namespace Thelus.Core.Servicos
     {
         public string EntityName { get; set; }
         public string TermoBusca { get; set; }
+        public string Term { get => TermoBusca; set => TermoBusca = value; }
         public Dictionary<string, object> Parametros { get; set; } = new Dictionary<string, object>();
         public int Pagina { get; set; } = 1;
         public int TamanhoPagina { get; set; } = 50;

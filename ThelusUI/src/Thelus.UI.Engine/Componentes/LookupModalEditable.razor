@@ -1,0 +1,106 @@
+﻿@using System.Collections.Generic
+
+@if (IsEditable)
+{
+    @* MODO DIGITAÇÃO LIVRE (Quando 'Novo' está marcado) *@
+    <input type="text" 
+           class="form-control" 
+           value="@Value" 
+           disabled="@ReadOnly"
+           placeholder="@(string.IsNullOrEmpty(Placeholder) ? "Digite o nome/razão social manualmente..." : Placeholder)"
+           @oninput="OnInputManual" 
+           @key="@("modo-edicao-cliente")" />
+}
+else
+{
+    @* MODO BUSCA VIA MODAL (Quando 'Novo' está desmarcado) *@
+    <div class="input-group" @key="@("modo-busca-cliente")">
+        <input type="text" 
+               class="form-control" 
+               readonly
+               value="@descricaoExibicao"
+               placeholder="@(string.IsNullOrEmpty(Placeholder) ? "Clique na lupa para selecionar..." : Placeholder)" />
+        
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" disabled="@ReadOnly" @onclick="() => modalAberto = true"
+                    style="height: 26px; line-height: 26px; padding: 0 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;"
+                    title="Pesquisar">
+                <i class="fa fa-search"></i>
+            </button>
+            @if (!string.IsNullOrEmpty(descricaoExibicao) && !ReadOnly)
+            {
+                <button type="button" class="btn btn-danger" @onclick="Limpar"
+                        style="height: 26px; line-height: 26px; padding: 0 10px; font-size: 11px; display: inline-flex; align-items: center; justify-content: center;"
+                        title="Limpar">
+                    <i class="fa fa-times"></i>
+                </button>
+            }
+        </span>
+    </div>
+
+    @* Instância do seu LookupModal oficial *@
+    <LookupModal IsOpen="@modalAberto"
+                 Title="@Title"
+                 LookupKey="@LookupKey"
+                 OnSelect="ItemSelecionado"
+                 OnClose="() => modalAberto = false" />
+}
+
+@code {
+    #nullable enable
+
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+
+    [Parameter] public bool IsEditable { get; set; }
+    [Parameter] public bool ReadOnly { get; set; }
+    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public string LookupKey { get; set; } = string.Empty;
+    [Parameter] public string Placeholder { get; set; } = string.Empty;
+    [Parameter] public Dictionary<string, string>? Options { get; set; }
+
+    private bool modalAberto;
+    private string descricaoExibicao = string.Empty;
+
+    protected override void OnParametersSet()
+    {
+        if (!IsEditable)
+        {
+            if (!string.IsNullOrEmpty(Value) && Options != null && Options.TryGetValue(Value, out var desc))
+            {
+                descricaoExibicao = desc;
+            }
+            else if (!string.IsNullOrEmpty(Value))
+            {
+                descricaoExibicao = Value.Contains(" - ") ? Value : $"Código: {Value}";
+            }
+            else
+            {
+                descricaoExibicao = string.Empty;
+            }
+        }
+    }
+
+    private async Task OnInputManual(ChangeEventArgs e)
+    {
+        var novoValor = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(novoValor);
+    }
+
+    private async Task ItemSelecionado(KeyValuePair<string, string> item)
+    {
+        modalAberto = false;
+        descricaoExibicao = item.Value;
+        if (Options != null)
+        {
+            Options[item.Key] = item.Value;
+        }
+        await ValueChanged.InvokeAsync(item.Key);
+    }
+
+    private async Task Limpar()
+    {
+        descricaoExibicao = string.Empty;
+        await ValueChanged.InvokeAsync(null);
+    }
+}
