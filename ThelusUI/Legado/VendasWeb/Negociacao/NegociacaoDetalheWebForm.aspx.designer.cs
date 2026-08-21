@@ -24,6 +24,15 @@ namespace VendasWeb.Negociacao
         protected global::System.Web.UI.WebControls.Literal PainelFiltrosLiteral;
 
         /// <summary>
+        /// Controle updFormulario.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updFormulario;
+
+        /// <summary>
         /// Controle drpEmpresa.
         /// </summary>
         /// <remarks>
@@ -112,6 +121,15 @@ namespace VendasWeb.Negociacao
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFormaPagamento;
+
+        /// <summary>
+        /// Controle hfIdCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfIdCliente;
 
         /// <summary>
         /// Controle txtCliente.
@@ -330,12 +348,12 @@ namespace VendasWeb.Negociacao
         protected global::System.Web.UI.WebControls.GridView gridClientesModal;
 
         /// <summary>
-        /// Controle FinanceiroWebUserControl.
+        /// Controle NegociacaoDetalheWebUserControl.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::VendasWeb.usercontrol.FinanceiroWebUserControl FinanceiroWebUserControl;
+        protected global::VendasWeb.usercontrol.NegociacaoDetalheWebUserControl NegociacaoDetalheWebUserControl;
     }
 }

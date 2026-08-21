@@ -179,7 +179,7 @@
                             <asp:GridView ID="ListaNegociacoesGridView" EmptyDataText="Nenhuma Negociação Localizada"
                                 AutoGenerateColumns="False" runat="server" AllowPaging="True"
                                 OnPageIndexChanging="ListaNegociacaoGridView_PageIndexChanged"
-                                DataKeyNames="IDNegociacao"
+                                DataKeyNames="IDEmpresa,IDNegociacao"
                                 CssClass="table table-hover table-striped table-bordered table-checkable table-highlight-head table-no-inner-border table-hover table-condensed"
                                 Style="border-collapse: collapse; max-width: 100%">
                                 <PagerStyle CssClass="pagination-ys" />

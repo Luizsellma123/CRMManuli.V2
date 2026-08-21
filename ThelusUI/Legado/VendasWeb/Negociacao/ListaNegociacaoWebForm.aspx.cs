@@ -420,10 +420,20 @@ namespace VendasWeb.Negociacao
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
-            if (int.TryParse(btn.CommandArgument, out int idNegociacao))
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+
+            // Recupera a chave composta diretamente do DataKeys da linha do Grid
+            int idEmpresa = Convert.ToInt32(ListaNegociacoesGridView.DataKeys[row.RowIndex].Values["IDEmpresa"]);
+            int idNegociacao = Convert.ToInt32(ListaNegociacoesGridView.DataKeys[row.RowIndex].Values["IDNegociacao"]);
+
+            OBJNegociacao = new NegociacaoClasse();
+            if (OBJNegociacao.CarregarNegociacaoPorID(idEmpresa, idNegociacao))
             {
-                // Redireciona para a tela de edição/cadastro da negociação passando o ID
-                Response.Redirect("CadNegociacaoWebForm.aspx?ID=" + idNegociacao);
+                // Salva a instância completa e populada na Session
+                Session["OBJNegociacao"] = OBJNegociacao;
+
+                Response.Redirect("NegociacaoDetalheWebForm.aspx?indmnu=4", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
         }
     }

@@ -3227,6 +3227,7 @@
     <Content Include="Logistica_New\StatusFechamentoFaturaWebForm.aspx" />
     <Content Include="logoff.aspx" />
     <Content Include="Negociacao\ListaNegociacaoWebForm.aspx" />
+    <Content Include="Negociacao\NegociacaoDetalheItensWebForm.aspx" />
     <Content Include="Negociacao\NegociacaoDetalheWebForm.aspx" />
     <Content Include="PortalClienteManuli\contato\ContatoWebForm.aspx" />
     <Content Include="PortalClienteManuli\Financeiro\ListaParcelasWebForm.aspx" />
@@ -3888,6 +3889,7 @@
     <Content Include="usercontrol\InfraestruturaMaquinaWebUserControl.ascx" />
     <Content Include="usercontrol\InfraestruturaWebUserControl.ascx" />
     <Content Include="usercontrol\LogisticaWebUserControl.ascx" />
+    <Content Include="usercontrol\NegociacaoDetalheWebUserControl.ascx" />
     <Content Include="usercontrol\NegociacaoWebUserControl.ascx" />
     <Content Include="usercontrol\PortalClienteMenuWebUserControl.ascx" />
     <Content Include="usercontrol\PosicaoDiariaWebUserControl.ascx" />
@@ -6017,6 +6019,13 @@
     <Compile Include="Negociacao\ListaNegociacaoWebForm.aspx.designer.cs">
       <DependentUpon>ListaNegociacaoWebForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Negociacao\NegociacaoDetalheItensWebForm.aspx.cs">
+      <DependentUpon>NegociacaoDetalheItensWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Negociacao\NegociacaoDetalheItensWebForm.aspx.designer.cs">
+      <DependentUpon>NegociacaoDetalheItensWebForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Negociacao\NegociacaoDetalheWebForm.aspx.cs">
       <DependentUpon>NegociacaoDetalheWebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6906,6 +6915,13 @@
     </Compile>
     <Compile Include="usercontrol\LogisticaWebUserControl.ascx.designer.cs">
       <DependentUpon>LogisticaWebUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\NegociacaoDetalheWebUserControl.ascx.cs">
+      <DependentUpon>NegociacaoDetalheWebUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\NegociacaoDetalheWebUserControl.ascx.designer.cs">
+      <DependentUpon>NegociacaoDetalheWebUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\NegociacaoWebUserControl.ascx.cs">
       <DependentUpon>NegociacaoWebUserControl.ascx</DependentUpon>

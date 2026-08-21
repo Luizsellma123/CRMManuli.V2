@@ -217,19 +217,19 @@
       "mscorlib.dll": "sha256-zMI\/dXK7DoZZ9Qm9U9\/jRN4iQ9Ss3w8\/rwQQxC6SW9Y=",
       "netstandard.dll": "sha256-W3q3PN+lpRB+tRJEIhtMgYOGFv0pauEeeCS9iIRkKAM=",
       "System.Private.CoreLib.dll": "sha256-9rUJv1mXEQdGt\/kWiJ1ITPPzp3cAi3lSmqHVTisp7w0=",
-      "Thelus.UI.Core.dll": "sha256-6T\/gyy6Iq6Ea5ztuQm6nOcb9ZSGWshCjstlBT3VI8Tw=",
-      "Thelus.UI.Engine.dll": "sha256-iI4o4IW0qInEEX\/UpRhp0NEoQR9A2jPEjYTR+vNJyvU=",
-      "Thelus.UI.Model.dll": "sha256-3bEH9s9tAjP5+\/L4qNNg\/1h4luLhnew9SiJ59hmZf7E=",
-      "Thelus.UI.Interface.dll": "sha256-6dyRfL45RRFmf4wGwoTCXlycDNYxkSsv718vo6Tc2oU="
+      "Thelus.UI.Core.dll": "sha256-eOkJYWmKNM0CtlyM1vtHwAOqZYvafMRcbdZkicIps6M=",
+      "Thelus.UI.Engine.dll": "sha256-A+jC5tn20YB8XSATGCnx2C4u0UC5HbfKg6fsMGjOjrA=",
+      "Thelus.UI.Model.dll": "sha256-7X16vhQCe4k\/dvI9pq42+AUaH\/cj35in9RyMdjkiv+4=",
+      "Thelus.UI.Interface.dll": "sha256-rOELwkcnAGUJdpt7hjs\/Nr7HdezKSuSaEMcWDa2n\/YY="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Thelus.UI.Engine.pdb": "sha256-O22mUXlJuFewEceyteQq1dy4XTv0DGwS7XrZ6YrUamk=",
-      "Thelus.UI.Core.pdb": "sha256-LOnaAaG8RR50clbMgxB+QXQk0V9ZA\/Vo+oM1GX95AMM=",
-      "Thelus.UI.Model.pdb": "sha256-7ULBw7cjmGtMRKei2BQiltv3XPUQ74RJe6CYmVrsF\/o=",
-      "Thelus.UI.Interface.pdb": "sha256-usQruT+\/CM8OW16uAWsHVBgElgOCMbIHwLMqU6mR\/K4="
+      "Thelus.UI.Engine.pdb": "sha256-TsODKfYzfdeMbfaMDIzrn5D7UXdEK9SUIZ\/smI7uJhs=",
+      "Thelus.UI.Core.pdb": "sha256-rPsO9r6288aPOKfm98x5CAdQY7b8PUK3ad0aTTMwnPI=",
+      "Thelus.UI.Model.pdb": "sha256-h5Q7tojXjtXSzZeMVR7smG1uaGxdra7UT4YpWwkkthI=",
+      "Thelus.UI.Interface.pdb": "sha256-KCCao0iwxW1eqeYPwDkOtkgGCerWoxRkXg2XMaz8vh4="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-8oJip361m8OrfLRJOuIeswWKaoxtT27\/wINCxhn+s4c=",
